@@ -17,11 +17,11 @@
 This project is maintained by [Emanuel Lamela](https://github.com/emalamela)
 and it was written by [Wolox](http://www.wolox.com.ar).
 
-![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+![Wolox](https://i.imgur.com/VuLMt3g.png)
 
 ## <a name="topic-license"></a> License
 
-**WOLMO CORE** is available under the MIT [license](https://raw.githubusercontent.com/Wolox/wolmo-core-android/master/LICENSE.md).
+**WOLMO Cookbook** is available under the MIT [license](https://raw.githubusercontent.com/Wolox/wolmo-core-android/master/LICENSE.md).
 
     Copyright (c) Wolox S.A
 
