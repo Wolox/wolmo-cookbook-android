@@ -1,8 +1,6 @@
-# WIP Icon
-
 # WOLMO Cookbook - Android
 
-## WIP Description
+This cookbook contains recipes that demonstrate how to solve common problems while using **WOLMO** in you daily development. Each recipe is self-contained and can be used as a reference to help you build up an application.
 
 ## <a name="topic-contributing"></a> Contributing
 
