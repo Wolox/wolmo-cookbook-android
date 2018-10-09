@@ -1,5 +1,5 @@
-apply plugin: 'findbugs'
 apply plugin: 'checkstyle'
+apply plugin: 'com.chaitanyapramod.findbugs-android'
 
 configurations {
     ktlint
@@ -14,26 +14,11 @@ dependencies {
 }
 
 findbugs {
+    toolVersion '3.0.1'
+    ignoreFailures false
+    effort 'max'
+    reportLevel 'high'
     reportsDir = file("$project.buildDir/outputs/")
-}
-
-task findbugs(type: FindBugs) {
-    description 'Run findbugs'
-    group 'verification'
-
-    classes = fileTree('build/intermediates/classes/production/')
-    source = fileTree('src/main/java')
-    classpath = files()
-    effort = 'max'
-    excludeFilter = file('quality/findbugs_exclude.xml')
-
-    reportLevel = 'medium'
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
-
-    ignoreFailures = false
 }
 
 task checkstyle(type: Checkstyle) {
@@ -74,4 +59,4 @@ task ktlintFormat(type: JavaExec) {
 
 preBuild.dependsOn 'checkstyle', 'ktlintFormat'
 
-check.dependsOn 'checkstyle', 'ktlintFormat', 'ktlint'
+check.dependsOn 'checkstyle', 'findbugsProductionRelease', 'ktlintFormat', 'ktlint'
