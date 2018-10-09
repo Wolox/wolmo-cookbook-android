@@ -74,4 +74,4 @@ task ktlintFormat(type: JavaExec) {
 
 preBuild.dependsOn 'checkstyle', 'ktlintFormat'
 
-check.dependsOn 'checkstyle', 'findbugs', 'ktlintFormat', 'ktlint'
+check.dependsOn 'checkstyle', 'ktlintFormat', 'ktlint'
