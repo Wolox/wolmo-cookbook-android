@@ -1,0 +1,9 @@
+task sanityChecks(type: Exec) {
+    group = 'verification'
+    description = 'Run project sanity checks'
+
+    workingDir = "$rootDir/scripts/sanity"
+    commandLine "python", "$rootDir/scripts/sanity/sanity.py"
+}
+
+preBuild.dependsOn sanityChecks

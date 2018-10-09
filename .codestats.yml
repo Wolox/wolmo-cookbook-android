@@ -1,0 +1,20 @@
+config:
+  token: <%= ENV['CODE_STATS_TOKEN'] %>
+  ci: 'JENKINS'
+  url: 'http://codestats.wolox.com.ar/'
+metrics:
+  android_jacoco:
+    name: 'Test Coverage'
+    location: 'app/build/reports/jacoco/testStageDebugUnitTestCoverage/testStageDebugUnitTestCoverage.xml'
+    enabled: true
+    minimum: 60
+    build_base_url: 'http://ci.wolox.com.ar/job'
+    build_report_file_url: 'jacoco'
+  android_quality:
+    name: 'Code Quality'
+    location: 'app/build/outputs/lint-results-productionDebug.xml'
+    enabled: true
+    minimum: 70
+    build_base_url: 'http://ci.wolox.com.ar/job'
+    source_dir: 'app'
+    build_report_file_url: ''

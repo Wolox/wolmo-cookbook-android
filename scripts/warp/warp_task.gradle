@@ -1,0 +1,39 @@
+task warpAssets(type: Exec) {
+    group = 'Optimizations'
+    description = 'Convert and optimize assets for every screen density using WARP'
+
+    def rawPath = "$rootDir/raw/" // The folder where the raw assets are located
+    def resPath = "$rootDir/app/src/main/res/" // Android's 'res' folder
+
+    commandLine = "$rootDir/scripts/warp/warp.py"
+    args = [
+            '--target', 'android',
+            '--input', rawPath,
+            '--output', resPath,
+            '--silent'
+            ]
+}
+
+task cleanWarpAssets(type: Exec) {
+    group = 'Optimizations'
+    description = 'Clean converted assets'
+
+    def rawPath = "$rootDir/raw/" // The folder where the raw assets are located
+    def resPath = "$rootDir/app/src/main/res/" // Android's 'res' folder
+
+    commandLine = "$rootDir/scripts/warp/warp.py"
+    args = [
+            '--target', 'android',
+            '--input', rawPath,
+            '--output', resPath,
+            '--silent',
+            '--clean'
+            ]
+
+}
+
+preBuild.dependsOn warpAssets
+
+// Uncomment if you want to clean all the assets when running the "clean" task.
+// Caution: It could take a long time to "Rebuild" or "Clean" Project.
+// clean.dependsOn cleanWarpAssets
