@@ -2,7 +2,9 @@
 
 # WOLMO Cookbook - Android
 
-This cookbook contains recipes that demonstrate how to solve common problems while using **WOLMO** in you daily development. Each recipe is self-contained and can be used as a reference to help you build up an application.
+This Cookbook contains recipes that demonstrate how to solve common problems while using **WOLMO** in you daily development. Each recipe **must** be self-contained in a package and will be used as a reference to help you build up an application with **WOLMO**.
+
+The Cookbook will also be used as a playground to test new stuff out. That does not mean it will be messy, the kitchen must be kept clean.
 
 ## <a name="topic-contributing"></a> Contributing
 
