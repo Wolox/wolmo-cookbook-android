@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Static Spacing -->
+    <dimen name="static_spacing_tiniest">1dp</dimen>
+    <dimen name="static_spacing_tiny">2dp</dimen>
+    <dimen name="static_spacing_small">4dp</dimen>
+    <dimen name="static_spacing_medium">8dp</dimen>
+    <dimen name="static_spacing_medium_extra">16dp</dimen>
+    <dimen name="static_spacing_large">20dp</dimen>
+    <dimen name="static_spacing_large_extra">28dp</dimen>
+    <dimen name="static_spacing_big">36dp</dimen>
+    <dimen name="static_spacing_huge">48dp</dimen>
+    <dimen name="static_spacing_huge_extra">60dp</dimen>
+    <dimen name="static_spacing_largest">72dp</dimen>
+
+    <!-- Spacing -->
+    <dimen name="spacing_none">0dp</dimen>
+    <dimen name="spacing_tiniest">1dp</dimen>
+    <dimen name="spacing_tiny">1dp</dimen>
+    <dimen name="spacing_small">2dp</dimen>
+    <dimen name="spacing_medium">4dp</dimen>
+    <dimen name="spacing_medium_more">8dp</dimen>
+    <dimen name="spacing_medium_extra">12dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_large_extra">22dp</dimen>
+    <dimen name="spacing_big">28dp</dimen>
+    <dimen name="spacing_big_extra">32dp</dimen>
+    <dimen name="spacing_huge">38dp</dimen>
+    <dimen name="spacing_huge_extra">46dp</dimen>
+    <dimen name="spacing_largest">54dp</dimen>
+    <dimen name="spacing_largest_extra">64dp</dimen>
+
+    <!-- Anti-spacing -->
+    <dimen name="negative_spacing_medium">-4dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="font_tiny">6sp</dimen>
+    <dimen name="font_small">8sp</dimen>
+    <dimen name="font_small_more">10sp</dimen>
+    <dimen name="font_medium">12sp</dimen>
+    <dimen name="font_medium_more">14sp</dimen>
+    <dimen name="font_medium_extra">16sp</dimen>
+    <dimen name="font_large">18sp</dimen>
+    <dimen name="font_large_extra">20sp</dimen>
+    <dimen name="font_big">22sp</dimen>
+    <dimen name="font_huge">24sp</dimen>
+
+    <!-- Add your custom dimens here -->
+</resources>
