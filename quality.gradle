@@ -18,7 +18,7 @@ findbugs {
     ignoreFailures false
     effort 'max'
     reportLevel 'high'
-    reportsDir = file("$project.buildDir/outputs/")
+    reportsDir = file("$project.buildDir/reports")
 }
 
 task checkstyle(type: Checkstyle) {
@@ -39,6 +39,12 @@ task checkstyle(type: Checkstyle) {
     exclude '**/BuildConfig.java'
 
     ignoreFailures = false
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        html.destination = file("$project.buildDir/reports/checkstyle.html")
+    }
 }
 
 task ktlint(type: JavaExec) {
@@ -46,7 +52,7 @@ task ktlint(type: JavaExec) {
     description = 'Check Kotlin code style'
     main = 'com.github.shyiko.ktlint.Main'
     classpath = configurations.ktlint
-    args 'src/**/*.kt'
+    args 'src/**/*.kt', "--reporter=checkstyle", "output=${project.buildDir}/reports/ktlint.xml"
 }
 
 task ktlintFormat(type: JavaExec) {
