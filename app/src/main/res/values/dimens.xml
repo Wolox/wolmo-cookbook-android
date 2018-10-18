@@ -44,6 +44,15 @@
     <dimen name="font_large_extra">20sp</dimen>
     <dimen name="font_big">22sp</dimen>
     <dimen name="font_huge">24sp</dimen>
+    <dimen name="font_huge_extra">26sp</dimen>
 
-    <!-- Add your custom dimens here -->
+    <!-- Recipe Picker -->
+    <dimen name="recipe_picker_selection_padding">50dp</dimen>
+
+    <!-- Carousel effect -->
+    <dimen name="carousel_effect_max_translate_x">180dp</dimen>
+
+    <!-- Recipe Image -->
+    <dimen name="recipe_image">300dp</dimen>
+
 </resources>
