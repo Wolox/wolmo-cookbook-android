@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@+id/navigation1Fragment">
+
+    <fragment
+        android:id="@+id/navigation1Fragment"
+        android:name="ar.com.wolox.android.cookbook.navigation.Navigation1Fragment"
+        android:label="NavigationAFragment">
+        <action
+            android:id="@+id/action_navigation1Fragment_to_navigation2BFragment"
+            app:destination="@id/navigation2BFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_navigation1Fragment_to_navigation2AFragment"
+            app:destination="@id/navigation2AFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation2AFragment"
+        android:name="ar.com.wolox.android.cookbook.navigation.Navigation2AFragment"
+        android:label="Navigation2AFragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation2BFragment"
+        android:name="ar.com.wolox.android.cookbook.navigation.Navigation2BFragment"
+        android:label="Navigation2BFragment" >
+        <action
+            android:id="@+id/action_navigation2BFragment_to_navigation3Fragment"
+            app:destination="@id/navigation3Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation3Fragment"
+        android:name="ar.com.wolox.android.cookbook.navigation.Navigation3Fragment"
+        android:label="Navigation3Fragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation4Fragment"
+        android:name="ar.com.wolox.android.cookbook.navigation.Navigation4Fragment"
+        android:label="Navigation4Fragment">
+    </fragment>
+
+</navigation>
