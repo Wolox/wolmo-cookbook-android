@@ -2,5 +2,6 @@
 
     <!-- General -->
     <string name="app_title">Wolmo Android\nCookbook</string>
+    <string name="app_example_recipe_description">A cat trying its best to take a selfie. You did your best buddy!</string>
 
 </resources>

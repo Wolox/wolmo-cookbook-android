@@ -48,6 +48,7 @@
 
     <!-- Recipe Picker -->
     <dimen name="recipe_picker_selection_padding">50dp</dimen>
+    <dimen name="recipe_picker_title">40sp</dimen>
 
     <!-- Carousel effect -->
     <dimen name="carousel_effect_max_translate_x">180dp</dimen>

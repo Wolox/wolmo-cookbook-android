@@ -1,9 +1,10 @@
 package ar.com.wolox.android.cookbook.recipepicker
 
-import android.support.v4.view.ViewCompat
 import android.support.v4.view.ViewPager
 import android.view.View
 import ar.com.wolox.android.cookbook.R
+import kotlinx.android.synthetic.main.item_recipe_image.view.*
+import kotlin.math.absoluteValue
 
 class CarouselEffectTransformer : ViewPager.PageTransformer {
 
@@ -21,6 +22,8 @@ class CarouselEffectTransformer : ViewPager.PageTransformer {
             view.translationX = -viewPager.context.resources.getDimension(R.dimen.carousel_effect_max_translate_x) * offsetRate
         }
 
-        ViewCompat.setElevation(view, scaleFactor)
+        view.vItemRecipeDescription.apply {
+            alpha = if (position in 0.0f..0.32f) -6.25f*(position - 0.16f).absoluteValue + 1 else 0.0f
+        }
     }
 }

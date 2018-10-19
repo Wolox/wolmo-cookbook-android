@@ -2,5 +2,5 @@
 <bitmap
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:src="@drawable/bg_recipe_picker"
-    android:tint="@android:color/darker_gray"
+    android:tint="@color/recipe_picker_background_tint"
     android:tintMode="add"/>

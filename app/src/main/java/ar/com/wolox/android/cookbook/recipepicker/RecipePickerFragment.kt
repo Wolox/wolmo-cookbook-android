@@ -10,7 +10,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>() {
 
     override fun init() {
         vRecipePickerSelectionViewPager.apply {
-            adapter = ImageViewPager(intArrayOf(
+            adapter = RecipeViewPager(intArrayOf(
                 R.drawable.bg_yawning_cat, R.drawable.bg_falopa_cat, R.drawable.bg_sunglasses_cat,
                 R.drawable.bg_surprised_cat
             ))

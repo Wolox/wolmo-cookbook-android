@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Add your application custom colors here -->
-    <!-- Base application colors -->
     <color name="colorPrimary">#1D9BD7</color>
     <color name="colorPrimaryDark">#0960B7</color>
     <color name="colorAccent">#8DC63F</color>
+
+    <!-- Recipe Picker -->
+    <color name="recipe_picker_background_tint">#D1CCC0</color>
+
 </resources>

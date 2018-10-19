@@ -7,7 +7,7 @@ import android.view.View
 import ar.com.wolox.android.cookbook.R
 import kotlinx.android.synthetic.main.item_recipe_image.view.*
 
-class ImageViewPager(private val imageResources: IntArray) : PagerAdapter() {
+class RecipeViewPager(private val imageResources: IntArray) : PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view = LayoutInflater.from(container.context).inflate(R.layout.item_recipe_image, null)
