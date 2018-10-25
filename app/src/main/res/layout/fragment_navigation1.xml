@@ -36,6 +36,13 @@
         android:layout_gravity="center"
         android:text="Go TO 2B"/>
 
+    <Button
+        android:id="@+id/fragment_navigation1__toGoogle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:text="Go TO GOOGLE"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -8,6 +8,10 @@ import ar.com.wolox.android.cookbook.navigation.Navigation2AFragment
 import ar.com.wolox.android.cookbook.navigation.Navigation2BFragment
 import ar.com.wolox.android.cookbook.navigation.Navigation3Fragment
 import ar.com.wolox.android.cookbook.navigation.Navigation4Fragment
+import ar.com.wolox.android.cookbook.navigation.NavigationActivity
+import ar.com.wolox.android.cookbook.navigation.NewNavigationActivity
+import ar.com.wolox.android.cookbook.navigation.NewNavigationFragment
+import ar.com.wolox.android.cookbook.navigation.NavigationDeepLink
 import ar.com.wolox.android.cookbook.recipepicker.RecipePickerActivity
 import ar.com.wolox.android.cookbook.recipepicker.RecipePickerFragment
 import dagger.Module
@@ -45,4 +49,13 @@ abstract class AppModule {
 
     @ContributesAndroidInjector
     abstract fun navigation4fragment(): Navigation4Fragment
+
+    @ContributesAndroidInjector
+    abstract fun newNavigationctivity(): NewNavigationActivity
+
+    @ContributesAndroidInjector
+    abstract fun newNavigationFragment(): NewNavigationFragment
+
+    @ContributesAndroidInjector
+    abstract fun navigationDeepLinkFragment(): NavigationDeepLink
 }

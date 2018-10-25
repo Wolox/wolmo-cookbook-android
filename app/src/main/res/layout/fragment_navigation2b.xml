@@ -23,6 +23,13 @@
         android:layout_weight="1"/>
 
     <Button
+        android:id="@+id/fragment_navigation2b_to1_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:text="Go TO 1"/>
+
+    <Button
         android:id="@+id/fragment_navigation2b_to3_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
