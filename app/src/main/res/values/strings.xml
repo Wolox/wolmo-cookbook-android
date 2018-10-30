@@ -1,3 +1,13 @@
 <resources>
 
+    <!-- General -->
+    <string name="app_title">Wolmo Android\nCookbook</string>
+    <string name="app_example_recipe_description">A cat trying its best to take a selfie. You did your best buddy!</string>
+
+    <!-- Recipe Picker -->
+    <string name="recipe_picker_yawn_cat">This one is too lazy to care…</string>
+    <string name="recipe_picker_high_cat">Well, ain\'t you having fun. *winks*</string>
+    <string name="recipe_picker_cool_cat">The Bad Boy of the Block. You can\'t resist him, huh?</string>
+    <string name="recipe_picker_surprised_cat">Surprise surprise!</string>
+
 </resources>
