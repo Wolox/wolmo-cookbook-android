@@ -14,12 +14,16 @@ import okhttp3.logging.HttpLoggingInterceptor.Level
 class CookbookApplication : WolmoApplication() {
 
     override fun onInit() {
-        // Initialize Application stuff here
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.
             return
         }
+        initializeLeakCanary()
+        // Initialize Application stuff here
+    }
+
+    private fun initializeLeakCanary() {
         LeakCanary.install(this)
     }
 

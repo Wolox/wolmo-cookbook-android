@@ -1,5 +1,6 @@
 package ar.com.wolox.android.cookbook.recipepicker
 
+import android.content.Intent
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_recipe_picker.*
@@ -13,7 +14,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     override fun showRecipes(recipes: List<Recipe>) {
         vRecipePickerSelectionViewPager.apply {
             adapter = RecipeViewPager(mapRecipesToItems(recipes)) {
-                presenter.onRecipeCLicked(it)
+                presenter.onRecipeClicked(it)
             }
             setPageTransformer(false, CarouselEffectTransformer())
             pageMargin = resources.getDimensionPixelSize(R.dimen.spacing_medium_more)
@@ -21,6 +22,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     }
 
     private fun mapRecipesToItems(recipes: List<Recipe>): List<RecipeItem> {
+        // Create a RecipeItem with the desired image & text for it inside the 'when' statement
         return recipes.map {
             when (it) {
                 Recipe.YAWN_CAT -> RecipeItem(it, R.drawable.bg_yawning_cat, R.string.recipe_picker_yawn_cat)
@@ -29,6 +31,10 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
                 Recipe.SURPRISED_CAT -> RecipeItem(it, R.drawable.bg_surprised_cat, R.string.recipe_picker_surprised_cat)
             }
         }
+    }
+
+    override fun goToBlankRecipe() {
+        requireContext().startActivity(Intent(requireContext(), BlankActivity::class.java))
     }
 
     companion object {

@@ -6,6 +6,10 @@ import ar.com.wolox.android.cookbook.R
 import kotlinx.android.synthetic.main.item_recipe_image.view.*
 import kotlin.math.absoluteValue
 
+/**
+ * [android.support.v4.view.ViewPager.PageTransformer] that transform pages to give a Carousel
+ * Effect. Heavily inspired by https://github.com/bhaveshjabuvani88/CarouselEffect.
+ */
 class CarouselEffectTransformer : ViewPager.PageTransformer {
 
     override fun transformPage(view: View, position: Float) {
