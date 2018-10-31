@@ -9,5 +9,9 @@
     <string name="recipe_picker_high_cat">Well, ain\'t you having fun. *winks*</string>
     <string name="recipe_picker_cool_cat">The Bad Boy of the Block. You can\'t resist him, huh?</string>
     <string name="recipe_picker_surprised_cat">Surprise surprise!</string>
+    <string name="recipe_picker_google_login">Google login</string>
 
+    <!-- Google login -->
+    <string name="google_logout">Logout</string>
+    <string name="google_login_error">Error on Google login. Please try again.</string>
 </resources>

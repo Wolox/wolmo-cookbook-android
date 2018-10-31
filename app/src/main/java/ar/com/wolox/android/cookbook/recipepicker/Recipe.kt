@@ -7,5 +7,5 @@ package ar.com.wolox.android.cookbook.recipepicker
  */
 enum class Recipe {
 
-    YAWN_CAT, HIGH_CAT, COOL_CAT, SURPRISED_CAT
+    YAWN_CAT, HIGH_CAT, COOL_CAT, SURPRISED_CAT, GOOGLE_LOGIN
 }

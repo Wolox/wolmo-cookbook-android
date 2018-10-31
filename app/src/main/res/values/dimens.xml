@@ -56,4 +56,8 @@
     <!-- Recipe Image -->
     <dimen name="recipe_image">300dp</dimen>
 
+    <!-- Google login -->
+    <dimen name="google_login_user_photo_width">48dp</dimen>
+    <dimen name="google_login_user_photo_height">48dp</dimen>
+
 </resources>

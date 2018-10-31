@@ -6,4 +6,6 @@ interface RecipePickerView {
 
     // TODO: Delete this method when adding real recipes
     fun goToBlankRecipe()
+
+    fun goToGoogleLogin()
 }
