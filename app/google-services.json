@@ -49,6 +49,50 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141094242085:android:96cdc7ac534d9c10",
+        "android_client_info": {
+          "package_name": "ar.com.wolox.android.cookbook.stage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141094242085-51ue3mfs3ovklibd6s9rrq1k8jnkkshr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ar.com.wolox.android.cookbook.stage",
+            "certificate_hash": "99e9e21dd61b9e5a24643c930dad22e14d2170e1"
+          }
+        },
+        {
+          "client_id": "141094242085-lb130ikaj6sv2fe5r5h2v9c45s42pd7a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhVa0DVixeJSic534aZRPG620PKAPgQFo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141094242085-lb130ikaj6sv2fe5r5h2v9c45s42pd7a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

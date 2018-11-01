@@ -26,6 +26,9 @@ import javax.inject.Inject
  *  Its also important to add a project and an android app here: https://console.firebase.google.com/u/0/
  *  This will generate a 'google-services.json' that is important to copy in app level
  *
+ *  If there's a problem with connection to Firebase its possible to connect inside Android Studio with:
+ *  Tools > Firebase > Realtime Database > Save and retrieve data > Connect to Firebase
+ *
  *  Advice to generate SHA1:
  *  Open Gradle projects with the gradle button on the right of the screen: Tasks -> android -> signingReport
  */
