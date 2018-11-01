@@ -10,7 +10,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 
 /**
- * Set google login action to the button
+ * Set google login action to the view
  *
  * @param fragment
  *  the fragment where the button is used
@@ -31,10 +31,19 @@ fun View.setGoogleLoginAction(fragment: Fragment, resultCode: Int): UserGoogle? 
     return if (account != null) UserGoogle(account) else null
 }
 
-fun View.setGoogleLogoutAction(fragment: Fragment, response: () -> Unit) {
+/**
+ * Set google logout action to the view.
+ *
+ * @param fragment
+ *  the fragment where the button is used.
+ *
+ * @param onComplete
+ *  callback to be called on logout complete.
+ */
+fun View.setGoogleLogoutAction(fragment: Fragment, onComplete: () -> Unit) {
     this.setOnClickListener {
         GoogleHelper.getClient(fragment).signOut().addOnCompleteListener(fragment.requireActivity()) {
-            response()
+            onComplete()
         }
     }
 }
