@@ -10,4 +10,6 @@ interface RecipePickerView {
     fun goToGoogleLogin()
 
     fun goToNavigation()
+
+    fun goToDataSyncRecipe()
 }

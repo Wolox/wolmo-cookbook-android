@@ -21,4 +21,5 @@ abstract class AppModule {
 
     @ContributesAndroidInjector
     abstract fun googleLoginFragment(): GoogleLoginRecipeFragment
+
 }

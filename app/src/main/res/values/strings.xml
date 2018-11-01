@@ -27,4 +27,8 @@
     <string name="navigation_go_to_4">GO TO 4</string>
     <string name="navigation_go_to_new_activity">GO TO NEW ACTIVITY</string>
 
+
+    <!-- Data Sync -->
+    <string name="data_sync_description">Data Sync Recipe with a Pokemon flavor!</string>
+
 </resources>
