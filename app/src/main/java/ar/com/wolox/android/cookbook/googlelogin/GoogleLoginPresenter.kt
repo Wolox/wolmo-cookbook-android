@@ -5,7 +5,7 @@ import ar.com.wolox.android.cookbook.googlelogin.model.UserGoogle
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 
-class GoogleLoginPresenter @Inject constructor() : BasePresenter<IGoogleLoginView>() {
+class GoogleLoginPresenter @Inject constructor() : BasePresenter<GoogleLoginView>() {
 
     fun onGoogleLogin(data: Intent?) {
         // Get the signed account from the data received by intent

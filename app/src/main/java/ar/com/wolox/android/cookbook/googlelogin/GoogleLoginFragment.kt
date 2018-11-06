@@ -32,7 +32,7 @@ import javax.inject.Inject
  *  Advice to generate SHA1:
  *  Open Gradle projects with the gradle button on the right of the screen: Tasks -> android -> signingReport
  */
-class GoogleLoginFragment : WolmoFragment<GoogleLoginPresenter>(), IGoogleLoginView {
+class GoogleLoginFragment : WolmoFragment<GoogleLoginPresenter>(), GoogleLoginView {
 
     @Inject
     internal lateinit var toastFactory: ToastFactory
