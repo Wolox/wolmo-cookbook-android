@@ -3,7 +3,7 @@ package ar.com.wolox.android.cookbook.googlelogin
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.view.View
-import ar.com.wolox.android.cookbook.googlelogin.model.UserGoogle
+import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -18,7 +18,7 @@ import com.google.android.gms.common.api.ApiException
  * @param resultCode
  *  the code to catch the activity result
  */
-fun View.setGoogleLoginAction(fragment: Fragment, resultCode: Int): UserGoogle? {
+fun View.setGoogleLoginAction(fragment: Fragment, resultCode: Int): GoogleAccount? {
 
     // Check for existing Google Sign In account, if the user is already signed in, return account
     val account = GoogleSignIn.getLastSignedInAccount(fragment.requireContext())
@@ -28,7 +28,7 @@ fun View.setGoogleLoginAction(fragment: Fragment, resultCode: Int): UserGoogle? 
         fragment.startActivityForResult(GoogleHelper.getClient(fragment).signInIntent, resultCode)
     }
 
-    return if (account != null) UserGoogle(account) else null
+    return if (account != null) GoogleAccount(account) else null
 }
 
 /**
@@ -63,7 +63,7 @@ class GoogleHelper {
          * @param onError
          *  function called on error
          */
-        fun getSignedInAccountFromIntent(data: Intent?, onSuccess: (UserGoogle) -> Unit, onError: () -> Unit) {
+        fun getSignedInAccountFromIntent(data: Intent?, onSuccess: (GoogleAccount) -> Unit, onError: () -> Unit) {
             // Create the task to get signed in account
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
 
@@ -73,7 +73,7 @@ class GoogleHelper {
                 if (account == null) {
                     onError()
                 } else {
-                    onSuccess(UserGoogle(account))
+                    onSuccess(GoogleAccount(account))
                 }
             } catch (e: ApiException) {
                 e.printStackTrace()

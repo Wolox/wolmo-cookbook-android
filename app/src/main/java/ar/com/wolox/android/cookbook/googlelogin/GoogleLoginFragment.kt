@@ -3,7 +3,7 @@ package ar.com.wolox.android.cookbook.googlelogin
 import android.content.Intent
 import android.os.Bundle
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.googlelogin.model.UserGoogle
+import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import com.facebook.drawee.backends.pipeline.Fresco
@@ -61,7 +61,7 @@ class GoogleLoginFragment : WolmoFragment<GoogleLoginPresenter>(), GoogleLoginVi
         if (requestCode == GOOGLE_SIGN_IN) presenter.onGoogleLogin(data)
     }
 
-    override fun setUser(user: UserGoogle) {
+    override fun setUser(user: GoogleAccount) {
         // Display google user data
         vLoginUserName.text = user.displayName
         vLoginUserEmail.text = user.email

@@ -1,7 +1,7 @@
 package ar.com.wolox.android.cookbook.googlelogin
 
 import android.content.Intent
-import ar.com.wolox.android.cookbook.googlelogin.model.UserGoogle
+import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 
@@ -16,7 +16,7 @@ class GoogleLoginPresenter @Inject constructor() : BasePresenter<GoogleLoginView
         )
     }
 
-    fun onGoogleLogged(user: UserGoogle) = view.setUser(user)
+    fun onGoogleLogged(user: GoogleAccount) = view.setUser(user)
 
     fun onGoogleLogout() = view.removeUser()
 }
