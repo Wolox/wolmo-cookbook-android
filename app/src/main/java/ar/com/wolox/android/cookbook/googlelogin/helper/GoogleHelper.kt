@@ -1,55 +1,60 @@
 package ar.com.wolox.android.cookbook.googlelogin.helper
 
+import android.content.Context
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.view.View
 import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
+import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import javax.inject.Inject
 
-/**
- * Set google login action to the view
- *
- * @param fragment
- *  the fragment where the button is used
- *
- * @param resultCode
- *  the code to catch the activity result
- */
-fun View.setGoogleLoginAction(fragment: Fragment, resultCode: Int): GoogleAccount? {
+@ApplicationScope
+class GoogleHelper @Inject constructor(context: Context) {
 
-    // Check for existing Google Sign In account, if the user is already signed in, return account
-    val account = GoogleSignIn.getLastSignedInAccount(fragment.requireContext())
+    private val applicationContext: Context = context.applicationContext
 
-    // On click button, open Google activity
-    this.setOnClickListener {
-        fragment.startActivityForResult(GoogleHelper.getClient(fragment).signInIntent, resultCode)
+    fun getLastSignedInAccount() = GoogleSignIn.getLastSignedInAccount(applicationContext)?.let {
+        GoogleAccount(it)
     }
 
-    return if (account != null) GoogleAccount(account) else null
-}
-
-/**
- * Set google logout action to the view.
- *
- * @param fragment
- *  the fragment where the button is used.
- *
- * @param onComplete
- *  callback to be called on logout complete.
- */
-fun View.setGoogleLogoutAction(fragment: Fragment, onComplete: () -> Unit) {
-    this.setOnClickListener {
-        GoogleHelper.getClient(fragment).signOut().addOnCompleteListener(fragment.requireActivity()) {
-            onComplete()
-        }
-    }
-}
-
-class GoogleHelper {
     companion object {
+
+        /**
+         * Set google login action to the view
+         *
+         * @param fragment
+         *  the fragment where the button is used
+         *
+         * @param resultCode
+         *  the code to catch the activity result
+         */
+        fun setGoogleLoginAction(view: View, fragment: Fragment, resultCode: Int) {
+            // On click button, open Google activity
+            view.setOnClickListener {
+                fragment.startActivityForResult(GoogleHelper.getClient(fragment).signInIntent, resultCode)
+            }
+        }
+
+        /**
+         * Set google logout action to the view.
+         *
+         * @param fragment
+         *  the fragment where the button is used.
+         *
+         * @param onComplete
+         *  callback to be called on logout complete.
+         */
+        fun setGoogleLogoutAction(view: View, fragment: Fragment, onComplete: () -> Unit) {
+            view.setOnClickListener {
+                GoogleHelper.getClient(fragment).signOut().addOnCompleteListener(fragment.requireActivity()) {
+                    onComplete()
+                }
+            }
+        }
 
         /**
          * Get the signed in account from data received by intent on activity result
@@ -87,7 +92,7 @@ class GoogleHelper {
          * @param fragment
          *      the fragment where the login/logout is
          */
-        fun getClient(fragment: Fragment): GoogleSignInClient {
+        private fun getClient(fragment: Fragment): GoogleSignInClient {
             // Configure Google Sign-in and the GoogleSignInClient object
             val gso =
                     GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

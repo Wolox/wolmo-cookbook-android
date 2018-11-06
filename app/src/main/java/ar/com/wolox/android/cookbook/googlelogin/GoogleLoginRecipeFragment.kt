@@ -3,8 +3,7 @@ package ar.com.wolox.android.cookbook.googlelogin
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.googlelogin.helper.GoogleAccountHelper
-import ar.com.wolox.android.cookbook.googlelogin.helper.setGoogleLoginAction
-import ar.com.wolox.android.cookbook.googlelogin.helper.setGoogleLogoutAction
+import ar.com.wolox.android.cookbook.googlelogin.helper.GoogleHelper
 import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
@@ -41,10 +40,8 @@ class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), G
     override fun layout(): Int = R.layout.fragment_login
 
     override fun init() {
-        val loggedAccount = vLoginGoogleBtn.setGoogleLoginAction(this, GOOGLE_SIGN_IN)
-        if (loggedAccount != null) presenter.onGoogleLogged(loggedAccount)
-
-        vLogoutGoogleBtn.setGoogleLogoutAction(this, presenter::onGoogleLogout)
+        GoogleHelper.setGoogleLoginAction(vLoginGoogleBtn, this, GOOGLE_SIGN_IN)
+        GoogleHelper.setGoogleLogoutAction(vLogoutGoogleBtn, this, presenter::onGoogleLogout)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -7,7 +7,5 @@ class GoogleLoginRecipeActivity : WolmoActivity() {
 
     override fun layout(): Int = R.layout.activity_base
 
-    override fun init() {
-        replaceFragment(R.id.vActivityBaseContent, GoogleLoginRecipeFragment())
-    }
+    override fun init() = replaceFragment(R.id.vActivityBaseContent, GoogleLoginRecipeFragment())
 }
