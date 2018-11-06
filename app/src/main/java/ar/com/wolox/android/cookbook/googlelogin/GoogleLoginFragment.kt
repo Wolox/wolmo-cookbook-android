@@ -61,7 +61,7 @@ class GoogleLoginFragment : WolmoFragment<GoogleLoginPresenter>(), GoogleLoginVi
         if (requestCode == GOOGLE_SIGN_IN) presenter.onGoogleLogin(data)
     }
 
-    override fun setUser(user: GoogleAccount) {
+    override fun showUser(user: GoogleAccount) {
         // Display google user data
         vLoginUserName.text = user.displayName
         vLoginUserEmail.text = user.email
@@ -75,7 +75,7 @@ class GoogleLoginFragment : WolmoFragment<GoogleLoginPresenter>(), GoogleLoginVi
         vLoginGoogleBtn.isEnabled = false
     }
 
-    override fun removeUser() {
+    override fun showNoUser() {
         // Clean google user data
         vLoginUserName.text = ""
         vLoginUserEmail.text = ""

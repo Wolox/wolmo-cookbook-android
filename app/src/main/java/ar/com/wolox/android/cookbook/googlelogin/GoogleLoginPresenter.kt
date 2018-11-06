@@ -11,12 +11,12 @@ class GoogleLoginPresenter @Inject constructor() : BasePresenter<GoogleLoginView
         // Get the signed account from the data received by intent
         GoogleHelper.getSignedInAccountFromIntent(
                 data,
-                view::setUser,
+                view::showUser,
                 view::showGoogleLoginError
         )
     }
 
-    fun onGoogleLogged(user: GoogleAccount) = view.setUser(user)
+    fun onGoogleLogged(user: GoogleAccount) = view.showUser(user)
 
-    fun onGoogleLogout() = view.removeUser()
+    fun onGoogleLogout() = view.showNoUser()
 }

@@ -4,9 +4,9 @@ import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 
 interface GoogleLoginView {
 
-    fun setUser(user: GoogleAccount)
+    fun showUser(user: GoogleAccount)
 
-    fun removeUser()
+    fun showNoUser()
 
     fun showGoogleLoginError()
 }
