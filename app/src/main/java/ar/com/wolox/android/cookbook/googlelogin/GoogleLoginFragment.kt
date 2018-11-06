@@ -49,23 +49,19 @@ class GoogleLoginFragment : WolmoFragment<GoogleLoginPresenter>(), GoogleLoginVi
     }
 
     override fun init() {
-        // This button will be a google login button, if is session started, return the account
         val loggedAccount = vLoginGoogleBtn.setGoogleLoginAction(this, GOOGLE_SIGN_IN)
         if (loggedAccount != null) presenter.onGoogleLogged(loggedAccount)
 
-        // This button will be a google logout button
         vLogoutGoogleBtn.setGoogleLogoutAction(this, presenter::onGoogleLogout)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // On activity result, is needed to catch if is a google response, and if yes, the presenter will handle it.
         if (requestCode == GOOGLE_SIGN_IN) presenter.onGoogleLogin(GoogleAccountHelper(data))
     }
 
     override fun showUser(user: GoogleAccount) {
-        // Display google user data
         vLoginUserName.text = user.displayName
         vLoginUserEmail.text = user.email
 
@@ -73,26 +69,20 @@ class GoogleLoginFragment : WolmoFragment<GoogleLoginPresenter>(), GoogleLoginVi
             vLoginUserPhoto.setImageRequest(ImageRequestBuilder.newBuilderWithSource(user.picture).build())
         }
 
-        // Update UI
         vLogoutGoogleBtn.isEnabled = true
         vLoginGoogleBtn.isEnabled = false
     }
 
     override fun showNoUser() {
-        // Clean google user data
         vLoginUserName.text = ""
         vLoginUserEmail.text = ""
         vLoginUserPhoto.setImageRequest(null)
 
-        // Update UI
         vLogoutGoogleBtn.isEnabled = false
         vLoginGoogleBtn.isEnabled = true
     }
 
-    override fun showGoogleLoginError() {
-        // Show errors
-        toastFactory.show(R.string.google_login_error)
-    }
+    override fun showGoogleLoginError() = toastFactory.show(R.string.google_login_error)
 
     companion object {
         // Hard coded code to receive on activity result
