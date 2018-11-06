@@ -41,10 +41,6 @@ class GoogleLoginFragment : WolmoFragment<GoogleLoginPresenter>(), GoogleLoginVi
 
     override fun layout(): Int = R.layout.fragment_login
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun init() {
         val loggedAccount = vLoginGoogleBtn.setGoogleLoginAction(this, GOOGLE_SIGN_IN)
         if (loggedAccount != null) presenter.onGoogleLogged(loggedAccount)
