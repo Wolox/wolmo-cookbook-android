@@ -4,6 +4,7 @@ import ar.com.wolox.android.cookbook.common.di.DaggerAppComponent
 import ar.com.wolox.wolmo.core.WolmoApplication
 import ar.com.wolox.wolmo.networking.di.DaggerNetworkingComponent
 import ar.com.wolox.wolmo.networking.di.NetworkingComponent
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.gson.FieldNamingPolicy
 import com.readystatesoftware.chuck.ChuckInterceptor
 import com.squareup.leakcanary.LeakCanary
@@ -21,6 +22,7 @@ class CookbookApplication : WolmoApplication() {
         }
         initializeLeakCanary()
         // Initialize Application stuff here
+        Fresco.initialize(this)
     }
 
     private fun initializeLeakCanary() {

@@ -9,7 +9,6 @@ import ar.com.wolox.android.cookbook.googlelogin.helper.setGoogleLogoutAction
 import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
-import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.request.ImageRequestBuilder
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
@@ -44,8 +43,6 @@ class GoogleLoginFragment : WolmoFragment<GoogleLoginPresenter>(), GoogleLoginVi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        Fresco.initialize(requireContext())
     }
 
     override fun init() {
