@@ -1,9 +1,9 @@
-package ar.com.wolox.android.cookbook.googleLogin
+package ar.com.wolox.android.cookbook.googlelogin
 
 import android.content.Intent
 import android.os.Bundle
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.googleLogin.model.UserGoogle
+import ar.com.wolox.android.cookbook.googlelogin.model.UserGoogle
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import com.facebook.drawee.backends.pipeline.Fresco

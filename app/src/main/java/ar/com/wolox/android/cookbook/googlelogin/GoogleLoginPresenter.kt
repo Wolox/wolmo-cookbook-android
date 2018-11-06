@@ -1,7 +1,7 @@
-package ar.com.wolox.android.cookbook.googleLogin
+package ar.com.wolox.android.cookbook.googlelogin
 
 import android.content.Intent
-import ar.com.wolox.android.cookbook.googleLogin.model.UserGoogle
+import ar.com.wolox.android.cookbook.googlelogin.model.UserGoogle
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 

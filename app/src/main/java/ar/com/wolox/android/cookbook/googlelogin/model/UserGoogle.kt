@@ -1,4 +1,4 @@
-package ar.com.wolox.android.cookbook.googleLogin.model
+package ar.com.wolox.android.cookbook.googlelogin.model
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 

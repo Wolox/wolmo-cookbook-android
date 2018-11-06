@@ -29,7 +29,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".googleLogin.GoogleLoginActivity"
+            android:name=".googlelogin.GoogleLoginActivity"
             android:screenOrientation="portrait" />
 
     </application>

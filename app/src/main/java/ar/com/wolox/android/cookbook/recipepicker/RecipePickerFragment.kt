@@ -2,7 +2,7 @@ package ar.com.wolox.android.cookbook.recipepicker
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.googleLogin.GoogleLoginActivity
+import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_recipe_picker.*
 

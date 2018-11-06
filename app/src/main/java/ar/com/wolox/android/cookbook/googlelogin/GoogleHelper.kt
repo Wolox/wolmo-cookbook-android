@@ -1,9 +1,9 @@
-package ar.com.wolox.android.cookbook.googleLogin
+package ar.com.wolox.android.cookbook.googlelogin
 
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.view.View
-import ar.com.wolox.android.cookbook.googleLogin.model.UserGoogle
+import ar.com.wolox.android.cookbook.googlelogin.model.UserGoogle
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
