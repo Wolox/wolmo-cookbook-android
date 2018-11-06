@@ -12,6 +12,6 @@
     <string name="recipe_picker_google_login">Google login</string>
 
     <!-- Google login -->
-    <string name="google_logout">Logout</string>
+    <string name="google_login_logout">Logout</string>
     <string name="google_login_error">Error on Google login. Please try again.</string>
 </resources>
