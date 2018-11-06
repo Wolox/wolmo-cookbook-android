@@ -1,4 +1,4 @@
-package ar.com.wolox.android.cookbook.googlelogin
+package ar.com.wolox.android.cookbook.googlelogin.helper
 
 import android.content.Intent
 import android.support.v4.app.Fragment

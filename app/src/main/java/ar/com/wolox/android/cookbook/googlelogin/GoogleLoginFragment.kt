@@ -3,6 +3,9 @@ package ar.com.wolox.android.cookbook.googlelogin
 import android.content.Intent
 import android.os.Bundle
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.googlelogin.helper.GoogleAccountHelper
+import ar.com.wolox.android.cookbook.googlelogin.helper.setGoogleLoginAction
+import ar.com.wolox.android.cookbook.googlelogin.helper.setGoogleLogoutAction
 import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
@@ -58,7 +61,7 @@ class GoogleLoginFragment : WolmoFragment<GoogleLoginPresenter>(), GoogleLoginVi
         super.onActivityResult(requestCode, resultCode, data)
 
         // On activity result, is needed to catch if is a google response, and if yes, the presenter will handle it.
-        if (requestCode == GOOGLE_SIGN_IN) presenter.onGoogleLogin(data)
+        if (requestCode == GOOGLE_SIGN_IN) presenter.onGoogleLogin(GoogleAccountHelper(data))
     }
 
     override fun showUser(user: GoogleAccount) {
