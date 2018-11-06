@@ -2,7 +2,7 @@ package ar.com.wolox.android.cookbook.recipepicker
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginActivity
+import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_recipe_picker.*
 
@@ -40,7 +40,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     }
 
     override fun goToGoogleLogin() {
-        requireActivity().startActivity(Intent(requireContext(), GoogleLoginActivity::class.java))
+        requireActivity().startActivity(Intent(requireContext(), GoogleLoginRecipeActivity::class.java))
     }
 
     companion object {

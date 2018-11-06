@@ -1,7 +1,6 @@
 package ar.com.wolox.android.cookbook.googlelogin
 
 import android.content.Intent
-import android.os.Bundle
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.googlelogin.helper.GoogleAccountHelper
 import ar.com.wolox.android.cookbook.googlelogin.helper.setGoogleLoginAction
@@ -34,7 +33,7 @@ import javax.inject.Inject
  *  Advice to generate SHA1:
  *  Open Gradle projects with the gradle button on the right of the screen: Tasks -> android -> signingReport
  */
-class GoogleLoginFragment : WolmoFragment<GoogleLoginPresenter>(), GoogleLoginView {
+class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), GoogleLoginRecipeView {
 
     @Inject
     internal lateinit var toastFactory: ToastFactory

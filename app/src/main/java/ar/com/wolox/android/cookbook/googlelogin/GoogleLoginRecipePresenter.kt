@@ -5,7 +5,7 @@ import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 
-class GoogleLoginPresenter @Inject constructor() : BasePresenter<GoogleLoginView>() {
+class GoogleLoginRecipePresenter @Inject constructor() : BasePresenter<GoogleLoginRecipeView>() {
 
     fun onGoogleLogin(googleAccountHelper: GoogleAccountHelper) =
             googleAccountHelper.getAccount(view::showUser, view::showGoogleLoginError)
