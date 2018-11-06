@@ -140,8 +140,10 @@ dependencies {
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
 
     // Google
-    implementation "com.google.firebase:firebase-core:$google_firebase_version"
     implementation "com.google.android.gms:play-services-auth:$google_play_services_version"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-core:$google_firebase_version"
 
     // Fresco
     implementation 'com.facebook.fresco:fresco:1.10.0'
