@@ -22,7 +22,7 @@ android {
     buildToolsVersion '28.0.3'
 
     defaultConfig {
-        applicationId "ar.com.wolox.android.example"
+        applicationId "ar.com.wolox.android.cookbook"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -97,6 +97,8 @@ buildscript {
     ext.leak_canary_version = '1.5.4'
     ext.chuck_version = '1.1.0'
     ext.powermock_version = '1.7.0'
+    ext.google_firebase_version = '16.0.4'
+    ext.google_play_services_version = '16.0.1'
 }
 
 dependencies {
@@ -136,4 +138,16 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:2.13.0"
     testImplementation "org.assertj:assertj-core:3.9.0"
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
+
+    // Google Play Services
+    implementation "com.google.android.gms:play-services-auth:$google_play_services_version"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-core:$google_firebase_version"
+
+    // Fresco
+    implementation 'com.facebook.fresco:fresco:1.10.0'
 }
+
+// Google
+apply plugin: 'com.google.gms.google-services'
