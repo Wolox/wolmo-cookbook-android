@@ -12,53 +12,24 @@
         tools:layout="@layout/fragment_navigation1">
         <action
             android:id="@+id/action_navigation1Fragment_to_navigation2BFragment"
-            app:destination="@id/navigation2BFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/navigation2Fragment" />
         <action
-            android:id="@+id/action_navigation1Fragment_to_navigation2AFragment"
-            app:destination="@id/navigation2AFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/action_navigation1Fragment_to_navigationDeepLink"
-            app:destination="@id/navigationDeepLink"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            android:id="@+id/action_navigation1Fragment_to_newNavigationFragment"
+            app:destination="@id/newNavigationFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation2AFragment"
-        android:name="ar.com.wolox.android.cookbook.navigation.Navigation2AFragment"
-        android:label="Navigation2AFragment"
-        tools:layout="@layout/fragment_navigation2a">
-        <action
-            android:id="@+id/action_navigation2AFragment_to_navigation3Fragment"
-            app:destination="@id/navigation3Fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation2BFragment"
-        android:name="ar.com.wolox.android.cookbook.navigation.Navigation2BFragment"
+        android:id="@+id/navigation2Fragment"
+        android:name="ar.com.wolox.android.cookbook.navigation.Navigation2Fragment"
         android:label="Navigation2BFragment"
-        tools:layout="@layout/fragment_navigation2b">
+        tools:layout="@layout/fragment_navigation2">
         <action
-            android:id="@+id/action_navigation2BFragment_to_navigation3Fragment"
+            android:id="@+id/action_navigation2Fragment_to_navigation3Fragment"
             app:destination="@id/navigation3Fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -68,11 +39,7 @@
         tools:layout="@layout/fragment_navigation3">
         <action
             android:id="@+id/action_navigation3Fragment_to_navigation4Fragment"
-            app:destination="@id/navigation4Fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/navigation4Fragment" />
     </fragment>
 
     <fragment
@@ -80,13 +47,6 @@
         android:name="ar.com.wolox.android.cookbook.navigation.Navigation4Fragment"
         android:label="Navigation4Fragment"
         tools:layout="@layout/fragment_navigation4">
-        <action
-            android:id="@+id/action_navigation4Fragment_to_newNavigationFragment"
-            app:destination="@id/newNavigationFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -94,12 +54,5 @@
         android:name="ar.com.wolox.android.cookbook.navigation.NewNavigationFragment"
         android:label="NewNavigationFragment"
         tools:layout="@layout/fragment_new_navigation"/>
-
-    <fragment
-        android:id="@+id/navigationDeepLink"
-        android:name="ar.com.wolox.android.cookbook.navigation.NavigationDeepLink"
-        android:label="NavigationDeepLink" >
-        <deepLink app:uri="www.google.com.ar"/>
-    </fragment>
 
 </navigation>

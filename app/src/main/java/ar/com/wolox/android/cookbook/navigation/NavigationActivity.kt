@@ -8,4 +8,7 @@ class NavigationActivity : WolmoActivity() {
     override fun layout() = R.layout.activity_base
 
     override fun init() {}
+
+//    override fun onSupportNavigateUp() =
+//                Navigation.findNavController(this, R.id.vActivityBaseContent).navigateUp()
 }

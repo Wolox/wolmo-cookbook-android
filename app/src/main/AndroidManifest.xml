@@ -22,13 +22,12 @@
         <activity
             android:name=".navigation.NavigationActivity"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <nav-graph android:value="@navigation/navigation_graph"/>
+            <nav-graph android:value="@navigation/navigation_graph" />
 
         </activity>
 

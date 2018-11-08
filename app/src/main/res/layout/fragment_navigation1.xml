@@ -23,25 +23,18 @@
         android:layout_weight="1"/>
 
     <Button
-        android:id="@+id/fragment_navigation_to2a_button"
+        android:id="@+id/fragment_navigation1__to2_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:text="Go TO 2A"/>
+        android:text="Go TO 2"/>
 
     <Button
-        android:id="@+id/fragment_navigation1__to2b_button"
+        android:id="@+id/fragment_navigation1__toNewActivity"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:text="Go TO 2B"/>
-
-    <Button
-        android:id="@+id/fragment_navigation1__toGoogle"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:text="Go TO GOOGLE"/>
+        android:text="Go TO NEW ACTIVITY"/>
 
     <View
         android:layout_width="match_parent"

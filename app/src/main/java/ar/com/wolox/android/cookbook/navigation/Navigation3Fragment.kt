@@ -1,6 +1,7 @@
 package ar.com.wolox.android.cookbook.navigation
 
 import android.os.Bundle
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
@@ -13,10 +14,20 @@ class Navigation3Fragment : WolmoFragment<BasePresenter<Any>>() {
     override fun layout(): Int = R.layout.fragment_navigation3
 
     override fun init() {
+
+        val navController = Navigation.findNavController(view!!)
+
+        // Fragment3 to Fragment4 with arguments
         fragment_navigation3_to4_button.setOnClickListener {
             val bundle = Bundle()
             bundle.putString("test_string", fragment3_edit_text.text.toString())
-            Navigation.findNavController(view!!).navigate(R.id.action_navigation3Fragment_to_navigation4Fragment, bundle)
+            navController.navigate(R.id.action_navigation3Fragment_to_navigation4Fragment, bundle,
+                    NavOptions.Builder()
+                            .setEnterAnim(R.anim.slide_in_right)
+                            .setExitAnim(R.anim.slide_out_left)
+                            .setPopEnterAnim(R.anim.slide_in_left)
+                            .setPopExitAnim(R.anim.slide_out_right)
+                            .setPopUpTo(R.id.navigation1Fragment, true).build())
         }
     }
 }
