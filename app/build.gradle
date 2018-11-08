@@ -99,6 +99,7 @@ buildscript {
     ext.powermock_version = '1.7.0'
     ext.google_firebase_version = '16.0.4'
     ext.google_play_services_version = '16.0.1'
+    ext.fresco_version = '1.11.0'
 }
 
 dependencies {
@@ -124,6 +125,9 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
+    // Fresco
+    implementation "com.facebook.fresco:fresco:$fresco_version"
+
     // Third-party
     implementation "com.jakewharton:butterknife:$butterknife_version"
     kapt "com.jakewharton:butterknife-compiler:$butterknife_version"
@@ -144,9 +148,6 @@ dependencies {
 
     // Firebase
     implementation "com.google.firebase:firebase-core:$google_firebase_version"
-
-    // Fresco
-    implementation 'com.facebook.fresco:fresco:1.10.0'
 
     // Navigation Architecture Component
     implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha07'

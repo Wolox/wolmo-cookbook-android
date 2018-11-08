@@ -8,6 +8,6 @@ class DataSyncRecipeActivity : WolmoActivity() {
     override fun layout() = R.layout.activity_base
 
     override fun init() {
-        // TODO: Populate
+        replaceFragment(R.id.vActivityBaseContent, DataSyncRecipeFragment.newInstance())
     }
 }
