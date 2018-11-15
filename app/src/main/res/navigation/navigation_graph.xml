@@ -25,11 +25,7 @@
         tools:layout="@layout/fragment_navigation2">
         <action
             android:id="@+id/action_navigation2Fragment_to_navigation3Fragment"
-            app:destination="@id/navigation3Fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:destination="@id/navigation3Fragment" />
     </fragment>
 
     <fragment
@@ -40,6 +36,9 @@
         <action
             android:id="@+id/action_navigation3Fragment_to_navigation4Fragment"
             app:destination="@id/navigation4Fragment" />
+        <action
+            android:id="@+id/action_navigation3Fragment_to_navigation1Fragment2"
+            app:destination="@id/navigation1Fragment"/>
     </fragment>
 
     <fragment
