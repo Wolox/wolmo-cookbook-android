@@ -10,6 +10,7 @@
     <string name="recipe_picker_cool_cat">The Bad Boy of the Block. You can\'t resist him, huh?</string>
     <string name="recipe_picker_surprised_cat">Surprise surprise!</string>
     <string name="recipe_picker_google_login">Google login</string>
+    <string name="recipe_picker_navigation">Navigation</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>

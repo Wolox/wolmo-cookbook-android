@@ -19,6 +19,7 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
             Recipe.SURPRISED_CAT -> view.goToBlankRecipe()
             Recipe.COOL_CAT -> view.goToBlankRecipe()
             Recipe.GOOGLE_LOGIN -> view.goToGoogleLogin()
+            Recipe.NAVIGATION -> view.goToNavigation()
         }
     }
 }
