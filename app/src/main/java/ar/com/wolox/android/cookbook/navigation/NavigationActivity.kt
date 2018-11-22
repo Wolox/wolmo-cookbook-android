@@ -8,7 +8,7 @@ import ar.com.wolox.wolmo.core.fragment.IWolmoFragment
 
 class NavigationActivity : WolmoActivity() {
 
-    override fun layout() = R.layout.activity_base
+    override fun layout() = R.layout.activity_base_navigation
 
     override fun init() {}
 
