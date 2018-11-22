@@ -16,13 +16,13 @@ class Navigation1Fragment : WolmoFragment<BasePresenter<Any>>() {
         // Fragment1 to Fragment2
         fragment_navigation1__to2_button.setOnClickListener {
             navController.navigate(R.id.action_navigation1Fragment_to_navigation2BFragment, null,
-                    NavigationUtils.getForwardAnimationOptions())
+                    NavigationExtension.createOptionsWithDefaultAnimations())
         }
 
         // Fragment1 to NewActivity
         fragment_navigation1__toNewActivity.setOnClickListener {
             navController.navigate(R.id.action_navigation1Fragment_to_newNavigationFragment, null,
-                    NavigationUtils.getForwardAnimationOptions())
+                    NavigationExtension.createOptionsWithDefaultAnimations())
         }
     }
 }

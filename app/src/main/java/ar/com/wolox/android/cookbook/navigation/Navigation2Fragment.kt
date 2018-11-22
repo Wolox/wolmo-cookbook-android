@@ -4,8 +4,7 @@ import androidx.navigation.Navigation
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
-import kotlinx.android.synthetic.main.fragment_navigation2.fragment_navigation2_to1_button
-import kotlinx.android.synthetic.main.fragment_navigation2.fragment_navigation2_to3_button
+import kotlinx.android.synthetic.main.fragment_navigation2.*
 
 class Navigation2Fragment : WolmoFragment<BasePresenter<Any>>() {
 
@@ -22,7 +21,7 @@ class Navigation2Fragment : WolmoFragment<BasePresenter<Any>>() {
         // Fragment2B to Fragment3 / When clicking back on Fragment3 it will return to Fragment1
         fragment_navigation2_to3_button.setOnClickListener {
             navController.navigate(R.id.action_navigation2Fragment_to_navigation3Fragment, null,
-                    NavigationUtils.getForwardAnimationOptions())
+                    NavigationExtension.createOptionsWithDefaultAnimations())
         }
     }
 }
