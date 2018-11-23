@@ -1,14 +1,12 @@
 package ar.com.wolox.android.cookbook.navigation
 
 import android.os.Bundle
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.R.id.action_navigation3Fragment_to_navigation1Fragment2
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import kotlinx.android.synthetic.main.fragment_navigation3.*
-import javax.inject.Inject
 
 class Navigation3Fragment : WolmoFragment<BasePresenter<Any>>() {
 

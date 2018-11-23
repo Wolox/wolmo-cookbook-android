@@ -24,15 +24,15 @@
 
     <Button
         android:id="@+id/fragment_navigation1__to2_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/navigation_button_width"
+        android:layout_height="@dimen/navigation_button_height"
         android:layout_gravity="center"
         android:text="@string/navigation_go_to_2"/>
 
     <Button
         android:id="@+id/fragment_navigation1__toNewActivity"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/navigation_button_width"
+        android:layout_height="@dimen/navigation_button_height"
         android:layout_gravity="center"
         android:text="@string/navigation_go_to_new_activity"/>
 
