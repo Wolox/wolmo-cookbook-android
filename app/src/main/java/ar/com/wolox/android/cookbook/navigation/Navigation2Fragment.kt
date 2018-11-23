@@ -1,19 +1,21 @@
 package ar.com.wolox.android.cookbook.navigation
 
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import kotlinx.android.synthetic.main.fragment_navigation2.*
+import javax.inject.Inject
 
 class Navigation2Fragment : WolmoFragment<BasePresenter<Any>>() {
 
     override fun layout(): Int = R.layout.fragment_navigation2
 
     override fun init() {
-        val navController = Navigation.findNavController(view!!)
+        var navController = Navigation.findNavController(view!!)
 
-        // Goingback programatically
+        // Going back programatically
         fragment_navigation2_to1_button.setOnClickListener {
             navController.popBackStack()
         }

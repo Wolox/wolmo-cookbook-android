@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#00ffff">
+    android:background="@android:color/holo_blue_bright">
 
     <View
         android:layout_width="match_parent"
@@ -14,8 +14,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Navigation 4"
-        android:textColor="#000000"
+        android:text="@string/navigation_navigation4"
+        android:textColor="@android:color/black"
         android:gravity="center"/>
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:textColor="#000000"
+        android:textColor="@android:color/black"
         android:gravity="center"/>
 
     <View

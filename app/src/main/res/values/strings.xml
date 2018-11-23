@@ -15,4 +15,16 @@
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
     <string name="google_login_error">Error on Google login. Please try again.</string>
+
+    <!-- Navigation -->
+    <string name="navigation_navigation1">Navigation 1</string>
+    <string name="navigation_navigation2">Navigation 2</string>
+    <string name="navigation_navigation3">Navigation 3</string>
+    <string name="navigation_navigation4">Navigation 4</string>
+    <string name="navigation_go_to_1">GO TO 1</string>
+    <string name="navigation_go_to_2">GO TO 2</string>
+    <string name="navigation_go_to_3">GO TO 3</string>
+    <string name="navigation_go_to_4">GO TO 4</string>
+    <string name="navigation_go_to_new_activity">GO TO NEW ACTIVITY</string>
+
 </resources>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ffff00">
+    android:background="@android:color/holo_orange_light">
 
     <View
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Navigation 1"
+        android:text="@string/navigation_navigation1"
         android:gravity="center"/>
 
     <View
@@ -27,14 +27,14 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:text="Go TO 2"/>
+        android:text="@string/navigation_go_to_2"/>
 
     <Button
         android:id="@+id/fragment_navigation1__toNewActivity"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:text="Go TO NEW ACTIVITY"/>
+        android:text="@string/navigation_go_to_new_activity"/>
 
     <View
         android:layout_width="match_parent"
