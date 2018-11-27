@@ -26,11 +26,11 @@
 
         <activity
             android:name=".navigation.NavigationActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" />
 
-            <nav-graph android:value="@navigation/navigation_graph" />
-
-        </activity>
+        <activity
+            android:name=".navigation.NewNavigationActivity"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".recipepicker.BlankActivity"

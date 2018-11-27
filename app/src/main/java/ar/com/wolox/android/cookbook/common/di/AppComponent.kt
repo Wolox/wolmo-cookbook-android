@@ -17,8 +17,8 @@ import dagger.android.support.AndroidSupportInjectionModule
 @ApplicationScope
 @Component(
         dependencies = [NetworkingComponent::class],
-        modules = [AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class, AppModule::class,
-        NavigationRecipeModule::class]
+        modules = [AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class,
+            AppModule::class, NavigationRecipeModule::class]
 )
 interface AppComponent : AndroidInjector<CookbookApplication> {
 
