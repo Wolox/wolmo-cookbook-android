@@ -5,38 +5,45 @@ import android.arch.lifecycle.Lifecycle.Event.ON_START
 import android.arch.lifecycle.Lifecycle.Event.ON_STOP
 import android.os.Handler
 import android.os.Looper
+import android.support.v4.content.ContextCompat
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.wolmo.core.di.scopes.ActivityScope
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
-import ar.com.wolox.wolmo.core.util.ToastFactory
 import com.facebook.common.references.CloseableReference
 import com.facebook.datasource.RetainingDataSourceSupplier
 import com.facebook.drawee.backends.pipeline.Fresco
+import com.facebook.drawee.generic.RoundingParams
 import com.facebook.imagepipeline.image.CloseableImage
 import com.facebook.imagepipeline.request.ImageRequest
-import kotlinx.android.synthetic.main.fragment_data_sync_recipe.vPokemonImageView
+import com.facebook.imagepipeline.request.ImageRequestBuilder
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonImageView
 import java.util.Random
-import javax.inject.Inject
 
-@ActivityScope
-class DataSyncRecipeFragment : WolmoFragment<DataSyncRecipePresenter>(), DataSyncRecipeView {
-
-    @Inject lateinit var toastFactory: ToastFactory
+class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDetailView {
 
     private lateinit var retainingSupplier: RetainingDataSourceSupplier<CloseableReference<CloseableImage>>
     private val spriteRouletteHandler: Handler = Handler(Looper.getMainLooper())
 
-    override fun layout() = R.layout.fragment_data_sync_recipe
+    override fun layout() = R.layout.fragment_pokemon_detail
 
     override fun init() {
         retainingSupplier = RetainingDataSourceSupplier()
+    }
+
+    override fun showNoPokemon() {
         vPokemonImageView.controller = Fresco.newDraweeControllerBuilder()
-                .setDataSourceSupplier(retainingSupplier)
+                .setLowResImageRequest(ImageRequestBuilder.newBuilderWithResourceId(R.drawable.bg_pokemon_roulette).build())
+                .setAutoPlayAnimations(true)
                 .build()
+        vPokemonImageView.hierarchy.roundingParams = RoundingParams.fromCornersRadius(resources.getDimension(R.dimen.spacing_large))
+                .setRoundingMethod(RoundingParams.RoundingMethod.OVERLAY_COLOR)
+                .setOverlayColor(ContextCompat.getColor(requireContext(), android.R.color.white))
     }
 
     override fun showPokemon(pokemon: Pokemon) {
-        toastFactory.show("Pokemon ${pokemon.name} is being shown!")
+        vPokemonImageView.controller = Fresco.newDraweeControllerBuilder()
+                .setDataSourceSupplier(retainingSupplier)
+                .build()
+        vPokemonImageView.hierarchy.roundingParams = null
 
         lifecycle.addObserver(GenericLifecycleObserver { _, event ->
             @Suppress("NON_EXHAUSTIVE_WHEN")
@@ -65,11 +72,7 @@ class DataSyncRecipeFragment : WolmoFragment<DataSyncRecipePresenter>(), DataSyn
                 }
             }
 
-    override fun showError() {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
-    }
-
     companion object {
-        fun newInstance() = DataSyncRecipeFragment()
+        fun newInstance() = PokemonDetailFragment()
     }
 }

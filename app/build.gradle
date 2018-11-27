@@ -127,6 +127,7 @@ dependencies {
 
     // Fresco
     implementation "com.facebook.fresco:fresco:$fresco_version"
+    implementation "com.facebook.fresco:animated-gif:$fresco_version"
 
     // Third-party
     implementation "com.jakewharton:butterknife:$butterknife_version"

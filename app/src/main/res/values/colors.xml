@@ -7,4 +7,7 @@
     <!-- Recipe Picker -->
     <color name="recipe_picker_background_tint">#D1CCC0</color>
 
+    <!-- Data Sync -->
+    <color name="pokemon_screen_background">#54BAD2</color>
+
 </resources>

@@ -12,5 +12,9 @@ abstract class DataSyncRecipeModule {
 
     @DataSyncScope
     @ContributesAndroidInjector(modules = [PokemonNetworkModule::class])
-    abstract fun dataSyncRecipeFragment(): DataSyncRecipeFragment
+    abstract fun pokemonDetailFragment(): PokemonDetailFragment
+
+    @DataSyncScope
+    @ContributesAndroidInjector(modules = [PokemonNetworkModule::class])
+    abstract fun pokemonSearchFragment(): PokemonSearchFragment
 }
