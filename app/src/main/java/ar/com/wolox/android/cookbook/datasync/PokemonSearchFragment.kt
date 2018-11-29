@@ -8,4 +8,8 @@ class PokemonSearchFragment : WolmoFragment<PokemonSearchPresenter>() {
     override fun layout() = R.layout.fragment_pokemon_search
 
     override fun init() {}
+
+    companion object {
+        fun newInstance() = PokemonSearchFragment()
+    }
 }

@@ -18,6 +18,7 @@ import com.facebook.imagepipeline.request.ImageRequest
 import com.facebook.imagepipeline.request.ImageRequestBuilder
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonImageView
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonName
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonSearchButton
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonType1
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonType2
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonTypeContainer
@@ -26,12 +27,21 @@ import java.util.LinkedList
 class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDetailView {
 
     private lateinit var retainingSupplier: RetainingDataSourceSupplier<CloseableReference<CloseableImage>>
-    private val spriteRouletteHandler: Handler = Handler(Looper.getMainLooper())
+    private val spriteRouletteHandler = Handler(Looper.getMainLooper())
 
     override fun layout() = R.layout.fragment_pokemon_detail
 
     override fun init() {
         retainingSupplier = RetainingDataSourceSupplier()
+    }
+
+    override fun setListeners() {
+        vPokemonSearchButton.setOnClickListener {
+            requireFragmentManager().beginTransaction()
+                    .addToBackStack(null)
+                    .add(R.id.vActivityBaseContent, PokemonSearchFragment.newInstance())
+                    .commit()
+        }
     }
 
     override fun showNoPokemon() {
