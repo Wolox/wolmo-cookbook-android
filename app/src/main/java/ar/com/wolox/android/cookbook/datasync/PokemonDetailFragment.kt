@@ -6,6 +6,7 @@ import android.arch.lifecycle.Lifecycle.Event.ON_STOP
 import android.os.Handler
 import android.os.Looper
 import android.support.v4.content.ContextCompat
+import android.view.View
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import com.facebook.common.references.CloseableReference
@@ -16,7 +17,11 @@ import com.facebook.imagepipeline.image.CloseableImage
 import com.facebook.imagepipeline.request.ImageRequest
 import com.facebook.imagepipeline.request.ImageRequestBuilder
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonImageView
-import java.util.Random
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonName
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonType1
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonType2
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonTypeContainer
+import java.util.LinkedList
 
 class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDetailView {
 
@@ -37,6 +42,11 @@ class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDe
         vPokemonImageView.hierarchy.roundingParams = RoundingParams.fromCornersRadius(resources.getDimension(R.dimen.spacing_large))
                 .setRoundingMethod(RoundingParams.RoundingMethod.OVERLAY_COLOR)
                 .setOverlayColor(ContextCompat.getColor(requireContext(), android.R.color.white))
+
+        vPokemonName.setText(R.string.data_sync_no_pokemon)
+        vPokemonTypeContainer.visibility = View.INVISIBLE
+        vPokemonType1.text = ""
+        vPokemonType2.text = ""
     }
 
     override fun showPokemon(pokemon: Pokemon) {
@@ -44,6 +54,11 @@ class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDe
                 .setDataSourceSupplier(retainingSupplier)
                 .build()
         vPokemonImageView.hierarchy.roundingParams = null
+        vPokemonName.text = pokemon.name.capitalize()
+        vPokemonType1.text = pokemon.firstType.name.capitalize()
+        vPokemonType2.visibility = if (pokemon.secondType != null) View.VISIBLE else View.GONE
+        vPokemonType2.text = pokemon.secondType?.name?.capitalize()
+        vPokemonTypeContainer.visibility = View.VISIBLE
 
         lifecycle.addObserver(GenericLifecycleObserver { _, event ->
             @Suppress("NON_EXHAUSTIVE_WHEN")
@@ -60,14 +75,14 @@ class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDe
 
     private fun generateSpriteRouletteTask(pokemon: Pokemon): Runnable =
             object : Runnable {
-                var spritesUrls = pokemon.sprites.values.toList()
-                val random = Random()
+                var spritesUrls = LinkedList<String>()
                 override fun run() {
+                    if (spritesUrls.isEmpty()) spritesUrls.addAll(pokemon.spriteUrls.shuffled())
+
                     retainingSupplier.replaceSupplier(Fresco.getImagePipeline().getDataSourceSupplier(
-                            ImageRequest.fromUri(spritesUrls[random.nextInt(spritesUrls.size)]),
+                            ImageRequest.fromUri(spritesUrls.pop()),
                             null,
                             ImageRequest.RequestLevel.FULL_FETCH))
-
                     spriteRouletteHandler.postDelayed(this, 1000L)
                 }
             }

@@ -30,6 +30,6 @@
 
     <!-- Data Sync -->
     <string name="data_sync_description">Data Sync Recipe with a Pokemon flavor!</string>
-    <string name="data_sync_pokemon_name_placeholder">Name: %s</string>
+    <string name="data_sync_no_pokemon">No Pokemon Found!</string>
 
 </resources>

@@ -8,14 +8,14 @@
     android:background="@color/pokemon_screen_background">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardView5"
+        android:id="@+id/vPokemonImageCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         app:cardCornerRadius="@dimen/spacing_big"
         app:cardElevation="@dimen/spacing_medium_extra"
         app:contentPadding="@dimen/spacing_medium_extra"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintBottom_toTopOf="@+id/vPokemonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,25 +30,48 @@
     </android.support.v7.widget.CardView>
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/vPokemonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_large"
+        app:layout_constraintBottom_toTopOf="@+id/vPokemonTypeContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView5"
-        tools:text="Name: Charizard" />
+        app:layout_constraintTop_toBottomOf="@+id/vPokemonImageCard"
+        android:fontFamily="@font/pocket_monk"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/font_huge_extra"
+        tools:text="Charizard" />
 
-    <TextView
-        android:id="@+id/textView10"
+    <android.support.design.chip.ChipGroup
+        android:id="@+id/vPokemonTypeContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:chipSpacingHorizontal="@dimen/spacing_medium_extra"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        tools:text="Types: Flying, Fire, Dragon" />
+        app:layout_constraintTop_toBottomOf="@+id/vPokemonName">
+
+        <android.support.design.chip.Chip
+            android:id="@+id/vPokemonType1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Fire"
+            style="@style/PokemonTypeChip"/>
+
+        <android.support.design.chip.Chip
+            android:id="@+id/vPokemonType2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Dragon"
+            style="@style/PokemonTypeChip"/>
+
+    </android.support.design.chip.ChipGroup>
 
 </android.support.constraint.ConstraintLayout>
