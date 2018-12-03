@@ -60,4 +60,8 @@
     <dimen name="google_login_user_photo_width">48dp</dimen>
     <dimen name="google_login_user_photo_height">48dp</dimen>
 
+    <!-- Navigation -->
+    <dimen name="navigation_button_width">100dp</dimen>
+    <dimen name="navigation_button_height">100dp</dimen>
+
 </resources>

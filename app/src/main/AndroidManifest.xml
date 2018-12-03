@@ -25,6 +25,14 @@
         </activity>
 
         <activity
+            android:name=".navigation.NavigationActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".navigation.NewNavigationActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".recipepicker.BlankActivity"
             android:screenOrientation="portrait" />
 

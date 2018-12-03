@@ -147,6 +147,11 @@ dependencies {
 
     // Fresco
     implementation 'com.facebook.fresco:fresco:1.10.0'
+
+    // Navigation Architecture Component
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha07'
+    implementation 'android.arch.navigation:navigation-ui:1.0.0-alpha07'
+
 }
 
 // Google

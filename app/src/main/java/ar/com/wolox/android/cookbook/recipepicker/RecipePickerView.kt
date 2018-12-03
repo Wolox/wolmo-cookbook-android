@@ -8,4 +8,6 @@ interface RecipePickerView {
     fun goToBlankRecipe()
 
     fun goToGoogleLogin()
+
+    fun goToNavigation()
 }

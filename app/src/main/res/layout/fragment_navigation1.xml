@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/holo_orange_light">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/navigation_navigation1"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/fragment_navigation1__to2_button"
+        android:layout_width="@dimen/navigation_button_width"
+        android:layout_height="@dimen/navigation_button_height"
+        android:layout_gravity="center"
+        android:text="@string/navigation_go_to_2"/>
+
+    <Button
+        android:id="@+id/fragment_navigation1__toNewActivity"
+        android:layout_width="@dimen/navigation_button_width"
+        android:layout_height="@dimen/navigation_button_height"
+        android:layout_gravity="center"
+        android:text="@string/navigation_go_to_new_activity"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"/>
+
+</LinearLayout>
