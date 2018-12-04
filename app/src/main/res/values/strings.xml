@@ -32,5 +32,6 @@
     <string name="data_sync_description">Data Sync Recipe with a Pokemon flavor!</string>
     <string name="data_sync_no_pokemon">No Pokemon Found!</string>
     <string name="data_sync_search_pokemon">Search a Pokemon</string>
+    <string name="data_sync_check_it_out">Check it out!</string>
 
 </resources>

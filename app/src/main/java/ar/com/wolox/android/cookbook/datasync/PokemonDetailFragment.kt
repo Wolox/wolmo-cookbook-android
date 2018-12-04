@@ -16,12 +16,12 @@ import com.facebook.drawee.generic.RoundingParams
 import com.facebook.imagepipeline.image.CloseableImage
 import com.facebook.imagepipeline.request.ImageRequest
 import com.facebook.imagepipeline.request.ImageRequestBuilder
-import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonImageView
-import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonName
-import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonSearchButton
-import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonType1
-import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonType2
-import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonTypeContainer
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonDetailImageView
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonDetailName
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonDetailSearchButton
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonDetailType1
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonDetailType2
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonDetailTypeContainer
 import java.util.LinkedList
 
 class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDetailView {
@@ -36,39 +36,43 @@ class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDe
     }
 
     override fun setListeners() {
-        vPokemonSearchButton.setOnClickListener {
+        vPokemonDetailSearchButton.setOnClickListener {
             requireFragmentManager().beginTransaction()
                     .addToBackStack(null)
+                    .setCustomAnimations(
+                            R.anim.slide_in_right, R.anim.slide_out_left,
+                            R.anim.slide_in_left, R.anim.slide_out_right)
                     .add(R.id.vActivityBaseContent, PokemonSearchFragment.newInstance())
+                    .hide(this)
                     .commit()
         }
     }
 
     override fun showNoPokemon() {
-        vPokemonImageView.controller = Fresco.newDraweeControllerBuilder()
+        vPokemonDetailImageView.controller = Fresco.newDraweeControllerBuilder()
                 .setLowResImageRequest(ImageRequestBuilder.newBuilderWithResourceId(R.drawable.bg_pokemon_roulette).build())
                 .setAutoPlayAnimations(true)
                 .build()
-        vPokemonImageView.hierarchy.roundingParams = RoundingParams.fromCornersRadius(resources.getDimension(R.dimen.spacing_large))
+        vPokemonDetailImageView.hierarchy.roundingParams = RoundingParams.fromCornersRadius(resources.getDimension(R.dimen.spacing_large))
                 .setRoundingMethod(RoundingParams.RoundingMethod.OVERLAY_COLOR)
                 .setOverlayColor(ContextCompat.getColor(requireContext(), android.R.color.white))
 
-        vPokemonName.setText(R.string.data_sync_no_pokemon)
-        vPokemonTypeContainer.visibility = View.INVISIBLE
-        vPokemonType1.text = ""
-        vPokemonType2.text = ""
+        vPokemonDetailName.setText(R.string.data_sync_no_pokemon)
+        vPokemonDetailTypeContainer.visibility = View.INVISIBLE
+        vPokemonDetailType1.text = ""
+        vPokemonDetailType2.text = ""
     }
 
     override fun showPokemon(pokemon: Pokemon) {
-        vPokemonImageView.controller = Fresco.newDraweeControllerBuilder()
+        vPokemonDetailImageView.controller = Fresco.newDraweeControllerBuilder()
                 .setDataSourceSupplier(retainingSupplier)
                 .build()
-        vPokemonImageView.hierarchy.roundingParams = null
-        vPokemonName.text = pokemon.name.capitalize()
-        vPokemonType1.text = pokemon.firstType.name.capitalize()
-        vPokemonType2.visibility = if (pokemon.secondType != null) View.VISIBLE else View.GONE
-        vPokemonType2.text = pokemon.secondType?.name?.capitalize()
-        vPokemonTypeContainer.visibility = View.VISIBLE
+        vPokemonDetailImageView.hierarchy.roundingParams = null
+        vPokemonDetailName.text = pokemon.name.capitalize()
+        vPokemonDetailType1.text = pokemon.firstType.name.capitalize()
+        vPokemonDetailType2.visibility = if (pokemon.secondType != null) View.VISIBLE else View.GONE
+        vPokemonDetailType2.text = pokemon.secondType?.name?.capitalize()
+        vPokemonDetailTypeContainer.visibility = View.VISIBLE
 
         lifecycle.addObserver(GenericLifecycleObserver { _, event ->
             @Suppress("NON_EXHAUSTIVE_WHEN")
