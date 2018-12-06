@@ -15,8 +15,15 @@ class PokemonNetworkModule {
         @JvmStatic
         @DataSyncScope
         @Provides
-        internal fun providePokemonService(retrofit: Retrofit): PokemonService {
+        internal fun providesPokemonService(retrofit: Retrofit): PokemonService {
             return retrofit.newBuilder().baseUrl(BASE_URL).build().create(PokemonService::class.java)
+        }
+
+        @JvmStatic
+        @DataSyncScope
+        @Provides
+        internal fun providesPokemonRepository(pokemonService: PokemonService): PokemonRepository {
+            return PokemonRepository(pokemonService)
         }
     }
 }

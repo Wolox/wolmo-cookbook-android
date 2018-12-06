@@ -3,6 +3,7 @@ package ar.com.wolox.android.cookbook.datasync
 import android.arch.lifecycle.GenericLifecycleObserver
 import android.arch.lifecycle.Lifecycle.Event.ON_START
 import android.arch.lifecycle.Lifecycle.Event.ON_STOP
+import android.arch.lifecycle.LifecycleObserver
 import android.os.Handler
 import android.os.Looper
 import android.support.v4.content.ContextCompat
@@ -28,6 +29,13 @@ class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDe
 
     private lateinit var retainingSupplier: RetainingDataSourceSupplier<CloseableReference<CloseableImage>>
     private val spriteRouletteHandler = Handler(Looper.getMainLooper())
+    private var lastRouletteObserver: LifecycleObserver? = null
+        set(value) {
+            spriteRouletteHandler.removeCallbacksAndMessages(null)
+            field?.let { lifecycle.removeObserver(it) }
+            field = value
+            field?.let { lifecycle.addObserver(it) }
+        }
 
     override fun layout() = R.layout.fragment_pokemon_detail
 
@@ -63,7 +71,7 @@ class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDe
         vPokemonDetailType2.text = ""
     }
 
-    override fun showPokemon(pokemon: Pokemon) {
+    override fun showPokemonDetail(pokemon: Pokemon) {
         vPokemonDetailImageView.controller = Fresco.newDraweeControllerBuilder()
                 .setDataSourceSupplier(retainingSupplier)
                 .build()
@@ -74,7 +82,7 @@ class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDe
         vPokemonDetailType2.text = pokemon.secondType?.name?.capitalize()
         vPokemonDetailTypeContainer.visibility = View.VISIBLE
 
-        lifecycle.addObserver(GenericLifecycleObserver { _, event ->
+        lastRouletteObserver = GenericLifecycleObserver { _, event ->
             @Suppress("NON_EXHAUSTIVE_WHEN")
             when (event) {
                 ON_START -> {
@@ -84,7 +92,7 @@ class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDe
                     spriteRouletteHandler.removeCallbacksAndMessages(null)
                 }
             }
-        })
+        }
     }
 
     private fun generateSpriteRouletteTask(pokemon: Pokemon): Runnable =

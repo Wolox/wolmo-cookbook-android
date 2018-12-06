@@ -14,7 +14,7 @@ data class Pokemon(
         get() = types.sortedBy { it.slot }[0].type
 
     val secondType: Type?
-        get() = types.sortedBy { it.slot }[1].type
+        get() = if (types.size > 1) types.sortedBy { it.slot }[1].type else null
 }
 
 data class TypeSlot(val slot: Int, val type: Type)

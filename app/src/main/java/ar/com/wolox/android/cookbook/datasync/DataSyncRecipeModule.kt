@@ -7,14 +7,14 @@ import dagger.android.ContributesAndroidInjector
 abstract class DataSyncRecipeModule {
 
     @DataSyncScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [PokemonNetworkModule::class, PokemonModule::class])
     abstract fun dataSyncRecipeActivity(): DataSyncRecipeActivity
 
-    @DataSyncScope
+    /*@DataSyncScope
     @ContributesAndroidInjector(modules = [PokemonNetworkModule::class])
     abstract fun pokemonDetailFragment(): PokemonDetailFragment
 
     @DataSyncScope
     @ContributesAndroidInjector(modules = [PokemonNetworkModule::class])
-    abstract fun pokemonSearchFragment(): PokemonSearchFragment
+    abstract fun pokemonSearchFragment(): PokemonSearchFragment*/
 }
