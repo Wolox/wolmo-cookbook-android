@@ -34,10 +34,6 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".recipepicker.BlankActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".googlelogin.GoogleLoginRecipeActivity"
             android:screenOrientation="portrait" />
 

@@ -28,19 +28,11 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
         // Create a RecipeItem with the desired image & text for it inside the 'when' statement
         return recipes.map {
             when (it) {
-                Recipe.YAWN_CAT -> RecipeItem(it, R.drawable.bg_yawning_cat, R.string.recipe_picker_yawn_cat)
-                Recipe.HIGH_CAT -> RecipeItem(it, R.drawable.bg_high_cat, R.string.recipe_picker_high_cat)
-                Recipe.COOL_CAT -> RecipeItem(it, R.drawable.bg_cool_cat, R.string.recipe_picker_cool_cat)
-                Recipe.SURPRISED_CAT -> RecipeItem(it, R.drawable.bg_surprised_cat, R.string.recipe_picker_surprised_cat)
                 Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.google_login, R.string.recipe_picker_google_login)
                 Recipe.NAVIGATION -> RecipeItem(it, R.drawable.navigation, R.string.recipe_picker_navigation)
                 Recipe.DATA_SYNC -> RecipeItem(it, R.drawable.bg_data_sync_pokemon, R.string.data_sync_description)
             }
         }
-    }
-
-    override fun goToBlankRecipe() {
-        requireContext().startActivity(Intent(requireContext(), BlankActivity::class.java))
     }
 
     override fun goToGoogleLogin() {
