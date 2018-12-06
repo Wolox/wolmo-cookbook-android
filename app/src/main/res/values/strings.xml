@@ -2,15 +2,12 @@
 
     <!-- General -->
     <string name="app_title">Wolmo Android\nCookbook</string>
-    <string name="app_example_recipe_description">A cat trying its best to take a selfie. You did your best buddy!</string>
+    <string name="app_example_recipe_description">The Bad Boy of the Block. You can\'t resist him, huh?</string>
 
     <!-- Recipe Picker -->
-    <string name="recipe_picker_yawn_cat">This one is too lazy to care…</string>
-    <string name="recipe_picker_high_cat">Well, ain\'t you having fun. *winks*</string>
-    <string name="recipe_picker_cool_cat">The Bad Boy of the Block. You can\'t resist him, huh?</string>
-    <string name="recipe_picker_surprised_cat">Surprise surprise!</string>
     <string name="recipe_picker_google_login">Google login</string>
     <string name="recipe_picker_navigation">Navigation Arch. Component</string>
+    <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
@@ -27,9 +24,7 @@
     <string name="navigation_go_to_4">GO TO 4</string>
     <string name="navigation_go_to_new_activity">GO TO NEW ACTIVITY</string>
 
-
     <!-- Data Sync -->
-    <string name="data_sync_description">Data Sync Recipe with a Pokemon flavor!</string>
     <string name="data_sync_no_pokemon">No Pokemon Found!</string>
     <string name="data_sync_search_pokemon">Search a Pokemon</string>
     <string name="data_sync_check_it_out">Check it out!</string>

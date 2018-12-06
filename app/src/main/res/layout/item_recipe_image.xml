@@ -18,7 +18,7 @@
         android:elevation="@dimen/spacing_large"
         android:outlineProvider="bounds"
         android:scaleType="centerCrop"
-        tools:src="@drawable/bg_high_cat"
+        tools:src="@drawable/bg_cool_cat"
         tools:ignore="ContentDescription" />
 
     <TextView
