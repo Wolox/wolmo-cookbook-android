@@ -36,6 +36,7 @@ class PokemonSearchPresenter @Inject constructor(
     fun onSearchNameChanged(newName: String) {
         searchedPokemonName = newName.trim().toLowerCase()
 
+        // Only take into account the last search query
         searchPokemonDisposable?.apply { if (!isDisposed) dispose() }
         searchPokemonDisposable = backgroundThreadScheduler.scheduleDirect({
             pokemonRepository.findByName(searchedPokemonName)

@@ -6,6 +6,15 @@ import ar.com.wolox.android.cookbook.common.network.networkCallback
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 
+/**
+ * Provided with a [PokemonService], the [PokemonRepository] allows the user to query [Pokemon] by
+ * name and also the last found.
+ *
+ * The last found pokemon is cached so querying it, without a [findByName] call in between, should
+ * yield the same result from memory.
+ *
+ * Users of this class must subscribe to [lastPokemon] to observe query results.
+ */
 class PokemonRepository(private val pokemonService: PokemonService) {
 
     // BehaviorSubjects caches last element
