@@ -64,4 +64,6 @@
     <dimen name="navigation_button_width">100dp</dimen>
     <dimen name="navigation_button_height">100dp</dimen>
 
+    <!-- Data Sync -->
+    <dimen name="pokemon_image_size">200dp</dimen>
 </resources>

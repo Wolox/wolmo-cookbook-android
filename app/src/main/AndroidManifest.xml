@@ -33,11 +33,11 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".recipepicker.BlankActivity"
+            android:name=".googlelogin.GoogleLoginRecipeActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".googlelogin.GoogleLoginRecipeActivity"
+            android:name=".datasync.DataSyncRecipeActivity"
             android:screenOrientation="portrait" />
 
     </application>

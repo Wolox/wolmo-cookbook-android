@@ -2,11 +2,11 @@ package ar.com.wolox.android.cookbook.recipepicker
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.R.id.vRecipePickerSelectionViewPager
+import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
-import kotlinx.android.synthetic.main.fragment_recipe_picker.*
+import kotlinx.android.synthetic.main.fragment_recipe_picker.vRecipePickerSelectionViewPager
 
 class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePickerView {
 
@@ -28,18 +28,11 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
         // Create a RecipeItem with the desired image & text for it inside the 'when' statement
         return recipes.map {
             when (it) {
-                Recipe.YAWN_CAT -> RecipeItem(it, R.drawable.bg_yawning_cat, R.string.recipe_picker_yawn_cat)
-                Recipe.HIGH_CAT -> RecipeItem(it, R.drawable.bg_high_cat, R.string.recipe_picker_high_cat)
-                Recipe.COOL_CAT -> RecipeItem(it, R.drawable.bg_cool_cat, R.string.recipe_picker_cool_cat)
-                Recipe.SURPRISED_CAT -> RecipeItem(it, R.drawable.bg_surprised_cat, R.string.recipe_picker_surprised_cat)
-                Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.google_login, R.string.recipe_picker_google_login)
-                Recipe.NAVIGATION -> RecipeItem(it, R.drawable.navigation, R.string.recipe_picker_navigation)
+                Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.bg_google_login, R.string.recipe_picker_google_login)
+                Recipe.NAVIGATION -> RecipeItem(it, R.drawable.bg_navigation, R.string.recipe_picker_navigation)
+                Recipe.DATA_SYNC -> RecipeItem(it, R.drawable.bg_data_sync_pokemon, R.string.recipe_picker_data_sync)
             }
         }
-    }
-
-    override fun goToBlankRecipe() {
-        requireContext().startActivity(Intent(requireContext(), BlankActivity::class.java))
     }
 
     override fun goToGoogleLogin() {
@@ -48,6 +41,10 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     override fun goToNavigation() {
         requireActivity().startActivity(Intent(requireContext(), NavigationActivity::class.java))
+    }
+
+    override fun goToDataSyncRecipe() {
+        requireContext().startActivity(Intent(requireContext(), DataSyncRecipeActivity::class.java))
     }
 
     companion object {

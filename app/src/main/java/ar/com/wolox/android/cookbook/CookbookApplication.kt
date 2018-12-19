@@ -1,9 +1,9 @@
 package ar.com.wolox.android.cookbook
 
+import ar.com.wolox.android.cookbook.common.di.CookbookNetworkingComponent
 import ar.com.wolox.android.cookbook.common.di.DaggerAppComponent
+import ar.com.wolox.android.cookbook.common.di.DaggerCookbookNetworkingComponent
 import ar.com.wolox.wolmo.core.WolmoApplication
-import ar.com.wolox.wolmo.networking.di.DaggerNetworkingComponent
-import ar.com.wolox.wolmo.networking.di.NetworkingComponent
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.gson.FieldNamingPolicy
 import com.readystatesoftware.chuck.ChuckInterceptor
@@ -20,31 +20,36 @@ class CookbookApplication : WolmoApplication() {
             // You should not init your app in this process.
             return
         }
-        initializeLeakCanary()
         // Initialize Application stuff here
-        Fresco.initialize(this)
+        initializeLeakCanary()
+        initializeFresco()
     }
 
     private fun initializeLeakCanary() {
         LeakCanary.install(this)
     }
 
+    private fun initializeFresco() {
+        Fresco.initialize(this)
+    }
+
     override fun applicationInjector(): AndroidInjector<CookbookApplication> {
         return DaggerAppComponent.builder()
-                .networkingComponent(buildDaggerNetworkingComponent())
+                .networkingComponent(buildNetworkingComponent())
                 .sharedPreferencesName(SHARED_PREFERENCES_NAME)
                 .application(this)
                 .create(this)
     }
 
-    private fun buildDaggerNetworkingComponent(): NetworkingComponent {
-        val builder = DaggerNetworkingComponent.builder()
+    private fun buildNetworkingComponent(): CookbookNetworkingComponent {
+        val builder = DaggerCookbookNetworkingComponent.builder()
                 .baseUrl(PLACEHOLDER_URL)
                 .gsonNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
 
         if (BuildConfig.DEBUG) {
-            builder.okHttpInterceptors(
-                    buildHttpLoggingInterceptor(Level.BODY), ChuckInterceptor(this))
+            builder.okHttpInterceptors(arrayOf(
+                    buildHttpLoggingInterceptor(Level.BODY),
+                    ChuckInterceptor(this)))
         }
 
         return builder.build()

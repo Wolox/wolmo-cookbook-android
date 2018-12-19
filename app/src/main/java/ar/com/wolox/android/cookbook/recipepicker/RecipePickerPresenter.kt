@@ -12,14 +12,10 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
     }
 
     fun onRecipeClicked(clickedRecipe: Recipe) {
-        // TODO: Take to corresponding recipe flow
         when (clickedRecipe) {
-            Recipe.YAWN_CAT -> view.goToBlankRecipe()
-            Recipe.HIGH_CAT -> view.goToBlankRecipe()
-            Recipe.SURPRISED_CAT -> view.goToBlankRecipe()
-            Recipe.COOL_CAT -> view.goToBlankRecipe()
             Recipe.GOOGLE_LOGIN -> view.goToGoogleLogin()
             Recipe.NAVIGATION -> view.goToNavigation()
+            Recipe.DATA_SYNC -> view.goToDataSyncRecipe()
         }
     }
 }
