@@ -27,12 +27,14 @@ class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), G
 
     @Inject
     internal lateinit var toastFactory: ToastFactory
+    @Inject
+    internal lateinit var googleHelper: GoogleHelper
 
     override fun layout() = R.layout.fragment_google_login
 
     override fun init() {
-        GoogleHelper.setGoogleLoginAction(vLoginGoogleBtn, this, GOOGLE_SIGN_IN)
-        GoogleHelper.setGoogleLogoutAction(vLogoutGoogleBtn, this, presenter::onGoogleLogout)
+        googleHelper.setGoogleLoginAction(vLoginGoogleBtn, this, GOOGLE_SIGN_IN)
+        googleHelper.setGoogleLogoutAction(vLogoutGoogleBtn, this, presenter::onGoogleLogout)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -63,7 +65,7 @@ class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), G
     }
 
     override fun showGoogleLoginError(errorCode: Int?) =
-            toastFactory.show(GoogleHelper.getErrorMessage(requireContext(), errorCode))
+            toastFactory.show(googleHelper.getErrorMessage(requireContext(), errorCode))
 
     companion object {
         // Hard coded code to receive on activity result
