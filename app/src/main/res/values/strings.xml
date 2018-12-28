@@ -32,4 +32,7 @@
     <string name="data_sync_search_pokemon">Search a Pokemon</string>
     <string name="data_sync_check_it_out">Check it out!</string>
 
+    <!-- Facebook -->
+    <string name="facebook_app_id">594091561046324</string> <string name="fb_login_protocol_scheme">fb594091561046324</string>
+
 </resources>
