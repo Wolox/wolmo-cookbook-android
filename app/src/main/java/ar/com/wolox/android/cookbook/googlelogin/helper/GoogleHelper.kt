@@ -4,13 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.view.View
-import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes
 import com.google.android.gms.common.api.ApiException
 import javax.inject.Inject
 
