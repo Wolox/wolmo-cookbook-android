@@ -26,11 +26,9 @@ class GoogleHelper @Inject constructor(context: Context) {
     /**
      * Set google login action to the view.
      *
-     * @param fragment
-     *  the fragment where the button is used.
+     * @param fragment where the button is used.
      *
-     * @param resultCode
-     *  the code to catch the activity result.
+     * @param resultCode to catch the activity result.
      */
     fun setGoogleLoginAction(view: View, fragment: Fragment, resultCode: Int) {
         // On click button, open Google activity
@@ -42,11 +40,9 @@ class GoogleHelper @Inject constructor(context: Context) {
     /**
      * Set google logout action to the view.
      *
-     * @param fragment
-     *  the fragment where the button is used.
+     * @param fragment where the button is used.
      *
-     * @param onComplete
-     *  callback to be called on logout complete.
+     * @param onComplete callback to be called on logout complete.
      */
     fun setGoogleLogoutAction(view: View, fragment: Fragment, onComplete: () -> Unit) {
         view.setOnClickListener { _ ->
@@ -59,8 +55,7 @@ class GoogleHelper @Inject constructor(context: Context) {
     /**
      * Get the google sign in client object.
      *
-     * @param fragment
-     *  the fragment where the login/logout is.
+     * @param fragment where the login/logout is.
      */
     private fun getClient(fragment: Fragment): GoogleSignInClient {
         // Configure Google Sign-in and the GoogleSignInClient object
@@ -75,7 +70,6 @@ class GoogleHelper @Inject constructor(context: Context) {
      * Get error message from a code.
      *
      * @param errorCode
-     *  the error code.
      */
     fun getErrorMessage(context: Context, errorCode: Int?): String =
             context.getString(when (errorCode) {
@@ -89,14 +83,11 @@ class GoogleHelper @Inject constructor(context: Context) {
         /**
          * Get the signed in account from data received by intent on activity result.
          *
-         * @param data
-         *  the intent received onActivityResult.
+         * @param data the intent received onActivityResult.
          *
-         * @param onSuccess
-         *  function called on success, receive an UserGoogle model with the signed in account.
+         * @param onSuccess called on success, receive an UserGoogle model with the signed in account.
          *
-         * @param onError
-         *  function called on error.
+         * @param onError called on error.
          */
         fun getSignedInAccountFromIntent(data: Intent?, onSuccess: (GoogleAccount) -> Unit, onError: (Int?) -> Unit) {
             // Create the task to get signed in account
