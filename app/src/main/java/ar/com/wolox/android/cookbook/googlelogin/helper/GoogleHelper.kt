@@ -21,84 +21,70 @@ class GoogleHelper @Inject constructor(context: Context) {
         GoogleAccount(it)
     }
 
+    /**
+     * Set google login action to the view.
+     *
+     * @param fragment where the button is used.
+     *
+     * @param resultCode to catch the activity result.
+     */
+    fun setGoogleLoginAction(view: View, fragment: Fragment, resultCode: Int) {
+        // On click button, open Google activity
+        view.setOnClickListener {
+            fragment.startActivityForResult(getClient(fragment).signInIntent, resultCode)
+        }
+    }
+
+    /**
+     * Set google logout action to the view.
+     *
+     * @param fragment where the button is used.
+     *
+     * @param onComplete callback to be called on logout complete.
+     */
+    fun setGoogleLogoutAction(view: View, fragment: Fragment, onComplete: () -> Unit) {
+        view.setOnClickListener { _ ->
+            getClient(fragment).signOut().addOnCompleteListener(fragment.requireActivity()) { _ ->
+                onComplete()
+            }
+        }
+    }
+
+    /**
+     * Get the google sign in client object.
+     *
+     * @param fragment where the login/logout is.
+     */
+    private fun getClient(fragment: Fragment): GoogleSignInClient {
+        // Configure Google Sign-in and the GoogleSignInClient object
+        val gso =
+                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestEmail()
+                        .build()
+        return GoogleSignIn.getClient(fragment.requireActivity(), gso)
+    }
+
     companion object {
-
         /**
-         * Set google login action to the view
+         * Get the signed in account from data received by intent on activity result.
          *
-         * @param fragment
-         *  the fragment where the button is used
+         * @param data the intent received onActivityResult.
          *
-         * @param resultCode
-         *  the code to catch the activity result
+         * @param onSuccess called on success, receive an UserGoogle model with the signed in account.
+         *
+         * @param onError called on error.
          */
-        fun setGoogleLoginAction(view: View, fragment: Fragment, resultCode: Int) {
-            // On click button, open Google activity
-            view.setOnClickListener {
-                fragment.startActivityForResult(GoogleHelper.getClient(fragment).signInIntent, resultCode)
-            }
-        }
-
-        /**
-         * Set google logout action to the view.
-         *
-         * @param fragment
-         *  the fragment where the button is used.
-         *
-         * @param onComplete
-         *  callback to be called on logout complete.
-         */
-        fun setGoogleLogoutAction(view: View, fragment: Fragment, onComplete: () -> Unit) {
-            view.setOnClickListener {
-                GoogleHelper.getClient(fragment).signOut().addOnCompleteListener(fragment.requireActivity()) {
-                    onComplete()
-                }
-            }
-        }
-
-        /**
-         * Get the signed in account from data received by intent on activity result
-         *
-         * @param data
-         *  the intent received onActivityResult
-         *
-         * @param onSuccess
-         *  function called on success, receive an UserGoogle model with the signed in account
-         *
-         * @param onError
-         *  function called on error
-         */
-        fun getSignedInAccountFromIntent(data: Intent?, onSuccess: (GoogleAccount) -> Unit, onError: () -> Unit) {
+        fun getSignedInAccountFromIntent(data: Intent?, onSuccess: (GoogleAccount) -> Unit, onError: (Int?) -> Unit) {
             // Create the task to get signed in account
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
 
             try {
                 val account = task.getResult(ApiException::class.java)
-
-                if (account == null) {
-                    onError()
-                } else {
-                    onSuccess(GoogleAccount(account))
-                }
+                account?.let { onSuccess(GoogleAccount(it)) } ?: onError(null)
             } catch (e: ApiException) {
                 e.printStackTrace()
-                onError()
+                onError(e.statusCode)
             }
-        }
-
-        /**
-         * Get the google sign in client object
-         *
-         * @param fragment
-         *      the fragment where the login/logout is
-         */
-        private fun getClient(fragment: Fragment): GoogleSignInClient {
-            // Configure Google Sign-in and the GoogleSignInClient object
-            val gso =
-                    GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                            .requestEmail()
-                            .build()
-            return GoogleSignIn.getClient(fragment.requireActivity(), gso)
         }
     }
 }

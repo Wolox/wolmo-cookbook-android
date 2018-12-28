@@ -150,9 +150,6 @@ dependencies {
     // Google Play Services
     implementation "com.google.android.gms:play-services-auth:$google_play_services_version"
 
-    // Firebase
-    implementation "com.google.firebase:firebase-core:$google_firebase_version"
-
     // Navigation Architecture Component
     implementation "android.arch.navigation:navigation-fragment:$nav_arch_component_version"
     implementation "android.arch.navigation:navigation-ui:$nav_arch_component_version"
@@ -162,6 +159,3 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxjava2_android_version"
 
 }
-
-// Google
-apply plugin: 'com.google.gms.google-services'
