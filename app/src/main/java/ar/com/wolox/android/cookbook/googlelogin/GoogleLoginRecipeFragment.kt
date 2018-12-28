@@ -8,7 +8,7 @@ import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import com.facebook.imagepipeline.request.ImageRequestBuilder
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_google_login.*
 import javax.inject.Inject
 
 /**
@@ -28,7 +28,7 @@ class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), G
     @Inject
     internal lateinit var toastFactory: ToastFactory
 
-    override fun layout() = R.layout.fragment_login
+    override fun layout() = R.layout.fragment_google_login
 
     override fun init() {
         GoogleHelper.setGoogleLoginAction(vLoginGoogleBtn, this, GOOGLE_SIGN_IN)
