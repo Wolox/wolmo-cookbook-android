@@ -8,5 +8,5 @@ interface GoogleLoginRecipeView {
 
     fun showNoUser()
 
-    fun showGoogleLoginError(errorCode: Int?)
+    fun showGoogleLoginError(errorCode: Int)
 }

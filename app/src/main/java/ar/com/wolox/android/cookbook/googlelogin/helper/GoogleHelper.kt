@@ -66,19 +66,6 @@ class GoogleHelper @Inject constructor(context: Context) {
         return GoogleSignIn.getClient(fragment.requireActivity(), gso)
     }
 
-    /**
-     * Get error message from a code.
-     *
-     * @param errorCode
-     */
-    fun getErrorMessage(context: Context, errorCode: Int?): String =
-            context.getString(when (errorCode) {
-                GoogleSignInStatusCodes.SIGN_IN_CANCELLED -> R.string.google_login_error_cancelled
-                GoogleSignInStatusCodes.SIGN_IN_CURRENTLY_IN_PROGRESS -> R.string.google_login_error_in_progress
-                GoogleSignInStatusCodes.SIGN_IN_FAILED -> R.string.google_login_error_failed
-                else -> R.string.google_login_error_unexpected
-            })
-
     companion object {
         /**
          * Get the signed in account from data received by intent on activity result.

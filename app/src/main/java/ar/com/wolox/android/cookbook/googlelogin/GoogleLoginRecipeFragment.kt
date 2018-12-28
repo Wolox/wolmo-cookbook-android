@@ -64,8 +64,8 @@ class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), G
         vLoginGoogleBtn.isEnabled = true
     }
 
-    override fun showGoogleLoginError(errorCode: Int?) =
-            toastFactory.show(googleHelper.getErrorMessage(requireContext(), errorCode))
+    override fun showGoogleLoginError(error: Int) =
+            toastFactory.show(requireContext().getString(error))
 
     companion object {
         // Hard coded code to receive on activity result
