@@ -11,7 +11,10 @@
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
-    <string name="google_login_error">Error on Google login. Please try again.</string>
+    <string name="google_login_error_cancelled">The sign in was cancelled by the user.</string>
+    <string name="google_login_error_in_progress">A sign in process is currently in progress and the current one cannot continue.</string>
+    <string name="google_login_error_failed">The sign in attempt didn\'t succeed with the current account.</string>
+    <string name="google_login_error_unexpected">Unexpected error.</string>
 
     <!-- Navigation -->
     <string name="navigation_navigation1">Navigation 1</string>

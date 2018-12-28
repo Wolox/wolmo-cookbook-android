@@ -17,17 +17,8 @@ import javax.inject.Inject
  *
  * Check to add to the build.gradle this:
  *  dependencies {
- *      implementation "com.google.firebase:firebase-core:$google_firebase_version"
  *      implementation "com.google.android.gms:play-services-auth:$google_play_services_version"
  *  }
- *
- *  apply plugin: 'com.google.gms.google-services'
- *
- *  Its also important to add a project and an android app here: https://console.firebase.google.com/u/0/
- *  This will generate a 'google-services.json' that is important to copy in app level
- *
- *  If there's a problem with connection to Firebase its possible to connect inside Android Studio with:
- *  Tools > Firebase > Realtime Database > Save and retrieve data > Connect to Firebase
  *
  *  Advice to generate SHA1:
  *  Open Gradle projects with the gradle button on the right of the screen: Tasks -> android -> signingReport
@@ -37,7 +28,7 @@ class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), G
     @Inject
     internal lateinit var toastFactory: ToastFactory
 
-    override fun layout(): Int = R.layout.fragment_login
+    override fun layout() = R.layout.fragment_login
 
     override fun init() {
         GoogleHelper.setGoogleLoginAction(vLoginGoogleBtn, this, GOOGLE_SIGN_IN)
@@ -71,7 +62,8 @@ class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), G
         vLoginGoogleBtn.isEnabled = true
     }
 
-    override fun showGoogleLoginError() = toastFactory.show(R.string.google_login_error)
+    override fun showGoogleLoginError(errorCode: Int?) =
+            toastFactory.show(GoogleHelper.getErrorMessage(requireContext(), errorCode))
 
     companion object {
         // Hard coded code to receive on activity result

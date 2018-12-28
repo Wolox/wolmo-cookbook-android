@@ -4,11 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.view.View
+import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes
 import com.google.android.gms.common.api.ApiException
 import javax.inject.Inject
 
@@ -24,13 +26,13 @@ class GoogleHelper @Inject constructor(context: Context) {
     companion object {
 
         /**
-         * Set google login action to the view
+         * Set google login action to the view.
          *
          * @param fragment
-         *  the fragment where the button is used
+         *  the fragment where the button is used.
          *
          * @param resultCode
-         *  the code to catch the activity result
+         *  the code to catch the activity result.
          */
         fun setGoogleLoginAction(view: View, fragment: Fragment, resultCode: Int) {
             // On click button, open Google activity
@@ -57,40 +59,49 @@ class GoogleHelper @Inject constructor(context: Context) {
         }
 
         /**
-         * Get the signed in account from data received by intent on activity result
+         * Get the signed in account from data received by intent on activity result.
          *
          * @param data
-         *  the intent received onActivityResult
+         *  the intent received onActivityResult.
          *
          * @param onSuccess
-         *  function called on success, receive an UserGoogle model with the signed in account
+         *  function called on success, receive an UserGoogle model with the signed in account.
          *
          * @param onError
-         *  function called on error
+         *  function called on error.
          */
-        fun getSignedInAccountFromIntent(data: Intent?, onSuccess: (GoogleAccount) -> Unit, onError: () -> Unit) {
+        fun getSignedInAccountFromIntent(data: Intent?, onSuccess: (GoogleAccount) -> Unit, onError: (Int?) -> Unit) {
             // Create the task to get signed in account
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
 
             try {
                 val account = task.getResult(ApiException::class.java)
-
-                if (account == null) {
-                    onError()
-                } else {
-                    onSuccess(GoogleAccount(account))
-                }
+                account?.let { onSuccess(GoogleAccount(it)) } ?: onError(null)
             } catch (e: ApiException) {
                 e.printStackTrace()
-                onError()
+                onError(e.statusCode)
             }
         }
 
         /**
-         * Get the google sign in client object
+         * Get error message from a code.
+         *
+         * @param errorCode
+         *  the error code.
+         */
+        fun getErrorMessage(context: Context, errorCode: Int?): String =
+                context.getString(when (errorCode) {
+                    GoogleSignInStatusCodes.SIGN_IN_CANCELLED -> R.string.google_login_error_cancelled
+                    GoogleSignInStatusCodes.SIGN_IN_CURRENTLY_IN_PROGRESS -> R.string.google_login_error_in_progress
+                    GoogleSignInStatusCodes.SIGN_IN_FAILED -> R.string.google_login_error_failed
+                    else -> R.string.google_login_error_unexpected
+                })
+
+        /**
+         * Get the google sign in client object.
          *
          * @param fragment
-         *      the fragment where the login/logout is
+         *  the fragment where the login/logout is.
          */
         private fun getClient(fragment: Fragment): GoogleSignInClient {
             // Configure Google Sign-in and the GoogleSignInClient object
