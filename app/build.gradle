@@ -103,6 +103,7 @@ buildscript {
     ext.nav_arch_component_version = '1.0.0-alpha07'
     ext.rxjava2_version = '2.2.0'
     ext.rxjava2_android_version = '2.1.0'
+    ext.facebook_login_version = '4.39.0'
 }
 
 dependencies {
@@ -157,5 +158,8 @@ dependencies {
     // RxJava
     implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rxjava2_android_version"
+
+    // Facebook
+    implementation "com.facebook.android:facebook-login:$facebook_login_version"
 
 }

@@ -2,79 +2,58 @@ package ar.com.wolox.android.cookbook.facebooklogin
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.facebooklogin.helper.FacebookAccountHelper
 import ar.com.wolox.android.cookbook.facebooklogin.helper.FacebookHelper
 import ar.com.wolox.android.cookbook.facebooklogin.model.FacebookAccount
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import com.facebook.imagepipeline.request.ImageRequestBuilder
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_facebook_login.*
 import javax.inject.Inject
 
 /**
- * Before begin its necessary to configure a Facebook API Console project and set up your Android Studio project
- * The documentation to do this: https://developers.facebook.com/identity/sign-in/android/start-integrating
- *
- * Check to add to the build.gradle this:
- *  dependencies {
- *      implementation "com.facebook.firebase:firebase-core:$facebook_firebase_version"
- *      implementation "com.facebook.android.gms:play-services-auth:$facebook_play_services_version"
- *  }
- *
- *  apply plugin: 'com.facebook.gms.facebook-services'
- *
- *  Its also important to add a project and an android app here: https://console.firebase.facebook.com/u/0/
- *  This will generate a 'facebook-services.json' that is important to copy in app level
- *
- *  If there's a problem with connection to Firebase its possible to connect inside Android Studio with:
- *  Tools > Firebase > Realtime Database > Save and retrieve data > Connect to Firebase
- *
- *  Advice to generate SHA1:
- *  Open Gradle projects with the gradle button on the right of the screen: Tasks -> android -> signingReport
+ * Follow the step by step from Facebook Developers docs: https://developers.facebook.com/docs/facebook-login/android
  */
 class FacebookLoginRecipeFragment : WolmoFragment<FacebookLoginRecipePresenter>(), FacebookLoginRecipeView {
 
     @Inject
     internal lateinit var toastFactory: ToastFactory
+    @Inject
+    internal lateinit var facebookHelper: FacebookHelper
 
-    override fun layout(): Int = R.layout.fragment_login
+    override fun layout(): Int = R.layout.fragment_facebook_login
 
     override fun init() {
-        FacebookHelper.setFacebookLoginAction(vLoginFacebookBtn, this, GOOGLE_SIGN_IN)
-        FacebookHelper.setFacebookLogoutAction(vLogoutFacebookBtn, this, presenter::onFacebookLogout)
+        facebookHelper.setFacebookOriginalButtonAction(vLoginFacebookOriginalLoginBtn, this, presenter, presenter)
+        facebookHelper.setFacebookLoginAction(vLoginFacebookLoginBtn, this, presenter)
+        facebookHelper.setFacebookLogoutAction(vLoginFacebookLogoutBtn, presenter)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        facebookHelper.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == GOOGLE_SIGN_IN) presenter.onFacebookLogin(FacebookAccountHelper(data))
     }
 
     override fun showUser(user: FacebookAccount) {
-        vLoginUserName.text = user.displayName
-        vLoginUserEmail.text = user.email
-
-        if (user.picture != null) {
-            vLoginUserPhoto.setImageRequest(ImageRequestBuilder.newBuilderWithSource(user.picture).build())
+        vLoginFacebookUserName.text = user.name
+        vLoginFacebookUserEmail.text = user.email
+        user.picture?.let {
+            vLoginFacebookUserPhoto.setImageRequest(ImageRequestBuilder.newBuilderWithSource(it).build())
         }
 
-        vLogoutFacebookBtn.isEnabled = true
-        vLoginFacebookBtn.isEnabled = false
+        vLoginFacebookLogoutBtn.isEnabled = true
+        vLoginFacebookLoginBtn.isEnabled = false
     }
 
     override fun showNoUser() {
-        vLoginUserName.text = ""
-        vLoginUserEmail.text = ""
-        vLoginUserPhoto.setImageRequest(null)
+        vLoginFacebookUserName.text = ""
+        vLoginFacebookUserEmail.text = ""
+        vLoginFacebookUserPhoto.setImageRequest(null)
 
-        vLogoutFacebookBtn.isEnabled = false
-        vLoginFacebookBtn.isEnabled = true
+        vLoginFacebookLogoutBtn.isEnabled = false
+        vLoginFacebookLoginBtn.isEnabled = true
     }
 
-    override fun showFacebookLoginError() = toastFactory.show(R.string.facebook_login_error)
+    override fun showLoginCancel() = toastFactory.show(R.string.facebook_login_error_cancelled)
 
-    companion object {
-        // Hard coded code to receive on activity result
-        private const val GOOGLE_SIGN_IN = 101
-    }
+    override fun showLoginError() = toastFactory.show(R.string.facebook_login_error_unexpected)
 }

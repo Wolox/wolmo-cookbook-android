@@ -40,6 +40,10 @@
             android:name=".datasync.DataSyncRecipeActivity"
             android:screenOrientation="portrait" />
 
+		<activity
+			android:name=".facebooklogin.FacebookLoginRecipeActivity"
+			android:screenOrientation="portrait" />
+
 		<meta-data
 			android:name="com.facebook.sdk.ApplicationId"
 			android:value="@string/facebook_app_id" />

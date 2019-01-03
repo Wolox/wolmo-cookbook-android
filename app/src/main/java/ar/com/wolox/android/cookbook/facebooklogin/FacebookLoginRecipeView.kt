@@ -8,5 +8,7 @@ interface FacebookLoginRecipeView {
 
     fun showNoUser()
 
-    fun showFacebookLoginError()
+    fun showLoginCancel()
+
+    fun showLoginError()
 }
