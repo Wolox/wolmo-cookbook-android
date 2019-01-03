@@ -5,9 +5,12 @@ import org.json.JSONObject
 
 class FacebookAccount(private val jsonAccount: JSONObject) {
     val name: String
-        get() = (if (jsonAccount.has("name")) jsonAccount.getString("name") else "")
+        get() = jsonAccount.optString("name") ?: ""
     val email: String
-        get() = (if (jsonAccount.has("email")) jsonAccount.getString("email") else "")
-    val picture
-        get() = (if (jsonAccount.has("picture")) Uri.parse(jsonAccount.getString("picture")) else null)
+        get() = jsonAccount.optString("email") ?: ""
+    val picture: Uri?
+        get() {
+            val url = jsonAccount.optJSONObject("picture")?.optJSONObject("data")?.optString("url")
+            return if (url != null) Uri.parse(url) else null
+        }
 }

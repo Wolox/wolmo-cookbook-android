@@ -7,7 +7,12 @@ import ar.com.wolox.android.cookbook.facebooklogin.model.FacebookAccount
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import com.facebook.imagepipeline.request.ImageRequestBuilder
-import kotlinx.android.synthetic.main.fragment_facebook_login.*
+import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookLoginBtn
+import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookLogoutBtn
+import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookOriginalLoginBtn
+import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookUserEmail
+import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookUserName
+import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookUserPhoto
 import javax.inject.Inject
 
 /**
@@ -56,4 +61,8 @@ class FacebookLoginRecipeFragment : WolmoFragment<FacebookLoginRecipePresenter>(
     override fun showLoginCancel() = toastFactory.show(R.string.facebook_login_error_cancelled)
 
     override fun showLoginError() = toastFactory.show(R.string.facebook_login_error_unexpected)
+
+    override fun disableLogin() {
+        vLoginFacebookLoginBtn.isEnabled = false
+    }
 }

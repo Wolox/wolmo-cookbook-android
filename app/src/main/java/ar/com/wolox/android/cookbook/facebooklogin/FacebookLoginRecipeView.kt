@@ -11,4 +11,6 @@ interface FacebookLoginRecipeView {
     fun showLoginCancel()
 
     fun showLoginError()
+
+    fun disableLogin()
 }

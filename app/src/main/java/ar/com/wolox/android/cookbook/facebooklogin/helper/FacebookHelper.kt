@@ -42,6 +42,11 @@ class FacebookHelper @Inject constructor(context: Context) {
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) =
             callbackManager.onActivityResult(requestCode, resultCode, data)
 
+    fun getLastSignedInAccount(listener: LoginListener) = AccessToken.getCurrentAccessToken()?.let {
+        onTokenSuccess(it, listener)
+        true
+    } ?: false
+
     /**
      * This method is for the button that Facebook API provides.
      * This button already has the login and logout actions.
@@ -65,11 +70,7 @@ class FacebookHelper @Inject constructor(context: Context) {
      */
     fun setFacebookLoginAction(view: View, fragment: Fragment, listener: LoginListener) {
         view.setOnClickListener {
-            if (isLoggedIn()) {
-                onTokenSuccess(AccessToken.getCurrentAccessToken(), listener)
-            } else {
-                LoginManager.getInstance().logInWithReadPermissions(fragment, Arrays.asList("public_profile,email"))
-            }
+            LoginManager.getInstance().logInWithReadPermissions(fragment, Arrays.asList("public_profile,email"))
         }
 
         LoginManager.getInstance().registerCallback(callbackManager, getFacebookCallback(listener))
@@ -94,11 +95,6 @@ class FacebookHelper @Inject constructor(context: Context) {
                 }
             }
         }
-    }
-
-    private fun isLoggedIn(): Boolean {
-        val accessToken = AccessToken.getCurrentAccessToken()
-        return accessToken != null
     }
 
     private fun onTokenSuccess(accessToken: AccessToken, listener: LoginListener) {
