@@ -47,10 +47,10 @@ class FacebookHelper @Inject constructor(context: Context) {
      * This button already has the login and logout actions.
      */
     fun setFacebookOriginalButtonAction(
-            loginButton: LoginButton,
-            fragment: Fragment,
-            loginListener: LoginListener,
-            logoutListener: LogoutListener
+        loginButton: LoginButton,
+        fragment: Fragment,
+        loginListener: LoginListener,
+        logoutListener: LogoutListener
     ) {
 
         loginButton.setReadPermissions(Arrays.asList("public_profile,email"))
