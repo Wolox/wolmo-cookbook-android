@@ -51,10 +51,12 @@ class FacebookHelper @Inject constructor(context: Context) {
      * This method is for the button that Facebook API provides.
      * This button already has the login and logout actions.
      */
-    fun setFacebookOriginalButtonAction(loginButton: LoginButton,
-                                        fragment: Fragment,
-                                        loginListener: LoginListener,
-                                        logoutListener: LogoutListener) {
+    fun setFacebookOriginalButtonAction(
+        loginButton: LoginButton,
+        fragment: Fragment,
+        loginListener: LoginListener,
+        logoutListener: LogoutListener
+    ) {
 
         loginButton.setReadPermissions(Arrays.asList("public_profile,email"))
         loginButton.fragment = fragment
