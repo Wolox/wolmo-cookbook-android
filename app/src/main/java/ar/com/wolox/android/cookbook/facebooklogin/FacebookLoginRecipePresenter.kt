@@ -12,8 +12,10 @@ class FacebookLoginRecipePresenter @Inject constructor(private val facebookHelpe
     override fun onViewAttached() {
         super.onViewAttached()
 
-        val signedInAccount = facebookHelper.getLastSignedInAccount(this)
-        if (signedInAccount) view.disableLogin()
+        if (facebookHelper.isFacebookAccountPresent()) {
+            view.disableLogin()
+            facebookHelper.getLastSignedInAccount(this)
+        }
     }
 
     override fun onLoginSuccess(account: FacebookAccount) {

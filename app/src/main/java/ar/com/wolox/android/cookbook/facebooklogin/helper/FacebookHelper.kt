@@ -41,10 +41,11 @@ class FacebookHelper @Inject constructor(context: Context) {
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) =
             callbackManager.onActivityResult(requestCode, resultCode, data)
 
+    fun isFacebookAccountPresent() = AccessToken.getCurrentAccessToken() != null
+
     fun getLastSignedInAccount(listener: LoginListener) = AccessToken.getCurrentAccessToken()?.let {
         onTokenSuccess(it, listener)
-        true
-    } ?: false
+    }
 
     /**
      * This method is for the button that Facebook API provides.
