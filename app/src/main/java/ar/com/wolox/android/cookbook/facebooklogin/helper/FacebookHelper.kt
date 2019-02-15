@@ -22,7 +22,6 @@ import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
-import java.util.Arrays
 import javax.inject.Inject
 
 @ApplicationScope
@@ -55,9 +54,10 @@ class FacebookHelper @Inject constructor(context: Context) {
         loginButton: LoginButton,
         fragment: Fragment,
         loginListener: LoginListener,
-        logoutListener: LogoutListener
+        logoutListener: LogoutListener,
+        permissions: Array<String> = arrayOf(PERMISSION_PUBLIC_PROFILE, PERMISSION_EMAIL)
     ) {
-        loginButton.setReadPermissions(Arrays.asList("public_profile,email"))
+        loginButton.setReadPermissions(permissions.toList())
         loginButton.fragment = fragment
         loginButton.registerCallback(callbackManager, getFacebookCallback(loginListener))
 
@@ -67,9 +67,14 @@ class FacebookHelper @Inject constructor(context: Context) {
     /**
      * This method is to give the login action to a personal button or any clickable view.
      */
-    fun setFacebookLoginAction(view: View, fragment: Fragment, listener: LoginListener) {
+    fun setFacebookLoginAction(
+        view: View,
+        fragment: Fragment,
+        listener: LoginListener,
+        permissions: Array<String> = arrayOf(PERMISSION_PUBLIC_PROFILE, PERMISSION_EMAIL)
+    ) {
         view.setOnClickListener {
-            LoginManager.getInstance().logInWithReadPermissions(fragment, Arrays.asList("public_profile,email"))
+            LoginManager.getInstance().logInWithReadPermissions(fragment, permissions.toList())
         }
 
         LoginManager.getInstance().registerCallback(callbackManager, getFacebookCallback(listener))
@@ -160,9 +165,12 @@ class FacebookHelper @Inject constructor(context: Context) {
         private const val TAG = "FacebookHelper"
 
         private const val FIELDS = "fields"
-        const val FIELD_ID = "id"
-        const val FIELD_NAME = "name"
-        const val FIELD_EMAIL = "email"
-        const val FIELD_PICTURE = "picture.width(200)"
+        private const val FIELD_ID = "id"
+        private const val FIELD_NAME = "name"
+        private const val FIELD_EMAIL = "email"
+        private const val FIELD_PICTURE = "picture.width(200)"
+
+        private const val PERMISSION_PUBLIC_PROFILE = "public_profile"
+        private const val PERMISSION_EMAIL = "email"
     }
 }
