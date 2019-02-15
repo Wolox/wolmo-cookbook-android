@@ -6,8 +6,7 @@ import org.json.JSONObject
 class FacebookAccount(jsonAccount: JSONObject) {
     val name = jsonAccount.optString("name") ?: ""
     val email = jsonAccount.optString("email") ?: ""
-    val picture = {
-        val url = jsonAccount.optJSONObject("picture")?.optJSONObject("data")?.optString("url")
-        if (url != null) Uri.parse(url) else null
+    val picture = jsonAccount.optJSONObject("picture")?.optJSONObject("data")?.optString("url")?.let {
+        Uri.parse(it)
     }
 }
