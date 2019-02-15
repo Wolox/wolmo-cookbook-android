@@ -2,7 +2,7 @@ package ar.com.wolox.android.cookbook.facebooklogin
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.facebooklogin.helper.FacebookHelper
+import ar.com.wolox.android.cookbook.facebooklogin.proxy.FacebookProxy
 import ar.com.wolox.android.cookbook.facebooklogin.model.FacebookAccount
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
@@ -23,18 +23,18 @@ class FacebookLoginRecipeFragment : WolmoFragment<FacebookLoginRecipePresenter>(
     @Inject
     internal lateinit var toastFactory: ToastFactory
     @Inject
-    internal lateinit var facebookHelper: FacebookHelper
+    internal lateinit var facebookProxy: FacebookProxy
 
     override fun layout(): Int = R.layout.fragment_facebook_login
 
     override fun init() {
-        facebookHelper.setFacebookOriginalButtonAction(vLoginFacebookOriginalLoginBtn, this, presenter, presenter)
-        facebookHelper.setFacebookLoginAction(vLoginFacebookLoginBtn, this, presenter)
-        facebookHelper.setFacebookLogoutAction(vLoginFacebookLogoutBtn, presenter)
+        facebookProxy.setFacebookOriginalButtonAction(vLoginFacebookOriginalLoginBtn, this, presenter, presenter)
+        facebookProxy.setFacebookLoginAction(vLoginFacebookLoginBtn, this, presenter)
+        facebookProxy.setFacebookLogoutAction(vLoginFacebookLogoutBtn, presenter)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        facebookHelper.onActivityResult(requestCode, resultCode, data)
+        facebookProxy.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
     }
 

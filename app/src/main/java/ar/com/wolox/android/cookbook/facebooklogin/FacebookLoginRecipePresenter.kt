@@ -1,20 +1,20 @@
 package ar.com.wolox.android.cookbook.facebooklogin
 
-import ar.com.wolox.android.cookbook.facebooklogin.helper.FacebookHelper
+import ar.com.wolox.android.cookbook.facebooklogin.proxy.FacebookProxy
 import ar.com.wolox.android.cookbook.facebooklogin.model.FacebookAccount
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import com.facebook.FacebookException
 import javax.inject.Inject
 
-class FacebookLoginRecipePresenter @Inject constructor(private val facebookHelper: FacebookHelper)
-    : BasePresenter<FacebookLoginRecipeView>(), FacebookHelper.LoginListener, FacebookHelper.LogoutListener {
+class FacebookLoginRecipePresenter @Inject constructor(private val facebookProxy: FacebookProxy)
+    : BasePresenter<FacebookLoginRecipeView>(), FacebookProxy.LoginListener, FacebookProxy.LogoutListener {
 
     override fun onViewAttached() {
         super.onViewAttached()
 
-        if (facebookHelper.isFacebookAccountPresent()) {
+        if (facebookProxy.isFacebookAccountPresent()) {
             view.disableLogin()
-            facebookHelper.getLastSignedInAccount(this)
+            facebookProxy.getLastSignedInAccount(this)
         }
     }
 

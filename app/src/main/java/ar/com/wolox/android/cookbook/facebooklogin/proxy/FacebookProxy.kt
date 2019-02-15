@@ -1,4 +1,4 @@
-package ar.com.wolox.android.cookbook.facebooklogin.helper
+package ar.com.wolox.android.cookbook.facebooklogin.proxy
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -25,7 +25,7 @@ import java.security.NoSuchAlgorithmException
 import javax.inject.Inject
 
 @ApplicationScope
-class FacebookHelper @Inject constructor(context: Context) {
+class FacebookProxy @Inject constructor(context: Context) {
 
     private val applicationContext: Context = context.applicationContext
 
@@ -163,7 +163,7 @@ class FacebookHelper @Inject constructor(context: Context) {
     companion object {
 
         private const val PACKAGE_NAME = "ar.com.wolox.android.cookbook"
-        private const val TAG = "FacebookHelper"
+        private const val TAG = "FacebookProxy"
 
         private const val FIELDS = "fields"
         private const val FIELD_ID = "id"
