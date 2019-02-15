@@ -97,12 +97,16 @@ class FacebookHelper @Inject constructor(context: Context) {
         }
     }
 
-    private fun onTokenSuccess(accessToken: AccessToken, listener: LoginListener) {
+    private fun onTokenSuccess(
+        accessToken: AccessToken,
+        listener: LoginListener,
+        fields: Array<String> = arrayOf(FIELD_ID, FIELD_EMAIL, FIELD_NAME, FIELD_PICTURE)
+    ) {
         val request = GraphRequest.newMeRequest(accessToken) { obj, _ ->
             listener.onLoginSuccess(FacebookAccount(obj))
         }
         val parameters = Bundle()
-        parameters.putString("fields", "id,name,email,picture.width(200)")
+        parameters.putString(FIELDS, fields.joinToString(","))
         request.parameters = parameters
         request.executeAsync()
     }
@@ -155,5 +159,11 @@ class FacebookHelper @Inject constructor(context: Context) {
 
         private const val PACKAGE_NAME = "ar.com.wolox.android.cookbook"
         private const val TAG = "FacebookHelper"
+
+        private const val FIELDS = "fields"
+        const val FIELD_ID = "id"
+        const val FIELD_NAME = "name"
+        const val FIELD_EMAIL = "email"
+        const val FIELD_PICTURE = "picture.width(200)"
     }
 }
