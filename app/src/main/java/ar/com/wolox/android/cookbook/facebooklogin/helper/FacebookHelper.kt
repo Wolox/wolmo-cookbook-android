@@ -57,7 +57,6 @@ class FacebookHelper @Inject constructor(context: Context) {
         loginListener: LoginListener,
         logoutListener: LogoutListener
     ) {
-
         loginButton.setReadPermissions(Arrays.asList("public_profile,email"))
         loginButton.fragment = fragment
         loginButton.registerCallback(callbackManager, getFacebookCallback(loginListener))
