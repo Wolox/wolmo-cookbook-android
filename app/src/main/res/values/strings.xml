@@ -34,8 +34,8 @@
     <string name="data_sync_check_it_out">Check it out!</string>
 
     <!-- Facebook -->
-    <string name="facebook_app_id">329539014322126</string>
-    <string name="fb_login_protocol_scheme">fb329539014322126</string>
+    <string name="facebook_login_app_id">329539014322126</string>
+    <string name="facebook_login_protocol_scheme">fb329539014322126</string>
     <string name="facebook_login_error_cancelled">The sign in was cancelled by the user.</string>
     <string name="facebook_login_error_unexpected">Unexpected error</string>
     <string name="facebook_login_btn">Login with Facebook</string>
