@@ -14,6 +14,7 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
     fun onRecipeClicked(clickedRecipe: Recipe) {
         when (clickedRecipe) {
             Recipe.GOOGLE_LOGIN -> view.goToGoogleLogin()
+            Recipe.FACEBOOK_LOGIN -> view.goToFacebookLogin()
             Recipe.NAVIGATION -> view.goToNavigation()
             Recipe.DATA_SYNC -> view.goToDataSyncRecipe()
         }

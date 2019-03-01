@@ -3,6 +3,7 @@ package ar.com.wolox.android.cookbook.recipepicker
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
+import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
@@ -29,6 +30,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
         return recipes.map {
             when (it) {
                 Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.bg_google_login, R.string.recipe_picker_google_login)
+                Recipe.FACEBOOK_LOGIN -> RecipeItem(it, R.drawable.bg_facebook_login, R.string.recipe_picker_facebook_login)
                 Recipe.NAVIGATION -> RecipeItem(it, R.drawable.bg_navigation, R.string.recipe_picker_navigation)
                 Recipe.DATA_SYNC -> RecipeItem(it, R.drawable.bg_data_sync_pokemon, R.string.recipe_picker_data_sync)
             }
@@ -37,6 +39,10 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     override fun goToGoogleLogin() {
         requireActivity().startActivity(Intent(requireContext(), GoogleLoginRecipeActivity::class.java))
+    }
+
+    override fun goToFacebookLogin() {
+        requireActivity().startActivity(Intent(requireContext(), FacebookLoginRecipeActivity::class.java))
     }
 
     override fun goToNavigation() {

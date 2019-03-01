@@ -1,5 +1,7 @@
 package ar.com.wolox.android.cookbook.common.di
 
+import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
+import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeFragment
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeFragment
 import ar.com.wolox.android.cookbook.recipepicker.RecipePickerActivity
@@ -21,4 +23,10 @@ abstract class AppModule {
 
     @ContributesAndroidInjector
     abstract fun googleLoginFragment(): GoogleLoginRecipeFragment
+
+    @ContributesAndroidInjector
+    abstract fun facebookLoginActivity(): FacebookLoginRecipeActivity
+
+    @ContributesAndroidInjector
+    abstract fun facebookLoginFragment(): FacebookLoginRecipeFragment
 }

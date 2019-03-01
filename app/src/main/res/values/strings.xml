@@ -6,6 +6,7 @@
 
     <!-- Recipe Picker -->
     <string name="recipe_picker_google_login">Google login</string>
+    <string name="recipe_picker_facebook_login">Facebook login</string>
     <string name="recipe_picker_navigation">Navigation Arch. Component</string>
     <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
 
@@ -31,5 +32,12 @@
     <string name="data_sync_no_pokemon">No Pokemon Found!</string>
     <string name="data_sync_search_pokemon">Search a Pokemon</string>
     <string name="data_sync_check_it_out">Check it out!</string>
+
+    <!-- Facebook -->
+    <string name="facebook_login_app_id">329539014322126</string>
+    <string name="facebook_login_protocol_scheme">fb329539014322126</string>
+    <string name="facebook_login_error_cancelled">The sign in was cancelled by the user.</string>
+    <string name="facebook_login_error_unexpected">Unexpected error</string>
+    <string name="facebook_login_btn">Login with Facebook</string>
 
 </resources>
