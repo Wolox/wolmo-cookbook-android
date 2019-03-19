@@ -27,10 +27,11 @@ class GoogleLoginRecipePresenterTest {
         MockitoAnnotations.initMocks(this)
 
         presenter = GoogleLoginRecipePresenter(googleHelper)
+
     }
 
     @Test
-    fun isASignedInAccount_True_ShowUser() {
+    fun `Should show user on attach when there is a last signed in account`() {
         whenever(googleHelper.getLastSignedInAccount()).thenReturn(mock())
         presenter.attachView(view)
 
@@ -38,7 +39,7 @@ class GoogleLoginRecipePresenterTest {
     }
 
     @Test
-    fun isASignedInAccount_False_DoNotShowUser() {
+    fun `Should not show user on attach when there is not a last signed in account`() {
         whenever(googleHelper.getLastSignedInAccount()).thenReturn(null)
         presenter.attachView(view)
 
@@ -46,9 +47,10 @@ class GoogleLoginRecipePresenterTest {
     }
 
     @Test
-    fun onGoogleLogout_ShowNoUser() {
+    fun `Should show no user on google logout`() {
         presenter.attachView(view)
         presenter.onGoogleLogout()
+
         verify(view, times(1)).showNoUser()
     }
 }
