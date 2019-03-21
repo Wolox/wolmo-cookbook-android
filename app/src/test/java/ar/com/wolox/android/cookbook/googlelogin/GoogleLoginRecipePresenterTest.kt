@@ -1,7 +1,9 @@
 package ar.com.wolox.android.cookbook.googlelogin
 
 import ar.com.wolox.android.cookbook.googlelogin.helper.GoogleHelper
+import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.times
@@ -25,14 +27,12 @@ class GoogleLoginRecipePresenterTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-
         presenter = GoogleLoginRecipePresenter(googleHelper)
-
     }
 
     @Test
     fun `Should show user on attach when there is a last signed in account`() {
-        whenever(googleHelper.getLastSignedInAccount()).thenReturn(mock())
+        doReturn(mock<GoogleAccount>()).whenever(googleHelper).getLastSignedInAccount()
         presenter.attachView(view)
 
         verify(view, times(1)).showUser(any())
@@ -40,7 +40,7 @@ class GoogleLoginRecipePresenterTest {
 
     @Test
     fun `Should not show user on attach when there is not a last signed in account`() {
-        whenever(googleHelper.getLastSignedInAccount()).thenReturn(null)
+        doReturn(null).whenever(googleHelper).getLastSignedInAccount()
         presenter.attachView(view)
 
         verify(view, never()).showUser(any())
