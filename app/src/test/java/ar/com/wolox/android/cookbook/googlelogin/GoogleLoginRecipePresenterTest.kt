@@ -32,7 +32,9 @@ class GoogleLoginRecipePresenterTest {
 
     @Test
     fun `Should show user on attach when there is a last signed in account`() {
-        doReturn(mock<GoogleAccount>()).whenever(googleHelper).getLastSignedInAccount()
+        val user = mock<GoogleAccount>()
+        doReturn(user).whenever(googleHelper).getLastSignedInAccount()
+
         presenter.attachView(view)
 
         verify(view, times(1)).showUser(any())
@@ -41,6 +43,7 @@ class GoogleLoginRecipePresenterTest {
     @Test
     fun `Should not show user on attach when there is not a last signed in account`() {
         doReturn(null).whenever(googleHelper).getLastSignedInAccount()
+
         presenter.attachView(view)
 
         verify(view, never()).showUser(any())
@@ -49,6 +52,7 @@ class GoogleLoginRecipePresenterTest {
     @Test
     fun `Should show no user on google logout`() {
         presenter.attachView(view)
+
         presenter.onGoogleLogout()
 
         verify(view, times(1)).showNoUser()
