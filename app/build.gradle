@@ -29,6 +29,8 @@ android {
         versionName "1.0.0"
 
         setProperty("archivesBaseName", "WoloxApp-$versionName") // Generated APK file name
+
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
 
     signingConfigs {
@@ -104,6 +106,12 @@ buildscript {
     ext.rxjava2_version = '2.2.0'
     ext.rxjava2_android_version = '2.1.0'
     ext.facebook_login_version = '4.39.0'
+    ext.espresso_core = '3.0.1'
+    ext.test_runner = '1.1.0'
+    ext.test_rules = '1.1.0'
+    ext.test_kotlin_version = '2.1.0'
+    ext.test_core = '1.0.0'
+    ext.mockito_core = '1.10.19'
 }
 
 dependencies {
@@ -147,6 +155,13 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:2.13.0"
     testImplementation "org.assertj:assertj-core:3.9.0"
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$test_kotlin_version"
+
+    testImplementation "androidx.test:core:$test_core"
+    testImplementation "org.mockito:mockito-core:$mockito_core"
+
+    androidTestImplementation "androidx.test:runner:$test_runner"
+    androidTestImplementation "androidx.test:rules:$test_rules"
 
     // Google Play Services
     implementation "com.google.android.gms:play-services-auth:$google_play_services_version"
