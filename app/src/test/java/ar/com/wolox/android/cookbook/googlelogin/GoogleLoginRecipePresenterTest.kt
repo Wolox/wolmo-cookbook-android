@@ -37,7 +37,7 @@ class GoogleLoginRecipePresenterTest {
 
         presenter.attachView(view)
 
-        verify(view, times(1)).showUser(any())
+        verify(view, times(1)).showUser(user)
     }
 
     @Test
