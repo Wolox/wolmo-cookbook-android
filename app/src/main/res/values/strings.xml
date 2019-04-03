@@ -9,8 +9,9 @@
     <string name="recipe_picker_facebook_login">Facebook login</string>
     <string name="recipe_picker_navigation">Navigation Arch. Component</string>
     <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
+    <string name="recipe_picker_tests">Tests</string>
 
-    <!-- Google login -->
+    <!-- Google onLoginButtonClick -->
     <string name="google_login_logout">Logout</string>
     <string name="google_login_error_cancelled">The sign in was cancelled by the user.</string>
     <string name="google_login_error_in_progress">A sign in process is currently in progress and the current one cannot continue.</string>
@@ -39,5 +40,12 @@
     <string name="facebook_login_error_cancelled">The sign in was cancelled by the user.</string>
     <string name="facebook_login_error_unexpected">Unexpected error</string>
     <string name="facebook_login_btn">Login with Facebook</string>
+
+    <!-- Test Login -->
+    <string name="test_login_email">Email</string>
+    <string name="test_login_password">Password</string>
+	<string name="test_login_login">Login</string>
+    <string name="test_login_empty_field">Debe completar este campo</string>
+    <string name="test_login_invalid_email">Email invalido</string>
 
 </resources>
