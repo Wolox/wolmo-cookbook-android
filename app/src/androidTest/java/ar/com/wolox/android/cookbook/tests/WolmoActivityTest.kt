@@ -13,11 +13,11 @@ import org.junit.runner.RunWith
 import java.lang.reflect.ParameterizedType
 
 @RunWith(AndroidJUnit4::class)
-open class WolmoActivityTest<T : WolmoActivity>() {
+open class WolmoActivityTest<T : WolmoActivity> {
 
     @Rule
     @JvmField
-    var activityRule = ActivityTestRule<T>(getViewClazz())
+    var activityRule = ActivityTestRule<T>(getActivityClass())
 
     @Before
     fun beforeWolmoActivity() {
@@ -25,7 +25,7 @@ open class WolmoActivityTest<T : WolmoActivity>() {
     }
 
     @Suppress("UNCHECKED_CAST")
-    private fun getViewClazz(): Class<T> {
+    private fun getActivityClass(): Class<T> {
         return (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<T>
     }
 

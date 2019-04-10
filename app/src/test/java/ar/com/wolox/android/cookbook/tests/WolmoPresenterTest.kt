@@ -13,7 +13,7 @@ abstract class WolmoPresenterTest<V : Any, P : BasePresenter<V>> {
     lateinit var view: V
 
     @Suppress("UNCHECKED_CAST")
-    private fun getViewClazz(): Class<V> {
+    private fun getViewClass(): Class<V> {
         return (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<V>
     }
 
@@ -21,7 +21,7 @@ abstract class WolmoPresenterTest<V : Any, P : BasePresenter<V>> {
     fun setup() {
         MockitoAnnotations.initMocks(this)
         presenter = getPresenterInstance()
-        view = mock(getViewClazz())
+        view = mock(getViewClass())
         presenter.attachView(view)
     }
 
