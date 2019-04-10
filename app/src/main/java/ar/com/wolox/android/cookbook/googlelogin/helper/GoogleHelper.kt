@@ -22,7 +22,7 @@ class GoogleHelper @Inject constructor(context: Context) {
     }
 
     /**
-     * Set google onLoginButtonClick action to the view.
+     * Set google login action to the view.
      *
      * @param fragment where the button is used.
      *
@@ -53,7 +53,7 @@ class GoogleHelper @Inject constructor(context: Context) {
     /**
      * Get the google sign in client object.
      *
-     * @param fragment where the onLoginButtonClick/logout is.
+     * @param fragment where the login/logout is.
      */
     private fun getClient(fragment: Fragment): GoogleSignInClient {
         // Configure Google Sign-in and the GoogleSignInClient object

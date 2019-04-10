@@ -11,7 +11,7 @@
     <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
     <string name="recipe_picker_tests">Tests</string>
 
-    <!-- Google onLoginButtonClick -->
+    <!-- Google login -->
     <string name="google_login_logout">Logout</string>
     <string name="google_login_error_cancelled">The sign in was cancelled by the user.</string>
     <string name="google_login_error_in_progress">A sign in process is currently in progress and the current one cannot continue.</string>
