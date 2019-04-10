@@ -1,9 +1,5 @@
-package ar.com.wolox.android.cookbook.tets
+package ar.com.wolox.android.cookbook.tests
 
-import ar.com.wolox.android.cookbook.tests.TestLoginRecipePresenter
-import ar.com.wolox.android.cookbook.tests.TestLoginRecipeService
-import ar.com.wolox.android.cookbook.tests.TestLoginRecipeView
-import ar.com.wolox.android.cookbook.tests.TestLoginUserModel
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify

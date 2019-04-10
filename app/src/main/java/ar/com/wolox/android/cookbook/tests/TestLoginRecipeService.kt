@@ -4,7 +4,7 @@ import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
 import javax.inject.Inject
 
 @ApplicationScope
-class TestLoginRecipeService @Inject constructor() {
+open class TestLoginRecipeService @Inject constructor() {
 
     /**
      * This method should make the login and return the user or a null if user is invalid,
