@@ -4,31 +4,19 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 
-class TestLoginRecipePresenterTest {
-
-    private lateinit var presenter: TestLoginRecipePresenter
+class TestLoginRecipePresenterTest : WolmoPresenterTest<TestLoginRecipeView, TestLoginRecipePresenter>() {
 
     @Mock
     lateinit var loginService: TestLoginRecipeService
 
     @Mock
-    lateinit var view: TestLoginRecipeView
-
-    @Mock
     lateinit var userModel: TestLoginUserModel
 
-    @Before
-    fun setup() {
-        MockitoAnnotations.initMocks(this)
-        presenter = TestLoginRecipePresenter(loginService)
-        presenter.attachView(view)
-    }
+    override fun getPresenterInstance() = TestLoginRecipePresenter(loginService)
 
     @Test
     fun `Should go to next window when login is successful`() {
