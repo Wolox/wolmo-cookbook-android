@@ -150,18 +150,6 @@ dependencies {
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
 
-    // Testing dependencies
-    testImplementation "junit:junit:4.12"
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
-    testImplementation "org.assertj:assertj-core:$assertj_core"
-    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
-
-    androidTestImplementation "androidx.test.ext:junit:$android_junit"
-    androidTestImplementation "androidx.test:rules:$test_rules"
-    androidTestImplementation "androidx.test:runner:$test_runner"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core"
-    androidTestImplementation "org.assertj:assertj-core:$assertj_core"
-
     // Google Play Services
     implementation "com.google.android.gms:play-services-auth:$google_play_services_version"
 
@@ -175,5 +163,21 @@ dependencies {
 
     // Facebook Login
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
+}
 
+// Unit testing dependencies
+dependencies {
+    testImplementation "junit:junit:4.12"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+    testImplementation "org.assertj:assertj-core:$assertj_core"
+    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
+}
+
+// Instrumented testing dependencies
+dependencies {
+    androidTestImplementation "androidx.test.ext:junit:$android_junit"
+    androidTestImplementation "androidx.test:rules:$test_rules"
+    androidTestImplementation "androidx.test:runner:$test_runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core"
+    androidTestImplementation "org.assertj:assertj-core:$assertj_core"
 }
