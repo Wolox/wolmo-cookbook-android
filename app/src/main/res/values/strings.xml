@@ -44,9 +44,9 @@
     <!-- Test Login -->
     <string name="test_login_email">Email</string>
     <string name="test_login_password">Password</string>
-	<string name="test_login_login">Login</string>
+    <string name="test_login_login">Login</string>
     <string name="test_login_empty_field">Debe completar este campo</string>
     <string name="test_login_invalid_email">Email invalido</string>
-	<string name="test_login_login_error">Incorrect user or password.</string>
+    <string name="test_login_login_error">Incorrect user or password.</string>
 
 </resources>
