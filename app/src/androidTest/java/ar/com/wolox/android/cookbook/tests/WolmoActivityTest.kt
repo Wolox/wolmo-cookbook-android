@@ -6,7 +6,6 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.rule.ActivityTestRule
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
 import org.hamcrest.Matcher
-import org.junit.Before
 import org.junit.Rule
 import java.lang.reflect.ParameterizedType
 
@@ -15,11 +14,6 @@ open class WolmoActivityTest<T : WolmoActivity> {
     @Rule
     @JvmField
     var activityRule = ActivityTestRule<T>(getActivityClass())
-
-    @Before
-    fun beforeWolmoActivity() {
-        activityRule.activity.supportFragmentManager.beginTransaction()
-    }
 
     @Suppress("UNCHECKED_CAST")
     private fun getActivityClass(): Class<T> {

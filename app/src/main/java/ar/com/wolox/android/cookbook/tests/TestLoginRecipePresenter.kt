@@ -6,6 +6,6 @@ import javax.inject.Inject
 class TestLoginRecipePresenter @Inject constructor(private val loginService: TestLoginRecipeService) : BasePresenter<TestLoginRecipeView>() {
 
     fun onLoginButtonClick(email: String, password: String) {
-        loginService.login(email, password)?.let { view.goToNextWindow() } ?: view.showLoginError()
+        loginService.login(email, password, { view.goToNextWindow() }, { view.showLoginError() })
     }
 }

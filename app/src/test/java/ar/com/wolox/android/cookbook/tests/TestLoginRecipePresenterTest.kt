@@ -1,6 +1,8 @@
 package ar.com.wolox.android.cookbook.tests
 
-import com.nhaarman.mockitokotlin2.doReturn
+import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.doAnswer
+import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
@@ -13,14 +15,14 @@ class TestLoginRecipePresenterTest : WolmoPresenterTest<TestLoginRecipeView, Tes
     @Mock
     lateinit var loginService: TestLoginRecipeService
 
-    @Mock
-    lateinit var userModel: TestLoginUserModel
-
     override fun getPresenterInstance() = TestLoginRecipePresenter(loginService)
 
     @Test
     fun `Should go to next window when login is successful`() {
-        doReturn(userModel).whenever(loginService).login(anyString(), anyString())
+        val onSuccessParameterPosition = 2
+        doAnswer { invocation ->
+            invocation.getArgument<(TestLoginUserModel) -> Unit>(onSuccessParameterPosition)(mock())
+        }.whenever(loginService).login(anyString(), anyString(), any(), any())
 
         presenter.onLoginButtonClick(EMAIL, PASSWORD)
 
@@ -29,7 +31,10 @@ class TestLoginRecipePresenterTest : WolmoPresenterTest<TestLoginRecipeView, Tes
 
     @Test
     fun `Should show error when login is unsuccessful`() {
-        doReturn(null).whenever(loginService).login(anyString(), anyString())
+        val onErrorParameterPosition = 3
+        doAnswer { invocation ->
+            invocation.getArgument<() -> Unit>(onErrorParameterPosition)()
+        }.whenever(loginService).login(anyString(), anyString(), any(), any())
 
         presenter.onLoginButtonClick(EMAIL, PASSWORD)
 
