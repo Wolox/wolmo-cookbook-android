@@ -12,10 +12,10 @@ open class TestLoginRecipeService @Inject constructor() {
      * but this doesn't concern the tests so it will always returns a hardcoded user with the received email.
      */
     private class LoginTask constructor(
-            private val email: String,
-            private val password: String,
-            private val onSuccess: (TestLoginUserModel) -> Unit,
-            private val onError: () -> Unit
+        private val email: String,
+        private val password: String,
+        private val onSuccess: (TestLoginUserModel) -> Unit,
+        private val onError: () -> Unit
     ) : AsyncTask<Void, Void, TestLoginUserModel?>() {
 
         override fun doInBackground(vararg params: Void?) = TestLoginUserModel(email)
@@ -24,10 +24,10 @@ open class TestLoginRecipeService @Inject constructor() {
     }
 
     fun login(
-            email: String,
-            password: String,
-            onSuccess: (TestLoginUserModel) -> Unit,
-            onError: () -> Unit
+        email: String,
+        password: String,
+        onSuccess: (TestLoginUserModel) -> Unit,
+        onError: () -> Unit
     ) {
         LoginTask(email, password, onSuccess, onError).execute()
     }
