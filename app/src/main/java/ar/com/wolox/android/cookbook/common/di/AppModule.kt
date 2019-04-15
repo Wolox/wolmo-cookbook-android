@@ -1,5 +1,6 @@
 package ar.com.wolox.android.cookbook.common.di
 
+import ar.com.wolox.android.cookbook.WolmoTestActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeFragment
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
@@ -11,6 +12,9 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class AppModule {
+
+    @ContributesAndroidInjector
+    abstract fun testActivity(): WolmoTestActivity
 
     @ContributesAndroidInjector
     abstract fun recipePickerActivity(): RecipePickerActivity

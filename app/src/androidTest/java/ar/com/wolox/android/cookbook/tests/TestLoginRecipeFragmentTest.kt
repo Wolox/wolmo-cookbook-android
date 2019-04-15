@@ -11,7 +11,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class TestLoginRecipeActivityTest : WolmoActivityTest<TestLoginRecipeActivity>() {
+class TestLoginRecipeFragmentTest : WolmoFragmentTest() {
+
+    override fun getFragmentInstance() = TestLoginRecipeFragment()
 
     @Test
     fun should_ShowEmailEmptyError_When_EmailInputIsEmpty() {

@@ -1,10 +1,10 @@
-<manifest
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="ar.com.wolox.android.cookbook"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="ar.com.wolox.android.cookbook">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".CookbookApplication"
@@ -12,65 +12,55 @@
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-
         <activity
             android:name=".recipepicker.RecipePickerActivity"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".navigation.NavigationActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".navigation.NewNavigationActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".googlelogin.GoogleLoginRecipeActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".WolmoTestActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".datasync.DataSyncRecipeActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".facebooklogin.FacebookLoginRecipeActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tests.TestLoginRecipeActivity"
-            android:screenOrientation="portrait" />
-
-        <!-- Metadata for Facebook Login -->
+            android:screenOrientation="portrait" /> <!-- Metadata for Facebook Login -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_login_app_id" />
-
-        <!-- Activity for Facebook Login -->
+            android:value="@string/facebook_login_app_id" /> <!-- Activity for Facebook Login -->
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
-
-        <!-- Activity and intent filter for Chrome Custom Tabs for Facebook Login -->
+            android:label="@string/app_name" /> <!-- Activity and intent filter for Chrome Custom Tabs for Facebook Login -->
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/facebook_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

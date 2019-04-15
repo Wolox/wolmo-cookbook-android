@@ -55,5 +55,5 @@ class TestLoginRecipeFragment : WolmoFragment<TestLoginRecipePresenter>(), TestL
     override fun goToNextWindow() =
             requireActivity().startActivity(Intent(requireContext(), DataSyncRecipeActivity::class.java))
 
-    override fun showLoginError() { vTestLoginEmailInput.error = "Hola" }
+    override fun showLoginError() = toastFactory.show(R.string.test_login_login_error)
 }
