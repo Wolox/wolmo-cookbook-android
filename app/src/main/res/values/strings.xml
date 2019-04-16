@@ -9,6 +9,7 @@
     <string name="recipe_picker_facebook_login">Facebook login</string>
     <string name="recipe_picker_navigation">Navigation Arch. Component</string>
     <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
+    <string name="recipe_picker_notifications">Notifications</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
@@ -39,5 +40,17 @@
     <string name="facebook_login_error_cancelled">The sign in was cancelled by the user.</string>
     <string name="facebook_login_error_unexpected">Unexpected error</string>
     <string name="facebook_login_btn">Login with Facebook</string>
+    
+    <!-- Notifications -->
+    <string name="notifications_general_channel">General notifications</string>
+    <string name="notifications_general_channel_id">general_notifications</string>
+    <string name="notifications_general_channel_description">All notifications with a normal priority will use this channel</string>
+    <string name="notifications_basic_type_title">Show simple notification</string>
+    <string name="notifications_text_expandable_type_title">Show with expandable text</string>
+    <string name="notifications_short_content">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="notifications_basic_title">Basic notification</string>
+    <string name="notifications_large_content">Recently we have discussed the emerging concept of smart farming that makes agriculture more efficient and effective with the help of high-precision algorithms. The mechanism that drives it is Machine Learning — the scientific field that gives machines the ability to learn without being strictly programmed. It has emerged together with big data technologies and high-performance computing to create new opportunities to unravel, quantify, and understand data intensive processes in agricultural operational environments.</string>
+    <string name="notifications_big_picture_title">Show with a picture</string>
+    <string name="notifications_actions_title">Show with actions</string>
 
 </resources>

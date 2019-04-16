@@ -6,8 +6,9 @@ import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
+import ar.com.wolox.android.cookbook.notifications.NotificationActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
-import kotlinx.android.synthetic.main.fragment_recipe_picker.vRecipePickerSelectionViewPager
+import kotlinx.android.synthetic.main.fragment_recipe_picker.*
 
 class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePickerView {
 
@@ -33,6 +34,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
                 Recipe.FACEBOOK_LOGIN -> RecipeItem(it, R.drawable.bg_facebook_login, R.string.recipe_picker_facebook_login)
                 Recipe.NAVIGATION -> RecipeItem(it, R.drawable.bg_navigation, R.string.recipe_picker_navigation)
                 Recipe.DATA_SYNC -> RecipeItem(it, R.drawable.bg_data_sync_pokemon, R.string.recipe_picker_data_sync)
+                Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.bg_notification_recipe, R.string.recipe_picker_notifications)
             }
         }
     }
@@ -51,6 +53,10 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     override fun goToDataSyncRecipe() {
         requireContext().startActivity(Intent(requireContext(), DataSyncRecipeActivity::class.java))
+    }
+
+    override fun goToNotificationsRecipe() {
+        requireContext().startActivity(Intent(requireContext(), NotificationActivity::class.java))
     }
 
     companion object {

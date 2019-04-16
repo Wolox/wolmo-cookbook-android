@@ -3,6 +3,7 @@ package ar.com.wolox.android.cookbook
 import ar.com.wolox.android.cookbook.common.di.CookbookNetworkingComponent
 import ar.com.wolox.android.cookbook.common.di.DaggerAppComponent
 import ar.com.wolox.android.cookbook.common.di.DaggerCookbookNetworkingComponent
+import ar.com.wolox.android.cookbook.notifications.helper.NotificationChannelHelper
 import ar.com.wolox.wolmo.core.WolmoApplication
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.gson.FieldNamingPolicy
@@ -23,6 +24,8 @@ class CookbookApplication : WolmoApplication() {
         // Initialize Application stuff here
         initializeLeakCanary()
         initializeFresco()
+
+        NotificationChannelHelper.init(this)
     }
 
     private fun initializeLeakCanary() {
