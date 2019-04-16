@@ -19,36 +19,8 @@ class TestLoginRecipeFragment : WolmoFragment<TestLoginRecipePresenter>(), TestL
 
     override fun init() {
         vTestLoginLoginBtn.setOnClickListener {
-            val isValidEmail = verifyEmailInput()
-            val isValidPassword = verifyPasswordInput()
-
-            if (isValidEmail && isValidPassword) {
-                presenter.onLoginButtonClick(vTestLoginEmailInput.text.toString(), vTestLoginPasswordInput.text.toString())
-            }
+            presenter.onLoginButtonClick(vTestLoginEmailInput.text.toString(), vTestLoginPasswordInput.text.toString())
         }
-    }
-
-    private fun verifyEmailInput(): Boolean {
-        if (vTestLoginEmailInput.text.isEmpty()) {
-            vTestLoginEmailInput.error = getString(R.string.test_login_empty_field)
-            return false
-        } else if (!isValidEmail(vTestLoginEmailInput.text.toString())) {
-            vTestLoginEmailInput.error = getString(R.string.test_login_invalid_email)
-            return false
-        }
-
-        return true
-    }
-
-    private fun isValidEmail(email: String) = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-
-    private fun verifyPasswordInput(): Boolean {
-        if (vTestLoginPasswordInput.text.isEmpty()) {
-            vTestLoginPasswordInput.error = getString(R.string.test_login_empty_field)
-            return false
-        }
-
-        return true
     }
 
     // This will go to DataSyncRecipe just because
@@ -56,4 +28,16 @@ class TestLoginRecipeFragment : WolmoFragment<TestLoginRecipePresenter>(), TestL
             requireActivity().startActivity(Intent(requireContext(), DataSyncRecipeActivity::class.java))
 
     override fun showLoginError() = toastFactory.show(R.string.test_login_login_error)
+
+    override fun showEmptyEmailError() {
+        vTestLoginEmailInput.error = getString(R.string.test_login_empty_field)
+    }
+
+    override fun showInvalidEmailError() {
+        vTestLoginEmailInput.error = getString(R.string.test_login_invalid_email)
+    }
+
+    override fun showEmptyPasswordError() {
+        vTestLoginPasswordInput.error = getString(R.string.test_login_empty_field)
+    }
 }

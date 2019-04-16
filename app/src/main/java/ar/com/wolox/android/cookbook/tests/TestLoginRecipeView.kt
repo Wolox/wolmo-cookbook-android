@@ -5,4 +5,10 @@ interface TestLoginRecipeView {
     fun goToNextWindow()
 
     fun showLoginError()
+
+    fun showEmptyEmailError()
+
+    fun showInvalidEmailError()
+
+    fun showEmptyPasswordError()
 }

@@ -7,15 +7,33 @@ import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Test
+import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
+import org.robolectric.RobolectricTestRunner
 
+@RunWith(RobolectricTestRunner::class)
 class TestLoginRecipePresenterTest : WolmoPresenterTest<TestLoginRecipeView, TestLoginRecipePresenter>() {
 
     @Mock
     lateinit var loginService: TestLoginRecipeService
 
     override fun getPresenterInstance() = TestLoginRecipePresenter(loginService)
+
+    @Test
+    fun `Should show empty fields error when fields are empty`() {
+        presenter.onLoginButtonClick("", "")
+
+        verify(view, times(1)).showEmptyEmailError()
+        verify(view, times(1)).showEmptyPasswordError()
+    }
+
+    @Test
+    fun `Should show invalid email error when email is bad formatted`() {
+        presenter.onLoginButtonClick(INVALID_EMAIL, PASSWORD)
+
+        verify(view, times(1)).showInvalidEmailError()
+    }
 
     @Test
     fun `Should go to next window when login is successful`() {
@@ -42,6 +60,7 @@ class TestLoginRecipePresenterTest : WolmoPresenterTest<TestLoginRecipeView, Tes
     }
 
     companion object {
+        private const val INVALID_EMAIL = "email"
         private const val EMAIL = "email@gmail.com"
         private const val PASSWORD = "1234"
     }
