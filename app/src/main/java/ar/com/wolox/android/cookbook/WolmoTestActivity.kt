@@ -1,6 +1,6 @@
 package ar.com.wolox.android.cookbook
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
 
 class WolmoTestActivity : WolmoActivity() {

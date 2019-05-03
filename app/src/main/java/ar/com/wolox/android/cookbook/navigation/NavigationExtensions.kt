@@ -1,6 +1,6 @@
 package ar.com.wolox.android.cookbook.navigation
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import ar.com.wolox.android.cookbook.R
