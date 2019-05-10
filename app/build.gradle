@@ -91,7 +91,8 @@ jacocoAndroidUnitTestReport {
 }
 
 buildscript {
-    ext.wolmo_version = '3.0.0'
+    ext.wolmo_core_version = '3.1.0'
+    ext.wolmo_networking_version = '3.0.0'
     ext.dagger_version = '2.22.1'
     ext.leak_canary_version = '1.6.2'
     ext.chuck_version = '1.1.0'
@@ -118,8 +119,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Wolmo
-    implementation "com.github.Wolox:wolmo-core-android:$wolmo_version"
-    implementation "com.github.Wolox:wolmo-networking-android:$wolmo_version"
+    implementation "com.github.Wolox:wolmo-core-android:$wolmo_core_version"
+    implementation "com.github.Wolox:wolmo-networking-android:$wolmo_networking_version"
 
     // Android support libraries
     implementation 'androidx.core:core:1.0.1'
@@ -161,8 +162,8 @@ dependencies {
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
 }
 
-// Unit testing dependencies
 dependencies {
+    // Unit testing dependencies
     testImplementation "junit:junit:4.12"
     testImplementation 'org.robolectric:robolectric:4.2'
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
@@ -170,8 +171,8 @@ dependencies {
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
 }
 
-// Instrumented testing dependencies
 dependencies {
+    // Instrumented testing dependencies
     androidTestImplementation "androidx.test.ext:junit:$android_junit"
     androidTestImplementation "androidx.test:rules:$test_rules"
     androidTestImplementation "androidx.test:runner:$test_runner"

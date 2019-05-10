@@ -1,5 +1,6 @@
 package ar.com.wolox.android.cookbook.tests
 
+import ar.com.wolox.wolmo.core.tests.WolmoPresenterTest
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.mock
