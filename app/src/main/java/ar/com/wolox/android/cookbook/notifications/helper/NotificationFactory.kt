@@ -2,23 +2,27 @@ package ar.com.wolox.android.cookbook.notifications.helper
 
 import android.app.Notification
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.support.v4.app.NotificationCompat
 import android.support.v4.app.NotificationManagerCompat
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.notifications.model.NotificationModel
+import ar.com.wolox.android.cookbook.notifications.model.SkeletalNotification
 import ar.com.wolox.android.cookbook.notifications.model.PictureExpandableNotification
 import ar.com.wolox.android.cookbook.notifications.model.TextExpandableNotification
+import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
+import javax.inject.Inject
 
-object NotificationHelper {
+@ApplicationScope
+class NotificationFactory @Inject constructor(@ApplicationScope val context: Context) {
 
-    private fun createNotification(context: Context, model: NotificationModel): Notification {
+    private fun createNotification(model: SkeletalNotification): Notification {
         return NotificationCompat
-            .Builder(context, model.channelId
-                ?: context.getString(R.string.notifications_general_channel_id))
+            .Builder(context, model.channelId)
             .apply {
                 setSmallIcon(R.drawable.ic_notification)
                 setContentTitle(model.title)
                 setContentText(model.content)
+
                 priority = model.priority
 
                 when (model) {
@@ -26,9 +30,10 @@ object NotificationHelper {
                         setStyle(NotificationCompat.BigTextStyle().bigText(model.longText))
                     }
                     is PictureExpandableNotification -> {
-                        setLargeIcon(model.picture)
+                        val pictureBitmap = BitmapFactory.decodeResource(context.resources, model.picture)
+                        setLargeIcon(pictureBitmap)
                         setStyle(NotificationCompat.BigPictureStyle()
-                            .bigPicture(model.picture)
+                            .bigPicture(pictureBitmap)
                             .bigLargeIcon(null)
                             .setBigContentTitle(model.bigContentTitle))
                     }
@@ -38,13 +43,15 @@ object NotificationHelper {
                     val (iconId, title, actionIntent) = it
                     addAction(iconId, title, actionIntent)
                 }
+
+                setAutoCancel(true)
             }
             .build()
     }
 
-    fun showNotification(context: Context, id: Int, notification: NotificationModel) {
+    fun showNotification(id: Int, notification: SkeletalNotification) {
         NotificationManagerCompat
             .from(context)
-            .notify(id, createNotification(context, notification))
+            .notify(id, createNotification(notification))
     }
 }

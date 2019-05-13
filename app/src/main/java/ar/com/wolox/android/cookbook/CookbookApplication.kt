@@ -3,7 +3,7 @@ package ar.com.wolox.android.cookbook
 import ar.com.wolox.android.cookbook.common.di.CookbookNetworkingComponent
 import ar.com.wolox.android.cookbook.common.di.DaggerAppComponent
 import ar.com.wolox.android.cookbook.common.di.DaggerCookbookNetworkingComponent
-import ar.com.wolox.android.cookbook.notifications.helper.NotificationChannelHelper
+import ar.com.wolox.android.cookbook.notifications.helper.NotificationChannelFactory
 import ar.com.wolox.wolmo.core.WolmoApplication
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.gson.FieldNamingPolicy
@@ -12,8 +12,12 @@ import com.squareup.leakcanary.LeakCanary
 import dagger.android.AndroidInjector
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
+import javax.inject.Inject
 
 class CookbookApplication : WolmoApplication() {
+
+    @Inject
+    lateinit var mNotificationChannelFactory: NotificationChannelFactory
 
     override fun onInit() {
         if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -25,7 +29,7 @@ class CookbookApplication : WolmoApplication() {
         initializeLeakCanary()
         initializeFresco()
 
-        NotificationChannelHelper.init(this)
+        mNotificationChannelFactory.init(this)
     }
 
     private fun initializeLeakCanary() {
