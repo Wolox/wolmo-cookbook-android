@@ -22,10 +22,16 @@ class TestLoginRecipePresenterTest : WolmoPresenterTest<TestLoginRecipeView, Tes
     override fun getPresenterInstance() = TestLoginRecipePresenter(loginService)
 
     @Test
-    fun `Should show empty fields error when fields are empty`() {
+    fun `Should show empty email error when email is empty`() {
         presenter.onLoginButtonClick("", "")
 
         verify(view, times(1)).showEmptyEmailError()
+    }
+
+    @Test
+    fun `Should show empty password error when password is empty`() {
+        presenter.onLoginButtonClick(EMAIL, "")
+
         verify(view, times(1)).showEmptyPasswordError()
     }
 
