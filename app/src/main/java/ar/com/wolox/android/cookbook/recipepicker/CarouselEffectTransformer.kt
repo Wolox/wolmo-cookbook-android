@@ -1,6 +1,6 @@
 package ar.com.wolox.android.cookbook.recipepicker
 
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.view.View
 import ar.com.wolox.android.cookbook.R
 import kotlinx.android.synthetic.main.item_recipe_image.view.*

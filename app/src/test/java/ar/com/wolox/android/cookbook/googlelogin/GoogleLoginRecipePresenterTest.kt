@@ -2,6 +2,7 @@ package ar.com.wolox.android.cookbook.googlelogin
 
 import ar.com.wolox.android.cookbook.googlelogin.helper.GoogleHelper
 import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
+import ar.com.wolox.wolmo.core.tests.WolmoPresenterTest
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
@@ -9,26 +10,15 @@ import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 
-class GoogleLoginRecipePresenterTest {
-
-    private lateinit var presenter: GoogleLoginRecipePresenter
+class GoogleLoginRecipePresenterTest : WolmoPresenterTest<GoogleLoginRecipeView, GoogleLoginRecipePresenter>() {
 
     @Mock
     lateinit var googleHelper: GoogleHelper
 
-    @Mock
-    lateinit var view: GoogleLoginRecipeView
-
-    @Before
-    fun setup() {
-        MockitoAnnotations.initMocks(this)
-        presenter = GoogleLoginRecipePresenter(googleHelper)
-    }
+    override fun getPresenterInstance() = GoogleLoginRecipePresenter(googleHelper)
 
     @Test
     fun `Should show user on attach when there is a last signed in account`() {
