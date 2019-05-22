@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Define a constraint layout with all the views of the fragment and the motion layout you want to animate -->
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/static_spacing_medium_extra"
+            android:background="@android:color/white">
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@android:color/background_light"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/static_spacing_medium_extra"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/bg_surprised_cat" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:text="wolox"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/font_large"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+            </android.support.v7.widget.Toolbar>
+            <!-- Include motion layout here -->
+            <include layout="@layout/motionlayout_viewpager"/>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/vHomeTabsMotion"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:tabIndicatorColor="@color/motionGreen"
+                app:tabSelectedTextColor="@color/motionGreen"
+                app:tabTextAppearance="@style/home_TabText">
+            </android.support.design.widget.TabLayout>
+
+        </android.support.design.widget.AppBarLayout>
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/vViewPagerMotion">
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

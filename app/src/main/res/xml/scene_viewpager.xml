@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/end"
+        motion:duration="1000000"
+        motion:interpolator="easeInOut">
+
+
+        <ConstraintSet android:id="@+id/start">
+            <Constraint
+                android:id="@+id/plane"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="8dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="@id/cloud">
+            </Constraint>
+            <Constraint
+                android:id="@id/cloud"
+                android:translationY="25dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginEnd="8dp"
+                android:text="Button"
+                motion:layout_constraintEnd_toEndOf="parent">
+            </Constraint>
+        </ConstraintSet>
+
+        <ConstraintSet android:id="@+id/end">
+            <Constraint
+                android:id="@id/plane"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginEnd="8dp"
+                android:text="Button"
+                motion:layout_constraintBottom_toBottomOf="@id/cloud"
+                motion:layout_constraintEnd_toEndOf="parent">
+            </Constraint>
+            <Constraint
+                android:id="@id/cloud"
+                android:layout_width="64dp"
+                android:translationY="25dp"
+                android:layout_height="64dp"
+                android:layout_marginEnd="8dp"
+                android:text="Button"
+                motion:layout_constraintStart_toStartOf="parent">
+            </Constraint>
+        </ConstraintSet>
+        <KeyFrameSet>
+            <KeyCycle
+                android:translationY="20dp"
+                motion:framePosition="0"
+                motion:target="@id/plane"
+                motion:waveOffset="0"
+                motion:wavePeriod="0.5"
+                motion:waveShape="sin"
+                motion:transitionEasing="decelerate"/>
+
+            <KeyCycle
+                android:translationY="20dp"
+                android:visibility="invisible"
+                motion:framePosition="0"
+                motion:target="@id/cloud"
+                motion:waveOffset="0.25"
+                motion:wavePeriod="1"
+                motion:waveShape="cos"
+                motion:transitionEasing="decelerate"/>
+
+        </KeyFrameSet>
+    </Transition>
+</MotionScene>

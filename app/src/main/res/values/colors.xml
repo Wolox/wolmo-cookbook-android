@@ -10,4 +10,7 @@
     <!-- Data Sync -->
     <color name="pokemon_screen_background">#54BAD2</color>
 
+    <color name="motionGreen">#8BB55A</color>
+
+
 </resources>

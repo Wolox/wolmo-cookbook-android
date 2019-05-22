@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Define a Motion layout with it's views -->
+<android.support.constraint.motion.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motionLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light"
+    app:layoutDescription="@xml/scene_viewpager">
+
+    <ImageView
+        android:id="@+id/plane"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/plane" />
+
+    <ImageView
+        android:id="@+id/cloud"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/cloud"
+        app:layout_constraintBaseline_toBaselineOf="@+id/plane"
+        app:layout_constraintBottom_toBottomOf="@+id/plane"
+        tools:layout_editor_absoluteX="8dp" />
+
+</android.support.constraint.motion.MotionLayout>
