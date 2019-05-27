@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.support.v4.app.NotificationCompat
 import android.support.v4.app.NotificationManagerCompat
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.notifications.model.InboxNotification
 import ar.com.wolox.android.cookbook.notifications.model.SkeletalNotification
 import ar.com.wolox.android.cookbook.notifications.model.PictureExpandableNotification
 import ar.com.wolox.android.cookbook.notifications.model.TextExpandableNotification
@@ -36,6 +37,15 @@ class NotificationFactory @Inject constructor(@ApplicationScope val context: Con
                             .bigPicture(pictureBitmap)
                             .bigLargeIcon(null)
                             .setBigContentTitle(model.bigContentTitle))
+                    }
+                    is InboxNotification -> {
+                        val inboxStyle = NotificationCompat.InboxStyle()
+
+                        model.lines.forEach {
+                            inboxStyle.addLine(it)
+                        }
+
+                        setStyle(inboxStyle)
                     }
                 }
 

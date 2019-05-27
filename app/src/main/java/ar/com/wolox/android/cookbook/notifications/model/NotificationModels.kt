@@ -35,4 +35,16 @@ class PictureExpandableNotification(
     @DrawableRes val picture: Int
 ) : SkeletalNotification(channelId, title, content, priority)
 
-data class NotificationAction(val iconId: Int, val title: String, val actionIntent: PendingIntent)
+class InboxNotification(
+    channelId: String,
+    title: String,
+    content: String,
+    priority: Int,
+    val lines: List<String>
+) : SkeletalNotification(channelId, title, content, priority)
+
+data class NotificationAction(
+    val iconId: Int,
+    val title: String,
+    val actionIntent: PendingIntent
+)

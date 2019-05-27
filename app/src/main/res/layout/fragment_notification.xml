@@ -39,4 +39,16 @@
         android:layout_height="wrap_content"
         android:text="@string/notifications_actions_title" />
 
+    <Button
+        android:id="@+id/vInboxNotificationBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/notifications_inbox_title" />
+
+    <Button
+        android:id="@+id/vSettingsChannel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/notifications_settings_title" />
+
 </LinearLayout>

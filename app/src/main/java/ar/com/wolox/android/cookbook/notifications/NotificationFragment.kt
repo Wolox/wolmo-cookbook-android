@@ -2,12 +2,17 @@ package ar.com.wolox.android.cookbook.notifications
 
 import android.app.PendingIntent
 import android.content.Intent
+import android.os.Build
+import android.provider.Settings
+import android.support.annotation.RequiresApi
 import android.support.v4.app.NotificationCompat
+import android.view.View
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.notifications.helper.NotificationFactory
 import ar.com.wolox.android.cookbook.notifications.model.BasicNotification
+import ar.com.wolox.android.cookbook.notifications.model.InboxNotification
 import ar.com.wolox.android.cookbook.notifications.model.NotificationAction
 import ar.com.wolox.android.cookbook.notifications.model.PictureExpandableNotification
 import ar.com.wolox.android.cookbook.notifications.model.TextExpandableNotification
@@ -27,6 +32,8 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
 
     override fun init() {
         generalChannelId = getString(R.string.notifications_general_channel_id)
+
+        vSettingsChannel.visibility = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) View.VISIBLE else View.GONE
     }
 
     override fun setListeners() {
@@ -34,6 +41,13 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
         vExpandableTextNotificationBtn.setOnClickListener { showTextExpandableNotification() }
         vBigPictureNotificationBtn.setOnClickListener { showPictureNotification() }
         vActionsNotificationBtn.setOnClickListener { showBasicNotificationWithActions() }
+        vInboxNotificationBtn.setOnClickListener { showInboxNotification() }
+
+        vSettingsChannel.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                openChannelSettings()
+            }
+        }
     }
 
     private fun showBasicNotification() {
@@ -81,5 +95,24 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
                 NotificationAction(android.R.drawable.ic_dialog_email, getString(R.string.recipe_picker_google_login), gLoginIntent)
             )
         })
+    }
+
+    private fun showInboxNotification() {
+        mNotificationFactory.showNotification(5, InboxNotification(
+            generalChannelId,
+            getString(R.string.notifications_basic_title),
+            getString(R.string.notifications_short_content),
+            NotificationCompat.PRIORITY_HIGH,
+            listOf(getString(R.string.notifications_inbox_line_1), getString(R.string.notifications_inbox_line_2))
+        ))
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun openChannelSettings() {
+        Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS).apply {
+            putExtra(Settings.EXTRA_APP_PACKAGE, requireContext().packageName)
+            putExtra(Settings.EXTRA_CHANNEL_ID, getString(R.string.notifications_general_channel_id))
+            startActivity(this)
+        }
     }
 }
