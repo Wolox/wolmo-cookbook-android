@@ -9,6 +9,7 @@
     <string name="recipe_picker_facebook_login">Facebook login</string>
     <string name="recipe_picker_navigation">Navigation Arch. Component</string>
     <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
+    <string name="recipe_picker_motion_layout">Motion layout</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
@@ -39,5 +40,10 @@
     <string name="facebook_login_error_cancelled">The sign in was cancelled by the user.</string>
     <string name="facebook_login_error_unexpected">Unexpected error</string>
     <string name="facebook_login_btn">Login with Facebook</string>
+
+    <!-- Motion Layout -->
+    <string name="label_wolox">Wolox</string>
+
+
 
 </resources>

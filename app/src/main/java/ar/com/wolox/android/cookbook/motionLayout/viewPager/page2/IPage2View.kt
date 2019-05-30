@@ -1,4 +1,3 @@
 package ar.com.wolox.android.cookbook.motionLayout.viewPager.page2
 
-interface IPage2View {
-}
+interface IPage2View

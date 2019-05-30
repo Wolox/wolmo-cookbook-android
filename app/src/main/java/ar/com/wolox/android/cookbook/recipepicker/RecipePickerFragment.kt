@@ -5,6 +5,7 @@ import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
+import ar.com.wolox.android.cookbook.motionLayout.MotionActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_recipe_picker.vRecipePickerSelectionViewPager
@@ -33,6 +34,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
                 Recipe.FACEBOOK_LOGIN -> RecipeItem(it, R.drawable.bg_facebook_login, R.string.recipe_picker_facebook_login)
                 Recipe.NAVIGATION -> RecipeItem(it, R.drawable.bg_navigation, R.string.recipe_picker_navigation)
                 Recipe.DATA_SYNC -> RecipeItem(it, R.drawable.bg_data_sync_pokemon, R.string.recipe_picker_data_sync)
+                Recipe.MOTION_LAYOUT -> RecipeItem(it, R.drawable.bg_io_logo, R.string.recipe_picker_motion_layout)
             }
         }
     }
@@ -51,6 +53,10 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     override fun goToDataSyncRecipe() {
         requireContext().startActivity(Intent(requireContext(), DataSyncRecipeActivity::class.java))
+    }
+
+    override fun goToMotionLayoutMenu() {
+        requireActivity().startActivity(Intent(requireContext(), MotionActivity::class.java))
     }
 
     companion object {

@@ -44,6 +44,10 @@
             android:name=".facebooklogin.FacebookLoginRecipeActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".motionLayout.MotionActivity"
+            android:screenOrientation="portrait" />
+
         <!-- Metadata for Facebook Login -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

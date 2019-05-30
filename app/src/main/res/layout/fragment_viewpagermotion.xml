@@ -32,14 +32,14 @@
                     <ImageView
                         android:layout_width="56dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/bg_surprised_cat" />
+                        android:src="@drawable/wolox_logo" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
                         android:layout_marginBottom="14dp"
-                        android:text="wolox"
+                        android:text="@string/label_wolox"
                         android:textAlignment="viewStart"
                         android:textAllCaps="false"
                         android:textColor="@android:color/black"
