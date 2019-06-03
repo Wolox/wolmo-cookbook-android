@@ -8,7 +8,7 @@ sealed class SkeletalNotification(
     val title: String,
     val content: String,
     val priority: Int,
-    var actions: List<NotificationAction> = listOf()
+    val actions: MutableList<NotificationAction> = mutableListOf()
 )
 
 class BasicNotification(

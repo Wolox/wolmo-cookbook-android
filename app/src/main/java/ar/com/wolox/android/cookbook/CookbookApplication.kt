@@ -17,7 +17,7 @@ import javax.inject.Inject
 class CookbookApplication : WolmoApplication() {
 
     @Inject
-    lateinit var mNotificationChannelFactory: NotificationChannelFactory
+    lateinit var notificationChannelFactory: NotificationChannelFactory
 
     override fun onInit() {
         if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -29,7 +29,7 @@ class CookbookApplication : WolmoApplication() {
         initializeLeakCanary()
         initializeFresco()
 
-        mNotificationChannelFactory.init(this)
+        notificationChannelFactory.init(this)
     }
 
     private fun initializeLeakCanary() {
