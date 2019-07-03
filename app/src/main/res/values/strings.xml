@@ -10,6 +10,7 @@
     <string name="recipe_picker_navigation">Navigation Arch. Component</string>
     <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
     <string name="recipe_picker_tests">Tests</string>
+    <string name="recipe_picker_koin">Koin</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>

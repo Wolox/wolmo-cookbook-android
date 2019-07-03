@@ -11,8 +11,8 @@ object CookbookModules {
         single { ToastFactory(get()) }
     }
 
-    fun KoinApplication.initializeModules() = modules(
+    fun KoinApplication.initializeModules() = modules(listOf(
         appModule,
         koinLoginModule
-    )
+    ))
 }

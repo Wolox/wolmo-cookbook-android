@@ -7,7 +7,7 @@ import ar.com.wolox.android.cookbook.koin.core.BaseFragment
 import kotlinx.android.synthetic.main.fragment_koin_login.vKoinLoginEmailInput
 import kotlinx.android.synthetic.main.fragment_koin_login.vKoinLoginLoginBtn
 import kotlinx.android.synthetic.main.fragment_koin_login.vKoinLoginPasswordInput
-import org.koin.android.ext.android.inject
+import org.koin.android.scope.currentScope
 import org.koin.core.parameter.parametersOf
 
 class KoinLoginRecipeFragment : BaseFragment<KoinLoginRecipePresenter>(), KoinLoginRecipeView {
@@ -16,7 +16,7 @@ class KoinLoginRecipeFragment : BaseFragment<KoinLoginRecipePresenter>(), KoinLo
      * You can send parameters to be injected.
      * Check how it's done at [koinLoginModule]
      */
-    override val presenter: KoinLoginRecipePresenter by inject { parametersOf(this) }
+    override val presenter: KoinLoginRecipePresenter by currentScope.inject { parametersOf(this) }
 
     override val layout = R.layout.fragment_koin_login
 
