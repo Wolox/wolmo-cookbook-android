@@ -49,4 +49,12 @@
     <string name="test_login_invalid_email">Email invalido</string>
     <string name="test_login_login_error">Incorrect user or password.</string>
 
+    <!-- Koin Login -->
+    <string name="koin_login_email">Email</string>
+    <string name="koin_login_password">Password</string>
+    <string name="koin_login_login">Login</string>
+    <string name="koin_login_empty_field">Debe completar este campo</string>
+    <string name="koin_login_invalid_email">Email invalido</string>
+    <string name="koin_login_login_error">Incorrect user or password.</string>
+
 </resources>

@@ -1,5 +1,6 @@
 package ar.com.wolox.android.cookbook
 
+import ar.com.wolox.android.cookbook.CookbookModules.initializeModules
 import ar.com.wolox.android.cookbook.common.di.CookbookNetworkingComponent
 import ar.com.wolox.android.cookbook.common.di.DaggerAppComponent
 import ar.com.wolox.android.cookbook.common.di.DaggerCookbookNetworkingComponent
@@ -11,6 +12,8 @@ import com.squareup.leakcanary.LeakCanary
 import dagger.android.AndroidInjector
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 class CookbookApplication : WolmoApplication() {
 
@@ -23,6 +26,11 @@ class CookbookApplication : WolmoApplication() {
         // Initialize Application stuff here
         initializeLeakCanary()
         initializeFresco()
+
+        startKoin {
+            androidContext(this@CookbookApplication)
+            initializeModules()
+        }
     }
 
     private fun initializeLeakCanary() {
@@ -48,8 +56,8 @@ class CookbookApplication : WolmoApplication() {
 
         if (BuildConfig.DEBUG) {
             builder.okHttpInterceptors(arrayOf(
-                    buildHttpLoggingInterceptor(Level.BODY),
-                    ChuckInterceptor(this)))
+                buildHttpLoggingInterceptor(Level.BODY),
+                ChuckInterceptor(this)))
         }
 
         return builder.build()
