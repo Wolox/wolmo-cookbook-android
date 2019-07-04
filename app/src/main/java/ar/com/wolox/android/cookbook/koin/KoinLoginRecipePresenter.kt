@@ -1,11 +1,17 @@
 package ar.com.wolox.android.cookbook.koin
 
+import android.app.Activity
+import android.content.ComponentCallbacks
+import androidx.fragment.app.Fragment
 import ar.com.wolox.android.cookbook.koin.core.BasePresenter
 
 class KoinLoginRecipePresenter(
-    override var view: KoinLoginRecipeView,
+    override val view: KoinLoginRecipeView,
     private val loginService: KoinLoginRecipeService
 ) : BasePresenter<KoinLoginRecipeView> {
+
+    /** You can not do this here, `by inject()` is only for [ComponentCallbacks] like [Activity]s or [Fragment]s. */
+    // private val loginService: KoinLoginRecipeService by inject()
 
     fun onLoginButtonClick(email: String, password: String) {
         when {
