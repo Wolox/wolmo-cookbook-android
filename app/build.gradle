@@ -179,6 +179,7 @@ dependencies {
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
     testImplementation "org.assertj:assertj-core:$assertj_core"
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
+    testImplementation "org.koin:koin-test:$koin_version"
 }
 
 dependencies {
