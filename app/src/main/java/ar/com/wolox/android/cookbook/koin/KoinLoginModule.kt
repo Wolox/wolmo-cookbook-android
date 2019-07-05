@@ -13,7 +13,4 @@ val koinLoginModule = module {
         /** Get the view by parameter. */
         scoped { (view: KoinLoginRecipeView) -> KoinLoginRecipePresenter(view, get()) }
     }
-
-    /** A single instance will be created for all injection. */
-    single { KoinLoginRecipeService() }
 }
