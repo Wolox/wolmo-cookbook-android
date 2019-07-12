@@ -115,6 +115,7 @@ buildscript {
     ext.junit_version = '4.12'
     ext.robolectric_version = '4.2'
     ext.fragment_testing_version = '1.1.0-alpha07'
+    ext.koin_version = '2.0.1'
 }
 
 dependencies {
@@ -140,6 +141,10 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    // Koin for Android
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android-scope:$koin_version"
 
     // Fresco
     implementation "com.facebook.fresco:fresco:$fresco_version"
@@ -174,6 +179,7 @@ dependencies {
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
     testImplementation "org.assertj:assertj-core:$assertj_core"
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
+    testImplementation "org.koin:koin-test:$koin_version"
 }
 
 dependencies {

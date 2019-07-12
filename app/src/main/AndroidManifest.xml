@@ -41,7 +41,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".tests.TestLoginRecipeActivity"
-            android:screenOrientation="portrait" /> <!-- Metadata for Facebook Login -->
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".koin.KoinLoginRecipeActivity"
+            android:screenOrientation="portrait" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_login_app_id" /> <!-- Activity for Facebook Login -->
