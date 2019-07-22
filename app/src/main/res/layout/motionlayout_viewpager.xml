@@ -15,7 +15,9 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_margin="10dp"
-        android:src="@drawable/plane" />
+        android:src="@drawable/plane"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="333dp" />
 
     <ImageView
         android:id="@+id/cloud"

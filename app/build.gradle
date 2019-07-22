@@ -178,6 +178,6 @@ dependencies {
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
 
     // Motion Layout
-    implementation 'com.android.support.constraint:constraint-layout:2.0.0-alpha2'
+    implementation 'com.android.support.constraint:constraint-layout:2.0.0-beta2'
 
 }

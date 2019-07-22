@@ -7,18 +7,16 @@ import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_motion_layout_menu.*
 
 class MotionMenuFragment : WolmoFragment<MotionPresenter>(), IMotionView {
-    private lateinit var mViewPagerFragment: ViewPagerFragment
 
     override fun layout(): Int = R.layout.fragment_motion_layout_menu
 
     override fun init() {
-        mViewPagerFragment = ViewPagerFragment()
         setUpListeners()
     }
 
     fun setUpListeners() {
         bViewPagerMotion.setOnClickListener {
-            replaceFragment(layout(), mViewPagerFragment)
+            replaceFragment(R.id.vActivityBaseContent, ViewPagerFragment.newInstance())
         }
     }
 
