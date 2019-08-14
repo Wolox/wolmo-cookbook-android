@@ -8,6 +8,8 @@ interface RecipePickerView {
 
     fun goToFacebookLogin()
 
+    fun goToTwitterLogin()
+
     fun goToNavigation()
 
     fun goToDataSyncRecipe()

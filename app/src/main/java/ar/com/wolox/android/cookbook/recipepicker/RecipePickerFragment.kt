@@ -33,6 +33,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
             when (it) {
                 Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.bg_google_login, R.string.recipe_picker_google_login)
                 Recipe.FACEBOOK_LOGIN -> RecipeItem(it, R.drawable.bg_facebook_login, R.string.recipe_picker_facebook_login)
+                Recipe.TWITTER_LOGIN -> RecipeItem(it, R.drawable.bg_facebook_login, R.string.recipe_picker_twitter_login)
                 Recipe.NAVIGATION -> RecipeItem(it, R.drawable.bg_navigation, R.string.recipe_picker_navigation)
                 Recipe.DATA_SYNC -> RecipeItem(it, R.drawable.bg_data_sync_pokemon, R.string.recipe_picker_data_sync)
                 Recipe.TESTS -> RecipeItem(it, R.drawable.bg_tests, R.string.recipe_picker_tests)
@@ -46,6 +47,10 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     }
 
     override fun goToFacebookLogin() {
+        requireActivity().startActivity(Intent(requireContext(), FacebookLoginRecipeActivity::class.java))
+    }
+
+    override fun goToTwitterLogin() {
         requireActivity().startActivity(Intent(requireContext(), FacebookLoginRecipeActivity::class.java))
     }
 
