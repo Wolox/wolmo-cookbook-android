@@ -1,5 +1,6 @@
 package ar.com.wolox.android.cookbook
 
+import android.util.Log
 import ar.com.wolox.android.cookbook.CookbookModules.initializeModules
 import ar.com.wolox.android.cookbook.common.di.CookbookNetworkingComponent
 import ar.com.wolox.android.cookbook.common.di.DaggerAppComponent
@@ -9,6 +10,10 @@ import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.gson.FieldNamingPolicy
 import com.readystatesoftware.chuck.ChuckInterceptor
 import com.squareup.leakcanary.LeakCanary
+import com.twitter.sdk.android.core.DefaultLogger
+import com.twitter.sdk.android.core.Twitter
+import com.twitter.sdk.android.core.TwitterAuthConfig
+import com.twitter.sdk.android.core.TwitterConfig
 import dagger.android.AndroidInjector
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
@@ -26,6 +31,7 @@ class CookbookApplication : WolmoApplication() {
         // Initialize Application stuff here
         initializeLeakCanary()
         initializeFresco()
+        initializeTwitter()
 
         startKoin {
             androidContext(this@CookbookApplication)
@@ -39,6 +45,16 @@ class CookbookApplication : WolmoApplication() {
 
     private fun initializeFresco() {
         Fresco.initialize(this)
+    }
+
+    private fun initializeTwitter() {
+        val config = TwitterConfig.Builder(this)
+                .logger(DefaultLogger(Log.DEBUG)) // enable logging when app is in debug mode
+                .twitterAuthConfig(TwitterAuthConfig(this.resources.getString(R.string.twitter_consumer_key),
+                        this.resources.getString(R.string.twitter_consumer_secret)))
+                .debug(true) // enable debug mode
+                .build()
+        Twitter.initialize(config)
     }
 
     override fun applicationInjector(): AndroidInjector<CookbookApplication> {

@@ -43,6 +43,13 @@
     <string name="facebook_login_error_unexpected">Unexpected error</string>
     <string name="facebook_login_btn">Login with Facebook</string>
 
+    <!-- Twitter -->
+    <string name="twitter_consumer_key">GT7c84P1Ua0sCOWMirLZPI5RG</string>
+    <string name="twitter_consumer_secret">98IyZsqCAhojROEGpj8l5u0STuuI4zYa0p5cnhzPasAszUlom6</string>
+    <string name="twitter_custom_login">Custom Log in with Twitter</string>
+    <string name="twitter_profile_image">Fetch Profile Image</string>
+    <string name="twitter_auth_error">Twitter Authorize Failed</string>
+
     <!-- Test Login -->
     <string name="test_login_email">Email</string>
     <string name="test_login_password">Password</string>

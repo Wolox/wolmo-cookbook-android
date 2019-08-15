@@ -60,6 +60,12 @@
     <dimen name="google_login_user_photo_width">48dp</dimen>
     <dimen name="google_login_user_photo_height">48dp</dimen>
 
+    <!-- Twitter login -->
+    <dimen name="twitter_margin_low">10dp</dimen>
+    <dimen name="twitter_margin_high">20dp</dimen>
+    <dimen name="twitter_image_profile_size">120dp</dimen>
+    <dimen name="twitter_text_size">15sp</dimen>
+
     <!-- Navigation -->
     <dimen name="navigation_button_width">100dp</dimen>
     <dimen name="navigation_button_height">100dp</dimen>
