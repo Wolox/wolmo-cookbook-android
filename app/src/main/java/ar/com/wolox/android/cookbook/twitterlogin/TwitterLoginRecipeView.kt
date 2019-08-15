@@ -18,4 +18,7 @@ interface TwitterLoginRecipeView {
     fun showAuthFail()
     fun showEmailFail()
     fun showPictureFail()
+
+    fun showUnAuthError()
+    fun showInternalError()
 }

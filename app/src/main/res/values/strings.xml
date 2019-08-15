@@ -51,6 +51,8 @@
     <string name="twitter_auth_error">Twitter: Authorize Failed</string>
     <string name="twitter_email_error">Twitter: Email validation Failed</string>
     <string name="twitter_picture_error">Twitter: Picture download Failed</string>
+    <string name="twitter_un_auth_error">Twitter: You need to login first</string>
+    <string name="twitter_internal_error">Internal error…</string>
 
     <!-- Test Login -->
     <string name="test_login_email">Email</string>

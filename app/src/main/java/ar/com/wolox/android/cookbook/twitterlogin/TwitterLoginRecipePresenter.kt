@@ -78,7 +78,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                 }
             })
         } else {
-            TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+            view.showUnAuthError()
         }
     }
 
@@ -139,7 +139,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                 }
             })
         } else {
-            TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+            view.showInternalError()
         }
     }
 }
