@@ -29,7 +29,7 @@
         android:text="@string/twitter_profile_image" />
 
     <!-- image view to show user profile image -->
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/vProfileImg"
         android:layout_width="@dimen/twitter_image_profile_size"
         android:layout_height="@dimen/twitter_image_profile_size"

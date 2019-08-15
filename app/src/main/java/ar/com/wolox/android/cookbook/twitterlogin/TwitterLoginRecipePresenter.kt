@@ -1,21 +1,22 @@
 package ar.com.wolox.android.cookbook.twitterlogin
 
 import android.content.Intent
-import android.util.Log
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginAdapter
-import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginListener
+import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginAuthListener
+import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginEmailListener
+import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginPictureListener
+import ar.com.wolox.android.cookbook.twitterlogin.model.YoutubeEmailResponse
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import com.twitter.sdk.android.core.TwitterAuthToken
 import com.twitter.sdk.android.core.TwitterCore
 import com.twitter.sdk.android.core.TwitterSession
-import com.twitter.sdk.android.core.identity.TwitterAuthClient
+import com.twitter.sdk.android.core.models.User
 import javax.inject.Inject
 
 class TwitterLoginRecipePresenter @Inject constructor(
     private val twitterAdapter: TwitterLoginAdapter
 ) : BasePresenter<TwitterLoginRecipeView>() {
 
-    private val client: TwitterAuthClient = TwitterAuthClient()
     private lateinit var authToken: TwitterAuthToken
 
     override fun onViewAttached() {
@@ -23,35 +24,66 @@ class TwitterLoginRecipePresenter @Inject constructor(
         defaultTwitterLogin()
     }
 
+    fun onDefaultBtnRequest() {
+        val session = getTwitterSession()
+        if (session == null) {
+            defaultTwitterLogin()
+        } else {
+            fetchTwitterEmail(session)
+        }
+    }
+
     fun onCustomBtnRequest() {
         val context = view.getActivityContext()
         if (context != null) {
-            twitterAdapter.authorizeClient(context, object : TwitterLoginListener {
-                override fun onAuthSuccess(result: TwitterSession) {
-                    fetchTwitterEmail(result)
-                }
+            val session = getTwitterSession()
+            if (session == null) {
+                twitterAdapter.authorizeClient(context, object : TwitterLoginAuthListener {
+                    override fun onAuthSuccess(result: TwitterSession) {
+                        fetchTwitterEmail(result)
+                    }
 
-                override fun onAuthError(message: String?) {
-                    if (message != null) {
-                        view.showAuthError(message)
-                    } else {
+                    override fun onAuthError(message: String?) {
+                        if (message != null) {
+                            view.showError(message)
+                        } else {
+                            view.showAuthFail()
+                        }
+                    }
+
+                    override fun onAuthFail() {
                         view.showAuthFail()
                     }
-                }
-
-                override fun onAuthFail() {
-                    view.showAuthFail()
-                }
-            })
+                })
+            } else {
+                fetchTwitterEmail(session)
+            }
         }
     }
 
     fun onImageRequest() {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        val session = getTwitterSession()
+        if (session != null) {
+            twitterAdapter.requestProfileImage(object : TwitterLoginPictureListener {
+                override fun onUserSuccess(user: User) {
+                    view.showPictureData(user)
+                }
+
+                override fun onUserError(message: String) {
+                    view.showError(message)
+                }
+
+                override fun onUserFail() {
+                    view.showPictureFail()
+                }
+            })
+        } else {
+            TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        }
     }
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        client.onActivityResult(requestCode, resultCode, data)
+        twitterAdapter.onResultActivity(requestCode, resultCode, data)
     }
 
     private fun getTwitterSession(): TwitterSession? {
@@ -66,14 +98,14 @@ class TwitterLoginRecipePresenter @Inject constructor(
 
     private fun defaultTwitterLogin() {
         if (getTwitterSession() == null) {
-            view.setLoginCallback(twitterAdapter.twitterCallback(object : TwitterLoginListener {
+            view.setLoginCallback(twitterAdapter.twitterCallback(object : TwitterLoginAuthListener {
                 override fun onAuthSuccess(result: TwitterSession) {
                     fetchTwitterEmail(result)
                 }
 
                 override fun onAuthError(message: String?) {
                     if (message != null) {
-                        view.showAuthError(message)
+                        view.showError(message)
                     } else {
                         view.showAuthFail()
                     }
@@ -89,6 +121,25 @@ class TwitterLoginRecipePresenter @Inject constructor(
     }
 
     private fun fetchTwitterEmail(twitterSession: TwitterSession?) {
-        Log.e("FedeLog", "fetchTwitterEmail().......................")
+        if (twitterSession != null) {
+            twitterAdapter.requestEmail(twitterSession, object : TwitterLoginEmailListener {
+                override fun onEmailSuccess(response: String) {
+                    val emailResponse = YoutubeEmailResponse(twitterSession.userId.toString(),
+                            response,
+                            twitterSession.userName)
+                    view.showLoginData(emailResponse)
+                }
+
+                override fun onEmailError(message: String) {
+                    view.showError(message)
+                }
+
+                override fun onEmailFailure() {
+                    view.showEmailFail()
+                }
+            })
+        } else {
+            TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        }
     }
 }

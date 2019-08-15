@@ -21,7 +21,7 @@ import javax.inject.Inject
  *  }
  *
  *  Advice to generate SHA1:
- *  Open Gradle projects with the gradle button on the right of the screen: Tasks -> android -> signingReport
+ *  Open Gradle projects with the gradle button on the right of the username: Tasks -> android -> signingReport
  */
 class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), GoogleLoginRecipeView {
 

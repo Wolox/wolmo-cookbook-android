@@ -1,7 +1,9 @@
 package ar.com.wolox.android.cookbook.twitterlogin
 
 import androidx.fragment.app.FragmentActivity
+import ar.com.wolox.android.cookbook.twitterlogin.model.YoutubeEmailResponse
 import com.twitter.sdk.android.core.TwitterSession
+import com.twitter.sdk.android.core.models.User
 
 interface TwitterLoginRecipeView {
 
@@ -9,6 +11,11 @@ interface TwitterLoginRecipeView {
 
     fun getActivityContext(): FragmentActivity?
 
-    fun showAuthError(message: String)
+    fun showLoginData(response: YoutubeEmailResponse)
+    fun showPictureData(user: User)
+
+    fun showError(message: String)
     fun showAuthFail()
+    fun showEmailFail()
+    fun showPictureFail()
 }
