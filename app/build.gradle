@@ -170,6 +170,10 @@ dependencies {
 
     // Facebook Login
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
+
+    // Twitter Login
+    implementation 'com.twitter.sdk.android:twitter-core:3.1.1'
+    implementation 'com.twitter.sdk.android:tweet-ui:3.1.1'
 }
 
 dependencies {

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <!-- default twitter login button -->
+    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+        android:id="@+id/default_twitter_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- custom login button -->
+    <Button
+        android:id="@+id/custom_twitter_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Login with Twitter" />
+
+    <!-- fetch profile image button -->
+    <Button
+        android:id="@+id/profile_image_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Get Profile Image" />
+
+    <!-- image view to show user profile image -->
+    <ImageView
+        android:id="@+id/user_profile_image_view"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp" />
+
+    <!-- text view to show user details -->
+    <TextView
+        android:id="@+id/user_details_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp" />
+
+
+</LinearLayout>
