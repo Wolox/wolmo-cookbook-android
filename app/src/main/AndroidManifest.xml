@@ -40,6 +40,9 @@
             android:name=".facebooklogin.FacebookLoginRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".twitterlogin.TwitterLoginRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".tests.TestLoginRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
