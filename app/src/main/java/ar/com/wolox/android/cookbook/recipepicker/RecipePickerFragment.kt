@@ -51,6 +51,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     }
 
     override fun goToTwitterLogin() {
+        //TODO
         requireActivity().startActivity(Intent(requireContext(), FacebookLoginRecipeActivity::class.java))
     }
 
