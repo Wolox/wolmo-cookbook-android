@@ -2,6 +2,7 @@ package ar.com.wolox.android.cookbook.recipepicker
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeActivity
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
@@ -9,7 +10,7 @@ import ar.com.wolox.android.cookbook.koin.KoinLoginRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
-import kotlinx.android.synthetic.main.fragment_recipe_picker.vRecipePickerSelectionViewPager
+import kotlinx.android.synthetic.main.fragment_recipe_picker.*
 
 class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePickerView {
 
@@ -37,33 +38,26 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
                 Recipe.DATA_SYNC -> RecipeItem(it, R.drawable.bg_data_sync_pokemon, R.string.recipe_picker_data_sync)
                 Recipe.TESTS -> RecipeItem(it, R.drawable.bg_tests, R.string.recipe_picker_tests)
                 Recipe.KOIN -> RecipeItem(it, R.drawable.bg_koin, R.string.recipe_picker_koin)
+                Recipe.COROUTINES -> RecipeItem(it, R.drawable.bg_facebook_login, R.string.recipe_picker_data_sync)
             }
         }
     }
 
-    override fun goToGoogleLogin() {
-        requireActivity().startActivity(Intent(requireContext(), GoogleLoginRecipeActivity::class.java))
-    }
+    private fun goTo(activity: Class<*>) = requireContext().startActivity(Intent(requireContext(), activity))
 
-    override fun goToFacebookLogin() {
-        requireActivity().startActivity(Intent(requireContext(), FacebookLoginRecipeActivity::class.java))
-    }
+    override fun goToGoogleLogin() = goTo(GoogleLoginRecipeActivity::class.java)
 
-    override fun goToNavigation() {
-        requireActivity().startActivity(Intent(requireContext(), NavigationActivity::class.java))
-    }
+    override fun goToFacebookLogin() = goTo(FacebookLoginRecipeActivity::class.java)
 
-    override fun goToDataSyncRecipe() {
-        requireContext().startActivity(Intent(requireContext(), DataSyncRecipeActivity::class.java))
-    }
+    override fun goToNavigation() = goTo(NavigationActivity::class.java)
 
-    override fun goToTests() {
-        requireContext().startActivity(Intent(requireContext(), TestLoginRecipeActivity::class.java))
-    }
+    override fun goToDataSyncRecipe() = goTo(DataSyncRecipeActivity::class.java)
 
-    override fun goToKoin() {
-        requireContext().startActivity(Intent(requireContext(), KoinLoginRecipeActivity::class.java))
-    }
+    override fun goToTests() = goTo(TestLoginRecipeActivity::class.java)
+
+    override fun goToKoin() = goTo(KoinLoginRecipeActivity::class.java)
+
+    override fun goToCoroutines() = goTo(CoroutinesRecipeActivity::class.java)
 
     companion object {
         fun newInstance() = RecipePickerFragment()
