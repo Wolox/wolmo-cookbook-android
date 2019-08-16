@@ -60,7 +60,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
 
     fun onImageRequest() {
 
-        //USER contains all personal data from logged user, like profile picture, followers,
+        // USER contains all personal data from logged user, like profile picture, followers,
         // description, creation date, profile background picture, etc...
         val session = getTwitterSession()
         if (session != null) {
