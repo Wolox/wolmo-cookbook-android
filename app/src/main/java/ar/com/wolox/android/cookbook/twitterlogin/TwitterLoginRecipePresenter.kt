@@ -7,7 +7,6 @@ import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginEmailListe
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginPictureListener
 import ar.com.wolox.android.cookbook.twitterlogin.model.YoutubeEmailResponse
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
-import com.twitter.sdk.android.core.TwitterAuthToken
 import com.twitter.sdk.android.core.TwitterCore
 import com.twitter.sdk.android.core.TwitterSession
 import com.twitter.sdk.android.core.models.User
@@ -16,8 +15,6 @@ import javax.inject.Inject
 class TwitterLoginRecipePresenter @Inject constructor(
     private val twitterAdapter: TwitterLoginAdapter
 ) : BasePresenter<TwitterLoginRecipeView>() {
-
-    private lateinit var authToken: TwitterAuthToken
 
     override fun onViewAttached() {
         super.onViewAttached()
@@ -62,6 +59,9 @@ class TwitterLoginRecipePresenter @Inject constructor(
     }
 
     fun onImageRequest() {
+
+        //USER contains all personal data from logged user, like profile picture, followers,
+        // description, creation date, profile background picture, etc...
         val session = getTwitterSession()
         if (session != null) {
             twitterAdapter.requestProfileImage(object : TwitterLoginPictureListener {
@@ -87,13 +87,15 @@ class TwitterLoginRecipePresenter @Inject constructor(
     }
 
     private fun getTwitterSession(): TwitterSession? {
-        val session: TwitterSession? = TwitterCore.getInstance().sessionManager.activeSession
 
-        if (session != null) {
-            authToken = TwitterAuthToken(session.authToken.token, session.authToken.secret)
-        }
+//        val session = TwitterCore.getInstance().sessionManager.activeSession
+//        if (session != null) {
+//            // TwitterSession and TwitterAuthToken contains all data stored in device from login
+//            // (UserID, Username, token, secret)
+//            val authToken = TwitterAuthToken(session.authToken.token, session.authToken.secret)
+//        }
 
-        return session
+        return TwitterCore.getInstance().sessionManager.activeSession
     }
 
     private fun defaultTwitterLogin() {
