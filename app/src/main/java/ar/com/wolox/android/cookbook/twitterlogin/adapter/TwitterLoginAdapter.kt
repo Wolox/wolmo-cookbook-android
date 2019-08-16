@@ -11,7 +11,6 @@ import com.twitter.sdk.android.core.TwitterSession
 import com.twitter.sdk.android.core.identity.TwitterAuthClient
 import com.twitter.sdk.android.core.models.User
 import retrofit2.Call
-import java.lang.Exception
 import javax.inject.Inject
 
 class TwitterLoginAdapter @Inject constructor() {
