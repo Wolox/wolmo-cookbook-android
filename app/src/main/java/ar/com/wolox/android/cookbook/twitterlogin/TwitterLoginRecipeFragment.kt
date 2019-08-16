@@ -30,6 +30,10 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
         vGetProfileBtn.setOnClickListener {
             presenter.onImageRequest()
         }
+
+        vLogoutBtn.setOnClickListener {
+            presenter.onLogoutRequest()
+        }
     }
 
     override fun getActivityContext(): FragmentActivity? {
@@ -62,6 +66,10 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
         vDetails.text = getString(R.string.twitter_picture_error)
     }
 
+    override fun showCredentialsFail() {
+        vDetails.text = getString(R.string.twitter_credentials_error)
+    }
+
     override fun showUnAuthError() {
         vDetails.text = getString(R.string.twitter_un_auth_error)
     }
@@ -82,5 +90,9 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
 
         val uri = Uri.parse(user.profileImageUrl)
         vProfileImg.setImageURI(uri)
+    }
+
+    override fun showCredentialsCleared() {
+        vDetails.text = getString(R.string.twitter_logout)
     }
 }

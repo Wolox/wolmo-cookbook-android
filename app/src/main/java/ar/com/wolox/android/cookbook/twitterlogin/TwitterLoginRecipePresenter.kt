@@ -3,6 +3,7 @@ package ar.com.wolox.android.cookbook.twitterlogin
 import android.content.Intent
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginAdapter
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginAuthListener
+import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginCredentialsListener
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginEmailListener
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginPictureListener
 import ar.com.wolox.android.cookbook.twitterlogin.model.YoutubeEmailResponse
@@ -79,6 +80,21 @@ class TwitterLoginRecipePresenter @Inject constructor(
             })
         } else {
             view.showUnAuthError()
+        }
+    }
+
+    fun onLogoutRequest() {
+        val session = getTwitterSession()
+        if (session != null) {
+            twitterAdapter.logoutSession(object : TwitterLoginCredentialsListener {
+                override fun onClearCredentialsSuccess() {
+                    view.showCredentialsCleared()
+                }
+
+                override fun onClearCredentialsError() {
+                    view.showCredentialsFail()
+                }
+            })
         }
     }
 

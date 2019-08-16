@@ -28,6 +28,15 @@
         android:layout_marginTop="@dimen/twitter_margin_low"
         android:text="@string/twitter_profile_image" />
 
+    <!-- fetch profile image button -->
+    <Button
+        android:id="@+id/vLogoutBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twitter_margin_low"
+        android:text="@string/twitter_logout"
+        android:backgroundTint="@color/colorPrimaryDark"/>
+
     <!-- image view to show user profile image -->
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/vProfileImg"

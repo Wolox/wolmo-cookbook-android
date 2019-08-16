@@ -48,10 +48,12 @@
     <string name="twitter_consumer_secret">98IyZsqCAhojROEGpj8l5u0STuuI4zYa0p5cnhzPasAszUlom6</string>
     <string name="twitter_custom_login">Custom Log in with Twitter</string>
     <string name="twitter_profile_image">Fetch Profile Image</string>
+    <string name="twitter_logout">Logout</string>
     <string name="twitter_auth_error">Twitter: Authorize Failed</string>
     <string name="twitter_email_error">Twitter: Email validation Failed</string>
     <string name="twitter_picture_error">Twitter: Picture download Failed</string>
     <string name="twitter_un_auth_error">Twitter: You need to login first</string>
+    <string name="twitter_credentials_error">Twitter: Error while try to logout</string>
     <string name="twitter_internal_error">Internal error…</string>
 
     <!-- Test Login -->
