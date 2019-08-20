@@ -16,6 +16,7 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
             Recipe.GOOGLE_LOGIN -> view.goToGoogleLogin()
             Recipe.FACEBOOK_LOGIN -> view.goToFacebookLogin()
             Recipe.TWITTER_LOGIN -> view.goToTwitterLogin()
+            Recipe.INSTAGRAM_LOGIN -> view.goToInstagramLogin()
             Recipe.NAVIGATION -> view.goToNavigation()
             Recipe.DATA_SYNC -> view.goToDataSyncRecipe()
             Recipe.TESTS -> view.goToTests()

@@ -43,6 +43,9 @@
             android:name=".twitterlogin.TwitterLoginRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".instagramlogin.InstagramLoginRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".tests.TestLoginRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
