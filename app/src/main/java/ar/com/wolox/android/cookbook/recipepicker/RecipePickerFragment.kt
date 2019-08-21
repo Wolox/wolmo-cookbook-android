@@ -5,6 +5,7 @@ import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
+import ar.com.wolox.android.cookbook.instagramlogin.InstagramLoginRecipeActivity
 import ar.com.wolox.android.cookbook.koin.KoinLoginRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeActivity
@@ -57,7 +58,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     }
 
     override fun goToInstagramLogin() {
-        requireActivity().startActivity(Intent(requireContext(), TwitterLoginRecipeActivity::class.java))
+        requireActivity().startActivity(Intent(requireContext(), InstagramLoginRecipeActivity::class.java))
     }
 
     override fun goToNavigation() {

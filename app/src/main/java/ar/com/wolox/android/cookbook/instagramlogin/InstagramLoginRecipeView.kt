@@ -1,3 +1,6 @@
 package ar.com.wolox.android.cookbook.instagramlogin
 
-interface InstagramLoginRecipeView
+interface InstagramLoginRecipeView {
+
+    fun showWebView(url: String)
+}
