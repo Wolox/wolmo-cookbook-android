@@ -57,6 +57,11 @@
     <string name="twitter_credentials_error">Twitter: Error while try to logout</string>
     <string name="twitter_internal_error">Internal error…</string>
 
+    <!-- Instagram -->
+    <string name="instagram_title"><u>Instagram Login</u></string>
+    <string name="instagram_login_btn">Login</string>
+    <string name="instagram_fetch_data_btn">Fetch Data</string>
+
     <!-- Test Login -->
     <string name="test_login_email">Email</string>
     <string name="test_login_password">Password</string>

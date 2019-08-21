@@ -1,6 +1,5 @@
 package ar.com.wolox.android.cookbook.instagramlogin
 
-import android.util.Log
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.instagramlogin.adapter.InstagramLoginAuthListener
 import ar.com.wolox.android.cookbook.instagramlogin.adapter.InstagramLoginView
@@ -17,8 +16,12 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
     override fun setListeners() {
         super.setListeners()
 
-        vLogin.setOnClickListener {
+        vLoginBtn.setOnClickListener {
             presenter.onIgLoginRequest()
+        }
+
+        vDataBtn.setOnClickListener {
+            presenter.onFetchDataRequest()
         }
     }
 
@@ -26,15 +29,15 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
         if (context != null) {
             InstagramLoginView().showDialog(context!!, url, object : InstagramLoginAuthListener {
                 override fun onCodeReceived(authToken: String) {
-                    Log.e("IG", "onCodeReceived: $authToken")
+                    presenter.onLoginSuccessResponse(authToken)
                 }
 
                 override fun onCodeError() {
-                    Log.e("IG", "onCodeError")
+                    presenter.onLoginErrorResponse()
                 }
 
                 override fun onApiError() {
-                    Log.e("IG", "onApiError")
+                    presenter.onLoginFailResponse()
                 }
             })
         }

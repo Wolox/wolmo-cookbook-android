@@ -3,6 +3,7 @@ package ar.com.wolox.android.cookbook.instagramlogin.adapter
 import android.app.Dialog
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import ar.com.wolox.android.cookbook.R
@@ -26,6 +27,7 @@ class InstagramLoginView @Inject constructor() {
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
+                Log.e("FedeLog", "onPageFinished: $url")
                 if (url != null && url.contains("#access_token=")) {
                     val uri = Uri.parse(url)
                     token = uri.encodedFragment
