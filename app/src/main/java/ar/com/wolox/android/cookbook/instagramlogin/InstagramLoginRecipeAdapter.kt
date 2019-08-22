@@ -28,6 +28,8 @@ class InstagramLoginRecipeAdapter(
         fun bind(
             picture: InstagramDataItem
         ) {
+
+            /** Note: Full info sample in "assets > InstagramResponseExample.json" **/
             itemView.vPicture.setImageURI(picture.images.standardImg.url)
 
             val username = "ID: " + picture.caption.from.id + " | Fullname: " +
@@ -35,8 +37,6 @@ class InstagramLoginRecipeAdapter(
             itemView.vUser.text = username
 
             itemView.vDescription.text = picture.caption.text
-
-            /** Note: Full info sample in "assets > InstagramResponseExample.json" **/
         }
     }
 }

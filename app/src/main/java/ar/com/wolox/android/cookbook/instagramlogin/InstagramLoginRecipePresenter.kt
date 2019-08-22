@@ -52,6 +52,7 @@ class InstagramLoginRecipePresenter @Inject constructor(
         if (response) {
             accessToken = null
             view.enableLoginBtn()
+            view.deleteListData()
             view.showLogoutSuccessMsg()
         } else {
             view.enableLogoutBtn()

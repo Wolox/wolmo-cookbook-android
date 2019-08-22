@@ -68,6 +68,11 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
         Toast.makeText(context, getString(R.string.instagram_logout_success), Toast.LENGTH_SHORT).show()
     }
 
+    override fun deleteListData() {
+        pictureList = mutableListOf()
+        vRecyclerView.visibility = View.INVISIBLE
+    }
+
     override fun isNetworkAvailable(): Boolean {
         val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE)
         return if (connectivityManager is ConnectivityManager) {
