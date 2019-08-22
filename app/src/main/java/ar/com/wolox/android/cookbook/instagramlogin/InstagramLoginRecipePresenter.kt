@@ -1,7 +1,6 @@
 package ar.com.wolox.android.cookbook.instagramlogin
 
 import android.net.Uri
-import android.util.Log
 import ar.com.wolox.android.cookbook.instagramlogin.model.InstagramDataItem
 import ar.com.wolox.android.cookbook.instagramlogin.proxy.InstagramProxy
 import ar.com.wolox.android.cookbook.instagramlogin.proxy.InstagramProxyListener
@@ -61,7 +60,6 @@ class InstagramLoginRecipePresenter @Inject constructor(
     }
 
     fun onLoginSuccessResponse(token: String) {
-        Log.e("FedeLog", "onLoginSuccessResponse: $token")
         accessToken = token
         view.enableLogoutBtn()
         view.showLoginSuccessMsg()
