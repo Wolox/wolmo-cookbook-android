@@ -6,6 +6,10 @@ interface InstagramLoginRecipeView {
 
     fun enableLoginBtn()
     fun enableLogoutBtn()
+    fun showLoginError()
+    fun showLogoutError()
+    fun showLoginSuccessMsg()
+    fun showLogoutSuccessMsg()
 
     fun isNetworkAvailable(): Boolean
     fun showNetworkUnavailableError()
@@ -15,4 +19,7 @@ interface InstagramLoginRecipeView {
     fun igLogout()
 
     fun showIGData(data: List<InstagramDataItem>)
+    fun showErrorInService()
+    fun showFailInService(error: String)
+    fun showFetchDataError()
 }

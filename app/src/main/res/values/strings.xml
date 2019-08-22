@@ -62,7 +62,13 @@
     <string name="instagram_login_btn">Login</string>
     <string name="instagram_logout_btn">Logout</string>
     <string name="instagram_fetch_data_btn">Fetch Data</string>
+    <string name="instagram_login_success">Login Success!!</string>
+    <string name="instagram_logout_success">Loogut Success!!</string>
+    <string name="instagram_error_login">An error occurs during login, please try again…</string>
     <string name="instagram_error_network_unavailable">Network is unavailable, please try later…</string>
+    <string name="instagram_error_cookies">Error occurs during logout…</string>
+    <string name="instagram_error_api">An error occurs during data download, please try again…</string>
+    <string name="instagram_error_fetch_data">You need to login before download personal data</string>
 
     <!-- Test Login -->
     <string name="test_login_email">Email</string>

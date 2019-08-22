@@ -5,7 +5,6 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.view.View
 import android.webkit.CookieManager
-import android.webkit.CookieSyncManager
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -48,8 +47,25 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
     }
 
     override fun igLogout() {
-        CookieSyncManager.createInstance(context)
-        CookieManager.getInstance().removeAllCookie()
+        CookieManager.getInstance().removeAllCookies { p0 ->
+            presenter.onLogoutResponse(p0)
+        }
+    }
+
+    override fun showLoginError() {
+        Toast.makeText(context, getString(R.string.instagram_error_login), Toast.LENGTH_LONG).show()
+    }
+
+    override fun showLogoutError() {
+        Toast.makeText(context, getString(R.string.instagram_error_cookies), Toast.LENGTH_LONG).show()
+    }
+
+    override fun showLoginSuccessMsg() {
+        Toast.makeText(context, getString(R.string.instagram_login_success), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showLogoutSuccessMsg() {
+        Toast.makeText(context, getString(R.string.instagram_logout_success), Toast.LENGTH_SHORT).show()
     }
 
     override fun isNetworkAvailable(): Boolean {
@@ -94,5 +110,17 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
             adapter = viewAdapter
         }
         viewAdapter.notifyDataSetChanged()
+    }
+
+    override fun showErrorInService() {
+        Toast.makeText(context, getString(R.string.instagram_error_api), Toast.LENGTH_LONG).show()
+    }
+
+    override fun showFailInService(error: String) {
+        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
+    }
+
+    override fun showFetchDataError() {
+        Toast.makeText(context, getString(R.string.instagram_error_fetch_data), Toast.LENGTH_LONG).show()
     }
 }

@@ -35,6 +35,8 @@ class InstagramLoginRecipeAdapter(
             itemView.vUser.text = username
 
             itemView.vDescription.text = picture.caption.text
+
+            /** Note: Full info sample in "assets > InstagramResponseExample.json" **/
         }
     }
 }

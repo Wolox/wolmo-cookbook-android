@@ -39,8 +39,6 @@ class InstagramLoginRecipePresenter @Inject constructor(
                         .appendQueryParameter(RESPONSE_KEY, RESPONSE_VALUE)
                         .appendQueryParameter(DISPLAY_KEY, DISPLAY_VALUE)
 
-                // val intent = Intent(Intent.ACTION_VIEW, uriBuilder.build())
-                // view.startWebActivity(intent) -> {startActivity(intent)}
                 view.showWebView(uriBuilder.toString())
             } else {
                 view.igLogout()
@@ -50,22 +48,34 @@ class InstagramLoginRecipePresenter @Inject constructor(
         }
     }
 
+    fun onLogoutResponse(response: Boolean) {
+        if (response) {
+            accessToken = null
+            view.enableLoginBtn()
+            view.showLogoutSuccessMsg()
+        } else {
+            view.enableLogoutBtn()
+            view.showLogoutError()
+        }
+    }
+
     fun onLoginSuccessResponse(token: String) {
         Log.e("FedeLog", "onLoginSuccessResponse: $token")
         accessToken = token
         view.enableLogoutBtn()
+        view.showLoginSuccessMsg()
     }
 
     fun onLoginErrorResponse() {
-        Log.e("FedeLog", "onLoginErrorResponse")
         accessToken = null
         view.enableLoginBtn()
+        view.showLoginError()
     }
 
     fun onLoginFailResponse() {
-        Log.e("FedeLog", "onLoginFailResponse")
         accessToken = null
         view.enableLoginBtn()
+        view.showLoginError()
     }
 
     fun onFetchDataRequest() {
@@ -74,20 +84,23 @@ class InstagramLoginRecipePresenter @Inject constructor(
             if (accessToken != null && accessToken!!.isNotEmpty()) {
                 adapter.getInstagramData(accessToken!!, object : InstagramProxyListener {
                     override fun onResponse(data: List<InstagramDataItem>) {
-                        // TODO onRESPONSE
                         view.showIGData(data)
                     }
 
                     override fun onError() {
-                        // TODO onERROR
+                        view.showErrorInService()
                     }
 
-                    override fun onFail() {
-                        // TODO onFAIL
+                    override fun onFail(message: String?) {
+                        if (message != null) {
+                            view.showFailInService(message)
+                        } else {
+                            view.showErrorInService()
+                        }
                     }
                 })
             } else {
-                // TODO View -> show error ("Please login first")
+                view.showFetchDataError()
             }
         } else {
             view.showNetworkUnavailableError()

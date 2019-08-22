@@ -30,7 +30,7 @@ class InstagramProxy @Inject constructor() {
             }
 
             override fun onFailure(call: Call<InstagramResponse>, t: Throwable) {
-                listener.onFail()
+                listener.onFail(t.message)
             }
         })
     }

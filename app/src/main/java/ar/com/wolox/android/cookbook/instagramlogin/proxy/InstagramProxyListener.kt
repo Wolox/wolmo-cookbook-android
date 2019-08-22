@@ -6,5 +6,5 @@ interface InstagramProxyListener {
 
     fun onResponse(data: List<InstagramDataItem>)
     fun onError()
-    fun onFail()
+    fun onFail(message: String?)
 }
