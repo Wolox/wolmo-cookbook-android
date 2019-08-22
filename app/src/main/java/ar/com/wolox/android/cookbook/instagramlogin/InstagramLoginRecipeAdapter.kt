@@ -38,14 +38,3 @@ class InstagramLoginRecipeAdapter(
         }
     }
 }
-
-/* itemView.vYoutubeImgPreview.setImageURI(profile.highUrlImg)
-
-            itemView.vTitle.text = profile.title
-            itemView.vDescription.text = profile.description
-
-            itemView.vYoutubeImgPreview.setImageURI(profile.highUrlImg)
-            itemView.vYoutubeImgPreview.setOnClickListener { selectedItem(profile) }
-
-            itemView.vPlayBtn.setOnClickListener { selectedItem(profile) }
- */

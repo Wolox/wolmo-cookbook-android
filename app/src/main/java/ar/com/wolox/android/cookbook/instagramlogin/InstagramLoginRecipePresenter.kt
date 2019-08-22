@@ -14,64 +14,83 @@ class InstagramLoginRecipePresenter @Inject constructor(
 
     private var accessToken: String? = null
 
+    override fun onViewAttached() {
+        super.onViewAttached()
+
+        if (accessToken == null) {
+            view.enableLoginBtn()
+        } else {
+            view.enableLogoutBtn()
+        }
+    }
+
     fun onIgLoginRequest() {
 
-        val uriBuilder: Uri.Builder = Uri.Builder()
-//        uriBuilder.scheme(SCHEME)
-//                .authority(AUTH)
-//                .appendPath(AUTH_KEY)
-//                .appendPath(AUTH_VALUE)
-//                .appendQueryParameter(CLIENT_KEY, CLIENT_VALUE)
-//                .appendQueryParameter(URI_KEY, URI_VALUE)
-//                .appendQueryParameter(RESPONSE_KEY, RESPONSE_VALUE)
-//                .appendQueryParameter(DISPLAY_KEY, DISPLAY_VALUE)
+        if (view.isNetworkAvailable()) {
+            if (accessToken == null) {
 
-        uriBuilder.scheme("https")
-                .authority("api.instagram.com")
-                .appendPath("oauth")
-                .appendPath("authorize")
-                .appendQueryParameter("client_id", "794a065c52354057836efe405df98186")
-                .appendQueryParameter("redirect_uri", "https://instagram.com")
-                .appendQueryParameter("response_type", "token")
-                .appendQueryParameter("display", "touch")
-        // val intent = Intent(Intent.ACTION_VIEW, uriBuilder.build())
-        // view.startWebActivity(intent) -> {startActivity(intent)}
-        view.showWebView(uriBuilder.toString())
+                val uriBuilder: Uri.Builder = Uri.Builder()
+                uriBuilder.scheme(SCHEME)
+                        .authority(AUTH)
+                        .appendPath(AUTH_KEY)
+                        .appendPath(AUTH_VALUE)
+                        .appendQueryParameter(CLIENT_KEY, CLIENT_VALUE)
+                        .appendQueryParameter(URI_KEY, URI_VALUE)
+                        .appendQueryParameter(RESPONSE_KEY, RESPONSE_VALUE)
+                        .appendQueryParameter(DISPLAY_KEY, DISPLAY_VALUE)
+
+                // val intent = Intent(Intent.ACTION_VIEW, uriBuilder.build())
+                // view.startWebActivity(intent) -> {startActivity(intent)}
+                view.showWebView(uriBuilder.toString())
+            } else {
+                view.igLogout()
+            }
+        } else {
+            view.showNetworkUnavailableError()
+        }
     }
 
     fun onLoginSuccessResponse(token: String) {
         Log.e("FedeLog", "onLoginSuccessResponse: $token")
         accessToken = token
+        view.enableLogoutBtn()
     }
 
     fun onLoginErrorResponse() {
         Log.e("FedeLog", "onLoginErrorResponse")
         accessToken = null
+        view.enableLoginBtn()
     }
 
     fun onLoginFailResponse() {
         Log.e("FedeLog", "onLoginFailResponse")
         accessToken = null
+        view.enableLoginBtn()
     }
 
     fun onFetchDataRequest() {
-        if (accessToken != null && accessToken!!.isNotEmpty()) {
-            adapter.getInstagramData(accessToken!!, object : InstagramProxyListener {
-                override fun onResponse(data: List<InstagramDataItem>) {
-                    // TODO onRESPONSE
-                    view.showIGData(data)
-                }
 
-                override fun onError() {
-                    // TODO onERROR
-                }
+        if (view.isNetworkAvailable()) {
+            if (accessToken != null && accessToken!!.isNotEmpty()) {
+                adapter.getInstagramData(accessToken!!, object : InstagramProxyListener {
+                    override fun onResponse(data: List<InstagramDataItem>) {
+                        // TODO onRESPONSE
+                        view.showIGData(data)
+                    }
 
-                override fun onFail() {
-                    // TODO onFAIL
-                }
-            })
+                    override fun onError() {
+                        // TODO onERROR
+                    }
+
+                    override fun onFail() {
+                        // TODO onFAIL
+                    }
+                })
+            } else {
+                // TODO View -> show error ("Please login first")
+            }
         } else {
-            // TODO View -> show error ("Please login first")
+            view.showNetworkUnavailableError()
         }
     }
 

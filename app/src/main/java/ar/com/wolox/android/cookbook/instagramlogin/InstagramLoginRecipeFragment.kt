@@ -1,6 +1,12 @@
 package ar.com.wolox.android.cookbook.instagramlogin
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.view.View
+import android.webkit.CookieManager
+import android.webkit.CookieSyncManager
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.cookbook.R
@@ -31,6 +37,31 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
         vDataBtn.setOnClickListener {
             presenter.onFetchDataRequest()
         }
+    }
+
+    override fun enableLoginBtn() {
+        vLoginBtn.text = getString(R.string.instagram_login_btn)
+    }
+
+    override fun enableLogoutBtn() {
+        vLoginBtn.text = getString(R.string.instagram_logout_btn)
+    }
+
+    override fun igLogout() {
+        CookieSyncManager.createInstance(context)
+        CookieManager.getInstance().removeAllCookie()
+    }
+
+    override fun isNetworkAvailable(): Boolean {
+        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE)
+        return if (connectivityManager is ConnectivityManager) {
+            val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
+            networkInfo?.isConnected ?: false
+        } else false
+    }
+
+    override fun showNetworkUnavailableError() {
+        Toast.makeText(context, getString(R.string.instagram_error_network_unavailable), Toast.LENGTH_LONG).show()
     }
 
     override fun showWebView(url: String) {
