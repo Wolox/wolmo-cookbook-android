@@ -23,78 +23,93 @@ class TwitterLoginRecipePresenter @Inject constructor(
     }
 
     fun onDefaultBtnRequest() {
-        val session = getTwitterSession()
-        if (session == null) {
-            defaultTwitterLogin()
+        if (view.isNetworkAvailable()) {
+            val session = getTwitterSession()
+            if (session == null) {
+                defaultTwitterLogin()
+            } else {
+                fetchTwitterEmail(session)
+            }
         } else {
-            fetchTwitterEmail(session)
+            view.showNetworkUnavailableError()
         }
     }
 
     fun onCustomBtnRequest() {
-        val context = view.getActivityContext()
-        if (context != null) {
-            val session = getTwitterSession()
-            if (session == null) {
-                twitterAdapter.authorizeClient(context, object : TwitterLoginAuthListener {
-                    override fun onAuthSuccess(result: TwitterSession) {
-                        fetchTwitterEmail(result)
-                    }
+        if (view.isNetworkAvailable()) {
+            val context = view.getActivityContext()
+            if (context != null) {
+                val session = getTwitterSession()
+                if (session == null) {
+                    twitterAdapter.authorizeClient(context, object : TwitterLoginAuthListener {
+                        override fun onAuthSuccess(result: TwitterSession) {
+                            fetchTwitterEmail(result)
+                        }
 
-                    override fun onAuthError(message: String?) {
-                        if (message != null) {
-                            view.showError(message)
-                        } else {
+                        override fun onAuthError(message: String?) {
+                            if (message != null) {
+                                view.showError(message)
+                            } else {
+                                view.showAuthFail()
+                            }
+                        }
+
+                        override fun onAuthFail() {
                             view.showAuthFail()
                         }
-                    }
-
-                    override fun onAuthFail() {
-                        view.showAuthFail()
-                    }
-                })
-            } else {
-                fetchTwitterEmail(session)
+                    })
+                } else {
+                    fetchTwitterEmail(session)
+                }
             }
+        } else {
+            view.showNetworkUnavailableError()
         }
     }
 
     fun onImageRequest() {
+        if (view.isNetworkAvailable()) {
+            // USER contains all personal data from logged user, like profile picture, followers,
+            // description, creation date, profile background picture, etc...
+            val session = getTwitterSession()
+            if (session != null) {
+                twitterAdapter.requestProfileImage(object : TwitterLoginPictureListener {
+                    override fun onUserSuccess(user: User) {
+                        view.showPictureData(user)
+                    }
 
-        // USER contains all personal data from logged user, like profile picture, followers,
-        // description, creation date, profile background picture, etc...
-        val session = getTwitterSession()
-        if (session != null) {
-            twitterAdapter.requestProfileImage(object : TwitterLoginPictureListener {
-                override fun onUserSuccess(user: User) {
-                    view.showPictureData(user)
-                }
+                    override fun onUserError(message: String) {
+                        view.showError(message)
+                    }
 
-                override fun onUserError(message: String) {
-                    view.showError(message)
-                }
-
-                override fun onUserFail() {
-                    view.showPictureFail()
-                }
-            })
+                    override fun onUserFail() {
+                        view.showPictureFail()
+                    }
+                })
+            } else {
+                view.showUnAuthError()
+            }
         } else {
-            view.showUnAuthError()
+            view.showNetworkUnavailableError()
         }
     }
 
     fun onLogoutRequest() {
-        val session = getTwitterSession()
-        if (session != null) {
-            twitterAdapter.logoutSession(object : TwitterLoginCredentialsListener {
-                override fun onClearCredentialsSuccess() {
-                    view.showCredentialsCleared()
-                }
+        if (view.isNetworkAvailable()) {
+            val session = getTwitterSession()
+            if (session != null) {
+                twitterAdapter.logoutSession(object : TwitterLoginCredentialsListener {
+                    override fun onClearCredentialsSuccess() {
+                        view.showCredentialsCleared()
+                    }
 
-                override fun onClearCredentialsError() {
-                    view.showCredentialsFail()
-                }
-            })
+                    override fun onClearCredentialsError() {
+                        view.showCredentialsFail()
+                    }
+                })
+            }
+        } else {
+            view.showNetworkUnavailableError()
         }
     }
 
