@@ -15,9 +15,12 @@ class InstagramLoginView @Inject constructor() {
         setCancelable(true)
         setCanceledOnTouchOutside(false)
         setContentView(R.layout.item_web_view)
-        vWebView.settings.javaScriptEnabled = true
-        vWebView.settings.useWideViewPort = true
-        vWebView.settings.loadWithOverviewMode = true
+
+        vWebView.settings.run {
+            javaScriptEnabled = true
+            useWideViewPort = true
+            loadWithOverviewMode = true
+        }
         vWebView.loadUrl(url)
         vWebView.webViewClient = object : WebViewClient() {
 
@@ -26,7 +29,7 @@ class InstagramLoginView @Inject constructor() {
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                if (url != null && url.contains("#access_token=")) {
+                if (url != null && url.contains(SUCCESS_KEY)) {
                     val uri = Uri.parse(url)
                     token = uri.encodedFragment
                     if (token != null) {
@@ -38,12 +41,17 @@ class InstagramLoginView @Inject constructor() {
                         listener.onCodeError()
                         dismiss()
                     }
-                } else if (url != null && url.contains("?error")) {
+                } else if (url != null && url.contains(ERROR_KEY)) {
                     listener.onApiError()
                     dismiss()
                 }
             }
         }
         this.show()
+    }
+
+    companion object {
+        private const val SUCCESS_KEY = "#access_token="
+        private const val ERROR_KEY = "?error"
     }
 }
