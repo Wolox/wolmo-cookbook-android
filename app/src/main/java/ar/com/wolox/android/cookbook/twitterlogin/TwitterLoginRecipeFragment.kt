@@ -1,7 +1,12 @@
 package ar.com.wolox.android.cookbook.twitterlogin
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.net.Uri
+import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.twitterlogin.model.YoutubeEmailResponse
@@ -38,6 +43,18 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
 
     override fun getActivityContext(): FragmentActivity? {
         return activity
+    }
+
+    override fun isNetworkAvailable(): Boolean {
+        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE)
+        return if (connectivityManager is ConnectivityManager) {
+            val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
+            networkInfo?.isConnected ?: false
+        } else false
+    }
+
+    override fun showNetworkUnavailableError() {
+        Toast.makeText(context, getString(R.string.twitter_error_network_unavailable), Toast.LENGTH_LONG).show()
     }
 
     override fun setLoginCallback(callback: Callback<TwitterSession>) {
@@ -94,5 +111,6 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
 
     override fun showCredentialsCleared() {
         vDetails.text = getString(R.string.twitter_logout)
+        vProfileImg.visibility = View.INVISIBLE
     }
 }
