@@ -95,6 +95,10 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
         vDetails.text = getString(R.string.twitter_internal_error)
     }
 
+    override fun setLoginButton(status: Boolean) {
+        vDefaultLoginBtn.isClickable = status
+    }
+
     override fun showLoginData(response: YoutubeEmailResponse) {
         val message = "User Id : " + response.userId + "\nUsername : " + response.username + "\nEmail Id : " + response.email
         vDetails.text = message
@@ -106,6 +110,7 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
         vDetails.text = message
 
         val uri = Uri.parse(user.profileImageUrl)
+        vProfileImg.visibility = View.VISIBLE
         vProfileImg.setImageURI(uri)
     }
 

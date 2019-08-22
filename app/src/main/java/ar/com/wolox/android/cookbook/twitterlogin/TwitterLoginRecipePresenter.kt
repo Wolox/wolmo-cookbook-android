@@ -19,7 +19,29 @@ class TwitterLoginRecipePresenter @Inject constructor(
 
     override fun onViewAttached() {
         super.onViewAttached()
+
+        initLoginButton()
         defaultTwitterLogin()
+    }
+
+    private fun initLoginButton() {
+        view.setLoginCallback(twitterAdapter.twitterCallback(object : TwitterLoginAuthListener {
+            override fun onAuthSuccess(result: TwitterSession) {
+                fetchTwitterEmail(result)
+            }
+
+            override fun onAuthError(message: String?) {
+                if (message != null) {
+                    view.showError(message)
+                } else {
+                    view.showAuthFail()
+                }
+            }
+
+            override fun onAuthFail() {
+                view.showAuthFail()
+            }
+        }))
     }
 
     fun onDefaultBtnRequest() {
@@ -101,6 +123,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                 twitterAdapter.logoutSession(object : TwitterLoginCredentialsListener {
                     override fun onClearCredentialsSuccess() {
                         view.showCredentialsCleared()
+                        view.setLoginButton(true)
                     }
 
                     override fun onClearCredentialsError() {
@@ -130,25 +153,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
     }
 
     private fun defaultTwitterLogin() {
-        if (getTwitterSession() == null) {
-            view.setLoginCallback(twitterAdapter.twitterCallback(object : TwitterLoginAuthListener {
-                override fun onAuthSuccess(result: TwitterSession) {
-                    fetchTwitterEmail(result)
-                }
-
-                override fun onAuthError(message: String?) {
-                    if (message != null) {
-                        view.showError(message)
-                    } else {
-                        view.showAuthFail()
-                    }
-                }
-
-                override fun onAuthFail() {
-                    view.showAuthFail()
-                }
-            }))
-        } else {
+        if (getTwitterSession() != null) {
             fetchTwitterEmail(getTwitterSession())
         }
     }
@@ -161,6 +166,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                             response,
                             twitterSession.userName)
                     view.showLoginData(emailResponse)
+                    view.setLoginButton(false)
                 }
 
                 override fun onEmailError(message: String) {
