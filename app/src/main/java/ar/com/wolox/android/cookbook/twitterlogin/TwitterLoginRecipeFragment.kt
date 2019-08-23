@@ -1,13 +1,9 @@
 package ar.com.wolox.android.cookbook.twitterlogin
 
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.net.Uri
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.twitterlogin.model.YoutubeEmailResponse
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
@@ -25,32 +21,20 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
 
     override fun setListeners() {
         vDefaultLoginBtn.setOnClickListener {
-            presenter.onDefaultBtnRequest()
+            presenter.onDefaultButtonClicked()
         }
 
         vCustomLoginBtn.setOnClickListener {
-            presenter.onCustomBtnRequest()
+            presenter.onCustomButtonClicked()
         }
 
         vGetProfileBtn.setOnClickListener {
-            presenter.onImageRequest()
+            presenter.onFetchDataButtonClicked()
         }
 
         vLogoutBtn.setOnClickListener {
-            presenter.onLogoutRequest()
+            presenter.onLogoutButtonClicked()
         }
-    }
-
-    override fun getActivityContext(): FragmentActivity? {
-        return activity
-    }
-
-    override fun isNetworkAvailable(): Boolean {
-        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE)
-        return if (connectivityManager is ConnectivityManager) {
-            val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
-            networkInfo?.isConnected ?: false
-        } else false
     }
 
     override fun showNetworkUnavailableError() {
@@ -64,7 +48,7 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         vDefaultLoginBtn.onActivityResult(requestCode, resultCode, data)
-        presenter.onActivityResult(requestCode, requestCode, data)
+        presenter.onActivityResultFinished(requestCode, requestCode, data)
     }
 
     override fun showError(message: String) {
@@ -95,18 +79,24 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
         vDetails.text = getString(R.string.twitter_internal_error)
     }
 
-    override fun setLoginButton(status: Boolean) {
+    override fun toggleLoginButtonState(status: Boolean) {
         vDefaultLoginBtn.isClickable = status
     }
 
     override fun showLoginData(response: YoutubeEmailResponse) {
-        val message = "User Id : " + response.userId + "\nUsername : " + response.username + "\nEmail Id : " + response.email
+        val message = getString(R.string.twitter_login_data,
+                response.userId,
+                response.username,
+                response.email)
         vDetails.text = message
     }
 
     override fun showPictureData(user: User) {
-        val message = "User Id : " + user.id + "\nUsername : " + user.screenName +
-                "\nEmail Id : " + user.email + "\nDescription : " + user.description
+        val message = getString(R.string.twitter_picture_data,
+                user.id,
+                user.screenName,
+                user.email,
+                user.description)
         vDetails.text = message
 
         val uri = Uri.parse(user.profileImageUrl)

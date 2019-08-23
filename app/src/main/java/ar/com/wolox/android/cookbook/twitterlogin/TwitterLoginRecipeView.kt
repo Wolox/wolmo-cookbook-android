@@ -9,12 +9,11 @@ interface TwitterLoginRecipeView {
 
     fun setLoginCallback(callback: com.twitter.sdk.android.core.Callback<TwitterSession>)
 
-    fun isNetworkAvailable(): Boolean
     fun showNetworkUnavailableError()
 
-    fun getActivityContext(): FragmentActivity?
+    fun requireActivity(): FragmentActivity?
 
-    fun setLoginButton(status: Boolean)
+    fun toggleLoginButtonState(status: Boolean)
 
     fun showLoginData(response: YoutubeEmailResponse)
     fun showPictureData(user: User)

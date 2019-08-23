@@ -68,7 +68,7 @@ class GoogleHelper @Inject constructor(context: Context) {
         /**
          * Get the signed in account from data received by intent on activity result.
          *
-         * @param data the intent received onActivityResult.
+         * @param data the intent received onActivityResultFinished.
          *
          * @param onSuccess called on success, receive an UserGoogle model with the signed in account.
          *
