@@ -56,6 +56,8 @@
     <string name="twitter_credentials_error">Twitter: Error while try to logout</string>
     <string name="twitter_internal_error">Internal error…</string>
     <string name="twitter_error_network_unavailable">Network is unavailable, please try later…</string>
+    <string name="twitter_login_data">User ID: %1$s \nUsername: %2$s \nEmail ID: %3$s</string>
+    <string name="twitter_picture_data">User ID: %1$d \nUsername: %2$s \nEmail ID: %3$s \nDescription: %4$s</string>
 
     <!-- Test Login -->
     <string name="test_login_email">Email</string>

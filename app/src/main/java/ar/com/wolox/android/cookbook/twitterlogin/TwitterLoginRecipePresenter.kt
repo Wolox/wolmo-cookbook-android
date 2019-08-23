@@ -1,6 +1,10 @@
 package ar.com.wolox.android.cookbook.twitterlogin
 
+import android.app.Application
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginAdapter
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginAuthListener
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginCredentialsListener
@@ -14,7 +18,8 @@ import com.twitter.sdk.android.core.models.User
 import javax.inject.Inject
 
 class TwitterLoginRecipePresenter @Inject constructor(
-    private val twitterAdapter: TwitterLoginAdapter
+    private val twitterAdapter: TwitterLoginAdapter,
+    private val application: Application
 ) : BasePresenter<TwitterLoginRecipeView>() {
 
     override fun onViewAttached() {
@@ -35,11 +40,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
             }
 
             override fun onAuthError(message: String?) {
-                if (message != null) {
-                    view.showError(message)
-                } else {
-                    view.showAuthFail()
-                }
+                message?.let { view.showError(it) } ?: run { view.showAuthFail() }
             }
 
             override fun onAuthFail() {
@@ -49,7 +50,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
     }
 
     fun onDefaultButtonClicked() {
-        if (view.isNetworkAvailable()) {
+        if (isNetworkAvailable()) {
             val session = getTwitterSession()
             if (session == null) {
                 defaultTwitterLogin()
@@ -66,12 +67,12 @@ class TwitterLoginRecipePresenter @Inject constructor(
      * instead, it use API directly.
      */
     fun onCustomButtonClicked() {
-        if (view.isNetworkAvailable()) {
-            val context = view.getActivityContext()
-            if (context != null) {
+
+        if (isNetworkAvailable()) {
+            view.requireActivity()?.let {
                 val session = getTwitterSession()
                 if (session == null) {
-                    twitterAdapter.authorizeClient(context, object : TwitterLoginAuthListener {
+                    twitterAdapter.authorizeClient(it, object : TwitterLoginAuthListener {
                         override fun onAuthSuccess(result: TwitterSession) {
                             fetchTwitterEmail(result)
                         }
@@ -102,7 +103,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
      * user logged to works with code 200
      */
     fun onFetchDataButtonClicked() {
-        if (view.isNetworkAvailable()) {
+        if (isNetworkAvailable()) {
             // USER contains all personal data from logged user, like profile picture, followers,
             // description, creation date, profile background picture, etc...
             val session = getTwitterSession()
@@ -129,7 +130,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
     }
 
     fun onLogoutButtonClicked() {
-        if (view.isNetworkAvailable()) {
+        if (isNetworkAvailable()) {
             val session = getTwitterSession()
             if (session != null) {
                 twitterAdapter.logoutSession(object : TwitterLoginCredentialsListener {
@@ -148,7 +149,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
         }
     }
 
-    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    fun onActivityResultFinished(requestCode: Int, resultCode: Int, data: Intent?) {
         twitterAdapter.onResultActivity(requestCode, resultCode, data)
     }
 
@@ -183,5 +184,14 @@ class TwitterLoginRecipePresenter @Inject constructor(
         } else {
             view.showInternalError()
         }
+    }
+
+    private fun isNetworkAvailable(): Boolean {
+
+        val connectivityManager = application.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE)
+        return if (connectivityManager is ConnectivityManager) {
+            val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
+            networkInfo?.isConnected ?: false
+        } else false
     }
 }
