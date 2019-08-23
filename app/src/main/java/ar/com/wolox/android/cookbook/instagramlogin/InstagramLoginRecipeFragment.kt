@@ -1,8 +1,5 @@
 package ar.com.wolox.android.cookbook.instagramlogin
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.view.View
 import android.webkit.CookieManager
 import android.widget.Toast
@@ -30,11 +27,11 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
         super.setListeners()
 
         vLoginBtn.setOnClickListener {
-            presenter.onIgLoginRequest()
+            presenter.onLogInOutButtonClicked()
         }
 
         vDataBtn.setOnClickListener {
-            presenter.onFetchDataRequest()
+            presenter.onFetchDataButtonClicked()
         }
     }
 
@@ -71,14 +68,6 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
     override fun deleteListData() {
         pictureList = mutableListOf()
         vRecyclerView.visibility = View.INVISIBLE
-    }
-
-    override fun isNetworkAvailable(): Boolean {
-        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE)
-        return if (connectivityManager is ConnectivityManager) {
-            val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
-            networkInfo?.isConnected ?: false
-        } else false
     }
 
     override fun showNetworkUnavailableError() {

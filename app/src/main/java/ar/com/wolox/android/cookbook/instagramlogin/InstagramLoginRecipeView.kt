@@ -12,7 +12,6 @@ interface InstagramLoginRecipeView {
     fun showLogoutSuccessMsg()
     fun deleteListData()
 
-    fun isNetworkAvailable(): Boolean
     fun showNetworkUnavailableError()
 
     fun showWebView(url: String)

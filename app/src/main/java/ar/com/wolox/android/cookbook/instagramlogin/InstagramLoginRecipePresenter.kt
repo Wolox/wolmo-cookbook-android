@@ -1,5 +1,9 @@
 package ar.com.wolox.android.cookbook.instagramlogin
 
+import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.net.Uri
 import ar.com.wolox.android.cookbook.instagramlogin.model.InstagramDataItem
 import ar.com.wolox.android.cookbook.instagramlogin.proxy.InstagramProxy
@@ -8,7 +12,8 @@ import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 
 class InstagramLoginRecipePresenter @Inject constructor(
-    private val adapter: InstagramProxy
+    private val adapter: InstagramProxy,
+    private val application: Application
 ) : BasePresenter<InstagramLoginRecipeView>() {
 
     private var accessToken: String? = null
@@ -23,11 +28,12 @@ class InstagramLoginRecipePresenter @Inject constructor(
         }
     }
 
-    fun onIgLoginRequest() {
+    fun onLogInOutButtonClicked() {
 
-        if (view.isNetworkAvailable()) {
-            if (accessToken == null) {
-
+        if (isNetworkAvailable()) {
+            accessToken?.let {
+                view.igLogout()
+            } ?: run {
                 val uriBuilder: Uri.Builder = Uri.Builder()
                 uriBuilder.scheme(SCHEME)
                         .authority(AUTH)
@@ -39,8 +45,6 @@ class InstagramLoginRecipePresenter @Inject constructor(
                         .appendQueryParameter(DISPLAY_KEY, DISPLAY_VALUE)
 
                 view.showWebView(uriBuilder.toString())
-            } else {
-                view.igLogout()
             }
         } else {
             view.showNetworkUnavailableError()
@@ -50,12 +54,16 @@ class InstagramLoginRecipePresenter @Inject constructor(
     fun onLogoutResponse(response: Boolean) {
         if (response) {
             accessToken = null
-            view.enableLoginBtn()
-            view.deleteListData()
-            view.showLogoutSuccessMsg()
+            view.run {
+                enableLoginBtn()
+                deleteListData()
+                showLogoutSuccessMsg()
+            }
         } else {
-            view.enableLogoutBtn()
-            view.showLogoutError()
+            view.run {
+                enableLogoutBtn()
+                showLogoutError()
+            }
         }
     }
 
@@ -77,10 +85,10 @@ class InstagramLoginRecipePresenter @Inject constructor(
         view.showLoginError()
     }
 
-    fun onFetchDataRequest() {
+    fun onFetchDataButtonClicked() {
 
-        if (view.isNetworkAvailable()) {
-            if (accessToken != null && accessToken!!.isNotEmpty()) {
+        if (isNetworkAvailable()) {
+            accessToken?.let {
                 adapter.getInstagramData(accessToken!!, object : InstagramProxyListener {
                     override fun onResponse(data: List<InstagramDataItem>) {
                         view.showIGData(data)
@@ -91,19 +99,28 @@ class InstagramLoginRecipePresenter @Inject constructor(
                     }
 
                     override fun onFail(message: String?) {
-                        if (message != null) {
-                            view.showFailInService(message)
-                        } else {
+                        message?.let { lambda ->
+                            view.showFailInService(lambda)
+                        } ?: run {
                             view.showErrorInService()
                         }
                     }
                 })
-            } else {
+            } ?: run {
                 view.showFetchDataError()
             }
         } else {
             view.showNetworkUnavailableError()
         }
+    }
+
+    private fun isNetworkAvailable(): Boolean {
+
+        val connectivityManager = application.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE)
+        return if (connectivityManager is ConnectivityManager) {
+            val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
+            networkInfo?.isConnected ?: false
+        } else false
     }
 
     companion object {

@@ -72,6 +72,7 @@
     <string name="instagram_error_cookies">Error occurs during logout…</string>
     <string name="instagram_error_api">An error occurs during data download, please try again…</string>
     <string name="instagram_error_fetch_data">You need to login before download personal data</string>
+    <string name="instagram_login_data">ID: %1$s, FullName: %2$s, UserName: %3$s</string>
 
     <!-- Test Login -->
     <string name="test_login_email">Email</string>
