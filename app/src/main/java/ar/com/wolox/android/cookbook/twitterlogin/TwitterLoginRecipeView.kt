@@ -14,7 +14,7 @@ interface TwitterLoginRecipeView {
 
     fun getActivityContext(): FragmentActivity?
 
-    fun setLoginButton(status: Boolean)
+    fun toggleLoginButtonState(status: Boolean)
 
     fun showLoginData(response: YoutubeEmailResponse)
     fun showPictureData(user: User)

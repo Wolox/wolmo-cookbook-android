@@ -48,7 +48,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
         }))
     }
 
-    fun onDefaultBtnRequest() {
+    fun onDefaultButtonClicked() {
         if (view.isNetworkAvailable()) {
             val session = getTwitterSession()
             if (session == null) {
@@ -65,7 +65,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
      * Custom login button don't use the interface provided by twitter (default login button),
      * instead, it use API directly.
      */
-    fun onCustomBtnRequest() {
+    fun onCustomButtonClicked() {
         if (view.isNetworkAvailable()) {
             val context = view.getActivityContext()
             if (context != null) {
@@ -101,7 +101,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
      * "com.twitter.sdk.android.core.models.User" Contains personal data from twitter, needs an
      * user logged to works with code 200
      */
-    fun onImageRequest() {
+    fun onFetchDataButtonClicked() {
         if (view.isNetworkAvailable()) {
             // USER contains all personal data from logged user, like profile picture, followers,
             // description, creation date, profile background picture, etc...
@@ -128,14 +128,14 @@ class TwitterLoginRecipePresenter @Inject constructor(
         }
     }
 
-    fun onLogoutRequest() {
+    fun onLogoutButtonClicked() {
         if (view.isNetworkAvailable()) {
             val session = getTwitterSession()
             if (session != null) {
                 twitterAdapter.logoutSession(object : TwitterLoginCredentialsListener {
                     override fun onClearCredentialsSuccess() {
                         view.showCredentialsCleared()
-                        view.setLoginButton(true)
+                        view.toggleLoginButtonState(true)
                     }
 
                     override fun onClearCredentialsError() {
@@ -152,23 +152,14 @@ class TwitterLoginRecipePresenter @Inject constructor(
         twitterAdapter.onResultActivity(requestCode, resultCode, data)
     }
 
-    private fun getTwitterSession(): TwitterSession? {
+    /**
+     * TwitterSession and TwitterAuthToken classes contains all data stored in device from login,
+     * like UserID, Username, token, secret, ...
+     * Example: TwitterAuthToken(session.authToken.token, session.authToken.secret)
+     */
+    private fun getTwitterSession(): TwitterSession? = TwitterCore.getInstance().sessionManager.activeSession
 
-//        val session = TwitterCore.getInstance().sessionManager.activeSession
-//        if (session != null) {
-//            // TwitterSession and TwitterAuthToken contains all data stored in device from login
-//            // (UserID, Username, token, secret)
-//            val authToken = TwitterAuthToken(session.authToken.token, session.authToken.secret)
-//        }
-
-        return TwitterCore.getInstance().sessionManager.activeSession
-    }
-
-    private fun defaultTwitterLogin() {
-        if (getTwitterSession() != null) {
-            fetchTwitterEmail(getTwitterSession())
-        }
-    }
+    private fun defaultTwitterLogin() = getTwitterSession()?.let { fetchTwitterEmail(it) }
 
     private fun fetchTwitterEmail(twitterSession: TwitterSession?) {
         if (twitterSession != null) {
@@ -178,7 +169,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                             response,
                             twitterSession.userName)
                     view.showLoginData(emailResponse)
-                    view.setLoginButton(false)
+                    view.toggleLoginButtonState(false)
                 }
 
                 override fun onEmailError(message: String) {

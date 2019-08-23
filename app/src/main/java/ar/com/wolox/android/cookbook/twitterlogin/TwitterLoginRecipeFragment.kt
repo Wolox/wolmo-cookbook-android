@@ -25,19 +25,19 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
 
     override fun setListeners() {
         vDefaultLoginBtn.setOnClickListener {
-            presenter.onDefaultBtnRequest()
+            presenter.onDefaultButtonClicked()
         }
 
         vCustomLoginBtn.setOnClickListener {
-            presenter.onCustomBtnRequest()
+            presenter.onCustomButtonClicked()
         }
 
         vGetProfileBtn.setOnClickListener {
-            presenter.onImageRequest()
+            presenter.onFetchDataButtonClicked()
         }
 
         vLogoutBtn.setOnClickListener {
-            presenter.onLogoutRequest()
+            presenter.onLogoutButtonClicked()
         }
     }
 
@@ -95,7 +95,7 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
         vDetails.text = getString(R.string.twitter_internal_error)
     }
 
-    override fun setLoginButton(status: Boolean) {
+    override fun toggleLoginButtonState(status: Boolean) {
         vDefaultLoginBtn.isClickable = status
     }
 
