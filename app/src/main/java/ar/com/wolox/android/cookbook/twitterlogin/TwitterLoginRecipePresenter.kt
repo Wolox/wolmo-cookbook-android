@@ -24,6 +24,10 @@ class TwitterLoginRecipePresenter @Inject constructor(
         defaultTwitterLogin()
     }
 
+    /**
+     * Attach callback to TwitterLoginButton is mandatory. When user click btn, if callback
+     * isn't attached, the app throws an exception (null callback)
+     **/
     private fun initLoginButton() {
         view.setLoginCallback(twitterAdapter.twitterCallback(object : TwitterLoginAuthListener {
             override fun onAuthSuccess(result: TwitterSession) {
@@ -57,6 +61,10 @@ class TwitterLoginRecipePresenter @Inject constructor(
         }
     }
 
+    /**
+     * Custom login button don't use the interface provided by twitter (default login button),
+     * instead, it use API directly.
+     */
     fun onCustomBtnRequest() {
         if (view.isNetworkAvailable()) {
             val context = view.getActivityContext()
@@ -89,6 +97,10 @@ class TwitterLoginRecipePresenter @Inject constructor(
         }
     }
 
+    /**
+     * "com.twitter.sdk.android.core.models.User" Contains personal data from twitter, needs an
+     * user logged to works with code 200
+     */
     fun onImageRequest() {
         if (view.isNetworkAvailable()) {
             // USER contains all personal data from logged user, like profile picture, followers,
