@@ -51,7 +51,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
 
     fun onDefaultButtonClicked() {
         if (isNetworkAvailable()) {
-            getTwitterSession()?.let { fetchTwitterEmail(it) }?:run { defaultTwitterLogin() }
+            getTwitterSession()?.let { fetchTwitterEmail(it) } ?: run { defaultTwitterLogin() }
         } else {
             view.showNetworkUnavailableError()
         }
@@ -73,7 +73,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                         }
 
                         override fun onAuthError(message: String?) {
-                            message?.let { lambda -> view.showError(lambda) }?:run { view.showAuthFail() }
+                            message?.let { lambda -> view.showError(lambda) } ?: run { view.showAuthFail() }
                         }
 
                         override fun onAuthFail() {
@@ -110,7 +110,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                         view.showPictureFail()
                     }
                 })
-            }?:run {
+            } ?: run {
                 view.showUnAuthError()
             }
         } else {
@@ -169,7 +169,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                     view.showEmailFail()
                 }
             })
-        }?:run {
+        } ?: run {
             view.showInternalError()
         }
     }
