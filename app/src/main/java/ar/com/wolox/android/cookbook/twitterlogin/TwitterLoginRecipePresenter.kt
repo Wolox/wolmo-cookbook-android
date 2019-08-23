@@ -51,12 +51,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
 
     fun onDefaultButtonClicked() {
         if (isNetworkAvailable()) {
-            val session = getTwitterSession()
-            if (session == null) {
-                defaultTwitterLogin()
-            } else {
-                fetchTwitterEmail(session)
-            }
+            getTwitterSession()?.let { fetchTwitterEmail(it) }?:run { defaultTwitterLogin() }
         } else {
             view.showNetworkUnavailableError()
         }
@@ -69,7 +64,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
     fun onCustomButtonClicked() {
 
         if (isNetworkAvailable()) {
-            view.requireActivity()?.let {
+            view.requireActivity()?.let { it ->
                 val session = getTwitterSession()
                 if (session == null) {
                     twitterAdapter.authorizeClient(it, object : TwitterLoginAuthListener {
@@ -78,11 +73,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                         }
 
                         override fun onAuthError(message: String?) {
-                            if (message != null) {
-                                view.showError(message)
-                            } else {
-                                view.showAuthFail()
-                            }
+                            message?.let { lambda -> view.showError(lambda) }?:run { view.showAuthFail() }
                         }
 
                         override fun onAuthFail() {
@@ -99,15 +90,13 @@ class TwitterLoginRecipePresenter @Inject constructor(
     }
 
     /**
-     * "com.twitter.sdk.android.core.models.User" Contains personal data from twitter, needs an
-     * user logged to works with code 200
+     * "com.twitter.sdk.android.core.models.User" Contains personal data from twitter, (like profile
+     * picture, followers, description, creation date, profile background picture, ...), but needs
+     * an user logged to works with code 200
      */
     fun onFetchDataButtonClicked() {
         if (isNetworkAvailable()) {
-            // USER contains all personal data from logged user, like profile picture, followers,
-            // description, creation date, profile background picture, etc...
-            val session = getTwitterSession()
-            if (session != null) {
+            getTwitterSession()?.let {
                 twitterAdapter.requestProfileImage(object : TwitterLoginPictureListener {
                     override fun onUserSuccess(user: User) {
                         view.showPictureData(user)
@@ -121,7 +110,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                         view.showPictureFail()
                     }
                 })
-            } else {
+            }?:run {
                 view.showUnAuthError()
             }
         } else {
@@ -131,8 +120,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
 
     fun onLogoutButtonClicked() {
         if (isNetworkAvailable()) {
-            val session = getTwitterSession()
-            if (session != null) {
+            getTwitterSession()?.let {
                 twitterAdapter.logoutSession(object : TwitterLoginCredentialsListener {
                     override fun onClearCredentialsSuccess() {
                         view.showCredentialsCleared()
@@ -163,12 +151,12 @@ class TwitterLoginRecipePresenter @Inject constructor(
     private fun defaultTwitterLogin() = getTwitterSession()?.let { fetchTwitterEmail(it) }
 
     private fun fetchTwitterEmail(twitterSession: TwitterSession?) {
-        if (twitterSession != null) {
-            twitterAdapter.requestEmail(twitterSession, object : TwitterLoginEmailListener {
+        twitterSession?.let {
+            twitterAdapter.requestEmail(it, object : TwitterLoginEmailListener {
                 override fun onEmailSuccess(response: String) {
-                    val emailResponse = YoutubeEmailResponse(twitterSession.userId.toString(),
+                    val emailResponse = YoutubeEmailResponse(it.userId.toString(),
                             response,
-                            twitterSession.userName)
+                            it.userName)
                     view.showLoginData(emailResponse)
                     view.toggleLoginButtonState(false)
                 }
@@ -181,7 +169,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                     view.showEmailFail()
                 }
             })
-        } else {
+        }?:run {
             view.showInternalError()
         }
     }
