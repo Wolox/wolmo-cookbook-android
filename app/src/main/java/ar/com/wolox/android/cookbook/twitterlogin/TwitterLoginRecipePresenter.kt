@@ -19,7 +19,33 @@ class TwitterLoginRecipePresenter @Inject constructor(
 
     override fun onViewAttached() {
         super.onViewAttached()
+
+        initLoginButton()
         defaultTwitterLogin()
+    }
+
+    /**
+     * Attach callback to TwitterLoginButton is mandatory. When user click btn, if callback
+     * isn't attached, the app throws an exception (null callback)
+     **/
+    private fun initLoginButton() {
+        view.setLoginCallback(twitterAdapter.twitterCallback(object : TwitterLoginAuthListener {
+            override fun onAuthSuccess(result: TwitterSession) {
+                fetchTwitterEmail(result)
+            }
+
+            override fun onAuthError(message: String?) {
+                if (message != null) {
+                    view.showError(message)
+                } else {
+                    view.showAuthFail()
+                }
+            }
+
+            override fun onAuthFail() {
+                view.showAuthFail()
+            }
+        }))
     }
 
     fun onDefaultBtnRequest() {
@@ -35,6 +61,10 @@ class TwitterLoginRecipePresenter @Inject constructor(
         }
     }
 
+    /**
+     * Custom login button don't use the interface provided by twitter (default login button),
+     * instead, it use API directly.
+     */
     fun onCustomBtnRequest() {
         if (view.isNetworkAvailable()) {
             val context = view.getActivityContext()
@@ -67,6 +97,10 @@ class TwitterLoginRecipePresenter @Inject constructor(
         }
     }
 
+    /**
+     * "com.twitter.sdk.android.core.models.User" Contains personal data from twitter, needs an
+     * user logged to works with code 200
+     */
     fun onImageRequest() {
         if (view.isNetworkAvailable()) {
             // USER contains all personal data from logged user, like profile picture, followers,
@@ -101,6 +135,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                 twitterAdapter.logoutSession(object : TwitterLoginCredentialsListener {
                     override fun onClearCredentialsSuccess() {
                         view.showCredentialsCleared()
+                        view.setLoginButton(true)
                     }
 
                     override fun onClearCredentialsError() {
@@ -130,25 +165,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
     }
 
     private fun defaultTwitterLogin() {
-        if (getTwitterSession() == null) {
-            view.setLoginCallback(twitterAdapter.twitterCallback(object : TwitterLoginAuthListener {
-                override fun onAuthSuccess(result: TwitterSession) {
-                    fetchTwitterEmail(result)
-                }
-
-                override fun onAuthError(message: String?) {
-                    if (message != null) {
-                        view.showError(message)
-                    } else {
-                        view.showAuthFail()
-                    }
-                }
-
-                override fun onAuthFail() {
-                    view.showAuthFail()
-                }
-            }))
-        } else {
+        if (getTwitterSession() != null) {
             fetchTwitterEmail(getTwitterSession())
         }
     }
@@ -161,6 +178,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                             response,
                             twitterSession.userName)
                     view.showLoginData(emailResponse)
+                    view.setLoginButton(false)
                 }
 
                 override fun onEmailError(message: String) {
