@@ -37,7 +37,7 @@ class TwitterLoginAdapter @Inject constructor() {
         return object : Callback<TwitterSession>() {
             override fun success(result: Result<TwitterSession>?) {
                 result?.let {
-                    authListener.onAuthSuccess(result.data)
+                    authListener.onAuthSuccess(it.data)
                 } ?: run {
                     authListener.onAuthFail()
                 }
@@ -45,7 +45,7 @@ class TwitterLoginAdapter @Inject constructor() {
 
             override fun failure(exception: TwitterException?) {
                 exception?.let {
-                    authListener.onAuthError(exception.message)
+                    authListener.onAuthError(it.message)
                 } ?: run {
                     authListener.onAuthFail()
                 }
@@ -57,7 +57,7 @@ class TwitterLoginAdapter @Inject constructor() {
         authClient.requestEmail(twitterSession, object : Callback<String>() {
             override fun success(result: Result<String>?) {
                 result?.let {
-                    emailListener.onEmailSuccess(result.data)
+                    emailListener.onEmailSuccess(it.data)
                 } ?: run {
                     emailListener.onEmailFailure()
                 }
@@ -65,7 +65,7 @@ class TwitterLoginAdapter @Inject constructor() {
 
             override fun failure(exception: TwitterException?) {
                 exception?.let {
-                    emailListener.onEmailError(exception.toString())
+                    emailListener.onEmailError(it.toString())
                 } ?: run {
                     emailListener.onEmailFailure()
                 }
@@ -78,7 +78,7 @@ class TwitterLoginAdapter @Inject constructor() {
         call.enqueue(object : Callback<User>() {
             override fun success(result: Result<User>?) {
                 result?.let {
-                    pictureListener.onUserSuccess(result.data)
+                    pictureListener.onUserSuccess(it.data)
                 } ?: run {
                     pictureListener.onUserFail()
                 }
@@ -86,7 +86,7 @@ class TwitterLoginAdapter @Inject constructor() {
 
             override fun failure(exception: TwitterException?) {
                 exception?.let {
-                    pictureListener.onUserError(exception.toString())
+                    pictureListener.onUserError(it.toString())
                 } ?: run {
                     pictureListener.onUserFail()
                 }
@@ -97,6 +97,7 @@ class TwitterLoginAdapter @Inject constructor() {
     fun logoutSession(credentialsListener: TwitterLoginCredentialsListener) {
         try {
             TwitterCore.getInstance().sessionManager.clearActiveSession()
+            authClient.cancelAuthorize()
             credentialsListener.onClearCredentialsSuccess()
         } catch (e: Exception) {
             e.printStackTrace()
