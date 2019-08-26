@@ -12,8 +12,8 @@ import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 
 class InstagramLoginRecipePresenter @Inject constructor(
-        private val adapter: InstagramProxy,
-        private val application: Application
+    private val adapter: InstagramProxy,
+    private val application: Application
 ) : BasePresenter<InstagramLoginRecipeView>() {
 
     private var accessToken: String? = null
