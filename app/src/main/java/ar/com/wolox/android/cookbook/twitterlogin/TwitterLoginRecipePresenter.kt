@@ -65,8 +65,9 @@ class TwitterLoginRecipePresenter @Inject constructor(
 
         if (isNetworkAvailable()) {
             view.requireActivity()?.let { it ->
-                val session = getTwitterSession()
-                if (session == null) {
+                getTwitterSession()?.let { gamma ->
+                    fetchTwitterEmail(gamma)
+                } ?: run {
                     twitterAdapter.authorizeClient(it, object : TwitterLoginAuthListener {
                         override fun onAuthSuccess(result: TwitterSession) {
                             fetchTwitterEmail(result)
@@ -80,8 +81,6 @@ class TwitterLoginRecipePresenter @Inject constructor(
                             view.showAuthFail()
                         }
                     })
-                } else {
-                    fetchTwitterEmail(session)
                 }
             }
         } else {

@@ -36,17 +36,17 @@ class TwitterLoginAdapter @Inject constructor() {
     fun twitterCallback(authListener: TwitterLoginAuthListener): Callback<TwitterSession> {
         return object : Callback<TwitterSession>() {
             override fun success(result: Result<TwitterSession>?) {
-                if (result != null) {
-                    authListener.onAuthSuccess(result.data)
-                } else {
+                result?.let {
+                    authListener.onAuthSuccess(it.data)
+                } ?: run {
                     authListener.onAuthFail()
                 }
             }
 
             override fun failure(exception: TwitterException?) {
-                if (exception != null) {
-                    authListener.onAuthError(exception.message)
-                } else {
+                exception?.let {
+                    authListener.onAuthError(it.message)
+                } ?: run {
                     authListener.onAuthFail()
                 }
             }
@@ -56,17 +56,17 @@ class TwitterLoginAdapter @Inject constructor() {
     fun requestEmail(twitterSession: TwitterSession, emailListener: TwitterLoginEmailListener) {
         authClient.requestEmail(twitterSession, object : Callback<String>() {
             override fun success(result: Result<String>?) {
-                if (result?.data != null) {
-                    emailListener.onEmailSuccess(result.data)
-                } else {
+                result?.let {
+                    emailListener.onEmailSuccess(it.data)
+                } ?: run {
                     emailListener.onEmailFailure()
                 }
             }
 
             override fun failure(exception: TwitterException?) {
-                if (exception?.message != null) {
-                    emailListener.onEmailError(exception.toString())
-                } else {
+                exception?.let {
+                    emailListener.onEmailError(it.toString())
+                } ?: run {
                     emailListener.onEmailFailure()
                 }
             }
@@ -77,17 +77,17 @@ class TwitterLoginAdapter @Inject constructor() {
         val call: Call<User> = apiClient.accountService.verifyCredentials(true, false, true)
         call.enqueue(object : Callback<User>() {
             override fun success(result: Result<User>?) {
-                if (result?.data != null) {
-                    pictureListener.onUserSuccess(result.data)
-                } else {
+                result?.let {
+                    pictureListener.onUserSuccess(it.data)
+                } ?: run {
                     pictureListener.onUserFail()
                 }
             }
 
             override fun failure(exception: TwitterException?) {
-                if (exception?.message != null) {
-                    pictureListener.onUserError(exception.toString())
-                } else {
+                exception?.let {
+                    pictureListener.onUserError(it.toString())
+                } ?: run {
                     pictureListener.onUserFail()
                 }
             }
@@ -97,6 +97,7 @@ class TwitterLoginAdapter @Inject constructor() {
     fun logoutSession(credentialsListener: TwitterLoginCredentialsListener) {
         try {
             TwitterCore.getInstance().sessionManager.clearActiveSession()
+            authClient.cancelAuthorize()
             credentialsListener.onClearCredentialsSuccess()
         } catch (e: Exception) {
             e.printStackTrace()
