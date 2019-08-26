@@ -1,8 +1,6 @@
 package ar.com.wolox.android.cookbook.coroutines
 
-import android.content.Intent
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import kotlinx.android.synthetic.main.fragment_coroutines_login.*
@@ -22,21 +20,19 @@ class CoroutinesRecipeFragment : WolmoFragment<CoroutinesRecipePresenter>(), Cor
         }
     }
 
-    // This will go to DataSyncRecipe just because
-    override fun goToNextWindow() =
-            requireActivity().startActivity(Intent(requireContext(), DataSyncRecipeActivity::class.java))
+    override fun showWelcomeMessage(name: String) = toastFactory.show(getString(R.string.coroutines_welcome, name))
 
-    override fun showLoginError() = toastFactory.show(R.string.test_login_login_error)
+    override fun showLoginError() = toastFactory.show(R.string.coroutines_login_error)
 
     override fun showEmptyEmailError() {
-        vCoroutinesEmailInput.error = getString(R.string.test_login_empty_field)
+        vCoroutinesEmailInput.error = getString(R.string.coroutines_empty_field)
     }
 
     override fun showInvalidEmailError() {
-        vCoroutinesEmailInput.error = getString(R.string.test_login_invalid_email)
+        vCoroutinesEmailInput.error = getString(R.string.coroutines_invalid_email)
     }
 
     override fun showEmptyPasswordError() {
-        vCoroutinesPasswordInput.error = getString(R.string.test_login_empty_field)
+        vCoroutinesPasswordInput.error = getString(R.string.coroutines_empty_field)
     }
 }

@@ -9,6 +9,7 @@ abstract class CoroutinesRecipeModule {
     @ContributesAndroidInjector
     abstract fun CoroutinesRecipeActivity(): CoroutinesRecipeActivity
 
-    @ContributesAndroidInjector
+    @CoroutinesScope
+    @ContributesAndroidInjector(modules = [CoroutinesUsersNetworkModule::class])
     abstract fun CoroutinesRecipeFragment(): CoroutinesRecipeFragment
 }

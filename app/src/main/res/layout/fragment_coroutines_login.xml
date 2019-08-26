@@ -8,7 +8,7 @@
 		android:id="@+id/vCoroutinesEmailInput"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:hint="@string/test_login_email"
+		android:hint="@string/coroutines_email"
 		android:textAlignment="center" />
 
 	<EditText
@@ -16,7 +16,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="@dimen/spacing_large_extra"
-		android:hint="@string/test_login_password"
+		android:hint="@string/coroutines_password"
 		android:inputType="textPassword"
 		android:textAlignment="center" />
 
@@ -24,5 +24,5 @@
 		android:id="@+id/vCoroutinesLoginBtn"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="@string/test_login_login" />
+		android:text="@string/coroutines_login" />
 </LinearLayout>

@@ -2,8 +2,6 @@ package ar.com.wolox.android.cookbook.coroutines
 
 interface CoroutinesRecipeView {
 
-    fun goToNextWindow()
-
     fun showLoginError()
 
     fun showEmptyEmailError()
@@ -11,4 +9,6 @@ interface CoroutinesRecipeView {
     fun showInvalidEmailError()
 
     fun showEmptyPasswordError()
+
+    fun showWelcomeMessage(name: String)
 }
