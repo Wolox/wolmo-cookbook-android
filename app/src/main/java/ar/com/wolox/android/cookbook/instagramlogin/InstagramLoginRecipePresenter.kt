@@ -12,8 +12,8 @@ import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 
 class InstagramLoginRecipePresenter @Inject constructor(
-    private val adapter: InstagramProxy,
-    private val application: Application
+        private val adapter: InstagramProxy,
+        private val application: Application
 ) : BasePresenter<InstagramLoginRecipeView>() {
 
     private var accessToken: String? = null
@@ -95,7 +95,7 @@ class InstagramLoginRecipePresenter @Inject constructor(
 
         if (isNetworkAvailable()) {
             accessToken?.let {
-                adapter.getInstagramData(accessToken!!, object : InstagramProxyListener {
+                adapter.getInstagramData(it, object : InstagramProxyListener {
                     override fun onResponse(data: List<InstagramDataItem>) {
                         view.showIGData(data)
                     }
