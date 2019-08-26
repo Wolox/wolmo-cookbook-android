@@ -66,6 +66,14 @@
     <dimen name="twitter_image_profile_size">120dp</dimen>
     <dimen name="twitter_text_size">15sp</dimen>
 
+    <!-- Instagram login -->
+    <dimen name="instagram_default_padding">8dp</dimen>
+    <dimen name="instagram_double_default_padding">16dp</dimen>
+    <dimen name="instagram_padding_large">64dp</dimen>
+    <dimen name="instagram_web_width">300dp</dimen>
+    <dimen name="instagram_web_height">600dp</dimen>
+    <dimen name="instagram_picture_size">80dp</dimen>
+
     <!-- Navigation -->
     <dimen name="navigation_button_width">100dp</dimen>
     <dimen name="navigation_button_height">100dp</dimen>

@@ -21,14 +21,14 @@ class InstagramLoginRecipePresenter @Inject constructor(
     override fun onViewAttached() {
         super.onViewAttached()
 
-        if (accessToken == null) {
-            view.enableLoginBtn()
-        } else {
+        accessToken?.let {
             view.enableLogoutBtn()
+        }?.run {
+            view.enableLoginBtn()
         }
     }
 
-    fun onLogInOutButtonClicked() {
+    fun onSessionButtonClicked() {
 
         if (isNetworkAvailable()) {
             accessToken?.let {

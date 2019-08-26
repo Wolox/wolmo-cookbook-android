@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <WebView
         android:id="@+id/vWebView"
-        android:layout_width="300dp"
-        android:layout_height="600dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="@dimen/instagram_web_width"
+        android:layout_height="@dimen/instagram_web_height"
+        android:layout_marginStart="@dimen/instagram_double_default_padding"
+        android:layout_marginTop="@dimen/instagram_double_default_padding"
+        android:layout_marginEnd="@dimen/instagram_double_default_padding"
+        android:layout_marginBottom="@dimen/instagram_double_default_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

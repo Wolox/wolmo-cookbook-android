@@ -26,8 +26,8 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
     override fun setListeners() {
         super.setListeners()
 
-        vLoginBtn.setOnClickListener {
-            presenter.onLogInOutButtonClicked()
+        vSessionBtn.setOnClickListener {
+            presenter.onSessionButtonClicked()
         }
 
         vDataBtn.setOnClickListener {
@@ -36,11 +36,11 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
     }
 
     override fun enableLoginBtn() {
-        vLoginBtn.text = getString(R.string.instagram_login_btn)
+        vSessionBtn.text = getString(R.string.instagram_login_btn)
     }
 
     override fun enableLogoutBtn() {
-        vLoginBtn.text = getString(R.string.instagram_logout_btn)
+        vSessionBtn.text = getString(R.string.instagram_logout_btn)
     }
 
     override fun igLogout() {
