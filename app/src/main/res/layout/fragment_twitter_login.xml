@@ -54,5 +54,4 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/twitter_text_size" />
 
-
 </LinearLayout>
