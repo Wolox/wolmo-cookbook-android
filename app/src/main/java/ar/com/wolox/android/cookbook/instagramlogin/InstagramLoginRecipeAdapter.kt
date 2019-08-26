@@ -9,7 +9,7 @@ import ar.com.wolox.android.cookbook.instagramlogin.model.InstagramDataItem
 import kotlinx.android.synthetic.main.item_instagram_data.view.*
 
 class InstagramLoginRecipeAdapter(
-    private val dataSet: MutableList<InstagramDataItem>
+        private val dataSet: MutableList<InstagramDataItem>
 ) : RecyclerView.Adapter<InstagramLoginRecipeAdapter.InstagramLoginRecipeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstagramLoginRecipeViewHolder {
@@ -27,7 +27,7 @@ class InstagramLoginRecipeAdapter(
     class InstagramLoginRecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(
-            picture: InstagramDataItem
+                picture: InstagramDataItem
         ) {
 
             itemView.vPicture.setImageURI(picture.images.standardImg.url)

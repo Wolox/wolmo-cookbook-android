@@ -26,7 +26,7 @@ class InstagramProxy @Inject constructor() {
                     response.body()?.let {
                         val result = it.data
                         listener.onResponse(result)
-                    }.run {
+                    } ?: run {
                         listener.onError()
                     }
                 } else {

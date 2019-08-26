@@ -41,7 +41,7 @@ class InstagramLoginView @Inject constructor() {
                             authComplete = true
                             listener.onCodeReceived(accessToken)
                             dismiss()
-                        }.run {
+                        } ?: run {
                             listener.onCodeError()
                             dismiss()
                         }
