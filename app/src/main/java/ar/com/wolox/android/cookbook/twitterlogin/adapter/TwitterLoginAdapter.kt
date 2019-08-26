@@ -38,7 +38,7 @@ class TwitterLoginAdapter @Inject constructor() {
             override fun success(result: Result<TwitterSession>?) {
                 result?.let {
                     authListener.onAuthSuccess(result.data)
-                }?:run {
+                } ?: run {
                     authListener.onAuthFail()
                 }
             }
@@ -46,7 +46,7 @@ class TwitterLoginAdapter @Inject constructor() {
             override fun failure(exception: TwitterException?) {
                 exception?.let {
                     authListener.onAuthError(exception.message)
-                }?:run {
+                } ?: run {
                     authListener.onAuthFail()
                 }
             }
@@ -58,7 +58,7 @@ class TwitterLoginAdapter @Inject constructor() {
             override fun success(result: Result<String>?) {
                 result?.let {
                     emailListener.onEmailSuccess(result.data)
-                }?:run {
+                } ?: run {
                     emailListener.onEmailFailure()
                 }
             }
@@ -66,7 +66,7 @@ class TwitterLoginAdapter @Inject constructor() {
             override fun failure(exception: TwitterException?) {
                 exception?.let {
                     emailListener.onEmailError(exception.toString())
-                }?:run {
+                } ?: run {
                     emailListener.onEmailFailure()
                 }
             }
@@ -79,7 +79,7 @@ class TwitterLoginAdapter @Inject constructor() {
             override fun success(result: Result<User>?) {
                 result?.let {
                     pictureListener.onUserSuccess(result.data)
-                }?:run {
+                } ?: run {
                     pictureListener.onUserFail()
                 }
             }
@@ -87,7 +87,7 @@ class TwitterLoginAdapter @Inject constructor() {
             override fun failure(exception: TwitterException?) {
                 exception?.let {
                     pictureListener.onUserError(exception.toString())
-                }?:run {
+                } ?: run {
                     pictureListener.onUserFail()
                 }
             }

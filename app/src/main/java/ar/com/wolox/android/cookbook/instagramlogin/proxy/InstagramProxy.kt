@@ -29,7 +29,6 @@ class InstagramProxy @Inject constructor() {
                     }.run {
                         listener.onError()
                     }
-
                 } else {
                     listener.onError()
                 }

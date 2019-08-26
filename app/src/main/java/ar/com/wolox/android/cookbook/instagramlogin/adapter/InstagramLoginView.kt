@@ -29,7 +29,7 @@ class InstagramLoginView @Inject constructor() {
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                url?.let {it ->
+                url?.let { it ->
                     if (it.contains(SUCCESS_KEY)) {
 
                         val uri = Uri.parse(it)
