@@ -21,9 +21,15 @@ class InstagramProxy @Inject constructor() {
 
         call.enqueue(object : Callback<InstagramResponse> {
             override fun onResponse(call: Call<InstagramResponse>, response: Response<InstagramResponse>) {
-                if (response.body() != null) {
-                    val result = response.body()!!.data
-                    listener.onResponse(result)
+                if (response.isSuccessful) {
+
+                    response.body()?.let {
+                        val result = it.data
+                        listener.onResponse(result)
+                    }.run {
+                        listener.onError()
+                    }
+
                 } else {
                     listener.onError()
                 }

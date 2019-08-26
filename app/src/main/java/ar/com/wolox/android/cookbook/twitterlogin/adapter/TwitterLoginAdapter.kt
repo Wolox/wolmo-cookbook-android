@@ -36,17 +36,17 @@ class TwitterLoginAdapter @Inject constructor() {
     fun twitterCallback(authListener: TwitterLoginAuthListener): Callback<TwitterSession> {
         return object : Callback<TwitterSession>() {
             override fun success(result: Result<TwitterSession>?) {
-                if (result != null) {
+                result?.let {
                     authListener.onAuthSuccess(result.data)
-                } else {
+                }?:run {
                     authListener.onAuthFail()
                 }
             }
 
             override fun failure(exception: TwitterException?) {
-                if (exception != null) {
+                exception?.let {
                     authListener.onAuthError(exception.message)
-                } else {
+                }?:run {
                     authListener.onAuthFail()
                 }
             }
@@ -56,17 +56,17 @@ class TwitterLoginAdapter @Inject constructor() {
     fun requestEmail(twitterSession: TwitterSession, emailListener: TwitterLoginEmailListener) {
         authClient.requestEmail(twitterSession, object : Callback<String>() {
             override fun success(result: Result<String>?) {
-                if (result?.data != null) {
+                result?.let {
                     emailListener.onEmailSuccess(result.data)
-                } else {
+                }?:run {
                     emailListener.onEmailFailure()
                 }
             }
 
             override fun failure(exception: TwitterException?) {
-                if (exception?.message != null) {
+                exception?.let {
                     emailListener.onEmailError(exception.toString())
-                } else {
+                }?:run {
                     emailListener.onEmailFailure()
                 }
             }
@@ -77,17 +77,17 @@ class TwitterLoginAdapter @Inject constructor() {
         val call: Call<User> = apiClient.accountService.verifyCredentials(true, false, true)
         call.enqueue(object : Callback<User>() {
             override fun success(result: Result<User>?) {
-                if (result?.data != null) {
+                result?.let {
                     pictureListener.onUserSuccess(result.data)
-                } else {
+                }?:run {
                     pictureListener.onUserFail()
                 }
             }
 
             override fun failure(exception: TwitterException?) {
-                if (exception?.message != null) {
+                exception?.let {
                     pictureListener.onUserError(exception.toString())
-                } else {
+                }?:run {
                     pictureListener.onUserFail()
                 }
             }

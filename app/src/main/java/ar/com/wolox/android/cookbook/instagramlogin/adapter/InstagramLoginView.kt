@@ -29,21 +29,26 @@ class InstagramLoginView @Inject constructor() {
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                if (url != null && url.contains(SUCCESS_KEY)) {
-                    val uri = Uri.parse(url)
-                    token = uri.encodedFragment
-                    if (token != null) {
-                        val accessToken = token!!.substring(token!!.lastIndexOf("=") + 1)
-                        authComplete = true
-                        listener.onCodeReceived(accessToken)
-                        dismiss()
-                    } else {
-                        listener.onCodeError()
+                url?.let {it ->
+                    if (it.contains(SUCCESS_KEY)) {
+
+                        val uri = Uri.parse(it)
+                        token = uri.encodedFragment
+
+                        token?.let { lambda ->
+
+                            val accessToken = lambda.substring(lambda.lastIndexOf("=") + 1)
+                            authComplete = true
+                            listener.onCodeReceived(accessToken)
+                            dismiss()
+                        }.run {
+                            listener.onCodeError()
+                            dismiss()
+                        }
+                    } else if (it.contains(ERROR_KEY)) {
+                        listener.onApiError()
                         dismiss()
                     }
-                } else if (url != null && url.contains(ERROR_KEY)) {
-                    listener.onApiError()
-                    dismiss()
                 }
             }
         }

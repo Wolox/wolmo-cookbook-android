@@ -32,7 +32,10 @@ class InstagramLoginRecipeAdapter(
 
             itemView.vPicture.setImageURI(picture.images.standardImg.url)
 
-            val username = itemView.context.getString(R.string.instagram_login_data, picture.caption.from.id, picture.caption.from.fullName, picture.caption.from.username)
+            val username = itemView.context.getString(R.string.instagram_login_data,
+                    picture.caption.from.id,
+                    picture.caption.from.fullName,
+                    picture.caption.from.username)
             itemView.vUser.text = username
 
             itemView.vDescription.text = picture.caption.text

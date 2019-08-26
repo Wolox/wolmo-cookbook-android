@@ -75,8 +75,8 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
     }
 
     override fun showWebView(url: String) {
-        if (context != null) {
-            InstagramLoginView().showDialog(context!!, url, object : InstagramLoginAuthListener {
+        context?.let {
+            InstagramLoginView().showDialog(it, url, object : InstagramLoginAuthListener {
                 override fun onCodeReceived(authToken: String) {
                     presenter.onLoginSuccessResponse(authToken)
                 }

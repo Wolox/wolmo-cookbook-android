@@ -69,20 +69,26 @@ class InstagramLoginRecipePresenter @Inject constructor(
 
     fun onLoginSuccessResponse(token: String) {
         accessToken = token
-        view.enableLogoutBtn()
-        view.showLoginSuccessMsg()
+        view.run {
+            enableLogoutBtn()
+            showLoginSuccessMsg()
+        }
     }
 
     fun onLoginErrorResponse() {
         accessToken = null
-        view.enableLoginBtn()
-        view.showLoginError()
+        view.run {
+            enableLoginBtn()
+            showLoginError()
+        }
     }
 
     fun onLoginFailResponse() {
         accessToken = null
-        view.enableLoginBtn()
-        view.showLoginError()
+        view.run {
+            enableLoginBtn()
+            showLoginError()
+        }
     }
 
     fun onFetchDataButtonClicked() {
