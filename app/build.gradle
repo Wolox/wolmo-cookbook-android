@@ -118,6 +118,7 @@ buildscript {
     ext.koin_version = '2.0.1'
     ext.twitter_core = '3.1.1'
     ext.tweet_ui = '3.1.1'
+    ext.room_version = '2.1.0-alpha01'
 }
 
 dependencies {
@@ -176,6 +177,13 @@ dependencies {
     // Twitter Login
     implementation "com.twitter.sdk.android:twitter-core:$twitter_core"
     implementation "com.twitter.sdk.android:tweet-ui:$tweet_ui"
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    kapt "androidx.room:room-compiler:$room_version"
 }
 
 dependencies {

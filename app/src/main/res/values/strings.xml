@@ -81,6 +81,10 @@
     <string name="room_add_row">Insert Row</string>
     <string name="room_clear_db">Clear DB</string>
     <string name="room_user">User</string>
+    <string name="room_login_error">You need to login first</string>
+    <string name="room_input_title">New Item</string>
+    <string name="room_input_positive">Add</string>
+    <string name="room_input_negative">Cancel</string>
 
     <!-- Test Login -->
     <string name="test_login_email">Email</string>
