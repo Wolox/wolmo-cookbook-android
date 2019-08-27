@@ -36,20 +36,18 @@ class RoomRecipePresenter @Inject constructor(
     }
 
     fun onAddButtonClicked(data: String) {
-        userName?.let {
-            GlobalScope.launch {
-                val entity = RoomDataEntity()
-                var index = db.RoomDataDao().getLastIndex()
-                if (index <= 0) {
-                    index = 1
-                } else {
-                    index += 1
-                }
-                entity.id = index
-                entity.user = it
-                entity.data = data
-                db.RoomDataDao().insertAll(entity)
+        GlobalScope.launch {
+            val entity = RoomDataEntity()
+            var index = db.RoomDataDao().getLastIndex()
+            if (index <= 0) {
+                index = 1
+            } else {
+                index += 1
             }
+            entity.id = index
+            entity.user = userName!!
+            entity.data = data
+            db.RoomDataDao().insertAll(entity)
         }
     }
 
