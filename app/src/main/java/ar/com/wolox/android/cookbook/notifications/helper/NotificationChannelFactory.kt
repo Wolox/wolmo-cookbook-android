@@ -9,7 +9,6 @@ import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
 import javax.inject.Inject
 
-
 @ApplicationScope
 @RequiresApi(Build.VERSION_CODES.O)
 class NotificationChannelFactory @Inject constructor() {

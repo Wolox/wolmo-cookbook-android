@@ -17,26 +17,27 @@ import javax.inject.Inject
 class NotificationFactory @Inject constructor(@ApplicationScope val context: Context) {
 
     private fun createNotification(model: SkeletalNotification): Notification {
-        return NotificationCompat
-            .Builder(context, model.channelId)
+        return NotificationCompat.Builder(context, model.channelId)
+            .setSmallIcon(R.drawable.ic_notification)
+            .setContentTitle(model.title)
+            .setContentText(model.content)
+            .setPriority(model.priority)
+            .setAutoCancel(true)
             .apply {
-                setSmallIcon(R.drawable.ic_notification)
-                setContentTitle(model.title)
-                setContentText(model.content)
-
-                priority = model.priority
-
                 when (model) {
                     is TextExpandableNotification -> {
                         setStyle(NotificationCompat.BigTextStyle().bigText(model.longText))
                     }
                     is PictureExpandableNotification -> {
-                        val pictureBitmap = BitmapFactory.decodeResource(context.resources, model.picture)
+                        val pictureBitmap =
+                            BitmapFactory.decodeResource(context.resources, model.picture)
                         setLargeIcon(pictureBitmap)
-                        setStyle(NotificationCompat.BigPictureStyle()
-                            .bigPicture(pictureBitmap)
-                            .bigLargeIcon(null)
-                            .setBigContentTitle(model.bigContentTitle))
+                        setStyle(
+                            NotificationCompat.BigPictureStyle()
+                                .bigPicture(pictureBitmap)
+                                .bigLargeIcon(null)
+                                .setBigContentTitle(model.bigContentTitle)
+                        )
                     }
                     is InboxNotification -> {
                         val inboxStyle = NotificationCompat.InboxStyle()
@@ -49,12 +50,9 @@ class NotificationFactory @Inject constructor(@ApplicationScope val context: Con
                     }
                 }
 
-                model.actions.forEach {
-                    val (iconId, title, actionIntent) = it
+                model.actions.forEach { (iconId, title, actionIntent) ->
                     addAction(iconId, title, actionIntent)
                 }
-
-                setAutoCancel(true)
             }
             .build()
     }
