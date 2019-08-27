@@ -119,7 +119,6 @@ buildscript {
     ext.twitter_core = '3.1.1'
     ext.tweet_ui = '3.1.1'
     ext.room_version = '2.1.0-alpha01'
-    ext.room_coroutines = '0.30.2'
 }
 
 dependencies {
@@ -185,7 +184,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
     kapt "androidx.room:room-compiler:$room_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$room_coroutines"
 }
 
 dependencies {
