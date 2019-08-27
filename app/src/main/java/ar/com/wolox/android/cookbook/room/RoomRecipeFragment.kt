@@ -1,6 +1,5 @@
 package ar.com.wolox.android.cookbook.room
 
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,7 +41,7 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         }
 
         vAddBtn.setOnClickListener {
-            RoomInputDialog().showDialog(context!!, object : RoomInputDialogListener {
+            RoomInputDialog().showDialog(requireContext(), R.string.room_input_title_add, object : RoomInputDialogListener {
                 override fun onPositiveButtonClicked(data: String) {
                     presenter.onAddButtonClicked(data)
                 }
@@ -73,7 +72,14 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
     }
 
     private fun editClickListener(item: RoomDataEntity) {
-        Log.e("FedeLog", "EDIT ITEM")
+        RoomInputDialog().showDialog(requireContext(), R.string.room_input_title_modify, object : RoomInputDialogListener {
+            override fun onPositiveButtonClicked(data: String) {
+                presenter.onEditButtonClicked(item, data)
+            }
+
+            override fun onNegativeButtonClicked() {
+            }
+        }).show()
     }
 
     private fun deleteClickListener(item: RoomDataEntity) {
@@ -99,6 +105,7 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         vRecyclerView.visibility = View.INVISIBLE
         vAddBtn.visibility = View.INVISIBLE
         vClearBtn.visibility = View.INVISIBLE
+        Toast.makeText(context, getString(R.string.room_logout), Toast.LENGTH_LONG).show()
     }
 
     override fun insertEntity(entity: RoomDataEntity) {
@@ -114,5 +121,10 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
     override fun deleteEntity(entity: RoomDataEntity) {
         viewAdapter.deleteData(entity)
         Toast.makeText(context, getString(R.string.room_row_deleted), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun modifyEntity(entity: RoomDataEntity) {
+        viewAdapter.editData(entity)
+        Toast.makeText(context, getString(R.string.room_row_modified), Toast.LENGTH_SHORT).show()
     }
 }

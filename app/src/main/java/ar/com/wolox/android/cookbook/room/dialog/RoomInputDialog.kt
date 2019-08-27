@@ -13,9 +13,9 @@ class RoomInputDialog @Inject constructor() {
 
     private lateinit var input: EditText
 
-    fun showDialog(context: Context, listener: RoomInputDialogListener) = AlertDialog.Builder(context).apply {
+    fun showDialog(context: Context, title: Int, listener: RoomInputDialogListener) = AlertDialog.Builder(context).apply {
 
-        this.setTitle(context.getString(R.string.room_input_title))
+        this.setTitle(context.getString(title))
 
         input = EditText(context)
         input.inputType = InputType.TYPE_CLASS_TEXT
@@ -31,7 +31,7 @@ class RoomInputDialog @Inject constructor() {
             listener.onPositiveButtonClicked(input.text.toString())
         }
 
-        this.setNegativeButton(context.getString(R.string.room_input_negative)) { dialog, _ ->
+        this.setNeutralButton(context.getString(R.string.room_input_negative)) { dialog, _ ->
             hideSoftKeyboard(context)
             dialog?.dismiss()
             listener.onNegativeButtonClicked()

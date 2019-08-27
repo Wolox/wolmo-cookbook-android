@@ -12,4 +12,5 @@ interface RoomRecipeView {
     fun insertEntity(entity: RoomDataEntity)
     fun clearEntities()
     fun deleteEntity(entity: RoomDataEntity)
+    fun modifyEntity(entity: RoomDataEntity)
 }

@@ -8,7 +8,7 @@ import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 
 class RoomRecipePresenter @Inject constructor(
-    val application: Application
+        val application: Application
 ) : BasePresenter<RoomRecipeView>() {
 
     private lateinit var db: RoomDatabaseManager
@@ -67,12 +67,18 @@ class RoomRecipePresenter @Inject constructor(
         }).start()
     }
 
-    fun onEditButtonClicked(entity: RoomDataEntity) {
+    fun onEditButtonClicked(entity: RoomDataEntity, newData: String) {
+        Thread(Runnable {
+            entity.user = userName!!
+            entity.data = newData
+            db.RoomDataDao().updateEntity(entity)
+            handler.post { view.modifyEntity(entity) }
+        }).start()
     }
 
     fun onDeleteButtonClicked(entity: RoomDataEntity) {
         Thread(Runnable {
-            db.RoomDataDao().delete(entity)
+            db.RoomDataDao().deleteEntity(entity)
             handler.post { view.deleteEntity(entity) }
         }).start()
     }

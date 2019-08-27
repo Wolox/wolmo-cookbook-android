@@ -22,8 +22,8 @@ interface RoomDataDao {
     fun insertAll(vararg data: RoomDataEntity)
 
     @Delete
-    fun delete(dataEntity: RoomDataEntity)
+    fun deleteEntity(dataEntity: RoomDataEntity)
 
     @Update
-    fun updateTodo(vararg dataEntity: RoomDataEntity)
+    fun updateEntity(vararg dataEntity: RoomDataEntity)
 }

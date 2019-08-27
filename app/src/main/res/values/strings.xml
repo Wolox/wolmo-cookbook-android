@@ -85,8 +85,10 @@
     <string name="room_row_inserted">Data saved in DB</string>
     <string name="room_rows_deleted">Data in DB deleted</string>
     <string name="room_row_deleted">Data item deleted</string>
-    <string name="room_input_title">New Item</string>
-    <string name="room_input_positive">Add</string>
+    <string name="room_row_modified">Data item modified</string>
+    <string name="room_input_title_add">New Item</string>
+    <string name="room_input_title_modify">Edit Item</string>
+    <string name="room_input_positive">Accept</string>
     <string name="room_input_negative">Cancel</string>
     <string name="room_row_data">User: %1$s, Data: %2$s</string>
 
