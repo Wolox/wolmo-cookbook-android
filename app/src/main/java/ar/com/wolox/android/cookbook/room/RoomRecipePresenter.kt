@@ -17,7 +17,7 @@ class RoomRecipePresenter @Inject constructor(
 
     override fun onViewAttached() {
         super.onViewAttached()
-        db = RoomDatabaseManager.invoke(application.applicationContext)
+        db = RoomDatabaseManager.invoke(application.baseContext)
     }
 
     fun onSessionButtonClicked(user: String) {
