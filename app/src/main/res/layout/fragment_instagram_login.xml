@@ -13,11 +13,9 @@
         android:layout_marginStart="@dimen/instagram_default_padding"
         android:layout_marginTop="@dimen/instagram_default_padding"
         android:layout_marginEnd="@dimen/instagram_default_padding"
-        android:layout_marginBottom="@dimen/instagram_padding_large"
         android:text="@string/instagram_title"
         android:textSize="@dimen/font_large"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/vRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,11 +33,11 @@
 
     <Button
         android:id="@+id/vSessionBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/instagram_size_scalable"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/instagram_default_padding"
+        android:layout_marginStart="@dimen/instagram_large_default_padding"
         android:layout_marginTop="@dimen/instagram_default_padding"
-        android:layout_marginEnd="@dimen/instagram_default_padding"
+        android:layout_marginEnd="@dimen/instagram_large_default_padding"
         android:text="@string/instagram_login_btn"
         app:layout_constraintEnd_toStartOf="@+id/vSeparator"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,11 +45,11 @@
 
     <Button
         android:id="@+id/vDataBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/instagram_size_scalable"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/instagram_default_padding"
+        android:layout_marginStart="@dimen/instagram_large_default_padding"
         android:layout_marginTop="@dimen/instagram_default_padding"
-        android:layout_marginEnd="@dimen/instagram_default_padding"
+        android:layout_marginEnd="@dimen/instagram_large_default_padding"
         android:text="@string/instagram_fetch_data_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/vSeparator"
@@ -59,14 +57,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/vRecyclerView"
-        android:layout_width="395dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/instagram_size_scalable"
+        android:layout_height="@dimen/instagram_size_scalable"
+        android:layout_marginStart="@dimen/instagram_default_padding"
+        android:layout_marginTop="@dimen/instagram_default_padding"
+        android:layout_marginEnd="@dimen/instagram_default_padding"
         android:layout_marginBottom="@dimen/instagram_default_padding"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/vSeparator"
-        app:layout_constraintStart_toStartOf="@+id/vSeparator"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vSessionBtn"
         tools:listitem="@layout/item_instagram_data" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

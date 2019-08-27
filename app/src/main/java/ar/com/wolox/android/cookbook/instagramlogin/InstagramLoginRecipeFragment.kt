@@ -75,21 +75,19 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
     }
 
     override fun showWebView(url: String) {
-        context?.let {
-            InstagramLoginView().showDialog(it, url, object : InstagramLoginAuthListener {
-                override fun onCodeReceived(authToken: String) {
-                    presenter.onLoginSuccessResponse(authToken)
-                }
+        InstagramLoginView().showDialog(requireContext(), url, object : InstagramLoginAuthListener {
+            override fun onCodeReceived(authToken: String) {
+                presenter.onLoginSuccessResponse(authToken)
+            }
 
-                override fun onCodeError() {
-                    presenter.onLoginErrorResponse()
-                }
+            override fun onCodeError() {
+                presenter.onLoginErrorResponse()
+            }
 
-                override fun onApiError() {
-                    presenter.onLoginFailResponse()
-                }
-            })
-        }
+            override fun onApiError() {
+                presenter.onLoginFailResponse()
+            }
+        })
     }
 
     override fun showIGData(data: List<InstagramDataItem>) {
