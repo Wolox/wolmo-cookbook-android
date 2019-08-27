@@ -7,7 +7,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "personal_notes")
 class RoomDataEntity {
 
-    @PrimaryKey(autoGenerate = true) var id: Int = 0
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var id: Int = -1
 
     @ColumnInfo(name = "user")
     lateinit var user: String

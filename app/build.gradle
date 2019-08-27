@@ -184,6 +184,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
     kapt "androidx.room:room-compiler:$room_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.30.0"
 }
 
 dependencies {

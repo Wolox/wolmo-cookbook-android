@@ -9,6 +9,12 @@ import androidx.room.Update
 @Dao
 interface RoomDataDao {
 
+    @Query("Select id from personal_notes order by id desc limit 1")
+    fun getLastIndex(): Int
+
+    @Query("drop table personal_notes")
+    fun dropTable()
+
     @Query("Select * from personal_notes")
     fun getAll(): List<RoomDataEntity>
 

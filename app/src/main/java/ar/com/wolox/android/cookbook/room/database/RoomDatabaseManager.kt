@@ -19,7 +19,7 @@ abstract class RoomDatabaseManager : RoomDatabase() {
         }
 
         private fun buildDatabase(context: Context) = Room.databaseBuilder(context,
-                RoomDatabaseManager::class.java, "todo-list.db")
+                RoomDatabaseManager::class.java, "wx_database.db")
                 .build()
     }
 }
