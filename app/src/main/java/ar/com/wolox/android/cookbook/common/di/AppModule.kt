@@ -9,6 +9,8 @@ import ar.com.wolox.android.cookbook.instagramlogin.InstagramLoginRecipeActivity
 import ar.com.wolox.android.cookbook.instagramlogin.InstagramLoginRecipeFragment
 import ar.com.wolox.android.cookbook.recipepicker.RecipePickerActivity
 import ar.com.wolox.android.cookbook.recipepicker.RecipePickerFragment
+import ar.com.wolox.android.cookbook.room.RoomRecipeActivity
+import ar.com.wolox.android.cookbook.room.RoomRecipeFragment
 import ar.com.wolox.android.cookbook.twitterlogin.TwitterLoginRecipeActivity
 import ar.com.wolox.android.cookbook.twitterlogin.TwitterLoginRecipeFragment
 import dagger.Module
@@ -49,4 +51,10 @@ abstract class AppModule {
 
     @ContributesAndroidInjector
     abstract fun instagramLoginFragment(): InstagramLoginRecipeFragment
+
+    @ContributesAndroidInjector
+    abstract fun roomActivity(): RoomRecipeActivity
+
+    @ContributesAndroidInjector
+    abstract fun roomFragment(): RoomRecipeFragment
 }

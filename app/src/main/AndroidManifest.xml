@@ -54,6 +54,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".room.RoomRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".tests.TestLoginRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
