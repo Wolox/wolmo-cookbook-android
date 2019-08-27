@@ -1,8 +1,11 @@
 package ar.com.wolox.android.cookbook.room
 
 import android.app.Application
+import ar.com.wolox.android.cookbook.room.database.RoomDataEntity
 import ar.com.wolox.android.cookbook.room.database.RoomDatabaseManager
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class RoomRecipePresenter @Inject constructor(
@@ -33,7 +36,6 @@ class RoomRecipePresenter @Inject constructor(
     }
 
     fun onAddButtonClicked(data: String) {
-/*
         GlobalScope.launch {
             val entity = RoomDataEntity()
             var index = db.RoomDataDao().getLastIndex()
@@ -47,7 +49,6 @@ class RoomRecipePresenter @Inject constructor(
             entity.data = data
             db.RoomDataDao().insertAll(entity)
         }
-*/
     }
 
     fun onClearButtonClicked() {
