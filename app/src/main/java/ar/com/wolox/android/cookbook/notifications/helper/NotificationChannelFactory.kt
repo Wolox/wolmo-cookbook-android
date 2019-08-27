@@ -9,12 +9,13 @@ import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
 import javax.inject.Inject
 
+
 @ApplicationScope
+@RequiresApi(Build.VERSION_CODES.O)
 class NotificationChannelFactory @Inject constructor() {
 
     private val notificationChannels: MutableList<NotificationChannel> = arrayListOf()
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun createChannel(channelInfo: NotificationChannelInfo): NotificationChannel =
         NotificationChannel(channelInfo.id, channelInfo.name, channelInfo.priority)
             .apply {
@@ -32,7 +33,8 @@ class NotificationChannelFactory @Inject constructor() {
                 )
             )
 
-            val notificationManager: NotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager: NotificationManager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(generalChannel)
             notificationChannels.add(generalChannel)
         }
