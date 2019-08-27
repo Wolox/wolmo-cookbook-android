@@ -83,6 +83,7 @@
     <string name="room_user">User</string>
     <string name="room_login_error">You need to login first</string>
     <string name="room_row_inserted">Data saved in DB</string>
+    <string name="room_rows_deleted">Data in DB deleted</string>
     <string name="room_input_title">New Item</string>
     <string name="room_input_positive">Add</string>
     <string name="room_input_negative">Cancel</string>

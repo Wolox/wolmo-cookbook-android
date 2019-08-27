@@ -10,4 +10,5 @@ interface RoomRecipeView {
 
     fun updateEntities(entities: List<RoomDataEntity>)
     fun insertEntity(entity: RoomDataEntity)
+    fun clearEntities()
 }

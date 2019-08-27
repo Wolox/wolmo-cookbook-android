@@ -30,6 +30,11 @@ class RoomListAdapter(
         notifyDataSetChanged()
     }
 
+    fun clearData() {
+        this.dataSet.clear()
+        notifyDataSetChanged()
+    }
+
     class EntityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(

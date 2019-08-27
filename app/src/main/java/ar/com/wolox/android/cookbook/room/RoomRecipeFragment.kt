@@ -102,7 +102,12 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
     }
 
     override fun insertEntity(entity: RoomDataEntity) {
-        Toast.makeText(context, getString(R.string.room_row_inserted), Toast.LENGTH_LONG).show()
         viewAdapter.addData(entity)
+        Toast.makeText(context, getString(R.string.room_row_inserted), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun clearEntities() {
+        viewAdapter.clearData()
+        Toast.makeText(context, getString(R.string.room_rows_deleted), Toast.LENGTH_SHORT).show()
     }
 }
