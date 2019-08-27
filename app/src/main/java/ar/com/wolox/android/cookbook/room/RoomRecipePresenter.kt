@@ -8,7 +8,7 @@ import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 
 class RoomRecipePresenter @Inject constructor(
-        val application: Application
+    val application: Application
 ) : BasePresenter<RoomRecipeView>() {
 
     private lateinit var db: RoomDatabaseManager
