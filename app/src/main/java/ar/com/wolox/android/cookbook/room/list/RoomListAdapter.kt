@@ -35,6 +35,11 @@ class RoomListAdapter(
         notifyDataSetChanged()
     }
 
+    fun deleteData(dataEntity: RoomDataEntity) {
+        this.dataSet.remove(dataEntity)
+        notifyDataSetChanged()
+    }
+
     class EntityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(

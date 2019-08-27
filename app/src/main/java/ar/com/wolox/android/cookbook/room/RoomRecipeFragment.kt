@@ -77,7 +77,7 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
     }
 
     private fun deleteClickListener(item: RoomDataEntity) {
-        Log.e("FedeLog", "DELETE ITEM")
+        presenter.onDeleteButtonClicked(item)
     }
 
     override fun loginSuccess() {
@@ -109,5 +109,10 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
     override fun clearEntities() {
         viewAdapter.clearData()
         Toast.makeText(context, getString(R.string.room_rows_deleted), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun deleteEntity(entity: RoomDataEntity) {
+        viewAdapter.deleteData(entity)
+        Toast.makeText(context, getString(R.string.room_row_deleted), Toast.LENGTH_SHORT).show()
     }
 }

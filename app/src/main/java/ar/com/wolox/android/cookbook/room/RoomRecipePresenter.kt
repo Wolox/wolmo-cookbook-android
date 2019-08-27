@@ -66,4 +66,14 @@ class RoomRecipePresenter @Inject constructor(
             handler.post { view.clearEntities() }
         }).start()
     }
+
+    fun onEditButtonClicked(entity: RoomDataEntity) {
+    }
+
+    fun onDeleteButtonClicked(entity: RoomDataEntity) {
+        Thread(Runnable {
+            db.RoomDataDao().delete(entity)
+            handler.post { view.deleteEntity(entity) }
+        }).start()
+    }
 }
