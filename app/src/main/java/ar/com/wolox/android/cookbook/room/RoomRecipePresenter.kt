@@ -28,7 +28,13 @@ class RoomRecipePresenter @Inject constructor(
         } ?: run {
             if (user.isNotEmpty()) {
                 userName = user
-                view.loginSuccess()
+                Thread(Runnable {
+                    val data = db.RoomDataDao().getAll()
+                    handler.post {
+                        view.updateEntities(data)
+                        view.loginSuccess()
+                    }
+                }).start()
             } else {
                 view.loginError()
             }
@@ -36,20 +42,21 @@ class RoomRecipePresenter @Inject constructor(
     }
 
     fun onAddButtonClicked(data: String) {
-        Thread(Runnable {
-            val entity = RoomDataEntity()
-            var index = db.RoomDataDao().getLastIndex()
-            if (index <= 0) {
-                index = 1
-            } else {
-                index += 1
-            }
-            entity.id = index
-            entity.user = userName!!
-            entity.data = data
-            db.RoomDataDao().insertAll(entity)
 
-            handler.post { view.logout() }
+        val entity = RoomDataEntity()
+        var index = db.RoomDataDao().getLastIndex()
+        if (index <= 0) {
+            index = 1
+        } else {
+            index += 1
+        }
+        entity.id = index
+        entity.user = userName!!
+        entity.data = data
+
+        Thread(Runnable {
+            db.RoomDataDao().insertAll(entity)
+            handler.post { view.insertEntity(entity) }
         }).start()
     }
 

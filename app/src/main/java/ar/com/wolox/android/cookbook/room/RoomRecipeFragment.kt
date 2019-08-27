@@ -1,14 +1,23 @@
 package ar.com.wolox.android.cookbook.room
 
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.room.database.RoomDataEntity
 import ar.com.wolox.android.cookbook.room.dialog.RoomInputDialog
 import ar.com.wolox.android.cookbook.room.dialog.RoomInputDialogListener
+import ar.com.wolox.android.cookbook.room.list.RoomListAdapter
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_room.*
 
 class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView {
+
+    private lateinit var viewAdapter: RoomListAdapter
+    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var entityItemList: MutableList<RoomDataEntity>
 
     override fun layout(): Int = R.layout.fragment_room
 
@@ -21,6 +30,8 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
 
         vAddBtn.visibility = View.INVISIBLE
         vClearBtn.visibility = View.INVISIBLE
+
+        viewManager = LinearLayoutManager(context)
     }
 
     override fun setListeners() {
@@ -46,6 +57,29 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         }
     }
 
+    override fun updateEntities(entities: List<RoomDataEntity>) {
+        vRecyclerView.visibility = View.VISIBLE
+
+        entityItemList = mutableListOf()
+        entityItemList.addAll(entities)
+
+        viewAdapter = RoomListAdapter(entityItemList, { item -> editClickListener(item) }, { item -> deleteClickListener(item) })
+        vRecyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
+        viewAdapter.notifyDataSetChanged()
+    }
+
+    private fun editClickListener(item: RoomDataEntity) {
+        Log.e("FedeLog", "EDIT ITEM")
+    }
+
+    private fun deleteClickListener(item: RoomDataEntity) {
+        Log.e("FedeLog", "DELETE ITEM")
+    }
+
     override fun loginSuccess() {
         vSessionBtn.text = getString(R.string.room_logout)
         vUser.isEnabled = false
@@ -65,5 +99,10 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         vRecyclerView.visibility = View.INVISIBLE
         vAddBtn.visibility = View.INVISIBLE
         vClearBtn.visibility = View.INVISIBLE
+    }
+
+    override fun insertEntity(entity: RoomDataEntity) {
+        Toast.makeText(context, getString(R.string.room_row_inserted), Toast.LENGTH_LONG).show()
+        viewAdapter.addData(entity)
     }
 }

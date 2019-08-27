@@ -42,7 +42,7 @@
         tools:text="ID" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/vData"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -58,7 +58,7 @@
         tools:text="Data" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/vEditBtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
@@ -72,7 +72,7 @@
         app:srcCompat="@drawable/ic_edit" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/vDeleteBtn"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
