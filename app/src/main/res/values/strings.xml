@@ -93,6 +93,22 @@
     <string name="room_input_negative">Cancel</string>
     <string name="room_row_data">User: %1$s, Data: %2$s</string>
 
+    <!-- Mp Chart -->
+    <string name="mp_chart_prompt">Chose a chart</string>
+    <string-array name="mp_chart_types">
+        <item>NONE</item>
+        <item>Bar Chart</item>
+        <item>Bubble Chart</item>
+        <item>Combined Chart</item>
+        <item>Horizontal Bar Chart</item>
+        <item>Line Chart</item>
+        <item>Pie Chart</item>
+        <item>Radar Chart</item>
+        <item>Candle Stick Chart</item>
+        <item>Scatter Chart</item>
+    </string-array>
+    <string name="mp_chart_label">Data Set</string>
+
     <!-- Test Login -->
     <string name="test_login_email">Email</string>
     <string name="test_login_password">Password</string>
