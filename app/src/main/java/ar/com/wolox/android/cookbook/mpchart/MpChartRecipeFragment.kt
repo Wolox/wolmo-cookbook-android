@@ -5,7 +5,9 @@ import android.view.View
 import android.widget.AdapterView
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.PieData
 import kotlinx.android.synthetic.main.fragment_mp_chart.*
 
 class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
@@ -46,10 +48,25 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     override fun showBarChart(barData: BarData) {
         vBarChart.visibility = View.VISIBLE
 
+        val groupSpace = 0.30f
+        val barSpace = 0.05f
+
         vBarChart.apply {
             data = barData
-            animateY(4000)
+            animateY(3000)
+
+            xAxis.mAxisMinimum = 0f
+            axisLeft.mAxisMinimum = 0f
+
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.setCenterAxisLabels(true)
+
             description.text = getString(R.string.mp_chart_bar)
+            isDragEnabled = true
+            groupBars(0f, groupSpace, barSpace)
+
+            setVisibleXRangeMaximum(3f)
+            invalidate()
         }
     }
 
@@ -69,8 +86,16 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
         vLineChart.visibility = View.VISIBLE
     }
 
-    override fun showPieChart() {
+    override fun showPieChart(pieData: PieData) {
         vPieChart.visibility = View.VISIBLE
+
+        vPieChart.apply {
+            data = pieData
+            centerTextRadiusPercent = 1f
+            animateXY(3000, 3000)
+            isDrawHoleEnabled = false
+            description.text = getString(R.string.mp_chart_pie)
+        }
     }
 
     override fun showRadarChart() {

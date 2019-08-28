@@ -109,6 +109,7 @@
     </string-array>
     <string name="mp_chart_label">Data Set</string>
     <string name="mp_chart_bar">Description of BarChart</string>
+    <string name="mp_chart_pie">Description of PieChart</string>
     <string name="mp_chart_title">Title of DataSet</string>
 
     <!-- Test Login -->
