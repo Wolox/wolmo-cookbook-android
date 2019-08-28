@@ -22,6 +22,8 @@ import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.data.RadarData
 import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
+import com.github.mikephil.charting.data.ScatterData
+import com.github.mikephil.charting.data.ScatterDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
 import javax.inject.Inject
@@ -138,6 +140,8 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
         yBar.add(BarEntry(7f, 217f))
         yBar.add(BarEntry(8f, 239f))
         yBar.add(BarEntry(9f, 155f))
+        yBar.add(BarEntry(10f, 120f))
+        yBar.add(BarEntry(11f, 60f))
 
         val barDataSet = BarDataSet(yBar, "L1")
         barDataSet.color = Color.GREEN
@@ -302,7 +306,23 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
 
     private fun onScatterChartSelected() {
         view.hideGraphs()
-        view.showScatterChart()
+
+        val yScatter = ArrayList<BarEntry>()
+        yScatter.add(BarEntry(2f, 0f))
+        yScatter.add(BarEntry(4f, 1f))
+        yScatter.add(BarEntry(6f, 1f))
+        yScatter.add(BarEntry(8f, 3f))
+        yScatter.add(BarEntry(7f, 4f))
+        yScatter.add(BarEntry(3f, 3f))
+
+        val scatterDataSet = ScatterDataSet(yScatter as List<Entry>?, "L1")
+        scatterDataSet.colors = ColorTemplate.COLORFUL_COLORS.toList()
+        scatterDataSet.valueTextColor = Color.BLACK
+        scatterDataSet.valueTextSize = 18f
+
+        val data = ScatterData(scatterDataSet)
+
+        view.showScatterChart(data)
     }
 
     companion object {

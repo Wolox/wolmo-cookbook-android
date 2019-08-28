@@ -13,6 +13,7 @@ import com.github.mikephil.charting.data.CombinedData
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.RadarData
+import com.github.mikephil.charting.data.ScatterData
 import kotlinx.android.synthetic.main.fragment_mp_chart.*
 
 class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
@@ -200,8 +201,14 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
         }
     }
 
-    override fun showScatterChart() {
-        vScatterChart.visibility = View.VISIBLE
+    override fun showScatterChart(scatterData: ScatterData) {
+        vScatterChart.apply {
+            visibility = View.VISIBLE
+            data = scatterData
+            description.text = getString(R.string.mp_chart_scatter)
+            animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
+            invalidate()
+        }
     }
 
     companion object {
