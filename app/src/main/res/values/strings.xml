@@ -113,6 +113,7 @@
     <string name="mp_chart_bubble">Description of BubbleChart</string>
     <string name="mp_chart_combined">Description of CombinedChart</string>
     <string name="mp_chart_h_bar">Description of HorizontalBarChart</string>
+    <string name="mp_chart_radar">Description of RadarChart</string>
     <string name="mp_chart_title">Title of DataSet</string>
 
     <!-- Test Login -->

@@ -11,6 +11,7 @@ import com.github.mikephil.charting.data.BubbleData
 import com.github.mikephil.charting.data.CombinedData
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.RadarData
 import kotlinx.android.synthetic.main.fragment_mp_chart.*
 
 class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
@@ -178,8 +179,14 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
         }
     }
 
-    override fun showRadarChart() {
-        vRadarChart.visibility = View.VISIBLE
+    override fun showRadarChart(radarData: RadarData) {
+
+        vRadarChart.apply {
+            visibility = View.VISIBLE
+            data = radarData
+            description.text = getString(R.string.mp_chart_radar)
+            animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
+        }
     }
 
     override fun showCandleStickChart() {
@@ -191,6 +198,6 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     companion object {
-        private const val ANIMATION_DELAY = 3000
+        private const val ANIMATION_DELAY = 2500
     }
 }

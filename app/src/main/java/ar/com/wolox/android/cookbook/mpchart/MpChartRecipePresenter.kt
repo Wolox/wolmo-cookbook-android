@@ -15,6 +15,9 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.data.RadarData
+import com.github.mikephil.charting.data.RadarDataSet
+import com.github.mikephil.charting.data.RadarEntry
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
 import javax.inject.Inject
@@ -249,7 +252,22 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
 
     private fun onRadarChartSelected() {
         view.hideGraphs()
-        view.showRadarChart()
+
+        val yRadar = ArrayList<RadarEntry>()
+        yRadar.add(RadarEntry(0f, 0.41f))
+        yRadar.add(RadarEntry(1f, 0.32f))
+        yRadar.add(RadarEntry(2f, 0.40f))
+        yRadar.add(RadarEntry(3f, 0.72f))
+        yRadar.add(RadarEntry(4f, 0.49f))
+        yRadar.add(RadarEntry(5f, 0.82f))
+
+        val radarDataSet = RadarDataSet(yRadar, "L1")
+        radarDataSet.color = Color.CYAN
+        radarDataSet.valueTextSize = 18f
+
+        val data = RadarData(radarDataSet)
+
+        view.showRadarChart(data)
     }
 
     private fun onCandleStickChartSelected() {

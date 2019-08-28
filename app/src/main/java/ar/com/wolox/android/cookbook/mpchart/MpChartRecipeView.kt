@@ -5,6 +5,7 @@ import com.github.mikephil.charting.data.BubbleData
 import com.github.mikephil.charting.data.CombinedData
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.RadarData
 
 interface MpChartRecipeView {
 
@@ -15,7 +16,7 @@ interface MpChartRecipeView {
     fun showHorizontalBarChart(hBarData: BarData)
     fun showLineChart(lineData: LineData)
     fun showPieChart(pieData: PieData)
-    fun showRadarChart()
+    fun showRadarChart(radarData: RadarData)
     fun showCandleStickChart()
     fun showScatterChart()
 }
