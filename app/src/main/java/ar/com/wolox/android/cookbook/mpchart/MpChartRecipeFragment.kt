@@ -6,8 +6,6 @@ import android.widget.AdapterView
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
 import kotlinx.android.synthetic.main.fragment_mp_chart.*
 
 class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
@@ -45,8 +43,14 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
         vScatterChart.visibility = View.GONE
     }
 
-    override fun showBarChart() {
+    override fun showBarChart(barData: BarData) {
         vBarChart.visibility = View.VISIBLE
+
+        vBarChart.apply {
+            data = barData
+            animateY(4000)
+            description.text = getString(R.string.mp_chart_bar)
+        }
     }
 
     override fun showBubbleChart() {

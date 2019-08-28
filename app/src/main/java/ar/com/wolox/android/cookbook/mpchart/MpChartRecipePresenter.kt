@@ -1,9 +1,16 @@
 package ar.com.wolox.android.cookbook.mpchart
 
+import android.app.Application
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import javax.inject.Inject
 
-class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipeView>() {
+class MpChartRecipePresenter @Inject constructor(
+        application: Application
+) : BasePresenter<MpChartRecipeView>() {
 
     fun onSpinnerItemClicked(item: Int) {
 
@@ -28,7 +35,27 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
 
     private fun onBarChartSelected() {
         view.hideGraphs()
-        view.showBarChart()
+
+        val yVals = ArrayList<BarEntry>()
+        yVals.add(BarEntry(150f, 0f))
+        yVals.add(BarEntry(160f, 1f))
+        yVals.add(BarEntry(170f, 2f))
+        yVals.add(BarEntry(200f, 3f))
+        yVals.add(BarEntry(220f, 4f))
+        yVals.add(BarEntry(222f, 5f))
+        yVals.add(BarEntry(345f, 6f))
+        yVals.add(BarEntry(367f, 7f))
+        yVals.add(BarEntry(389f, 8f))
+        yVals.add(BarEntry(555f, 9f))
+
+        val dataSet = BarDataSet(yVals, "Title of DataSet")
+        dataSet.valueTextSize = 0f
+        val colors = java.util.ArrayList<Int>()
+        colors.addAll(ColorTemplate.COLORFUL_COLORS.toList())
+        dataSet.colors = colors
+        val data = BarData(dataSet)
+        data.barWidth = 10f
+        view.showBarChart(data)
     }
 
     private fun onBubbleChartSelected() {

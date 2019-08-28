@@ -108,6 +108,8 @@
         <item>Scatter Chart</item>
     </string-array>
     <string name="mp_chart_label">Data Set</string>
+    <string name="mp_chart_bar">Description of BarChart</string>
+    <string name="mp_chart_title">Title of DataSet</string>
 
     <!-- Test Login -->
     <string name="test_login_email">Email</string>
