@@ -57,6 +57,9 @@
             android:name=".room.RoomRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".mpchart.MpChartRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".tests.TestLoginRecipeActivity"
             android:screenOrientation="portrait" />
         <activity

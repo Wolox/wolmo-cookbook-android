@@ -119,6 +119,7 @@ buildscript {
     ext.twitter_core = '3.1.1'
     ext.tweet_ui = '3.1.1'
     ext.room_version = '2.1.0-alpha01'
+    ext.mp_chart = '3.1.0'
 }
 
 dependencies {
@@ -184,6 +185,9 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
     kapt "androidx.room:room-compiler:$room_version"
+
+    // MpChart
+    implementation "com.github.PhilJay:MPAndroidChart:v$mp_chart"
 }
 
 dependencies {

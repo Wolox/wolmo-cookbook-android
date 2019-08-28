@@ -14,6 +14,8 @@ interface RecipePickerView {
 
     fun goToRoom()
 
+    fun goToMpChart()
+
     fun goToNavigation()
 
     fun goToDataSyncRecipe()
