@@ -7,6 +7,7 @@ import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.PieData
 import kotlinx.android.synthetic.main.fragment_mp_chart.*
 
@@ -46,20 +47,22 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showBarChart(barData: BarData) {
-        vBarChart.visibility = View.VISIBLE
 
         val groupSpace = 0.30f
         val barSpace = 0.05f
 
         vBarChart.apply {
+            visibility = View.VISIBLE
             data = barData
             animateY(3000)
 
-            xAxis.mAxisMinimum = 0f
             axisLeft.mAxisMinimum = 0f
 
-            xAxis.position = XAxis.XAxisPosition.BOTTOM
-            xAxis.setCenterAxisLabels(true)
+            xAxis.apply {
+                mAxisMinimum = 0f
+                position = XAxis.XAxisPosition.BOTTOM
+                setCenterAxisLabels(true)
+            }
 
             description.text = getString(R.string.mp_chart_bar)
             isDragEnabled = true
@@ -82,8 +85,24 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
         vHorizontalBarChart.visibility = View.VISIBLE
     }
 
-    override fun showLineChart() {
+    override fun showLineChart(lineData: LineData) {
         vLineChart.visibility = View.VISIBLE
+
+        vLineChart.apply {
+            data = lineData
+            description.isEnabled = false
+            legend.isEnabled = false
+            setPinchZoom(true)
+
+            xAxis.apply {
+                enableGridDashedLine(5f, 5f, 0f)
+                labelCount = 11
+                position = XAxis.XAxisPosition.BOTTOM
+            }
+
+            axisRight.enableGridDashedLine(5f, 5f, 0f)
+            axisLeft.enableGridDashedLine(5f, 5f, 0f)
+        }
     }
 
     override fun showPieChart(pieData: PieData) {
