@@ -7,6 +7,7 @@ import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BubbleData
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.PieData
 import kotlinx.android.synthetic.main.fragment_mp_chart.*
@@ -55,6 +56,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             visibility = View.VISIBLE
             data = barData
             animateY(ANIMATION_DELAY)
+            isDragEnabled = true
 
             axisLeft.mAxisMinimum = 0f
 
@@ -65,7 +67,6 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             }
 
             description.text = getString(R.string.mp_chart_bar)
-            isDragEnabled = true
             groupBars(0f, groupSpace, barSpace)
 
             setVisibleXRangeMaximum(3f)
@@ -73,8 +74,14 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
         }
     }
 
-    override fun showBubbleChart() {
-        vBubbleChart.visibility = View.VISIBLE
+    override fun showBubbleChart(bubbleData: BubbleData) {
+
+        vBubbleChart.apply {
+            visibility = View.VISIBLE
+            data = bubbleData
+            isDragEnabled = true
+            description.text = getString(R.string.mp_chart_bubble)
+        }
     }
 
     override fun showCombinedChart() {

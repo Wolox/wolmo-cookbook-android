@@ -5,6 +5,9 @@ import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.BubbleData
+import com.github.mikephil.charting.data.BubbleDataSet
+import com.github.mikephil.charting.data.BubbleEntry
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -93,7 +96,24 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
 
     private fun onBubbleChartSelected() {
         view.hideGraphs()
-        view.showBubbleChart()
+
+        val bubbleEntries = ArrayList<BubbleEntry>()
+        bubbleEntries.add(BubbleEntry(0f, 1f, 0.21f))
+        bubbleEntries.add(BubbleEntry(1f, 2f, 0.12f))
+        bubbleEntries.add(BubbleEntry(2f, 3f, 0.20f))
+        bubbleEntries.add(BubbleEntry(2f, 4f, 0.52f))
+        bubbleEntries.add(BubbleEntry(3f, 5f, 0.29f))
+        bubbleEntries.add(BubbleEntry(4f, 6f, 0.62f))
+
+        val dataSet = BubbleDataSet(bubbleEntries, "L1")
+        val colors = java.util.ArrayList<Int>()
+        colors.addAll(ColorTemplate.COLORFUL_COLORS.toList())
+        dataSet.colors = colors
+        dataSet.valueTextSize = 18f
+
+        val bubbleData = BubbleData(dataSet)
+
+        view.showBubbleChart(bubbleData)
     }
 
     private fun onCombinedChartSelected() {
