@@ -54,7 +54,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
         vBarChart.apply {
             visibility = View.VISIBLE
             data = barData
-            animateY(3000)
+            animateY(ANIMATION_DELAY)
 
             axisLeft.mAxisMinimum = 0f
 
@@ -86,22 +86,28 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showLineChart(lineData: LineData) {
-        vLineChart.visibility = View.VISIBLE
+
+        val defaultLength = 5f
+        val phase = 0f
 
         vLineChart.apply {
+            visibility = View.VISIBLE
+
             data = lineData
             description.isEnabled = false
             legend.isEnabled = false
             setPinchZoom(true)
 
+            animateX(ANIMATION_DELAY)
+
             xAxis.apply {
-                enableGridDashedLine(5f, 5f, 0f)
-                labelCount = 11
+                enableGridDashedLine(defaultLength, defaultLength, phase)
+                labelCount = lineData.dataSetCount
                 position = XAxis.XAxisPosition.BOTTOM
             }
 
-            axisRight.enableGridDashedLine(5f, 5f, 0f)
-            axisLeft.enableGridDashedLine(5f, 5f, 0f)
+            axisRight.enableGridDashedLine(defaultLength, defaultLength, phase)
+            axisLeft.enableGridDashedLine(defaultLength, defaultLength, phase)
         }
     }
 
@@ -111,7 +117,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
         vPieChart.apply {
             data = pieData
             centerTextRadiusPercent = 1f
-            animateXY(3000, 3000)
+            animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
             isDrawHoleEnabled = false
             description.text = getString(R.string.mp_chart_pie)
         }
@@ -127,5 +133,9 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
     override fun showScatterChart() {
         vScatterChart.visibility = View.VISIBLE
+    }
+
+    companion object {
+        private const val ANIMATION_DELAY = 3000
     }
 }
