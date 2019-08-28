@@ -12,7 +12,7 @@ interface MpChartRecipeView {
     fun showBarChart(barData: BarData)
     fun showBubbleChart(bubbleData: BubbleData)
     fun showCombinedChart(combinedData: CombinedData)
-    fun showHorizontalBarChart()
+    fun showHorizontalBarChart(hBarData: BarData)
     fun showLineChart(lineData: LineData)
     fun showPieChart(pieData: PieData)
     fun showRadarChart()

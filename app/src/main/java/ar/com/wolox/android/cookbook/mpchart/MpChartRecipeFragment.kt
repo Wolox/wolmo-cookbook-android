@@ -119,8 +119,25 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
         }
     }
 
-    override fun showHorizontalBarChart() {
-        vHorizontalBarChart.visibility = View.VISIBLE
+    override fun showHorizontalBarChart(hBarData: BarData) {
+
+        vHorizontalBarChart.apply {
+            visibility = View.VISIBLE
+            data = hBarData
+            animateY(ANIMATION_DELAY)
+            isDragEnabled = true
+
+            axisLeft.mAxisMinimum = 0f
+
+            xAxis.apply {
+                mAxisMinimum = 0f
+                position = XAxis.XAxisPosition.BOTTOM
+                setCenterAxisLabels(true)
+            }
+
+            description.text = getString(R.string.mp_chart_h_bar)
+            invalidate()
+        }
     }
 
     override fun showLineChart(lineData: LineData) {

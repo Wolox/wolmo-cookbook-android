@@ -172,7 +172,26 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
 
     private fun onHorizontalBarChartSelected() {
         view.hideGraphs()
-        view.showHorizontalBarChart()
+
+        val yBar = ArrayList<BarEntry>()
+        yBar.add(BarEntry(0f, 75f))
+        yBar.add(BarEntry(1f, 200f))
+        yBar.add(BarEntry(2f, 270f))
+        yBar.add(BarEntry(3f, 100f))
+        yBar.add(BarEntry(4f, 200f))
+        yBar.add(BarEntry(5f, 122f))
+        yBar.add(BarEntry(6f, 345f))
+        yBar.add(BarEntry(7f, 367f))
+        yBar.add(BarEntry(8f, 489f))
+        yBar.add(BarEntry(9f, 455f))
+
+        val lineDataSet = BarDataSet(yBar, "L3")
+        lineDataSet.color = Color.RED
+
+        val data = BarData(lineDataSet)
+        data.barWidth = 0.16f
+
+        view.showHorizontalBarChart(data)
     }
 
     private fun onLineChartSelected() {
