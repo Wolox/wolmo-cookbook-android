@@ -1,6 +1,7 @@
 package ar.com.wolox.android.cookbook.mpchart
 
 import android.graphics.Color
+import android.graphics.Paint
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
@@ -8,6 +9,9 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.BubbleData
 import com.github.mikephil.charting.data.BubbleDataSet
 import com.github.mikephil.charting.data.BubbleEntry
+import com.github.mikephil.charting.data.CandleData
+import com.github.mikephil.charting.data.CandleDataSet
+import com.github.mikephil.charting.data.CandleEntry
 import com.github.mikephil.charting.data.CombinedData
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -272,7 +276,28 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
 
     private fun onCandleStickChartSelected() {
         view.hideGraphs()
-        view.showCandleStickChart()
+
+        val yCandle = ArrayList<CandleEntry>()
+        yCandle.add(CandleEntry(0f, 4.62f, 2.02f, 2.70f, 4.13f))
+        yCandle.add(CandleEntry(1f, 5.50f, 2.70f, 3.35f, 4.96f))
+        yCandle.add(CandleEntry(2f, 5.25f, 3.02f, 3.50f, 4.50f))
+        yCandle.add(CandleEntry(3f, 6f, 3.25f, 4.40f, 5.0f))
+        yCandle.add(CandleEntry(4f, 5.57f, 2f, 2.80f, 4.5f))
+
+        val candleDataSet = CandleDataSet(yCandle, "L1")
+        candleDataSet.setColors(Color.rgb(80, 80, 80))
+        candleDataSet.shadowColor = Color.DKGRAY
+        candleDataSet.shadowWidth = 0.7f
+        candleDataSet.decreasingColor = Color.RED
+        candleDataSet.decreasingPaintStyle = Paint.Style.FILL
+        candleDataSet.increasingColor = Color.rgb(122, 242, 84)
+        candleDataSet.increasingPaintStyle = Paint.Style.FILL
+        candleDataSet.neutralColor = Color.BLUE
+        candleDataSet.valueTextColor = Color.RED
+
+        val data = CandleData(candleDataSet)
+
+        view.showCandleStickChart(data)
     }
 
     private fun onScatterChartSelected() {

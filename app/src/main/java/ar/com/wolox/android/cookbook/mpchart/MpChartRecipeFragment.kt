@@ -8,6 +8,7 @@ import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BubbleData
+import com.github.mikephil.charting.data.CandleData
 import com.github.mikephil.charting.data.CombinedData
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.PieData
@@ -189,8 +190,14 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
         }
     }
 
-    override fun showCandleStickChart() {
-        vCandleStickChart.visibility = View.VISIBLE
+    override fun showCandleStickChart(candleData: CandleData) {
+        vCandleStickChart.apply {
+            visibility = View.VISIBLE
+            data = candleData
+            description.text = getString(R.string.mp_chart_candle)
+            animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
+            invalidate()
+        }
     }
 
     override fun showScatterChart() {
