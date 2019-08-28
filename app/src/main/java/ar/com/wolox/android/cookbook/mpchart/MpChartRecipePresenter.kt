@@ -8,6 +8,7 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.BubbleData
 import com.github.mikephil.charting.data.BubbleDataSet
 import com.github.mikephil.charting.data.BubbleEntry
+import com.github.mikephil.charting.data.CombinedData
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -118,7 +119,55 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
 
     private fun onCombinedChartSelected() {
         view.hideGraphs()
-        view.showCombinedChart()
+
+        val yBar = ArrayList<BarEntry>()
+        yBar.add(BarEntry(0f, 50f))
+        yBar.add(BarEntry(1f, 60f))
+        yBar.add(BarEntry(2f, 70f))
+        yBar.add(BarEntry(3f, 100f))
+        yBar.add(BarEntry(4f, 120f))
+        yBar.add(BarEntry(5f, 122f))
+        yBar.add(BarEntry(6f, 155f))
+        yBar.add(BarEntry(7f, 217f))
+        yBar.add(BarEntry(8f, 239f))
+        yBar.add(BarEntry(9f, 155f))
+
+        val barDataSet = BarDataSet(yBar, "L1")
+        barDataSet.color = Color.GREEN
+
+        val barData = BarData(barDataSet)
+        barData.barWidth = 0.16f
+
+        val yLine = ArrayList<Entry>()
+        yLine.add(Entry(0f, 30f, "0"))
+        yLine.add(Entry(1f, 2f, "1"))
+        yLine.add(Entry(2f, 4f, "2"))
+        yLine.add(Entry(3f, 6f, "3"))
+        yLine.add(Entry(4f, 8f, "4"))
+        yLine.add(Entry(5f, 10f, "5"))
+        yLine.add(Entry(6f, 22f, "6"))
+        yLine.add(Entry(7f, 12.5f, "7"))
+        yLine.add(Entry(8f, 22f, "8"))
+        yLine.add(Entry(9f, 32f, "9"))
+        yLine.add(Entry(10f, 54f, "10"))
+        yLine.add(Entry(11f, 28f, "11"))
+
+        val lineDataSet = LineDataSet(yLine, "L1")
+        lineDataSet.color = Color.BLUE
+        lineDataSet.setCircleColor(Color.BLUE)
+        lineDataSet.lineWidth = 1f
+        lineDataSet.circleRadius = 3f
+        lineDataSet.setDrawCircleHole(false)
+        lineDataSet.valueTextSize = 0f
+        lineDataSet.setDrawFilled(false)
+
+        val lineData = LineData(lineDataSet)
+
+        val data = CombinedData()
+        data.setData(barData)
+        data.setData(lineData)
+
+        view.showCombinedChart(data)
     }
 
     private fun onHorizontalBarChartSelected() {
@@ -143,8 +192,7 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
         yVals.add(Entry(10f, 54f, "10"))
         yVals.add(Entry(11f, 28f, "11"))
 
-        val set1: LineDataSet
-        set1 = LineDataSet(yVals, "L1")
+        val set1 = LineDataSet(yVals, "L1")
         set1.color = Color.BLUE
         set1.setCircleColor(Color.BLUE)
         set1.lineWidth = 1f

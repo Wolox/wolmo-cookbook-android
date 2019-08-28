@@ -8,6 +8,7 @@ import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BubbleData
+import com.github.mikephil.charting.data.CombinedData
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.PieData
 import kotlinx.android.synthetic.main.fragment_mp_chart.*
@@ -81,11 +82,41 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             data = bubbleData
             isDragEnabled = true
             description.text = getString(R.string.mp_chart_bubble)
+            animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
         }
     }
 
-    override fun showCombinedChart() {
-        vCombinedChart.visibility = View.VISIBLE
+    override fun showCombinedChart(combinedData: CombinedData) {
+
+        vCombinedChart.apply {
+            visibility = View.VISIBLE
+            data = combinedData
+
+            setDrawBarShadow(false)
+            description.text = getString(R.string.mp_chart_combined)
+            setDrawGridBackground(false)
+            isHighlightFullBarEnabled = false
+
+            axisRight.apply {
+                setDrawGridLines(false)
+                axisMinimum = 0f
+            }
+
+            axisLeft.apply {
+                setDrawGridLines(false)
+                axisMinimum = 0f
+            }
+
+            xAxis.apply {
+                position = XAxis.XAxisPosition.BOTH_SIDED
+                axisMinimum = 0f
+                granularity = 1f
+                axisMaximum = data.xMax + 0.25f
+            }
+
+            animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
+            invalidate()
+        }
     }
 
     override fun showHorizontalBarChart() {
