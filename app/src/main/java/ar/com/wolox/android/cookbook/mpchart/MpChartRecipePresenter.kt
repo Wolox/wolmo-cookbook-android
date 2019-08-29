@@ -32,15 +32,15 @@ import com.google.gson.GsonBuilder
 import javax.inject.Inject
 
 class MpChartRecipePresenter @Inject constructor(
-        val application: Application
+    val application: Application
 ) : BasePresenter<MpChartRecipeView>() {
 
     private var dataSample: ChartDataSample? = null
 
-    override fun onViewAttached() {
-        super.onViewAttached()
-
+    fun onInit() {
+        view.showProgressBar()
         dataSample = getSampleFromAssets()
+        view.hideProgressBar()
     }
 
     private fun getSampleFromAssets(): ChartDataSample? {

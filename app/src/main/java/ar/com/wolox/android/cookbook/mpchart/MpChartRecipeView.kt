@@ -21,4 +21,7 @@ interface MpChartRecipeView {
     fun showRadarChart(radarData: RadarData)
     fun showCandleStickChart(candleData: CandleData)
     fun showScatterChart(scatterData: ScatterData)
+
+    fun showProgressBar()
+    fun hideProgressBar()
 }

@@ -4,6 +4,6 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class ChartPieEntry(
-        @SerializedName("value") val value: Float,
-        @SerializedName("label") val label: String
+    @SerializedName("value") val value: Float,
+    @SerializedName("label") val label: String
 ) : Serializable

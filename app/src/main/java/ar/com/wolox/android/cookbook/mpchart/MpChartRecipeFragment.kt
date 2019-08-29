@@ -1,5 +1,6 @@
 package ar.com.wolox.android.cookbook.mpchart
 
+import android.app.ProgressDialog
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -18,10 +19,14 @@ import kotlinx.android.synthetic.main.fragment_mp_chart.*
 
 class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
 
+    private lateinit var progressDialog: ProgressDialog
+
     override fun layout(): Int = R.layout.fragment_mp_chart
 
     override fun init() {
         hideGraphs()
+        progressDialog = ProgressDialog(context)
+        presenter.onInit()
     }
 
     override fun setListeners() {
@@ -209,6 +214,19 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
             invalidate()
         }
+    }
+
+    override fun showProgressBar() {
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+        progressDialog.setCancelable(false)
+        progressDialog.setCanceledOnTouchOutside(false)
+        progressDialog.setMessage(getString(R.string.mp_chart_p_dialog))
+        progressDialog.show()
+    }
+
+    override fun hideProgressBar() {
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+        progressDialog.dismiss()
     }
 
     companion object {

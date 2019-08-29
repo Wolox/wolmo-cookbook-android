@@ -117,6 +117,7 @@
     <string name="mp_chart_candle">Description of CandleStickChart</string>
     <string name="mp_chart_scatter">Description of ScatterChart</string>
     <string name="mp_chart_title">Title of DataSet</string>
+    <string name="mp_chart_p_dialog">Getting data from assets sample</string>
 
     <!-- Test Login -->
     <string name="test_login_email">Email</string>
