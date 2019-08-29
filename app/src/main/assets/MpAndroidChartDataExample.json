@@ -42,7 +42,6 @@
       "yVal": 555
     }
   ],
-
   "barChart_label2": "BCL2",
   "barChart_dataSet2": [
     {
@@ -86,7 +85,6 @@
       "yVal": 55
     }
   ],
-
   "barChart_label3": "BCL3",
   "barChart_dataSet3": [
     {
@@ -130,7 +128,6 @@
       "yVal": 455
     }
   ],
-
   "bubbleChart_label1": "BBL1",
   "bubbleChart_dataSet1": [
     {
@@ -164,7 +161,6 @@
       "bubbleSize": 0.62
     }
   ],
-
   "combinedChart_label1": "CCL1",
   "combinedChart_dataSet1": [
     {
@@ -216,7 +212,6 @@
       "yVal": 60
     }
   ],
-
   "combinedChart_label2": "CCL2",
   "combinedChart_dataSet2": [
     {
@@ -280,7 +275,6 @@
       "additionalData": "11"
     }
   ],
-
   "horizontalBarChart_label1": "HBL1",
   "horizontalBarChart_dataSet1": [
     {
@@ -324,7 +318,6 @@
       "yVal": 455
     }
   ],
-
   "lineChart_label1": "LCL1",
   "lineChart_dataSet1": [
     {
@@ -388,7 +381,6 @@
       "additionalData": "11"
     }
   ],
-
   "pieChart_label1": "PCL1",
   "pieChart_dataSet1": [
     {
@@ -412,7 +404,6 @@
       "label": "L5"
     }
   ],
-
   "radarChart_label1": "RCL1",
   "radarChart_dataSet1": [
     {
@@ -440,7 +431,6 @@
       "data": 0.82
     }
   ],
-
   "candleStickChart_label1": "CSL1",
   "candleStickChart_dataSet1": [
     {
@@ -479,7 +469,6 @@
       "closeValue": 4.5
     }
   ],
-
   "scatterChart_label1": "SCL1",
   "scatterChart_dataSet1": [
     {

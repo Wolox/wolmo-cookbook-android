@@ -3,6 +3,8 @@ package ar.com.wolox.android.cookbook.mpchart
 import android.app.Application
 import android.graphics.Color
 import android.graphics.Paint
+import androidx.core.content.ContextCompat
+import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.mpchart.model.ChartDataSample
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import com.github.mikephil.charting.data.BarData
@@ -32,7 +34,7 @@ import com.google.gson.GsonBuilder
 import javax.inject.Inject
 
 class MpChartRecipePresenter @Inject constructor(
-    val application: Application
+        val application: Application
 ) : BasePresenter<MpChartRecipeView>() {
 
     private var dataSample: ChartDataSample? = null
@@ -137,7 +139,7 @@ class MpChartRecipePresenter @Inject constructor(
 
         dataSet.apply {
             colors = colorsArray
-            valueTextSize = 18f
+            valueTextSize = TEXT_SIZE_DEFAULT
         }
 
         val data = BubbleData(dataSet)
@@ -176,10 +178,10 @@ class MpChartRecipePresenter @Inject constructor(
         lineDataSet.apply {
             color = Color.BLUE
             setCircleColor(Color.BLUE)
-            lineWidth = 1f
-            circleRadius = 3f
+            lineWidth = LINE_WIDTH
+            circleRadius = RADIUS
             setDrawCircleHole(false)
-            valueTextSize = 0f
+            valueTextSize = TEXT_SIZE_MIN
             setDrawFilled(false)
         }
 
@@ -233,10 +235,10 @@ class MpChartRecipePresenter @Inject constructor(
         lineDataSet.apply {
             color = Color.BLUE
             setCircleColor(Color.BLUE)
-            lineWidth = 1f
-            circleRadius = 3f
+            lineWidth = LINE_WIDTH
+            circleRadius = RADIUS
             setDrawCircleHole(false)
-            valueTextSize = 0f
+            valueTextSize = TEXT_SIZE_MIN
             setDrawFilled(false)
         }
 
@@ -263,7 +265,7 @@ class MpChartRecipePresenter @Inject constructor(
         val colorsArray = java.util.ArrayList<Int>()
         colorsArray.addAll(ColorTemplate.COLORFUL_COLORS.toList())
         dataSet.apply {
-            valueTextSize = 0f
+            valueTextSize = TEXT_SIZE_MIN
             colors = colorsArray
         }
 
@@ -287,7 +289,7 @@ class MpChartRecipePresenter @Inject constructor(
 
         val radarDataSet = RadarDataSet(yRadar, label)
         radarDataSet.color = Color.CYAN
-        radarDataSet.valueTextSize = 18f
+        radarDataSet.valueTextSize = TEXT_SIZE_DEFAULT
 
         val data = RadarData(radarDataSet)
 
@@ -309,12 +311,12 @@ class MpChartRecipePresenter @Inject constructor(
 
         val candleDataSet = CandleDataSet(yCandle, label)
         candleDataSet.apply {
-            setColors(Color.rgb(80, 80, 80))
+            setColors(ContextCompat.getColor(application.applicationContext, R.color.chart_candle_set_data))
             shadowColor = Color.DKGRAY
-            shadowWidth = 0.7f
+            shadowWidth = SHADOW_WIDTH
             decreasingColor = Color.RED
             decreasingPaintStyle = Paint.Style.FILL
-            increasingColor = Color.rgb(122, 242, 84)
+            increasingColor = ContextCompat.getColor(application.applicationContext, R.color.chart_candle_increase)
             increasingPaintStyle = Paint.Style.FILL
             neutralColor = Color.BLUE
             valueTextColor = Color.RED
@@ -342,7 +344,7 @@ class MpChartRecipePresenter @Inject constructor(
         scatterDataSet.apply {
             colors = ColorTemplate.COLORFUL_COLORS.toList()
             valueTextColor = Color.BLACK
-            valueTextSize = 18f
+            valueTextSize = TEXT_SIZE_DEFAULT
         }
 
         val data = ScatterData(scatterDataSet)
@@ -355,5 +357,10 @@ class MpChartRecipePresenter @Inject constructor(
         private const val LABEL_DEFAULT = "Label"
 
         private const val BAR_WIDTH = 0.16f
+        private const val TEXT_SIZE_DEFAULT = 18f
+        private const val LINE_WIDTH = 1f
+        private const val RADIUS = 3f
+        private const val TEXT_SIZE_MIN = 0f
+        private const val SHADOW_WIDTH = 0.7f
     }
 }
