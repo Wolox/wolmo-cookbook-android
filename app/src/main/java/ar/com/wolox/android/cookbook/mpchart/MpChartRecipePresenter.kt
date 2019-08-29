@@ -54,129 +54,148 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
     private fun onBarChartSelected() {
         view.hideGraphs()
 
-        val yVals1 = ArrayList<BarEntry>()
-        yVals1.add(BarEntry(0f, 150f))
-        yVals1.add(BarEntry(1f, 160f))
-        yVals1.add(BarEntry(2f, 170f))
-        yVals1.add(BarEntry(3f, 200f))
-        yVals1.add(BarEntry(4f, 220f))
-        yVals1.add(BarEntry(5f, 222f))
-        yVals1.add(BarEntry(6f, 345f))
-        yVals1.add(BarEntry(7f, 367f))
-        yVals1.add(BarEntry(8f, 389f))
-        yVals1.add(BarEntry(9f, 555f))
+        val yBar1 = ArrayList<BarEntry>()
+        yBar1.apply {
+            add(BarEntry(0f, 150f))
+            add(BarEntry(1f, 160f))
+            add(BarEntry(2f, 170f))
+            add(BarEntry(3f, 200f))
+            add(BarEntry(4f, 220f))
+            add(BarEntry(5f, 222f))
+            add(BarEntry(6f, 345f))
+            add(BarEntry(7f, 367f))
+            add(BarEntry(8f, 389f))
+            add(BarEntry(9f, 555f))
+        }
 
-        val dataSet1 = BarDataSet(yVals1, "L1")
-        dataSet1.color = Color.BLACK
+        val barDataSet1 = BarDataSet(yBar1, "L1")
+        barDataSet1.color = Color.BLACK
 
-        val yVals2 = ArrayList<BarEntry>()
-        yVals2.add(BarEntry(0f, 25f))
-        yVals2.add(BarEntry(1f, 16f))
-        yVals2.add(BarEntry(2f, 17f))
-        yVals2.add(BarEntry(3f, 20f))
-        yVals2.add(BarEntry(4f, 22f))
-        yVals2.add(BarEntry(5f, 22f))
-        yVals2.add(BarEntry(6f, 34f))
-        yVals2.add(BarEntry(7f, 36f))
-        yVals2.add(BarEntry(8f, 38f))
-        yVals2.add(BarEntry(9f, 55f))
+        val yBar2 = ArrayList<BarEntry>()
+        yBar2.apply {
+            add(BarEntry(0f, 25f))
+            add(BarEntry(1f, 16f))
+            add(BarEntry(2f, 17f))
+            add(BarEntry(3f, 20f))
+            add(BarEntry(4f, 22f))
+            add(BarEntry(5f, 22f))
+            add(BarEntry(6f, 34f))
+            add(BarEntry(7f, 36f))
+            add(BarEntry(8f, 38f))
+            add(BarEntry(9f, 55f))
+        }
 
-        val dataSet2 = BarDataSet(yVals2, "L2")
-        dataSet2.color = Color.MAGENTA
+        val barDataSet2 = BarDataSet(yBar2, "L2")
+        barDataSet2.color = Color.MAGENTA
 
-        val yVals3 = ArrayList<BarEntry>()
-        yVals3.add(BarEntry(0f, 75f))
-        yVals3.add(BarEntry(1f, 200f))
-        yVals3.add(BarEntry(2f, 270f))
-        yVals3.add(BarEntry(3f, 100f))
-        yVals3.add(BarEntry(4f, 200f))
-        yVals3.add(BarEntry(5f, 122f))
-        yVals3.add(BarEntry(6f, 345f))
-        yVals3.add(BarEntry(7f, 367f))
-        yVals3.add(BarEntry(8f, 489f))
-        yVals3.add(BarEntry(9f, 455f))
+        val yBar3 = ArrayList<BarEntry>()
+        yBar3.apply {
+            add(BarEntry(0f, 75f))
+            add(BarEntry(1f, 200f))
+            add(BarEntry(2f, 270f))
+            add(BarEntry(3f, 100f))
+            add(BarEntry(4f, 200f))
+            add(BarEntry(5f, 122f))
+            add(BarEntry(6f, 345f))
+            add(BarEntry(7f, 367f))
+            add(BarEntry(8f, 489f))
+            add(BarEntry(9f, 455f))
+        }
 
-        val dataSet3 = BarDataSet(yVals3, "L3")
-        dataSet3.color = Color.RED
+        val barDataSet3 = BarDataSet(yBar3, "L3")
+        barDataSet3.color = Color.RED
 
-        val data = BarData(dataSet1, dataSet2, dataSet3)
-        data.barWidth = 0.16f
+        val data = BarData(barDataSet1, barDataSet2, barDataSet3)
+        data.barWidth = BAR_WIDTH
         view.showBarChart(data)
     }
 
     private fun onBubbleChartSelected() {
         view.hideGraphs()
 
-        val bubbleEntries = ArrayList<BubbleEntry>()
-        bubbleEntries.add(BubbleEntry(0f, 1f, 0.21f))
-        bubbleEntries.add(BubbleEntry(1f, 2f, 0.12f))
-        bubbleEntries.add(BubbleEntry(2f, 3f, 0.20f))
-        bubbleEntries.add(BubbleEntry(2f, 4f, 0.52f))
-        bubbleEntries.add(BubbleEntry(3f, 5f, 0.29f))
-        bubbleEntries.add(BubbleEntry(4f, 6f, 0.62f))
+        val yBubble = ArrayList<BubbleEntry>()
+        yBubble.apply {
+            add(BubbleEntry(0f, 1f, 0.21f))
+            add(BubbleEntry(1f, 2f, 0.12f))
+            add(BubbleEntry(2f, 3f, 0.20f))
+            add(BubbleEntry(2f, 4f, 0.52f))
+            add(BubbleEntry(3f, 5f, 0.29f))
+            add(BubbleEntry(4f, 6f, 0.62f))
+        }
 
-        val dataSet = BubbleDataSet(bubbleEntries, "L1")
-        val colors = java.util.ArrayList<Int>()
-        colors.addAll(ColorTemplate.COLORFUL_COLORS.toList())
-        dataSet.colors = colors
-        dataSet.valueTextSize = 18f
+        val dataSet = BubbleDataSet(yBubble, "L1")
+        val colorsArray = java.util.ArrayList<Int>()
+        colorsArray.addAll(ColorTemplate.COLORFUL_COLORS.toList())
 
-        val bubbleData = BubbleData(dataSet)
+        dataSet.apply {
+            colors = colorsArray
+            valueTextSize = 18f
+        }
 
-        view.showBubbleChart(bubbleData)
+        val data = BubbleData(dataSet)
+
+        view.showBubbleChart(data)
     }
 
     private fun onCombinedChartSelected() {
         view.hideGraphs()
 
         val yBar = ArrayList<BarEntry>()
-        yBar.add(BarEntry(0f, 50f))
-        yBar.add(BarEntry(1f, 60f))
-        yBar.add(BarEntry(2f, 70f))
-        yBar.add(BarEntry(3f, 100f))
-        yBar.add(BarEntry(4f, 120f))
-        yBar.add(BarEntry(5f, 122f))
-        yBar.add(BarEntry(6f, 155f))
-        yBar.add(BarEntry(7f, 217f))
-        yBar.add(BarEntry(8f, 239f))
-        yBar.add(BarEntry(9f, 155f))
-        yBar.add(BarEntry(10f, 120f))
-        yBar.add(BarEntry(11f, 60f))
+        yBar.apply {
+            add(BarEntry(0f, 50f))
+            add(BarEntry(1f, 60f))
+            add(BarEntry(2f, 70f))
+            add(BarEntry(3f, 100f))
+            add(BarEntry(4f, 120f))
+            add(BarEntry(5f, 122f))
+            add(BarEntry(6f, 155f))
+            add(BarEntry(7f, 217f))
+            add(BarEntry(8f, 239f))
+            add(BarEntry(9f, 155f))
+            add(BarEntry(10f, 120f))
+            add(BarEntry(11f, 60f))
+        }
 
         val barDataSet = BarDataSet(yBar, "L1")
         barDataSet.color = Color.GREEN
 
         val barData = BarData(barDataSet)
-        barData.barWidth = 0.16f
+        barData.barWidth = BAR_WIDTH
 
         val yLine = ArrayList<Entry>()
-        yLine.add(Entry(0f, 30f, "0"))
-        yLine.add(Entry(1f, 2f, "1"))
-        yLine.add(Entry(2f, 4f, "2"))
-        yLine.add(Entry(3f, 6f, "3"))
-        yLine.add(Entry(4f, 8f, "4"))
-        yLine.add(Entry(5f, 10f, "5"))
-        yLine.add(Entry(6f, 22f, "6"))
-        yLine.add(Entry(7f, 12.5f, "7"))
-        yLine.add(Entry(8f, 22f, "8"))
-        yLine.add(Entry(9f, 32f, "9"))
-        yLine.add(Entry(10f, 54f, "10"))
-        yLine.add(Entry(11f, 28f, "11"))
+        yLine.apply {
+            add(Entry(0f, 30f, "0"))
+            add(Entry(1f, 2f, "1"))
+            add(Entry(2f, 4f, "2"))
+            add(Entry(3f, 6f, "3"))
+            add(Entry(4f, 8f, "4"))
+            add(Entry(5f, 10f, "5"))
+            add(Entry(6f, 22f, "6"))
+            add(Entry(7f, 12.5f, "7"))
+            add(Entry(8f, 22f, "8"))
+            add(Entry(9f, 32f, "9"))
+            add(Entry(10f, 54f, "10"))
+            add(Entry(11f, 28f, "11"))
+        }
 
-        val lineDataSet = LineDataSet(yLine, "L1")
-        lineDataSet.color = Color.BLUE
-        lineDataSet.setCircleColor(Color.BLUE)
-        lineDataSet.lineWidth = 1f
-        lineDataSet.circleRadius = 3f
-        lineDataSet.setDrawCircleHole(false)
-        lineDataSet.valueTextSize = 0f
-        lineDataSet.setDrawFilled(false)
+        val lineDataSet = LineDataSet(yLine, "L2")
+        lineDataSet.apply {
+            color = Color.BLUE
+            setCircleColor(Color.BLUE)
+            lineWidth = 1f
+            circleRadius = 3f
+            setDrawCircleHole(false)
+            valueTextSize = 0f
+            setDrawFilled(false)
+        }
 
         val lineData = LineData(lineDataSet)
 
         val data = CombinedData()
-        data.setData(barData)
-        data.setData(lineData)
+        data.apply {
+            setData(barData)
+            setData(lineData)
+        }
 
         view.showCombinedChart(data)
     }
@@ -185,22 +204,24 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
         view.hideGraphs()
 
         val yBar = ArrayList<BarEntry>()
-        yBar.add(BarEntry(0f, 75f))
-        yBar.add(BarEntry(1f, 200f))
-        yBar.add(BarEntry(2f, 270f))
-        yBar.add(BarEntry(3f, 100f))
-        yBar.add(BarEntry(4f, 200f))
-        yBar.add(BarEntry(5f, 122f))
-        yBar.add(BarEntry(6f, 345f))
-        yBar.add(BarEntry(7f, 367f))
-        yBar.add(BarEntry(8f, 489f))
-        yBar.add(BarEntry(9f, 455f))
+        yBar.apply {
+            add(BarEntry(0f, 75f))
+            add(BarEntry(1f, 200f))
+            add(BarEntry(2f, 270f))
+            add(BarEntry(3f, 100f))
+            add(BarEntry(4f, 200f))
+            add(BarEntry(5f, 122f))
+            add(BarEntry(6f, 345f))
+            add(BarEntry(7f, 367f))
+            add(BarEntry(8f, 489f))
+            add(BarEntry(9f, 455f))
+        }
 
-        val lineDataSet = BarDataSet(yBar, "L3")
-        lineDataSet.color = Color.RED
+        val hLineDataSet = BarDataSet(yBar, "L3")
+        hLineDataSet.color = Color.RED
 
-        val data = BarData(lineDataSet)
-        data.barWidth = 0.16f
+        val data = BarData(hLineDataSet)
+        data.barWidth = BAR_WIDTH
 
         view.showHorizontalBarChart(data)
     }
@@ -208,31 +229,36 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
     private fun onLineChartSelected() {
         view.hideGraphs()
 
-        val yVals = ArrayList<Entry>()
-        yVals.add(Entry(0f, 30f, "0"))
-        yVals.add(Entry(1f, 2f, "1"))
-        yVals.add(Entry(2f, 4f, "2"))
-        yVals.add(Entry(3f, 6f, "3"))
-        yVals.add(Entry(4f, 8f, "4"))
-        yVals.add(Entry(5f, 10f, "5"))
-        yVals.add(Entry(6f, 22f, "6"))
-        yVals.add(Entry(7f, 12.5f, "7"))
-        yVals.add(Entry(8f, 22f, "8"))
-        yVals.add(Entry(9f, 32f, "9"))
-        yVals.add(Entry(10f, 54f, "10"))
-        yVals.add(Entry(11f, 28f, "11"))
+        val yLine = ArrayList<Entry>()
+        yLine.apply {
+            add(Entry(0f, 30f, "0"))
+            add(Entry(1f, 2f, "1"))
+            add(Entry(2f, 4f, "2"))
+            add(Entry(3f, 6f, "3"))
+            add(Entry(4f, 8f, "4"))
+            add(Entry(5f, 10f, "5"))
+            add(Entry(6f, 22f, "6"))
+            add(Entry(7f, 12.5f, "7"))
+            add(Entry(8f, 22f, "8"))
+            add(Entry(9f, 32f, "9"))
+            add(Entry(10f, 54f, "10"))
+            add(Entry(11f, 28f, "11"))
+        }
 
-        val set1 = LineDataSet(yVals, "L1")
-        set1.color = Color.BLUE
-        set1.setCircleColor(Color.BLUE)
-        set1.lineWidth = 1f
-        set1.circleRadius = 3f
-        set1.setDrawCircleHole(false)
-        set1.valueTextSize = 0f
-        set1.setDrawFilled(false)
+        val lineDataSet = LineDataSet(yLine, "L1")
+        lineDataSet.apply {
+            color = Color.BLUE
+            setCircleColor(Color.BLUE)
+            lineWidth = 1f
+            circleRadius = 3f
+            setDrawCircleHole(false)
+            valueTextSize = 0f
+            setDrawFilled(false)
+        }
 
         val dataSets = ArrayList<ILineDataSet>()
-        dataSets.add(set1)
+        dataSets.add(lineDataSet)
+
         val data = LineData(dataSets)
 
         view.showLineChart(data)
@@ -241,18 +267,23 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
     private fun onPieChartSelected() {
         view.hideGraphs()
 
-        val yVals = ArrayList<PieEntry>()
-        yVals.add(PieEntry(30f, "L1"))
-        yVals.add(PieEntry(2f, "L2"))
-        yVals.add(PieEntry(4f, "L3"))
-        yVals.add(PieEntry(22f, "L4"))
-        yVals.add(PieEntry(12.5f, "L5"))
+        val yPie = ArrayList<PieEntry>()
+        yPie.apply {
+            add(PieEntry(30f, "L1"))
+            add(PieEntry(2f, "L2"))
+            add(PieEntry(4f, "L3"))
+            add(PieEntry(22f, "L4"))
+            add(PieEntry(12.5f, "L5"))
+        }
 
-        val dataSet = PieDataSet(yVals, TITLE)
-        dataSet.valueTextSize = 0f
-        val colors = java.util.ArrayList<Int>()
-        colors.addAll(ColorTemplate.COLORFUL_COLORS.toList())
-        dataSet.colors = colors
+        val dataSet = PieDataSet(yPie, TITLE)
+        val colorsArray = java.util.ArrayList<Int>()
+        colorsArray.addAll(ColorTemplate.COLORFUL_COLORS.toList())
+        dataSet.apply {
+            valueTextSize = 0f
+            colors = colorsArray
+        }
+
         val data = PieData(dataSet)
 
         view.showPieChart(data)
@@ -282,22 +313,26 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
         view.hideGraphs()
 
         val yCandle = ArrayList<CandleEntry>()
-        yCandle.add(CandleEntry(0f, 4.62f, 2.02f, 2.70f, 4.13f))
-        yCandle.add(CandleEntry(1f, 5.50f, 2.70f, 3.35f, 4.96f))
-        yCandle.add(CandleEntry(2f, 5.25f, 3.02f, 3.50f, 4.50f))
-        yCandle.add(CandleEntry(3f, 6f, 3.25f, 4.40f, 5.0f))
-        yCandle.add(CandleEntry(4f, 5.57f, 2f, 2.80f, 4.5f))
+        yCandle.apply {
+            add(CandleEntry(0f, 4.62f, 2.02f, 2.70f, 4.13f))
+            add(CandleEntry(1f, 5.50f, 2.70f, 3.35f, 4.96f))
+            add(CandleEntry(2f, 5.25f, 3.02f, 3.50f, 4.50f))
+            add(CandleEntry(3f, 6f, 3.25f, 4.40f, 5.0f))
+            add(CandleEntry(4f, 5.57f, 2f, 2.80f, 4.5f))
+        }
 
         val candleDataSet = CandleDataSet(yCandle, "L1")
-        candleDataSet.setColors(Color.rgb(80, 80, 80))
-        candleDataSet.shadowColor = Color.DKGRAY
-        candleDataSet.shadowWidth = 0.7f
-        candleDataSet.decreasingColor = Color.RED
-        candleDataSet.decreasingPaintStyle = Paint.Style.FILL
-        candleDataSet.increasingColor = Color.rgb(122, 242, 84)
-        candleDataSet.increasingPaintStyle = Paint.Style.FILL
-        candleDataSet.neutralColor = Color.BLUE
-        candleDataSet.valueTextColor = Color.RED
+        candleDataSet.apply {
+            setColors(Color.rgb(80, 80, 80))
+            shadowColor = Color.DKGRAY
+            shadowWidth = 0.7f
+            decreasingColor = Color.RED
+            decreasingPaintStyle = Paint.Style.FILL
+            increasingColor = Color.rgb(122, 242, 84)
+            increasingPaintStyle = Paint.Style.FILL
+            neutralColor = Color.BLUE
+            valueTextColor = Color.RED
+        }
 
         val data = CandleData(candleDataSet)
 
@@ -308,17 +343,21 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
         view.hideGraphs()
 
         val yScatter = ArrayList<BarEntry>()
-        yScatter.add(BarEntry(2f, 0f))
-        yScatter.add(BarEntry(4f, 1f))
-        yScatter.add(BarEntry(6f, 1f))
-        yScatter.add(BarEntry(8f, 3f))
-        yScatter.add(BarEntry(7f, 4f))
-        yScatter.add(BarEntry(3f, 3f))
+        yScatter.apply {
+            add(BarEntry(2f, 0f))
+            add(BarEntry(4f, 1f))
+            add(BarEntry(6f, 1f))
+            add(BarEntry(8f, 3f))
+            add(BarEntry(7f, 4f))
+            add(BarEntry(3f, 3f))
+        }
 
         val scatterDataSet = ScatterDataSet(yScatter as List<Entry>?, "L1")
-        scatterDataSet.colors = ColorTemplate.COLORFUL_COLORS.toList()
-        scatterDataSet.valueTextColor = Color.BLACK
-        scatterDataSet.valueTextSize = 18f
+        scatterDataSet.apply {
+            colors = ColorTemplate.COLORFUL_COLORS.toList()
+            valueTextColor = Color.BLACK
+            valueTextSize = 18f
+        }
 
         val data = ScatterData(scatterDataSet)
 
@@ -327,5 +366,6 @@ class MpChartRecipePresenter @Inject constructor() : BasePresenter<MpChartRecipe
 
     companion object {
         private const val TITLE = "TITLE OF DATA SET"
+        private const val BAR_WIDTH = 0.16f
     }
 }
