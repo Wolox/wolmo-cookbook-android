@@ -58,4 +58,7 @@
     <string name="koin_login_invalid_email">Email invalido</string>
     <string name="koin_login_login_error">Incorrect user or password.</string>
 
+    <!-- MyCameraX -->
+	<string name="camerax_permissions_denied">Permissions denied.</string>
+
 </resources>

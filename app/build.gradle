@@ -116,6 +116,7 @@ buildscript {
     ext.robolectric_version = '4.2'
     ext.fragment_testing_version = '1.1.0-alpha07'
     ext.koin_version = '2.0.1'
+    ext.camerax_version = '1.0.0-alpha04'
 }
 
 dependencies {
@@ -170,6 +171,10 @@ dependencies {
 
     // Facebook Login
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
+
+    // MyCameraX
+    implementation "androidx.camera:camera-core:$camerax_version"
+    implementation "androidx.camera:camera-camera2:$camerax_version"
 }
 
 dependencies {

@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".CookbookApplication"
@@ -44,6 +45,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".koin.KoinLoginRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".camerax.CameraXRecipeActivity"
             android:screenOrientation="portrait" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

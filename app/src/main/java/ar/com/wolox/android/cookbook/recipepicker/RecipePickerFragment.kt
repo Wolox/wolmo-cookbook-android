@@ -2,6 +2,7 @@ package ar.com.wolox.android.cookbook.recipepicker
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.camerax.CameraXRecipeActivity
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
@@ -9,7 +10,7 @@ import ar.com.wolox.android.cookbook.koin.KoinLoginRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
-import kotlinx.android.synthetic.main.fragment_recipe_picker.vRecipePickerSelectionViewPager
+import kotlinx.android.synthetic.main.fragment_recipe_picker.*
 
 class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePickerView {
 
@@ -37,6 +38,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
                 Recipe.DATA_SYNC -> RecipeItem(it, R.drawable.bg_data_sync_pokemon, R.string.recipe_picker_data_sync)
                 Recipe.TESTS -> RecipeItem(it, R.drawable.bg_tests, R.string.recipe_picker_tests)
                 Recipe.KOIN -> RecipeItem(it, R.drawable.bg_koin, R.string.recipe_picker_koin)
+                Recipe.CAMERAX -> RecipeItem(it, R.drawable.bg_facebook_login, R.string.abc_action_bar_home_description)
             }
         }
     }
@@ -63,6 +65,10 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     override fun goToKoin() {
         requireContext().startActivity(Intent(requireContext(), KoinLoginRecipeActivity::class.java))
+    }
+
+    override fun goToCameraX() {
+        requireContext().startActivity(Intent(requireContext(), CameraXRecipeActivity::class.java))
     }
 
     companion object {

@@ -15,4 +15,6 @@ interface RecipePickerView {
     fun goToTests()
 
     fun goToKoin()
+
+    fun goToCameraX()
 }
