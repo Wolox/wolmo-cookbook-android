@@ -1,0 +1,487 @@
+{
+  "barChart_dataSet1": [
+    {
+      "xVal": 0,
+      "yVal": 150
+    },
+    {
+      "xVal": 1,
+      "yVal": 160
+    },
+    {
+      "xVal": 2,
+      "yVal": 170
+    },
+    {
+      "xVal": 3,
+      "yVal": 200
+    },
+    {
+      "xVal": 4,
+      "yVal": 220
+    },
+    {
+      "xVal": 5,
+      "yVal": 222
+    },
+    {
+      "xVal": 6,
+      "yVal": 345
+    },
+    {
+      "xVal": 7,
+      "yVal": 367
+    },
+    {
+      "xVal": 8,
+      "yVal": 389
+    },
+    {
+      "xVal": 9,
+      "yVal": 555
+    }
+  ],
+  "barChart_dataSet2": [
+    {
+      "xVal": 0,
+      "yVal": 25
+    },
+    {
+      "xVal": 1,
+      "yVal": 16
+    },
+    {
+      "xVal": 2,
+      "yVal": 17
+    },
+    {
+      "xVal": 3,
+      "yVal": 20
+    },
+    {
+      "xVal": 4,
+      "yVal": 22
+    },
+    {
+      "xVal": 5,
+      "yVal": 22
+    },
+    {
+      "xVal": 6,
+      "yVal": 34
+    },
+    {
+      "xVal": 7,
+      "yVal": 36
+    },
+    {
+      "xVal": 8,
+      "yVal": 38
+    },
+    {
+      "xVal": 9,
+      "yVal": 55
+    }
+  ],
+  "barChart_dataSet3": [
+    {
+      "xVal": 0,
+      "yVal": 75
+    },
+    {
+      "xVal": 1,
+      "yVal": 200
+    },
+    {
+      "xVal": 2,
+      "yVal": 270
+    },
+    {
+      "xVal": 3,
+      "yVal": 100
+    },
+    {
+      "xVal": 4,
+      "yVal": 200
+    },
+    {
+      "xVal": 5,
+      "yVal": 122
+    },
+    {
+      "xVal": 6,
+      "yVal": 345
+    },
+    {
+      "xVal": 7,
+      "yVal": 367
+    },
+    {
+      "xVal": 8,
+      "yVal": 489
+    },
+    {
+      "xVal": 9,
+      "yVal": 455
+    }
+  ],
+  "bubbleChart_dataSet1": [
+    {
+      "xVal": 0,
+      "yVal": 1,
+      "bubbleSize": 0.21
+    },
+    {
+      "xVal": 1,
+      "yVal": 2,
+      "bubbleSize": 0.12
+    },
+    {
+      "xVal": 2,
+      "yVal": 3,
+      "bubbleSize": 0.20
+    },
+    {
+      "xVal": 2,
+      "yVal": 4,
+      "bubbleSize": 0.52
+    },
+    {
+      "xVal": 3,
+      "yVal": 5,
+      "bubbleSize": 0.29
+    },
+    {
+      "xVal": 4,
+      "yVal": 6,
+      "bubbleSize": 0.62
+    }
+  ],
+  "combinedChart_dataSet1": [
+    {
+      "xVal": 0,
+      "yVal": 50
+    },
+    {
+      "xVal": 1,
+      "yVal": 60
+    },
+    {
+      "xVal": 2,
+      "yVal": 70
+    },
+    {
+      "xVal": 3,
+      "yVal": 100
+    },
+    {
+      "xVal": 4,
+      "yVal": 120
+    },
+    {
+      "xVal": 5,
+      "yVal": 122
+    },
+    {
+      "xVal": 6,
+      "yVal": 155
+    },
+    {
+      "xVal": 7,
+      "yVal": 217
+    },
+    {
+      "xVal": 8,
+      "yVal": 239
+    },
+    {
+      "xVal": 9,
+      "yVal": 155
+    },
+    {
+      "xVal": 10,
+      "yVal": 120
+    },
+    {
+      "xVal": 11,
+      "yVal": 60
+    }
+  ],
+  "combinedChart_dataSet2": [
+    {
+      "xVal": 0,
+      "yVal": 30,
+      "additionalData": "0"
+    },
+    {
+      "xVal": 1,
+      "yVal": 2,
+      "additionalData": "1"
+    },
+    {
+      "xVal": 2,
+      "yVal": 4,
+      "additionalData": "2"
+    },
+    {
+      "xVal": 3,
+      "yVal": 6,
+      "additionalData": "3"
+    },
+    {
+      "xVal": 4,
+      "yVal": 8,
+      "additionalData": "4"
+    },
+    {
+      "xVal": 5,
+      "yVal": 10,
+      "additionalData": "5"
+    },
+    {
+      "xVal": 6,
+      "yVal": 22,
+      "additionalData": "6"
+    },
+    {
+      "xVal": 7,
+      "yVal": 12,
+      "additionalData": "7"
+    },
+    {
+      "xVal": 8,
+      "yVal": 22,
+      "additionalData": "8"
+    },
+    {
+      "xVal": 9,
+      "yVal": 32,
+      "additionalData": "9"
+    },
+    {
+      "xVal": 10,
+      "yVal": 54,
+      "additionalData": "10"
+    },
+    {
+      "xVal": 11,
+      "yVal": 28,
+      "additionalData": "11"
+    }
+  ],
+  "horizontalBarChart_dataSet1": [
+    {
+      "xVal": 0,
+      "yVal": 75
+    },
+    {
+      "xVal": 1,
+      "yVal": 200
+    },
+    {
+      "xVal": 2,
+      "yVal": 270
+    },
+    {
+      "xVal": 3,
+      "yVal": 100
+    },
+    {
+      "xVal": 4,
+      "yVal": 200
+    },
+    {
+      "xVal": 5,
+      "yVal": 122
+    },
+    {
+      "xVal": 6,
+      "yVal": 345
+    },
+    {
+      "xVal": 7,
+      "yVal": 367
+    },
+    {
+      "xVal": 8,
+      "yVal": 489
+    },
+    {
+      "xVal": 9,
+      "yVal": 455
+    }
+  ],
+  "lineChart_dataSet1": [
+    {
+      "xVal": 0,
+      "yVal": 30,
+      "additionalData": "0"
+    },
+    {
+      "xVal": 1,
+      "yVal": 2,
+      "additionalData": "1"
+    },
+    {
+      "xVal": 2,
+      "yVal": 4,
+      "additionalData": "2"
+    },
+    {
+      "xVal": 3,
+      "yVal": 6,
+      "additionalData": "3"
+    },
+    {
+      "xVal": 4,
+      "yVal": 8,
+      "additionalData": "4"
+    },
+    {
+      "xVal": 5,
+      "yVal": 10,
+      "additionalData": "5"
+    },
+    {
+      "xVal": 6,
+      "yVal": 22,
+      "additionalData": "6"
+    },
+    {
+      "xVal": 7,
+      "yVal": 12,
+      "additionalData": "7"
+    },
+    {
+      "xVal": 8,
+      "yVal": 22,
+      "additionalData": "8"
+    },
+    {
+      "xVal": 9,
+      "yVal": 32,
+      "additionalData": "9"
+    },
+    {
+      "xVal": 10,
+      "yVal": 54,
+      "additionalData": "10"
+    },
+    {
+      "xVal": 11,
+      "yVal": 28,
+      "additionalData": "11"
+    }
+  ],
+  "pieChart_dataSet1": [
+    {
+      "value": 30,
+      "label": "L1"
+    },
+    {
+      "value": 2,
+      "label": "L2"
+    },
+    {
+      "value": 4,
+      "label": "L3"
+    },
+    {
+      "value": 22,
+      "label": "L4"
+    },
+    {
+      "value": 12.5,
+      "label": "L5"
+    }
+  ],
+  "radarChart_dataSet1": [
+    {
+      "value": 0,
+      "data": 0.41
+    },
+    {
+      "value": 1,
+      "data": 0.32
+    },
+    {
+      "value": 2,
+      "data": 0.40
+    },
+    {
+      "value": 3,
+      "data": 0.72
+    },
+    {
+      "value": 4,
+      "data": 0.49
+    },
+    {
+      "value": 5,
+      "data": 0.82
+    }
+  ],
+  "candleStickChart_dataSet1": [
+    {
+      "xVal": 0,
+      "highValue": 4.62,
+      "lowValue": 2.02,
+      "openValue": 2.70,
+      "closeValue": 4.13
+    },
+    {
+      "xVal": 1,
+      "highValue": 5.50,
+      "lowValue": 2.70,
+      "openValue": 3.35,
+      "closeValue": 4.96
+    },
+    {
+      "xVal": 2,
+      "highValue": 5.25,
+      "lowValue": 3.02,
+      "openValue": 3.50,
+      "closeValue": 4.50
+    },
+    {
+      "xVal": 3,
+      "highValue": 6,
+      "lowValue": 3.25,
+      "openValue": 4.40,
+      "closeValue": 5.0
+    },
+    {
+      "xVal": 4,
+      "highValue": 5.57,
+      "lowValue": 2,
+      "openValue": 2.80,
+      "closeValue": 4.5
+    }
+  ],
+  "scatterChart_dataSet1": [
+    {
+      "xVal": 2,
+      "yVal": 0
+    },
+    {
+      "xVal": 4,
+      "yVal": 1
+    },
+    {
+      "xVal": 6,
+      "yVal": 1
+    },
+    {
+      "xVal": 8,
+      "yVal": 3
+    },
+    {
+      "xVal": 7,
+      "yVal": 4
+    },
+    {
+      "xVal": 3,
+      "yVal": 3
+    }
+  ]
+}
