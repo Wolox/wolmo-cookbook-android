@@ -1,4 +1,5 @@
 {
+  "barChart_label1": "BCL1",
   "barChart_dataSet1": [
     {
       "xVal": 0,
@@ -41,6 +42,8 @@
       "yVal": 555
     }
   ],
+
+  "barChart_label2": "BCL2",
   "barChart_dataSet2": [
     {
       "xVal": 0,
@@ -83,6 +86,8 @@
       "yVal": 55
     }
   ],
+
+  "barChart_label3": "BCL3",
   "barChart_dataSet3": [
     {
       "xVal": 0,
@@ -125,6 +130,8 @@
       "yVal": 455
     }
   ],
+
+  "bubbleChart_label1": "BBL1",
   "bubbleChart_dataSet1": [
     {
       "xVal": 0,
@@ -157,6 +164,8 @@
       "bubbleSize": 0.62
     }
   ],
+
+  "combinedChart_label1": "CCL1",
   "combinedChart_dataSet1": [
     {
       "xVal": 0,
@@ -207,20 +216,22 @@
       "yVal": 60
     }
   ],
+
+  "combinedChart_label2": "CCL2",
   "combinedChart_dataSet2": [
     {
       "xVal": 0,
-      "yVal": 30,
+      "yVal": 85,
       "additionalData": "0"
     },
     {
       "xVal": 1,
-      "yVal": 2,
+      "yVal": 65,
       "additionalData": "1"
     },
     {
       "xVal": 2,
-      "yVal": 4,
+      "yVal": 40,
       "additionalData": "2"
     },
     {
@@ -255,20 +266,22 @@
     },
     {
       "xVal": 9,
-      "yVal": 32,
+      "yVal": 120,
       "additionalData": "9"
     },
     {
       "xVal": 10,
-      "yVal": 54,
+      "yVal": 160,
       "additionalData": "10"
     },
     {
       "xVal": 11,
-      "yVal": 28,
+      "yVal": 200,
       "additionalData": "11"
     }
   ],
+
+  "horizontalBarChart_label1": "HBL1",
   "horizontalBarChart_dataSet1": [
     {
       "xVal": 0,
@@ -311,6 +324,8 @@
       "yVal": 455
     }
   ],
+
+  "lineChart_label1": "LCL1",
   "lineChart_dataSet1": [
     {
       "xVal": 0,
@@ -373,6 +388,8 @@
       "additionalData": "11"
     }
   ],
+
+  "pieChart_label1": "PCL1",
   "pieChart_dataSet1": [
     {
       "value": 30,
@@ -395,6 +412,8 @@
       "label": "L5"
     }
   ],
+
+  "radarChart_label1": "RCL1",
   "radarChart_dataSet1": [
     {
       "value": 0,
@@ -421,6 +440,8 @@
       "data": 0.82
     }
   ],
+
+  "candleStickChart_label1": "CSL1",
   "candleStickChart_dataSet1": [
     {
       "xVal": 0,
@@ -458,6 +479,8 @@
       "closeValue": 4.5
     }
   ],
+
+  "scatterChart_label1": "SCL1",
   "scatterChart_dataSet1": [
     {
       "xVal": 2,

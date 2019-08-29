@@ -1,7 +1,6 @@
 package ar.com.wolox.android.cookbook.mpchart
 
 import android.app.ProgressDialog
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import ar.com.wolox.android.cookbook.R
@@ -34,8 +33,6 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
         vSpinnerChart.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                val label = resources.getStringArray(R.array.mp_chart_types)[p2]
-                Log.e("FedeLog", "OnItemSelected: $label")
                 presenter.onSpinnerItemClicked(p2)
             }
 
@@ -58,27 +55,24 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
     override fun showBarChart(barData: BarData) {
 
-        val groupSpace = 0.30f
-        val barSpace = 0.05f
-
         vBarChart.apply {
             visibility = View.VISIBLE
             data = barData
             animateY(ANIMATION_DELAY)
             isDragEnabled = true
 
-            axisLeft.mAxisMinimum = 0f
+            axisLeft.mAxisMinimum = MINIMUM
 
             xAxis.apply {
-                mAxisMinimum = 0f
+                mAxisMinimum = MINIMUM
                 position = XAxis.XAxisPosition.BOTTOM
                 setCenterAxisLabels(true)
             }
 
             description.text = getString(R.string.mp_chart_bar)
-            groupBars(0f, groupSpace, barSpace)
+            groupBars(MINIMUM, GROUP_SPACE, BAR_SPACE)
 
-            setVisibleXRangeMaximum(3f)
+            setVisibleXRangeMaximum(BAR_VISIBLE_RANGE)
             invalidate()
         }
     }
@@ -107,19 +101,19 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
             axisRight.apply {
                 setDrawGridLines(false)
-                axisMinimum = 0f
+                axisMinimum = MINIMUM
             }
 
             axisLeft.apply {
                 setDrawGridLines(false)
-                axisMinimum = 0f
+                axisMinimum = MINIMUM
             }
 
             xAxis.apply {
                 position = XAxis.XAxisPosition.BOTH_SIDED
-                axisMinimum = 0f
-                granularity = 1f
-                axisMaximum = data.xMax + 0.25f
+                axisMinimum = MINIMUM
+                granularity = GRANULARITY
+                axisMaximum = data.xMax + AXIS_PHASE
             }
 
             animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
@@ -135,10 +129,10 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             animateY(ANIMATION_DELAY)
             isDragEnabled = true
 
-            axisLeft.mAxisMinimum = 0f
+            axisLeft.mAxisMinimum = MINIMUM
 
             xAxis.apply {
-                mAxisMinimum = 0f
+                mAxisMinimum = MINIMUM
                 position = XAxis.XAxisPosition.BOTTOM
                 setCenterAxisLabels(true)
             }
@@ -149,9 +143,6 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showLineChart(lineData: LineData) {
-
-        val defaultLength = 5f
-        val phase = 0f
 
         vLineChart.apply {
             visibility = View.VISIBLE
@@ -164,13 +155,13 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             animateX(ANIMATION_DELAY)
 
             xAxis.apply {
-                enableGridDashedLine(defaultLength, defaultLength, phase)
+                enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, MINIMUM)
                 labelCount = lineData.dataSetCount
                 position = XAxis.XAxisPosition.BOTTOM
             }
 
-            axisRight.enableGridDashedLine(defaultLength, defaultLength, phase)
-            axisLeft.enableGridDashedLine(defaultLength, defaultLength, phase)
+            axisRight.enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, MINIMUM)
+            axisLeft.enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, MINIMUM)
         }
     }
 
@@ -179,7 +170,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
         vPieChart.apply {
             data = pieData
-            centerTextRadiusPercent = 1f
+            centerTextRadiusPercent = RADIUS_PERCENT
             animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
             isDrawHoleEnabled = false
             description.text = getString(R.string.mp_chart_pie)
@@ -231,5 +222,13 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
     companion object {
         private const val ANIMATION_DELAY = 2500
+        private const val MINIMUM = 0f
+        private const val RADIUS_PERCENT = 1f
+        private const val DEFAULT_LENGTH = 5f
+        private const val GRANULARITY = 1f
+        private const val AXIS_PHASE = 0.25f
+        private const val BAR_VISIBLE_RANGE = 3f
+        private const val GROUP_SPACE = 0.30f
+        private const val BAR_SPACE = 0.05f
     }
 }

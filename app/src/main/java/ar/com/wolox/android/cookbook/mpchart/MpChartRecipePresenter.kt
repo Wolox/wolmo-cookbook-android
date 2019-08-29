@@ -83,27 +83,34 @@ class MpChartRecipePresenter @Inject constructor(
         val yBar2 = ArrayList<BarEntry>()
         val yBar3 = ArrayList<BarEntry>()
 
+        var label1 = LABEL_DEFAULT
+        var label2 = LABEL_DEFAULT
+        var label3 = LABEL_DEFAULT
+
         dataSample?.let {
+            label1 = it.barLabel1
             for (element in it.barData1) {
                 yBar1.add(BarEntry(element.xVal, element.yVal))
             }
 
+            label2 = it.barLabel2
             for (element in it.barData2) {
                 yBar2.add(BarEntry(element.xVal, element.yVal))
             }
 
+            label3 = it.barLabel3
             for (element in it.barData3) {
                 yBar3.add(BarEntry(element.xVal, element.yVal))
             }
         }
 
-        val barDataSet1 = BarDataSet(yBar1, "L1")
+        val barDataSet1 = BarDataSet(yBar1, label1)
         barDataSet1.color = Color.BLACK
 
-        val barDataSet2 = BarDataSet(yBar2, "L2")
+        val barDataSet2 = BarDataSet(yBar2, label2)
         barDataSet2.color = Color.MAGENTA
 
-        val barDataSet3 = BarDataSet(yBar3, "L3")
+        val barDataSet3 = BarDataSet(yBar3, label3)
         barDataSet3.color = Color.RED
 
         val data = BarData(barDataSet1, barDataSet2, barDataSet3)
@@ -115,13 +122,16 @@ class MpChartRecipePresenter @Inject constructor(
         view.hideGraphs()
 
         val yBubble = ArrayList<BubbleEntry>()
+        var label = LABEL_DEFAULT
+
         dataSample?.let {
+            label = it.bubbleLabel
             for (element in it.bubbleData) {
                 yBubble.add(BubbleEntry(element.xVal, element.yVal, element.size))
             }
         }
 
-        val dataSet = BubbleDataSet(yBubble, "L1")
+        val dataSet = BubbleDataSet(yBubble, label)
         val colorsArray = java.util.ArrayList<Int>()
         colorsArray.addAll(ColorTemplate.COLORFUL_COLORS.toList())
 
@@ -141,23 +151,28 @@ class MpChartRecipePresenter @Inject constructor(
         val yBar = ArrayList<BarEntry>()
         val yLine = ArrayList<Entry>()
 
+        var labelBar = LABEL_DEFAULT
+        var labelLine = LABEL_DEFAULT
+
         dataSample?.let {
+            labelBar = it.combinedLabel1
             for (element in it.combinedData1) {
                 yBar.add(BarEntry(element.xVal, element.yVal))
             }
 
+            labelLine = it.combinedLabel2
             for (element in it.combinedData2) {
                 yLine.add(Entry(element.xVal, element.yVal, element.data))
             }
         }
 
-        val barDataSet = BarDataSet(yBar, "L1")
+        val barDataSet = BarDataSet(yBar, labelBar)
         barDataSet.color = Color.GREEN
 
         val barData = BarData(barDataSet)
         barData.barWidth = BAR_WIDTH
 
-        val lineDataSet = LineDataSet(yLine, "L2")
+        val lineDataSet = LineDataSet(yLine, labelLine)
         lineDataSet.apply {
             color = Color.BLUE
             setCircleColor(Color.BLUE)
@@ -183,13 +198,16 @@ class MpChartRecipePresenter @Inject constructor(
         view.hideGraphs()
 
         val yBar = ArrayList<BarEntry>()
+        var label = LABEL_DEFAULT
+
         dataSample?.let {
+            label = it.hBarLabel
             for (element in it.hBarData) {
                 yBar.add(BarEntry(element.xVal, element.yVal))
             }
         }
 
-        val hLineDataSet = BarDataSet(yBar, "L3")
+        val hLineDataSet = BarDataSet(yBar, label)
         hLineDataSet.color = Color.RED
 
         val data = BarData(hLineDataSet)
@@ -202,13 +220,16 @@ class MpChartRecipePresenter @Inject constructor(
         view.hideGraphs()
 
         val yLine = ArrayList<Entry>()
+        var label = LABEL_DEFAULT
+
         dataSample?.let {
+            label = it.lineLabel
             for (element in it.lineData) {
                 yLine.add(Entry(element.xVal, element.yVal, element.data))
             }
         }
 
-        val lineDataSet = LineDataSet(yLine, "L1")
+        val lineDataSet = LineDataSet(yLine, label)
         lineDataSet.apply {
             color = Color.BLUE
             setCircleColor(Color.BLUE)
@@ -231,6 +252,7 @@ class MpChartRecipePresenter @Inject constructor(
         view.hideGraphs()
 
         val yPie = ArrayList<PieEntry>()
+
         dataSample?.let {
             for (element in it.pieData) {
                 yPie.add(PieEntry(element.value, element.label))
@@ -254,13 +276,16 @@ class MpChartRecipePresenter @Inject constructor(
         view.hideGraphs()
 
         val yRadar = ArrayList<RadarEntry>()
+        var label = LABEL_DEFAULT
+
         dataSample?.let {
+            label = it.radarLabel
             for (element in it.radarData) {
                 yRadar.add(RadarEntry(element.value, element.data))
             }
         }
 
-        val radarDataSet = RadarDataSet(yRadar, "L1")
+        val radarDataSet = RadarDataSet(yRadar, label)
         radarDataSet.color = Color.CYAN
         radarDataSet.valueTextSize = 18f
 
@@ -273,13 +298,16 @@ class MpChartRecipePresenter @Inject constructor(
         view.hideGraphs()
 
         val yCandle = ArrayList<CandleEntry>()
+        var label = LABEL_DEFAULT
+
         dataSample?.let {
+            label = it.candleLabel
             for (element in it.candleData) {
                 yCandle.add(CandleEntry(element.xVal, element.high, element.low, element.open, element.close))
             }
         }
 
-        val candleDataSet = CandleDataSet(yCandle, "L1")
+        val candleDataSet = CandleDataSet(yCandle, label)
         candleDataSet.apply {
             setColors(Color.rgb(80, 80, 80))
             shadowColor = Color.DKGRAY
@@ -301,13 +329,16 @@ class MpChartRecipePresenter @Inject constructor(
         view.hideGraphs()
 
         val yScatter = ArrayList<BarEntry>()
+        var label = LABEL_DEFAULT
+
         dataSample?.let {
+            label = it.scatterLabel
             for (element in it.scatterData) {
                 yScatter.add(BarEntry(element.xVal, element.yVal))
             }
         }
 
-        val scatterDataSet = ScatterDataSet(yScatter as List<Entry>?, "L1")
+        val scatterDataSet = ScatterDataSet(yScatter as List<Entry>?, label)
         scatterDataSet.apply {
             colors = ColorTemplate.COLORFUL_COLORS.toList()
             valueTextColor = Color.BLACK
@@ -321,6 +352,8 @@ class MpChartRecipePresenter @Inject constructor(
 
     companion object {
         private const val TITLE = "TITLE OF DATA SET"
+        private const val LABEL_DEFAULT = "Label"
+
         private const val BAR_WIDTH = 0.16f
     }
 }
