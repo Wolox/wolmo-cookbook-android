@@ -3,6 +3,8 @@ package ar.com.wolox.android.cookbook.camerax
 import android.graphics.SurfaceTexture
 import android.util.DisplayMetrics
 import android.util.Log
+import android.util.Rational
+import android.util.Size
 import androidx.camera.core.CameraX
 import androidx.camera.core.ImageCapture
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
@@ -13,23 +15,36 @@ class CameraXRecipePresenter @Inject constructor(private val cameraX: MyCameraX,
 
     private var lens = CameraX.LensFacing.BACK
 
-    override fun onViewAttached() {
-        view.requestCameraPermissions()
-    }
-
-    fun onCameraPermissionGranted(displayMetrics: DisplayMetrics) = with(view) {
-        cameraX.initialize(displayMetrics, MyCameraXConfiguration(lens = lens), object : MyCameraXUserListener {
-
-            override fun onPreviewUpdate(surfaceTexture: SurfaceTexture) = updateCamera(surfaceTexture)
-
-            override fun onLifecycleOwnerRequest() = view
-        })
-
+    private fun enableUI() = with(view) {
         enableShutter()
 
         if (cameraX.isLensAvailable(CameraX.LensFacing.FRONT)) {
             enableFlipButton()
         }
+    }
+
+    private fun initializeCamera(displayMetrics: DisplayMetrics) {
+        cameraX.listener = object : MyCameraXUserListener {
+
+            override fun onPreviewUpdate(surfaceTexture: SurfaceTexture) = view.updateCamera(surfaceTexture)
+
+            override fun onLifecycleOwnerRequest() = view
+        }
+
+        val configuration = MyCameraXConfiguration(
+                aspectRatio = Rational(displayMetrics.widthPixels, displayMetrics.heightPixels),
+                resolution = Size(displayMetrics.widthPixels, displayMetrics.heightPixels),
+                lens = lens)
+        cameraX.start(configuration)
+    }
+
+    override fun onViewAttached() {
+        view.requestCameraPermissions()
+    }
+
+    fun onCameraPermissionGranted(displayMetrics: DisplayMetrics) {
+        initializeCamera(displayMetrics)
+        enableUI()
     }
 
     fun onCameraPermissionDenied() = view.showCameraError()

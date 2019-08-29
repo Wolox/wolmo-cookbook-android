@@ -5,7 +5,7 @@ import android.util.Size
 import androidx.camera.core.CameraX
 
 data class MyCameraXConfiguration(
-    val aspectRatio: Rational? = null,
-    val resolution: Size? = null,
+    val aspectRatio: Rational,
+    val resolution: Size,
     val lens: CameraX.LensFacing = CameraX.LensFacing.BACK
 )

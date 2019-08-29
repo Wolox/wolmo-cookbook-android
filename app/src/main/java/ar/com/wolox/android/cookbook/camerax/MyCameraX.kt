@@ -1,7 +1,6 @@
 package ar.com.wolox.android.cookbook.camerax
 
 import android.annotation.SuppressLint
-import android.util.DisplayMetrics
 import android.util.Rational
 import android.util.Size
 import androidx.camera.core.CameraInfoUnavailableException
@@ -16,9 +15,7 @@ import javax.inject.Inject
 
 class MyCameraX @Inject constructor() {
 
-    private lateinit var cameraXUser: MyCameraXUserListener
-    private lateinit var aspectRatio: Rational
-    private lateinit var resolution: Size
+    lateinit var listener: MyCameraXUserListener
 
     private lateinit var preview: Preview
     private lateinit var imageCapture: ImageCapture
@@ -30,42 +27,34 @@ class MyCameraX @Inject constructor() {
     private fun bindToLifecycle(lifecycleOwner: LifecycleOwner) = CameraX.bindToLifecycle(lifecycleOwner, preview, imageCapture)
 
     /** For restarting the camera, it's important to unbind all the use cases and the start it again. */
-    private fun restart(myCameraXConfiguration: MyCameraXConfiguration) {
+    fun restart(myCameraXConfiguration: MyCameraXConfiguration) {
         CameraX.unbindAll()
         start(myCameraXConfiguration)
     }
 
     /** Start the camera. It'll build a Preview and a Picture use cases. */
-    private fun start(configuration: MyCameraXConfiguration) {
+    fun start(configuration: MyCameraXConfiguration) {
+
         val previewConfig = PreviewConfig
                 .Builder()
                 .setLensFacing(configuration.lens)
-                .setTargetAspectRatio(configuration.aspectRatio ?: aspectRatio)
-                .setTargetResolution(configuration.resolution ?: resolution)
+                .setTargetAspectRatio(configuration.aspectRatio)
+                .setTargetResolution(configuration.resolution)
                 .build()
+
         val imageCaptureConfig = ImageCaptureConfig
                 .Builder()
                 .setLensFacing(configuration.lens)
-                .setTargetAspectRatio(configuration.aspectRatio ?: aspectRatio)
-                .setTargetResolution(configuration.resolution ?: resolution)
+                .setTargetAspectRatio(configuration.aspectRatio)
+                .setTargetResolution(configuration.resolution)
                 .build()
 
         preview = Preview(previewConfig).apply {
-            setOnPreviewOutputUpdateListener { cameraXUser.onPreviewUpdate(it.surfaceTexture) }
+            setOnPreviewOutputUpdateListener { listener.onPreviewUpdate(it.surfaceTexture) }
         }
         imageCapture = ImageCapture(imageCaptureConfig)
 
-        bindToLifecycle(cameraXUser.onLifecycleOwnerRequest())
-    }
-
-    /** Initialize the camera for a [displayMetrics] and controlling [cameraXUser]. */
-    fun initialize(displayMetrics: DisplayMetrics, configuration: MyCameraXConfiguration, cameraXUser: MyCameraXUserListener) {
-
-        this.cameraXUser = cameraXUser
-        aspectRatio = Rational(displayMetrics.widthPixels, displayMetrics.heightPixels)
-        resolution = Size(displayMetrics.widthPixels, displayMetrics.heightPixels)
-
-        start(configuration)
+        bindToLifecycle(listener.onLifecycleOwnerRequest())
     }
 
     /** Take a picture and export to a [file]. Once the capture is complete, the [onImageSavedListener] will be invoked. */
