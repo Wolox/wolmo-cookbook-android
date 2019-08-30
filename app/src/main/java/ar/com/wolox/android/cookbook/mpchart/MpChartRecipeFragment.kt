@@ -10,6 +10,7 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.BubbleData
+import com.github.mikephil.charting.data.BubbleEntry
 import com.github.mikephil.charting.data.CandleData
 import com.github.mikephil.charting.data.CombinedData
 import com.github.mikephil.charting.data.Entry
@@ -67,12 +68,16 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             animateY(ANIMATION_DELAY)
             isDragEnabled = true
 
-            // TODO
             setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
                 override fun onValueSelected(e: Entry?, h: Highlight?) {
                     val entry = e as BarEntry
-                    // Toast.makeText(context, getString(R.string.mp_chart_item_bar, entry.y, entry.data.toString()),
-                    // Toast.LENGTH_SHORT).show()
+
+                    /**
+                     * Data is an additional information of Entry, represents an Object with
+                     * any class or null if no data has been specified
+                     */
+                    Toast.makeText(context, getString(R.string.mp_chart_item_bar, entry.y, entry.data),
+                            Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onNothingSelected() {
@@ -109,7 +114,24 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             data = bubbleData
             isDragEnabled = true
             description.text = getString(R.string.mp_chart_bubble)
+
             animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
+
+            setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
+                override fun onValueSelected(e: Entry?, h: Highlight?) {
+                    val entry = e as BubbleEntry
+
+                    /**
+                     * Data is an additional information of Entry, represents an Object with
+                     * any class or null if no data has been specified
+                     */
+                    Toast.makeText(context, getString(R.string.mp_chart_item_bubble, entry.x, entry.y,
+                            entry.size, entry.data), Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onNothingSelected() {
+                }
+            })
         }
     }
 
@@ -155,6 +177,22 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             isDragEnabled = true
 
             axisLeft.mAxisMinimum = ZERO
+
+            setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
+                override fun onValueSelected(e: Entry?, h: Highlight?) {
+                    val entry = e as BarEntry
+
+                    /**
+                     * Data is an additional information of Entry, represents an Object with
+                     * any class or null if no data has been specified
+                     */
+                    Toast.makeText(context, getString(R.string.mp_chart_item_bar, entry.y, entry.data),
+                            Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onNothingSelected() {
+                }
+            })
 
             xAxis.apply {
                 mAxisMinimum = ZERO
@@ -238,6 +276,23 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             visibility = View.VISIBLE
             data = scatterData
             description.text = getString(R.string.mp_chart_scatter)
+
+            setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
+                override fun onValueSelected(e: Entry?, h: Highlight?) {
+                    val entry = e as BarEntry
+
+                    /**
+                     * Data is an additional information of Entry, represents an Object with
+                     * any class or null if no data has been specified
+                     */
+                    Toast.makeText(context, getString(R.string.mp_chart_item_bar, entry.y, entry.data),
+                            Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onNothingSelected() {
+                }
+            })
+
             animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
             invalidate()
         }

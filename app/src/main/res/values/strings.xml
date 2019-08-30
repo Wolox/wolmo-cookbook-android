@@ -121,6 +121,7 @@
 
     <string name="mp_chart_item_bar">Value: %1$f | Data: %2$s</string>
     <string name="mp_chart_item_pie">Item: %1$s | Value: %2$f</string>
+    <string name="mp_chart_item_bubble">X: %1$f | Y: %2$f | Size: %3$f | Data: %4$s</string>
 
     <!-- Test Login -->
     <string name="test_login_email">Email</string>

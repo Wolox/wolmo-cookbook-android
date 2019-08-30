@@ -92,17 +92,17 @@ class MpChartRecipePresenter @Inject constructor(
         dataSample?.let {
             label1 = it.barLabel1
             for (element in it.barData1) {
-                yBar1.add(BarEntry(element.xVal, element.yVal, "HH-T1"))
+                yBar1.add(BarEntry(element.xVal, element.yVal, element.data))
             }
 
             label2 = it.barLabel2
             for (element in it.barData2) {
-                yBar2.add(BarEntry(element.xVal, element.yVal, "HH-T2"))
+                yBar2.add(BarEntry(element.xVal, element.yVal, element.data))
             }
 
             label3 = it.barLabel3
             for (element in it.barData3) {
-                yBar3.add(BarEntry(element.xVal, element.yVal, "HH-T3"))
+                yBar3.add(BarEntry(element.xVal, element.yVal, element.data))
             }
         }
 
@@ -129,7 +129,7 @@ class MpChartRecipePresenter @Inject constructor(
         dataSample?.let {
             label = it.bubbleLabel
             for (element in it.bubbleData) {
-                yBubble.add(BubbleEntry(element.xVal, element.yVal, element.size))
+                yBubble.add(BubbleEntry(element.xVal, element.yVal, element.size, element.data))
             }
         }
 
@@ -205,7 +205,7 @@ class MpChartRecipePresenter @Inject constructor(
         dataSample?.let {
             label = it.hBarLabel
             for (element in it.hBarData) {
-                yBar.add(BarEntry(element.xVal, element.yVal))
+                yBar.add(BarEntry(element.xVal, element.yVal, element.data))
             }
         }
 
@@ -343,7 +343,7 @@ class MpChartRecipePresenter @Inject constructor(
         dataSample?.let {
             label = it.scatterLabel
             for (element in it.scatterData) {
-                yScatter.add(BarEntry(element.xVal, element.yVal))
+                yScatter.add(BarEntry(element.xVal, element.yVal, element.data))
             }
         }
 
