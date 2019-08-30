@@ -2,9 +2,8 @@ package ar.com.wolox.android.cookbook.camerax
 
 import android.graphics.SurfaceTexture
 import android.util.DisplayMetrics
-import android.util.Log
 import android.util.Rational
-import android.util.Size
+import android.view.Display
 import androidx.camera.core.CameraX
 import androidx.camera.core.ImageCapture
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
@@ -23,7 +22,7 @@ class CameraXRecipePresenter @Inject constructor(private val cameraX: MyCameraX,
         }
     }
 
-    private fun initializeCamera(displayMetrics: DisplayMetrics) {
+    private fun initializeCamera(display: Display) {
         cameraX.listener = object : MyCameraXUserListener {
 
             override fun onPreviewUpdate(surfaceTexture: SurfaceTexture) = view.updateCamera(surfaceTexture)
@@ -31,9 +30,10 @@ class CameraXRecipePresenter @Inject constructor(private val cameraX: MyCameraX,
             override fun onLifecycleOwnerRequest() = view
         }
 
+        val displayMetrics = DisplayMetrics().also { display.getRealMetrics(it) }
         val configuration = MyCameraXConfiguration(
+                rotation = display.rotation,
                 aspectRatio = Rational(displayMetrics.widthPixels, displayMetrics.heightPixels),
-                resolution = Size(displayMetrics.widthPixels, displayMetrics.heightPixels),
                 lens = lens)
         cameraX.start(configuration)
     }
@@ -42,32 +42,28 @@ class CameraXRecipePresenter @Inject constructor(private val cameraX: MyCameraX,
         view.requestCameraPermissions()
     }
 
-    fun onCameraPermissionGranted(displayMetrics: DisplayMetrics) {
-        initializeCamera(displayMetrics)
+    /** Invoked when camera permissions are granted by user. */
+    fun onCameraPermissionGranted(display: Display) {
+        initializeCamera(display)
         enableUI()
     }
 
-    fun onCameraPermissionDenied() = view.showCameraError()
+    /** Invoked when camera permissions are denied by user. */
+    fun onCameraPermissionDenied() = view.showPermissionsError()
 
+    /** Invoked when shutter button is clicked. */
     fun onShutterClicked() {
         cameraX.takePicture(File(filesHelper.getNewCachePictureName()), object : ImageCapture.OnImageSavedListener {
-            override fun onImageSaved(file: File) {
-                Log.d("DylanLog", "Images saved: ${file.absolutePath}")
-            }
 
-            override fun onError(useCaseError: ImageCapture.UseCaseError, message: String, cause: Throwable?) {
-                Log.d("DylanLog", "Error")
-            }
+            override fun onImageSaved(file: File) = view.showImage(file)
+
+            override fun onError(useCaseError: ImageCapture.UseCaseError, message: String, cause: Throwable?) = view.showError(message)
         })
     }
 
+    /** Invoked on flip button is clicked. */
     fun onFlipButtonClicked() {
-        lens = if (CameraX.LensFacing.FRONT == lens) {
-            CameraX.LensFacing.BACK
-        } else {
-            CameraX.LensFacing.FRONT
-        }
-
+        lens = if (CameraX.LensFacing.FRONT == lens) CameraX.LensFacing.BACK else CameraX.LensFacing.FRONT
         cameraX.changeLens(lens)
     }
 }

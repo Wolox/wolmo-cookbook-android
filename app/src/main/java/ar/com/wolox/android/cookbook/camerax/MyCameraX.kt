@@ -1,14 +1,10 @@
 package ar.com.wolox.android.cookbook.camerax
 
 import android.annotation.SuppressLint
-import android.util.Rational
-import android.util.Size
 import androidx.camera.core.CameraInfoUnavailableException
 import androidx.camera.core.CameraX
 import androidx.camera.core.ImageCapture
-import androidx.camera.core.ImageCaptureConfig
 import androidx.camera.core.Preview
-import androidx.camera.core.PreviewConfig
 import androidx.lifecycle.LifecycleOwner
 import java.io.File
 import javax.inject.Inject
@@ -17,6 +13,7 @@ class MyCameraX @Inject constructor() {
 
     lateinit var listener: MyCameraXUserListener
 
+    private lateinit var configuration: MyCameraXConfiguration
     private lateinit var preview: Preview
     private lateinit var imageCapture: ImageCapture
 
@@ -26,33 +23,21 @@ class MyCameraX @Inject constructor() {
      */
     private fun bindToLifecycle(lifecycleOwner: LifecycleOwner) = CameraX.bindToLifecycle(lifecycleOwner, preview, imageCapture)
 
-    /** For restarting the camera, it's important to unbind all the use cases and the start it again. */
+    /** Restart the camera with a specific [configuration], it's important to unbind all the use cases and the start it again. */
     fun restart(myCameraXConfiguration: MyCameraXConfiguration) {
         CameraX.unbindAll()
         start(myCameraXConfiguration)
     }
 
-    /** Start the camera. It'll build a Preview and a Picture use cases. */
+    /** Start the camera with a specific [configuration]. It'll build a Preview and a Picture use cases. */
     fun start(configuration: MyCameraXConfiguration) {
 
-        val previewConfig = PreviewConfig
-                .Builder()
-                .setLensFacing(configuration.lens)
-                .setTargetAspectRatio(configuration.aspectRatio)
-                .setTargetResolution(configuration.resolution)
-                .build()
+        this.configuration = configuration
 
-        val imageCaptureConfig = ImageCaptureConfig
-                .Builder()
-                .setLensFacing(configuration.lens)
-                .setTargetAspectRatio(configuration.aspectRatio)
-                .setTargetResolution(configuration.resolution)
-                .build()
-
-        preview = Preview(previewConfig).apply {
+        imageCapture = ImageCapture(configuration.imageCapture)
+        preview = Preview(configuration.preview).apply {
             setOnPreviewOutputUpdateListener { listener.onPreviewUpdate(it.surfaceTexture) }
         }
-        imageCapture = ImageCapture(imageCaptureConfig)
 
         bindToLifecycle(listener.onLifecycleOwnerRequest())
     }
@@ -63,7 +48,7 @@ class MyCameraX @Inject constructor() {
     /** Change lens if it's available to the indicated [lens]. It'll restart the camera. */
     fun changeLens(lens: CameraX.LensFacing) {
         if (isLensAvailable(lens)) {
-            restart(MyCameraXConfiguration(lens = lens))
+            restart(configuration.copy(lens = lens))
         }
     }
 
