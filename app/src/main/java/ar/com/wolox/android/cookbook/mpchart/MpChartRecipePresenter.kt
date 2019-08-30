@@ -227,7 +227,7 @@ class MpChartRecipePresenter @Inject constructor(
         dataSample?.let {
             label = it.lineLabel
             for (element in it.lineData) {
-                yLine.add(Entry(element.xVal, element.yVal, element.data))
+                yLine.add(Entry(element.xVal, element.yVal, application.applicationContext.getDrawable(R.drawable.ic_pokeball_small), element.data))
             }
         }
 
