@@ -9,11 +9,11 @@ import androidx.lifecycle.LifecycleOwner
 import java.io.File
 import javax.inject.Inject
 
-class MyCameraX @Inject constructor() {
+class CameraWrapper @Inject constructor() {
 
-    lateinit var listener: MyCameraXUserListener
+    lateinit var listener: CameraWrapperListener
 
-    private lateinit var configuration: MyCameraXConfiguration
+    private lateinit var configuration: CameraWrapperConfiguration
     private lateinit var preview: Preview
     private lateinit var imageCapture: ImageCapture
 
@@ -24,13 +24,13 @@ class MyCameraX @Inject constructor() {
     private fun bindToLifecycle(lifecycleOwner: LifecycleOwner) = CameraX.bindToLifecycle(lifecycleOwner, preview, imageCapture)
 
     /** Restart the camera with a specific [configuration], it's important to unbind all the use cases and the start it again. */
-    fun restart(myCameraXConfiguration: MyCameraXConfiguration) {
+    fun restart(myCameraXConfiguration: CameraWrapperConfiguration) {
         CameraX.unbindAll()
         start(myCameraXConfiguration)
     }
 
     /** Start the camera with a specific [configuration]. It'll build a Preview and a Picture use cases. */
-    fun start(configuration: MyCameraXConfiguration) {
+    fun start(configuration: CameraWrapperConfiguration) {
 
         this.configuration = configuration
 

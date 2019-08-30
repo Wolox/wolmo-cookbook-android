@@ -172,7 +172,7 @@ dependencies {
     // Facebook Login
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
 
-    // MyCameraX
+    // CameraWrapper
     implementation "androidx.camera:camera-core:$camerax_version"
     implementation "androidx.camera:camera-camera2:$camerax_version"
 }

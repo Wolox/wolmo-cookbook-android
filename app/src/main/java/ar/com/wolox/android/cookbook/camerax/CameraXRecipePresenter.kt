@@ -6,37 +6,39 @@ import android.util.Rational
 import android.view.Display
 import androidx.camera.core.CameraX
 import androidx.camera.core.ImageCapture
+import androidx.lifecycle.LifecycleOwner
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import java.io.File
 import javax.inject.Inject
 
-class CameraXRecipePresenter @Inject constructor(private val cameraX: MyCameraX, private val filesHelper: FilesHelper) : BasePresenter<CameraXRecipeView>() {
+class CameraXRecipePresenter @Inject constructor(
+        private val camera: CameraWrapper,
+        private val filesHelper: FilesHelper
+) : BasePresenter<CameraXRecipeView>(), CameraWrapperListener {
 
     private var lens = CameraX.LensFacing.BACK
 
     private fun enableUI() = with(view) {
         enableShutter()
 
-        if (cameraX.isLensAvailable(CameraX.LensFacing.FRONT)) {
+        if (camera.isLensAvailable(CameraX.LensFacing.FRONT)) {
             enableFlipButton()
         }
     }
 
     private fun initializeCamera(display: Display) {
-        cameraX.listener = object : MyCameraXUserListener {
-
-            override fun onPreviewUpdate(surfaceTexture: SurfaceTexture) = view.updateCamera(surfaceTexture)
-
-            override fun onLifecycleOwnerRequest() = view
-        }
-
+        camera.listener = this
         val displayMetrics = DisplayMetrics().also { display.getRealMetrics(it) }
-        val configuration = MyCameraXConfiguration(
+        val configuration = CameraWrapperConfiguration(
                 rotation = display.rotation,
                 aspectRatio = Rational(displayMetrics.widthPixels, displayMetrics.heightPixels),
                 lens = lens)
-        cameraX.start(configuration)
+        camera.start(configuration)
     }
+
+    override fun onPreviewUpdate(surfaceTexture: SurfaceTexture) = view.updateCamera(surfaceTexture)
+
+    override fun onLifecycleOwnerRequest(): LifecycleOwner = view
 
     override fun onViewAttached() {
         view.requestCameraPermissions()
@@ -53,7 +55,7 @@ class CameraXRecipePresenter @Inject constructor(private val cameraX: MyCameraX,
 
     /** Invoked when shutter button is clicked. */
     fun onShutterClicked() {
-        cameraX.takePicture(File(filesHelper.getNewCachePictureName()), object : ImageCapture.OnImageSavedListener {
+        camera.takePicture(File(filesHelper.getNewCachePictureName()), object : ImageCapture.OnImageSavedListener {
 
             override fun onImageSaved(file: File) = view.showImage(file)
 
@@ -64,6 +66,6 @@ class CameraXRecipePresenter @Inject constructor(private val cameraX: MyCameraX,
     /** Invoked on flip button is clicked. */
     fun onFlipButtonClicked() {
         lens = if (CameraX.LensFacing.FRONT == lens) CameraX.LensFacing.BACK else CameraX.LensFacing.FRONT
-        cameraX.changeLens(lens)
+        camera.changeLens(lens)
     }
 }
