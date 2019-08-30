@@ -16,6 +16,7 @@ class FilesHelper @Inject constructor(context: Context) {
         }
     }
 
+    /** Returns a generated picture file name on cache. */
     fun getNewCachePictureName() = cacheFolder + FILE_FORMAT.format(System.nanoTime(), PNG_EXTENSION)
 
     companion object {

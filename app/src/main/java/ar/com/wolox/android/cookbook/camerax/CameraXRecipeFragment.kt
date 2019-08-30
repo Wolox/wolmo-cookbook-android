@@ -51,7 +51,6 @@ class CameraXRecipeFragment : WolmoFragment<CameraXRecipePresenter>(), CameraXRe
     override fun showPermissionsError() = toastFactory.show(R.string.camerax_permissions_denied)
 
     override fun updateCamera(surfaceTexture: SurfaceTexture) {
-        // To update the SurfaceTexture, we have to remove it and re-add it
         with(vCamera.parent as ViewGroup) {
             removeView(vCamera)
             addView(vCamera, 0)
@@ -79,17 +78,24 @@ class CameraXRecipeFragment : WolmoFragment<CameraXRecipePresenter>(), CameraXRe
 
 interface CameraXRecipeView : LifecycleOwner {
 
+    /** Request permissions for showing the camera and take pictures. */
     fun requestCameraPermissions()
 
+    /** Show an error informing permissions were denied. */
     fun showPermissionsError()
 
+    /** Update camera texture by a [surfaceTexture]. */
     fun updateCamera(surfaceTexture: SurfaceTexture)
 
+    /** Enable shutter button for allowing taking picture. */
     fun enableShutter()
 
+    /** Enable flip button to flip camera. */
     fun enableFlipButton()
 
+    /** Show an image [file]. */
     fun showImage(file: File)
 
+    /** Show error [message]. */
     fun showError(message: String)
 }
