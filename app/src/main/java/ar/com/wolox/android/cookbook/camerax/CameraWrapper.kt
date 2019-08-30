@@ -9,8 +9,10 @@ import androidx.lifecycle.LifecycleOwner
 import java.io.File
 import javax.inject.Inject
 
+/** Camera wrapper for new CameraX library which is still on alpha stage. */
 class CameraWrapper @Inject constructor() {
 
+    /** Listener that should be implemented by the class where the camera is used. */
     lateinit var listener: CameraWrapperListener
 
     private lateinit var configuration: CameraWrapperConfiguration
