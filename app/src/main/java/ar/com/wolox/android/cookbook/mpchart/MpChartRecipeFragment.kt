@@ -3,17 +3,23 @@ package ar.com.wolox.android.cookbook.mpchart
 import android.app.ProgressDialog
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Toast
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.BubbleData
 import com.github.mikephil.charting.data.CandleData
 import com.github.mikephil.charting.data.CombinedData
+import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.data.RadarData
 import com.github.mikephil.charting.data.ScatterData
+import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import kotlinx.android.synthetic.main.fragment_mp_chart.*
 
 class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
@@ -61,16 +67,35 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             animateY(ANIMATION_DELAY)
             isDragEnabled = true
 
-            axisLeft.mAxisMinimum = MINIMUM
+            // TODO
+            setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
+                override fun onValueSelected(e: Entry?, h: Highlight?) {
+                    val entry = e as BarEntry
+                    // Toast.makeText(context, getString(R.string.mp_chart_item_bar, entry.y, entry.data.toString()),
+                    // Toast.LENGTH_SHORT).show()
+                }
 
+                override fun onNothingSelected() {
+                }
+            })
+
+            description.text = getString(R.string.mp_chart_bar)
+
+            /**
+             * Note: (Required) -> (BarWidth  + BarSpace) * NumberDataSet + GroupSpace = 1
+             */
+            val groupSpace = UNIT - ((barData.barWidth + BAR_SPACE) * barData.dataSetCount)
+            groupBars(ZERO, groupSpace, BAR_SPACE)
+
+            /**
+             * xAxisMaximum for multiple dataSet -> XMax + (NumberBars * (BarWidth + BarSpace)) + AdditionalSpace
+             */
             xAxis.apply {
-                mAxisMinimum = MINIMUM
+                axisMinimum = ZERO
+                axisMaximum = barData.xMax + (((barData.barWidth + BAR_SPACE) * barData.dataSetCount) + groupSpace)
                 position = XAxis.XAxisPosition.BOTTOM
                 setCenterAxisLabels(true)
             }
-
-            description.text = getString(R.string.mp_chart_bar)
-            groupBars(MINIMUM, GROUP_SPACE, BAR_SPACE)
 
             setVisibleXRangeMaximum(BAR_VISIBLE_RANGE)
             invalidate()
@@ -101,17 +126,17 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
             axisRight.apply {
                 setDrawGridLines(false)
-                axisMinimum = MINIMUM
+                axisMinimum = ZERO
             }
 
             axisLeft.apply {
                 setDrawGridLines(false)
-                axisMinimum = MINIMUM
+                axisMinimum = ZERO
             }
 
             xAxis.apply {
                 position = XAxis.XAxisPosition.BOTH_SIDED
-                axisMinimum = MINIMUM
+                axisMinimum = ZERO
                 granularity = GRANULARITY
                 axisMaximum = data.xMax + AXIS_PHASE
             }
@@ -129,10 +154,10 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             animateY(ANIMATION_DELAY)
             isDragEnabled = true
 
-            axisLeft.mAxisMinimum = MINIMUM
+            axisLeft.mAxisMinimum = ZERO
 
             xAxis.apply {
-                mAxisMinimum = MINIMUM
+                mAxisMinimum = ZERO
                 position = XAxis.XAxisPosition.BOTTOM
                 setCenterAxisLabels(true)
             }
@@ -155,13 +180,13 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             animateX(ANIMATION_DELAY)
 
             xAxis.apply {
-                enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, MINIMUM)
+                enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, ZERO)
                 labelCount = lineData.dataSetCount
                 position = XAxis.XAxisPosition.BOTTOM
             }
 
-            axisRight.enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, MINIMUM)
-            axisLeft.enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, MINIMUM)
+            axisRight.enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, ZERO)
+            axisLeft.enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, ZERO)
         }
     }
 
@@ -174,6 +199,17 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
             isDrawHoleEnabled = false
             description.text = getString(R.string.mp_chart_pie)
+
+            setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
+                override fun onValueSelected(e: Entry?, h: Highlight?) {
+                    val entry = e as PieEntry
+                    Toast.makeText(context, getString(R.string.mp_chart_item_pie, entry.label, entry.value),
+                            Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onNothingSelected() {
+                }
+            })
         }
     }
 
@@ -222,13 +258,14 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
     companion object {
         private const val ANIMATION_DELAY = 2500
-        private const val MINIMUM = 0f
+        private const val ZERO = 0f
         private const val RADIUS_PERCENT = 1f
         private const val DEFAULT_LENGTH = 5f
         private const val GRANULARITY = 1f
         private const val AXIS_PHASE = 0.25f
         private const val BAR_VISIBLE_RANGE = 3f
-        private const val GROUP_SPACE = 0.30f
-        private const val BAR_SPACE = 0.05f
+
+        private const val BAR_SPACE = 0.0f
+        private const val UNIT = 1f
     }
 }

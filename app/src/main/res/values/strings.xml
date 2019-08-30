@@ -119,6 +119,9 @@
     <string name="mp_chart_title">Title of DataSet</string>
     <string name="mp_chart_p_dialog">Getting data from assets sample</string>
 
+    <string name="mp_chart_item_bar">Value: %1$f | Data: %2$s</string>
+    <string name="mp_chart_item_pie">Item: %1$s | Value: %2$f</string>
+
     <!-- Test Login -->
     <string name="test_login_email">Email</string>
     <string name="test_login_password">Password</string>

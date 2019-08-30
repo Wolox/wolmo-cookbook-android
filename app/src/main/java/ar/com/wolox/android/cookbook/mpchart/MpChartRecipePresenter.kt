@@ -34,7 +34,7 @@ import com.google.gson.GsonBuilder
 import javax.inject.Inject
 
 class MpChartRecipePresenter @Inject constructor(
-        val application: Application
+    val application: Application
 ) : BasePresenter<MpChartRecipeView>() {
 
     private var dataSample: ChartDataSample? = null
@@ -92,17 +92,17 @@ class MpChartRecipePresenter @Inject constructor(
         dataSample?.let {
             label1 = it.barLabel1
             for (element in it.barData1) {
-                yBar1.add(BarEntry(element.xVal, element.yVal))
+                yBar1.add(BarEntry(element.xVal, element.yVal, "HH-T1"))
             }
 
             label2 = it.barLabel2
             for (element in it.barData2) {
-                yBar2.add(BarEntry(element.xVal, element.yVal))
+                yBar2.add(BarEntry(element.xVal, element.yVal, "HH-T2"))
             }
 
             label3 = it.barLabel3
             for (element in it.barData3) {
-                yBar3.add(BarEntry(element.xVal, element.yVal))
+                yBar3.add(BarEntry(element.xVal, element.yVal, "HH-T3"))
             }
         }
 
@@ -254,14 +254,16 @@ class MpChartRecipePresenter @Inject constructor(
         view.hideGraphs()
 
         val yPie = ArrayList<PieEntry>()
+        var label = LABEL_DEFAULT
 
         dataSample?.let {
+            label = it.pieLabel
             for (element in it.pieData) {
                 yPie.add(PieEntry(element.value, element.label))
             }
         }
 
-        val dataSet = PieDataSet(yPie, TITLE)
+        val dataSet = PieDataSet(yPie, label)
         val colorsArray = java.util.ArrayList<Int>()
         colorsArray.addAll(ColorTemplate.COLORFUL_COLORS.toList())
         dataSet.apply {
@@ -288,10 +290,15 @@ class MpChartRecipePresenter @Inject constructor(
         }
 
         val radarDataSet = RadarDataSet(yRadar, label)
-        radarDataSet.color = Color.CYAN
+        radarDataSet.color = Color.BLUE
         radarDataSet.valueTextSize = TEXT_SIZE_DEFAULT
 
         val data = RadarData(radarDataSet)
+
+        radarDataSet.color = Color.BLUE
+        radarDataSet.fillColor = Color.CYAN
+        radarDataSet.setDrawFilled(true)
+        radarDataSet.fillAlpha = 180
 
         view.showRadarChart(data)
     }
@@ -353,10 +360,10 @@ class MpChartRecipePresenter @Inject constructor(
     }
 
     companion object {
-        private const val TITLE = "TITLE OF DATA SET"
         private const val LABEL_DEFAULT = "Label"
 
-        private const val BAR_WIDTH = 0.16f
+        // private const val BAR_WIDTH = 0.16f
+        private const val BAR_WIDTH = 0.2f
         private const val TEXT_SIZE_DEFAULT = 18f
         private const val LINE_WIDTH = 1f
         private const val RADIUS = 3f
