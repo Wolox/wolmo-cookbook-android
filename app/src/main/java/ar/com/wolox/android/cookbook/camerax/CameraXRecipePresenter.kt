@@ -12,8 +12,8 @@ import java.io.File
 import javax.inject.Inject
 
 class CameraXRecipePresenter @Inject constructor(
-        private val camera: CameraWrapper,
-        private val filesHelper: FilesHelper
+    private val camera: CameraWrapper,
+    private val filesHelper: FilesHelper
 ) : BasePresenter<CameraXRecipeView>(), CameraWrapperListener {
 
     private var lens = CameraX.LensFacing.BACK
@@ -36,13 +36,13 @@ class CameraXRecipePresenter @Inject constructor(
         camera.start(configuration)
     }
 
-    override fun onPreviewUpdate(surfaceTexture: SurfaceTexture) = view.updateCamera(surfaceTexture)
-
-    override fun onLifecycleOwnerRequest(): LifecycleOwner = view
-
     override fun onViewAttached() {
         view.requestCameraPermissions()
     }
+
+    override fun onPreviewUpdate(surfaceTexture: SurfaceTexture) = view.updateCamera(surfaceTexture)
+
+    override fun onLifecycleOwnerRequest(): LifecycleOwner = view
 
     /** Invoked when camera permissions are granted by user. */
     fun onCameraPermissionGranted(display: Display) {
