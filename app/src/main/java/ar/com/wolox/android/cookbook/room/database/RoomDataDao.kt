@@ -6,6 +6,9 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 
+/**
+ * DAO defines the method that access the database, using annotation to bind SQL to each method.
+ */
 @Dao
 interface RoomDataDao {
 

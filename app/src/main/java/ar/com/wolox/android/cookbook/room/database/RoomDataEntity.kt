@@ -4,6 +4,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Entity represents data for a single table row, constructed using an annotated java data object.
+ * Each entity is persisted into its own table.
+ */
 @Entity(tableName = "personal_notes")
 class RoomDataEntity {
 
