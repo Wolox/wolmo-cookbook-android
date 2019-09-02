@@ -1,9 +1,7 @@
 package ar.com.wolox.android.cookbook.camerax
 
 import android.Manifest
-import android.graphics.BitmapFactory
 import android.graphics.SurfaceTexture
-import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import ar.com.wolox.android.cookbook.R
@@ -12,7 +10,6 @@ import ar.com.wolox.wolmo.core.permission.PermissionListener
 import ar.com.wolox.wolmo.core.permission.PermissionManager
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import kotlinx.android.synthetic.main.fragment_camerax.*
-import java.io.File
 import javax.inject.Inject
 
 class CameraXRecipeFragment : WolmoFragment<CameraXRecipePresenter>(), CameraXRecipeView {
@@ -67,11 +64,7 @@ class CameraXRecipeFragment : WolmoFragment<CameraXRecipePresenter>(), CameraXRe
         vFlipButton.isEnabled = true
     }
 
-    override fun showImage(file: File) {
-        vImage.setImageBitmap(BitmapFactory.decodeFile(file.absolutePath))
-        vImage.visibility = View.VISIBLE
-        vCloseImageButton.visibility = View.VISIBLE
-    }
+    override fun goToShowPicture(file: String) = PictureActivity.start(requireContext(), file)
 
     override fun showError(message: String) = toastFactory.show(message)
 }
@@ -93,9 +86,9 @@ interface CameraXRecipeView : LifecycleOwner {
     /** Enable flip button to flip camera. */
     fun enableFlipButton()
 
-    /** Show an image [file]. */
-    fun showImage(file: File)
-
     /** Show error [message]. */
     fun showError(message: String)
+
+    /** Redirect to image [file] viewer. */
+    fun goToShowPicture(file: String)
 }

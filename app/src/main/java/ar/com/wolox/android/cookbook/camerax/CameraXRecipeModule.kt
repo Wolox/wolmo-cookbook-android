@@ -11,4 +11,10 @@ abstract class CameraXRecipeModule {
 
     @ContributesAndroidInjector
     abstract fun cameraXRecipeFragment(): CameraXRecipeFragment
+
+    @ContributesAndroidInjector
+    abstract fun pictureActivity(): PictureActivity
+
+    @ContributesAndroidInjector
+    abstract fun pictureFragment(): PictureFragment
 }

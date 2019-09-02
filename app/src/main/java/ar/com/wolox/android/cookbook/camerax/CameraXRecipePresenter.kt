@@ -57,7 +57,7 @@ class CameraXRecipePresenter @Inject constructor(
     fun onShutterClicked() {
         camera.takePicture(File(filesHelper.getNewCachePictureName()), object : ImageCapture.OnImageSavedListener {
 
-            override fun onImageSaved(file: File) = view.showImage(file)
+            override fun onImageSaved(file: File) = view.goToShowPicture(file.absolutePath)
 
             override fun onError(useCaseError: ImageCapture.UseCaseError, message: String, cause: Throwable?) = view.showError(message)
         })

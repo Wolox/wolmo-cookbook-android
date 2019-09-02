@@ -7,11 +7,9 @@ import kotlinx.android.synthetic.main.activity_base.*
 
 class CameraXRecipeActivity : WolmoActivity() {
 
-    val fragment = CameraXRecipeFragment()
-
     override fun layout(): Int = R.layout.activity_base
 
-    override fun init() = replaceFragment(R.id.vActivityBaseContent, fragment)
+    override fun init() = replaceFragment(R.id.vActivityBaseContent, CameraXRecipeFragment())
 
     override fun onResume() {
         vActivityBaseContent.postDelayed({
