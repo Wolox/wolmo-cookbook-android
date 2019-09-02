@@ -5,6 +5,8 @@ import com.twitter.sdk.android.core.models.User
 interface TwitterLoginPictureListener {
 
     fun onUserSuccess(user: User)
+
     fun onUserError(message: String)
+
     fun onUserFail()
 }
