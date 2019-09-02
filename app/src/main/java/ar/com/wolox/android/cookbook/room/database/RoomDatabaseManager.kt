@@ -10,8 +10,12 @@ abstract class RoomDatabaseManager : RoomDatabase() {
 
     abstract fun RoomDataDao(): RoomDataDao
 
+    /**
+     * "invoke" function returns database instance if exists, if not it will return a new instance
+     */
     companion object {
-        @Volatile private var instance: RoomDatabaseManager? = null
+        @Volatile
+        private var instance: RoomDatabaseManager? = null
         private val LOCK = Any()
 
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
