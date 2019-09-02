@@ -52,6 +52,9 @@ import javax.inject.Inject
  * 3. Data (contains one or more data sets to show)
  * 4. Graph/Chart (contains previous data and basic parameters like relation between each one -margin,
  *  distance-, animations, descriptions, labels, etc...
+ *
+ *  Notes2: Most of the attributes in DataSet or Chart are the same in all types of chart, a few items
+ *  are specific of each class
  */
 class MpChartRecipePresenter @Inject constructor(
     val application: Application
@@ -66,6 +69,10 @@ class MpChartRecipePresenter @Inject constructor(
         view.hideProgressBar()
     }
 
+    /**
+     * See "MpAndroidChartDataExample.json" in "assets" folder to get a example of the dataSet
+     * used in the example.
+     */
     private fun getSampleFromAssets(): ChartDataSample? {
         val inputStream = application.applicationContext.assets.open("MpAndroidChartDataExample.json")
         val size = inputStream.available()
@@ -79,7 +86,6 @@ class MpChartRecipePresenter @Inject constructor(
     }
 
     fun onSpinnerItemClicked(item: Int) {
-
         when (item) {
             0 -> clearScreen()
             1 -> onBarChartSelected()

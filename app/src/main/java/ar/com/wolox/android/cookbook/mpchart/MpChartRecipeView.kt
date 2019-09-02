@@ -12,16 +12,26 @@ import com.github.mikephil.charting.data.ScatterData
 interface MpChartRecipeView {
 
     fun hideGraphs()
+
     fun showBarChart(barData: BarData)
+
     fun showBubbleChart(bubbleData: BubbleData)
+
     fun showCombinedChart(combinedData: CombinedData)
+
     fun showHorizontalBarChart(hBarData: BarData)
+
     fun showLineChart(lineData: LineData)
+
     fun showPieChart(pieData: PieData)
+
     fun showRadarChart(radarData: RadarData)
+
     fun showCandleStickChart(candleData: CandleData)
+
     fun showScatterChart(scatterData: ScatterData)
 
     fun showProgressBar()
+
     fun hideProgressBar()
 }

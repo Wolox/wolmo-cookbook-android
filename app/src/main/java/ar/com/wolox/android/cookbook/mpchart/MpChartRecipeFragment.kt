@@ -135,7 +135,6 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showCombinedChart(combinedData: CombinedData) {
-
         vCombinedChart.apply {
             visibility = View.VISIBLE
             data = combinedData
@@ -168,7 +167,6 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showHorizontalBarChart(hBarData: BarData) {
-
         vHorizontalBarChart.apply {
             visibility = View.VISIBLE
             data = hBarData
@@ -205,7 +203,6 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showLineChart(lineData: LineData) {
-
         vLineChart.apply {
             visibility = View.VISIBLE
 
@@ -251,7 +248,6 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showRadarChart(radarData: RadarData) {
-
         vRadarChart.apply {
             visibility = View.VISIBLE
             data = radarData
