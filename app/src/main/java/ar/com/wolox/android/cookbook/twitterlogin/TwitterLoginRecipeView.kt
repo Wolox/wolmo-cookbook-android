@@ -16,15 +16,22 @@ interface TwitterLoginRecipeView {
     fun toggleLoginButtonState(status: Boolean)
 
     fun showLoginData(response: YoutubeEmailResponse)
+
     fun showPictureData(user: User)
+
     fun showCredentialsCleared()
 
     fun showError(message: String)
+
     fun showAuthFail()
+
     fun showEmailFail()
+
     fun showPictureFail()
+
     fun showCredentialsFail()
 
     fun showUnAuthError()
+
     fun showInternalError()
 }
