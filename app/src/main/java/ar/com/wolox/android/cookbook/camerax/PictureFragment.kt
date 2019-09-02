@@ -17,7 +17,13 @@ class PictureFragment : WolmoFragment<PicturePresenter>(), PictureView {
         presenter.onInit(arguments!!.getString(PICTURE_URI)!!)
     }
 
+    override fun setListeners() {
+        vCloseImageButton.setOnClickListener { presenter.onCloseButtonClicked() }
+    }
+
     override fun showImage(uriString: String) = vImage.setImageURI(Uri.fromFile(File(uriString)), null)
+
+    override fun finish() = requireActivity().finish()
 
     companion object {
 
@@ -33,4 +39,7 @@ interface PictureView {
 
     /** Show image. */
     fun showImage(uriString: String)
+
+    /** Finish the view. */
+    fun finish()
 }
