@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.camera.core.CameraInfoUnavailableException
 import androidx.camera.core.CameraX
 import androidx.camera.core.ImageCapture
-import androidx.camera.core.Preview
 import androidx.lifecycle.LifecycleOwner
 import java.io.File
 import javax.inject.Inject
@@ -16,7 +15,7 @@ class CameraWrapper @Inject constructor() {
     lateinit var listener: CameraWrapperListener
 
     private lateinit var configuration: CameraWrapperConfiguration
-    private lateinit var preview: Preview
+    private lateinit var preview: AutoFitPreview
     private lateinit var imageCapture: ImageCapture
 
     /**
@@ -37,7 +36,7 @@ class CameraWrapper @Inject constructor() {
         this.configuration = configuration
 
         imageCapture = ImageCapture(configuration.imageCapture)
-        preview = Preview(configuration.preview).apply {
+        preview = AutoFitPreview(configuration).apply {
             setOnPreviewOutputUpdateListener { listener.onPreviewUpdate(it.surfaceTexture) }
         }
 

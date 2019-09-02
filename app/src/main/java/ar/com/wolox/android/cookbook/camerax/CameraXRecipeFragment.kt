@@ -26,7 +26,7 @@ class CameraXRecipeFragment : WolmoFragment<CameraXRecipePresenter>(), CameraXRe
 
         override fun onPermissionsGranted() {
             vCamera.post {
-                presenter.onCameraPermissionGranted(vCamera.display)
+                presenter.onCameraPermissionGranted(vCamera)
             }
         }
     }

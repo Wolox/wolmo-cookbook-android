@@ -1,14 +1,13 @@
 package ar.com.wolox.android.cookbook.camerax
 
 import android.graphics.SurfaceTexture
-import android.util.DisplayMetrics
-import android.util.Rational
-import android.view.Display
+import android.view.TextureView
 import androidx.camera.core.CameraX
 import androidx.camera.core.ImageCapture
 import androidx.lifecycle.LifecycleOwner
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import java.io.File
+import java.lang.ref.WeakReference
 import javax.inject.Inject
 
 class CameraXRecipePresenter @Inject constructor(
@@ -26,12 +25,11 @@ class CameraXRecipePresenter @Inject constructor(
         }
     }
 
-    private fun initializeCamera(display: Display) {
+    private fun initializeCamera(textureView: TextureView) {
         camera.listener = this
-        val displayMetrics = DisplayMetrics().also { display.getRealMetrics(it) }
         val configuration = CameraWrapperConfiguration(
-                rotation = display.rotation,
-                aspectRatio = Rational(displayMetrics.widthPixels, displayMetrics.heightPixels),
+                viewFinder = WeakReference(textureView),
+                rotation = textureView.display.rotation,
                 lens = lens)
         camera.start(configuration)
     }
@@ -45,8 +43,8 @@ class CameraXRecipePresenter @Inject constructor(
     override fun onLifecycleOwnerRequest(): LifecycleOwner = view
 
     /** Invoked when camera permissions are granted by user. */
-    fun onCameraPermissionGranted(display: Display) {
-        initializeCamera(display)
+    fun onCameraPermissionGranted(textureView: TextureView) {
+        initializeCamera(textureView)
         enableUI()
     }
 
