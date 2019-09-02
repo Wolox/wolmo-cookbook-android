@@ -22,8 +22,10 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
 
     override fun init() {
 
-        vSessionBtn.visibility = View.VISIBLE
-        vSessionBtn.text = getString(R.string.room_login)
+        vSessionBtn.apply {
+            visibility = View.VISIBLE
+            text = getString(R.string.room_login)
+        }
 
         vRecyclerView.visibility = View.INVISIBLE
 
@@ -57,13 +59,13 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
     }
 
     override fun updateEntities(entities: List<RoomDataEntity>) {
-        vRecyclerView.visibility = View.VISIBLE
 
         entityItemList = mutableListOf()
         entityItemList.addAll(entities)
 
         viewAdapter = RoomListAdapter(entityItemList, { item -> editClickListener(item) }, { item -> deleteClickListener(item) })
         vRecyclerView.apply {
+            visibility = View.VISIBLE
             setHasFixedSize(true)
             layoutManager = viewManager
             adapter = viewAdapter
@@ -100,8 +102,10 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
 
     override fun logout() {
         vSessionBtn.text = getString(R.string.room_login)
-        vUser.isEnabled = true
-        vUser.setText("")
+        vUser.apply {
+            isEnabled = true
+            setText("")
+        }
         vRecyclerView.visibility = View.INVISIBLE
         vAddBtn.visibility = View.INVISIBLE
         vClearBtn.visibility = View.INVISIBLE

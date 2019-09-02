@@ -18,11 +18,14 @@ class RoomInputDialog @Inject constructor() {
         this.setTitle(context.getString(title))
 
         input = EditText(context)
-        input.inputType = InputType.TYPE_CLASS_TEXT
-        input.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(20))
-        input.textSize = 14f
-        input.isFocusable = true
-        input.isFocusableInTouchMode = true
+        input.apply {
+            inputType = InputType.TYPE_CLASS_TEXT
+            filters = arrayOf<InputFilter>(InputFilter.LengthFilter(MAX_LENGTH))
+            textSize = TEXT_SIZE
+            isFocusable = true
+            isFocusableInTouchMode = true
+        }
+
         this.setView(input)
 
         this.setPositiveButton(context.getString(R.string.room_input_positive)) { dialog, _ ->
@@ -42,5 +45,10 @@ class RoomInputDialog @Inject constructor() {
         val inputMethodManager: InputMethodManager =
                 context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(input.windowToken, 0)
+    }
+
+    companion object {
+        private const val MAX_LENGTH = 20
+        private const val TEXT_SIZE = 15f
     }
 }
