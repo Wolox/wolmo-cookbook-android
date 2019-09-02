@@ -30,7 +30,6 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     override fun layout(): Int = R.layout.fragment_mp_chart
 
     override fun init() {
-        hideGraphs()
         progressDialog = ProgressDialog(context)
         presenter.onInit()
     }
@@ -299,16 +298,20 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showProgressBar() {
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
-        progressDialog.setCancelable(false)
-        progressDialog.setCanceledOnTouchOutside(false)
-        progressDialog.setMessage(getString(R.string.mp_chart_p_dialog))
-        progressDialog.show()
+        progressDialog.apply {
+            setProgressStyle(ProgressDialog.STYLE_SPINNER)
+            setCancelable(false)
+            setCanceledOnTouchOutside(false)
+            setMessage(getString(R.string.mp_chart_p_dialog))
+            show()
+        }
     }
 
     override fun hideProgressBar() {
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
-        progressDialog.dismiss()
+        progressDialog.apply {
+            setProgressStyle(ProgressDialog.STYLE_SPINNER)
+            dismiss()
+        }
     }
 
     companion object {

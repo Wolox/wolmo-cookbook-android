@@ -33,6 +33,26 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.gson.GsonBuilder
 import javax.inject.Inject
 
+/**
+ * Notes -> To display data, logic handle 4 major data type:
+ * 1. Entries (Basic object with data unit):
+ *  To define a dataSet need an "ArrayList<XXXEntry>()" (XXX maybe Entry, BarEntry, BubbleEntry, etc...)
+ *  Entries extend from "Entry", they needs a values to define position (required):
+ *  I) "X" and "Y" in case of Entry and BarEntry;
+ *  II) "X", "Y" and "Size" in BubbleEntry;
+ *  III) "Value" in PieEntry; "X", "ShadowHigh", "ShadowLow", "open" and "close" in CandleEntry
+ *  and other optional parameters:
+ *  I) "label" -> value or name to display in graph
+ *  II) "icon" -> Drawable to display in graph (can display images instead normal dots)
+ *  III) "data" -> Any object. (Warning: different types needs different manages)
+ *
+ * -DataSet and Data details in each method of presenter, Graph data details in each method of fragment
+ * 2. DataSet (Contains a list of points -Entries- and basic parameters like color, size, etc...),
+ *  see class documentation to view full parameters to change
+ * 3. Data (contains one or more data sets to show)
+ * 4. Graph/Chart (contains previous data and basic parameters like relation between each one -margin,
+ *  distance-, animations, descriptions, labels, etc...
+ */
 class MpChartRecipePresenter @Inject constructor(
     val application: Application
 ) : BasePresenter<MpChartRecipeView>() {
@@ -40,6 +60,7 @@ class MpChartRecipePresenter @Inject constructor(
     private var dataSample: ChartDataSample? = null
 
     fun onInit() {
+        view.hideGraphs()
         view.showProgressBar()
         dataSample = getSampleFromAssets()
         view.hideProgressBar()
@@ -78,6 +99,16 @@ class MpChartRecipePresenter @Inject constructor(
         view.hideGraphs()
     }
 
+    /**
+     * BarChart - Is a chart or graph that presents categorical data with rectangular bars with
+     * heights or lengths proportional to the values that they represent. Bars plotted vertically.
+     * 1. Entry Parameters defined at top of class
+     * 2. DataSet Parameters:
+     *  i) label: String = label to display above/in dataSet and the notations in bottom of graph
+     *  ii) color: Int = color of the dataSet (use "colors" for multiple color over the same dataSet)
+     * 3. Data:
+     *  i) barWidth: Float = sets the width each bar should have on the x-axis
+     */
     private fun onBarChartSelected() {
         view.hideGraphs()
 
@@ -89,6 +120,7 @@ class MpChartRecipePresenter @Inject constructor(
         var label2 = LABEL_DEFAULT
         var label3 = LABEL_DEFAULT
 
+        /** See "Notes" at top */
         dataSample?.let {
             label1 = it.barLabel1
             for (element in it.barData1) {
@@ -120,12 +152,21 @@ class MpChartRecipePresenter @Inject constructor(
         view.showBarChart(data)
     }
 
+    /**
+     * BubbleChart - Is a type of chart that displays three dimensions of data ("X", "Y" and "Size").
+     * 1. Entry Parameters defined at top of class
+     * 2. DataSet Parameters:
+     *  i) label: String = label to display above/in dataSet and the notations in bottom of graph
+     *  ii) colors: List<Int> = list of colors for the same DataSet
+     *  iii) valueTextSize: Float = sets the text-size of the value-labels of this DataSet in dp
+     */
     private fun onBubbleChartSelected() {
         view.hideGraphs()
 
         val yBubble = ArrayList<BubbleEntry>()
         var label = LABEL_DEFAULT
 
+        /** See "Notes" at top */
         dataSample?.let {
             label = it.bubbleLabel
             for (element in it.bubbleData) {
@@ -147,6 +188,13 @@ class MpChartRecipePresenter @Inject constructor(
         view.showBubbleChart(data)
     }
 
+    /**
+     * CombinedChart - Let combine different chart in the same graph
+     * 1. Entry Parameters defined at top of class
+     * 2. DataSet: Same properties of each chart type
+     * 3. Data:
+     *  i) setData: can add data from other charts (BarData, BubbleData, CandleData and ScatterData)
+     */
     private fun onCombinedChartSelected() {
         view.hideGraphs()
 
@@ -156,6 +204,7 @@ class MpChartRecipePresenter @Inject constructor(
         var labelBar = LABEL_DEFAULT
         var labelLine = LABEL_DEFAULT
 
+        /** See "Notes" at top */
         dataSample?.let {
             labelBar = it.combinedLabel1
             for (element in it.combinedData1) {
@@ -196,12 +245,23 @@ class MpChartRecipePresenter @Inject constructor(
         view.showCombinedChart(data)
     }
 
+    /**
+     * HorizontalBarChart - Is a chart or graph that presents categorical data with rectangular bars with
+     * heights or lengths proportional to the values that they represent. Bars plotted horizontally.
+     * 1. Entry Parameters defined at top of class
+     * 2. DataSet Parameters:
+     *  i) label: String = label to display above/in dataSet and the notations in bottom of graph
+     *  ii) color: Int = color of the dataSet (use "colors" for multiple color over the same dataSet)
+     * 3. Data:
+     *  i) barWidth: Float = sets the width each bar should have on the x-axis
+     */
     private fun onHorizontalBarChartSelected() {
         view.hideGraphs()
 
         val yBar = ArrayList<BarEntry>()
         var label = LABEL_DEFAULT
 
+        /** See "Notes" at top */
         dataSample?.let {
             label = it.hBarLabel
             for (element in it.hBarData) {
@@ -218,12 +278,28 @@ class MpChartRecipePresenter @Inject constructor(
         view.showHorizontalBarChart(data)
     }
 
+    /**
+     * LineChart -  is a type of chart which displays information as a series of data points called
+     * 'markers' connected by straight line segments.
+     * 1. Entry Parameters defined at top of class
+     * 2. DataSet Parameters:
+     *  i) label: String = label to display above/in dataSet and the notations in bottom of graph
+     *  ii) color: Int = color of the dataSet (use "colors" for multiple color over the same dataSet)
+     *  iii) setCircleColor: Int - set the one and only color for the dataSet
+     *  iv) lineWidth: Float - set the line width of the chart
+     *  v) setDrawCircleHole: sets the radius of the drawn circles
+     *  vi) valueTextSize: Float = sets the text-size of the value-labels of this DataSet in dp
+     *  vii) setDrawFilled: Boolean = sets if the DataSet should be drawn filled (surface), and not
+     *  just as a line, disabling this will give great performance boost
+     * 3. Data: -
+     */
     private fun onLineChartSelected() {
         view.hideGraphs()
 
         val yLine = ArrayList<Entry>()
         var label = LABEL_DEFAULT
 
+        /** See "Notes" at top */
         dataSample?.let {
             label = it.lineLabel
             for (element in it.lineData) {
@@ -233,7 +309,6 @@ class MpChartRecipePresenter @Inject constructor(
 
         val lineDataSet = LineDataSet(yLine, label)
         lineDataSet.apply {
-            color = Color.BLUE
             setCircleColor(Color.BLUE)
             lineWidth = LINE_WIDTH
             circleRadius = RADIUS
@@ -250,12 +325,24 @@ class MpChartRecipePresenter @Inject constructor(
         view.showLineChart(data)
     }
 
+    /**
+     * PieChart - is a circular statistical graphic, which is divided into slices to illustrate
+     * numerical proportion (is proportional to the quantity it represents). The sum of all values
+     * in the DataSet represents the 100% (the total).
+     * 1. Entry Parameters defined at top of class
+     * 2. DataSet Parameters:
+     *  i) label: String = label to display above/in dataSet and the notations in bottom of graph
+     *  ii) colors: List<Int> = list of colors for the same DataSet
+     *  iii) valueTextSize: Float = sets the text-size of the value-labels of this DataSet in dp
+     * 3. Data: -
+     */
     private fun onPieChartSelected() {
         view.hideGraphs()
 
         val yPie = ArrayList<PieEntry>()
         var label = LABEL_DEFAULT
 
+        /** See "Notes" at top */
         dataSample?.let {
             label = it.pieLabel
             for (element in it.pieData) {
@@ -276,12 +363,31 @@ class MpChartRecipePresenter @Inject constructor(
         view.showPieChart(data)
     }
 
+    /**
+     * RadarChart - Is a graphical method of displaying multivariate data in the form of a
+     * two-dimensional chart of three or more quantitative variables represented on axes
+     * starting from the same point.
+     * 1. Entry Parameters defined at top of class. The max number in the dataSets sample determinate
+     * the shape of the graph.
+     * 2. DataSet Parameters:
+     *  i) label: String = label to display above/in dataSet and the notations in bottom of graph
+     *  ii) color: Int = color of the dataSet (use "colors" for multiple color over the same dataSet)
+     *  iii) valueTextSize: Float = sets the text-size of the value-labels of this DataSet in dp
+     *
+     *  -For inside filled graph-
+     *  iv) fillColor: Int - sets the color that is used for filling the area below the line
+     *  v) setDrawFilled: Boolean - sets if the DataSet should be drawn filled (surface), and not just
+     * as a line, disabling this will give great performance boost
+     *  vi) fillAlpha: Int - sets the alpha value (transparency) that is used for filling the line
+     * 3. Data: -
+     */
     private fun onRadarChartSelected() {
         view.hideGraphs()
 
         val yRadar = ArrayList<RadarEntry>()
         var label = LABEL_DEFAULT
 
+        /** See "Notes" at top */
         dataSample?.let {
             label = it.radarLabel
             for (element in it.radarData) {
@@ -290,25 +396,46 @@ class MpChartRecipePresenter @Inject constructor(
         }
 
         val radarDataSet = RadarDataSet(yRadar, label)
-        radarDataSet.color = Color.BLUE
-        radarDataSet.valueTextSize = TEXT_SIZE_DEFAULT
+        radarDataSet.apply {
+            color = Color.BLUE
+            valueTextSize = TEXT_SIZE_DEFAULT
+
+            fillColor = Color.CYAN
+            setDrawFilled(true)
+            fillAlpha = ALPHA
+        }
 
         val data = RadarData(radarDataSet)
-
-        radarDataSet.color = Color.BLUE
-        radarDataSet.fillColor = Color.CYAN
-        radarDataSet.setDrawFilled(true)
-        radarDataSet.fillAlpha = 180
 
         view.showRadarChart(data)
     }
 
+    /**
+     * CandleStickChart - is a style of financial chart used to describe price movements of a
+     * security, derivative, or currency.
+     * 1. Entry Parameters defined at top of class
+     * 2. DataSet Parameters:
+     *  i) label: String = label to display above/in dataSet and the notations in bottom of graph
+     *  ii) shadowColor: Int - sets shadow color for all entries
+     *  iii) shadowWidth: Float - sets the width of the candle-shadow-line in pixels
+     *  iv) decreasingColor: Int - sets the one and only color that should be used for this DataSet
+     *  when open > close
+     *  v) decreasingPaintStyle - sets paint style when open > close
+     *  vi) increasingColor: Int - sets the one and ONLY color that should be used for this DataSet
+     *  when open <= close
+     *  vii) increasingPaintStyle - sets paint style when open < close
+     *  viii) neutralColor: Int - sets the one and ONLY color that should be used for this DataSet
+     *  when open == close
+     *  ix) valueTextColor: Int - sets the color the value-labels of this DataSet should have
+     * 3. Data: -
+     */
     private fun onCandleStickChartSelected() {
         view.hideGraphs()
 
         val yCandle = ArrayList<CandleEntry>()
         var label = LABEL_DEFAULT
 
+        /** See "Notes" at top */
         dataSample?.let {
             label = it.candleLabel
             for (element in it.candleData) {
@@ -334,12 +461,25 @@ class MpChartRecipePresenter @Inject constructor(
         view.showCandleStickChart(data)
     }
 
+    /**
+     * ScatterChart - is a type of plot or mathematical diagram using Cartesian coordinates to
+     * display values for typically two variables for a set of data. If the points are coded, one
+     * additional variable can be displayed.
+     * 1. Entry Parameters defined at top of class
+     * 2. DataSet Parameters:
+     *  i) label: String = label to display above/in dataSet and the notations in bottom of graph
+     *  ii) colors: List<Int> = list of colors for the same DataSet
+     *  iii) valueTextColor: Int - sets the color the value-labels of this DataSet should have
+     *  iv) valueTextSize: Float - sets the text-size of the value-labels of this DataSet in dp
+     * 3. Data: -
+     */
     private fun onScatterChartSelected() {
         view.hideGraphs()
 
         val yScatter = ArrayList<BarEntry>()
         var label = LABEL_DEFAULT
 
+        /** See "Notes" at top */
         dataSample?.let {
             label = it.scatterLabel
             for (element in it.scatterData) {
@@ -361,13 +501,12 @@ class MpChartRecipePresenter @Inject constructor(
 
     companion object {
         private const val LABEL_DEFAULT = "Label"
-
-        // private const val BAR_WIDTH = 0.16f
         private const val BAR_WIDTH = 0.2f
         private const val TEXT_SIZE_DEFAULT = 18f
         private const val LINE_WIDTH = 1f
         private const val RADIUS = 3f
         private const val TEXT_SIZE_MIN = 0f
         private const val SHADOW_WIDTH = 0.7f
+        private const val ALPHA = 180
     }
 }
