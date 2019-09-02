@@ -21,7 +21,6 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
     override fun layout(): Int = R.layout.fragment_room
 
     override fun init() {
-
         vSessionBtn.apply {
             visibility = View.VISIBLE
             text = getString(R.string.room_login)

@@ -29,7 +29,6 @@ class InstagramLoginRecipePresenter @Inject constructor(
     }
 
     fun onSessionButtonClicked() {
-
         if (isNetworkAvailable()) {
             accessToken?.let {
                 view.igLogout()
@@ -92,7 +91,6 @@ class InstagramLoginRecipePresenter @Inject constructor(
     }
 
     fun onFetchDataButtonClicked() {
-
         if (isNetworkAvailable()) {
             accessToken?.let {
                 adapter.getInstagramData(it, object : InstagramProxyListener {
@@ -121,7 +119,6 @@ class InstagramLoginRecipePresenter @Inject constructor(
     }
 
     private fun isNetworkAvailable(): Boolean {
-
         val connectivityManager = application.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE)
         return if (connectivityManager is ConnectivityManager) {
             val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo

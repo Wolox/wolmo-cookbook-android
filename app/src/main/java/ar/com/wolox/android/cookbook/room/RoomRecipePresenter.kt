@@ -21,7 +21,6 @@ class RoomRecipePresenter @Inject constructor(
     }
 
     fun onSessionButtonClicked(user: String) {
-
         userName?.let {
             userName = null
             view.logout()
@@ -42,7 +41,6 @@ class RoomRecipePresenter @Inject constructor(
     }
 
     fun onAddButtonClicked(newData: String) {
-
         Thread(Runnable {
             val entity = RoomDataEntity()
             var index = db.RoomDataDao().getLastIndex()

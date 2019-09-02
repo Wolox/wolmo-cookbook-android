@@ -31,7 +31,6 @@ class InstagramLoginView @Inject constructor() {
                 super.onPageFinished(view, url)
                 url?.let { it ->
                     if (it.contains(SUCCESS_KEY)) {
-
                         val uri = Uri.parse(it)
                         token = uri.encodedFragment
 
