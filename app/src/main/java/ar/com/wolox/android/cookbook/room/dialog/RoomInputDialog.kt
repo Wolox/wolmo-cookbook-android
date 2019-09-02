@@ -17,8 +17,8 @@ class RoomInputDialog @Inject constructor() {
 
         this.setTitle(context.getString(title))
 
+        input = EditText(context)
         input.apply {
-            EditText(context)
             inputType = InputType.TYPE_CLASS_TEXT
             filters = arrayOf<InputFilter>(InputFilter.LengthFilter(MAX_LENGTH))
             textSize = TEXT_SIZE
