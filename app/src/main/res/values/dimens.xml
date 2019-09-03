@@ -74,7 +74,6 @@
     <dimen name="instagram_web_height">600dp</dimen>
     <dimen name="instagram_picture_size">80dp</dimen>
     <dimen name="instagram_large_default_padding">24dp</dimen>
-    <dimen name="instagram_size_scalable">0dp</dimen>
 
     <!-- Navigation -->
     <dimen name="navigation_button_width">100dp</dimen>
