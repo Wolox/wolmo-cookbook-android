@@ -79,7 +79,6 @@
     <dimen name="instagram_web_height">600dp</dimen>
     <dimen name="instagram_picture_size">80dp</dimen>
     <dimen name="instagram_large_default_padding">24dp</dimen>
-    <dimen name="instagram_size_scalable">0dp</dimen>
 
     <!-- Room -->
     <dimen name="room_default_padding">8dp</dimen>
