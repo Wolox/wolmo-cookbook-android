@@ -23,6 +23,29 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import kotlinx.android.synthetic.main.fragment_mp_chart.*
 
+/**
+ * Note: Many of the chart have the same parameters of configuration, specific parameters are defined
+ * in each method.
+ *
+ * Parameters:
+ * data (mandatory): data to display in chart
+ *
+ * animations -> Animates the rendering of the chart on the x/y-axis with the specified animation time
+ * animateX
+ * animateY
+ * animateXY
+ *
+ * isDragEnabled: Enables dragging (moving chart with the finger) for chart bigger than the screen
+ *
+ * setOnChartValueSelectedListener(): set a listener for the chart, this returns an Entry object
+ * (Warning: in combined chart all types of charts return the same Entry type on item click)
+ *
+ * xAxis/yAxis: set position of labels, margins, etc...
+ *
+ * axisRight/axisLeft: Returns the _-axis object
+ *
+ * description.text: text with a short description of the chart (in the right bottom of the screen)
+ */
 class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
 
     private lateinit var progressDialog: ProgressDialog
@@ -86,13 +109,22 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             description.text = getString(R.string.mp_chart_bar)
 
             /**
-             * Note: (Required) -> (BarWidth  + BarSpace) * NumberDataSet + GroupSpace = 1
+             * Note: groupBars add a withe space between bars. Only works if exists more than 1
+             * dataSet and its require a separation between bars. To define space is mandatory follow
+             * the next condition -> (BarWidth  + BarSpace) * NumberDataSet + GroupSpace = 1
              */
             val groupSpace = UNIT - ((barData.barWidth + BAR_SPACE) * barData.dataSetCount)
             groupBars(ZERO, groupSpace, BAR_SPACE)
 
             /**
-             * xAxisMaximum for multiple dataSet -> XMax + (NumberBars * (BarWidth + BarSpace)) + AdditionalSpace
+             * xAxisMaximum for multiple dataSet (to fit in chart) need to follow the next condition
+             * -> XMax + (NumberBars * (BarWidth + BarSpace)) + AdditionalSpace
+             *
+             * XMax = maximum x-value this data object contains
+             * NumberBars = number of LineDataSets
+             * BarWidth = width each bar should have
+             * BarSpace = space between bars of each dataSet
+             * AdditionalSpace = space between bars of the same dataSet
              */
             xAxis.apply {
                 axisMinimum = ZERO

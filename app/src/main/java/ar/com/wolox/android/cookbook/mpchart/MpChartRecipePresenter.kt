@@ -64,9 +64,7 @@ class MpChartRecipePresenter @Inject constructor(
 
     fun onInit() {
         view.hideGraphs()
-        view.showProgressBar()
         dataSample = getSampleFromAssets()
-        view.hideProgressBar()
     }
 
     /**
@@ -74,6 +72,8 @@ class MpChartRecipePresenter @Inject constructor(
      * used in the example.
      */
     private fun getSampleFromAssets(): ChartDataSample? {
+        view.showProgressBar()
+
         val inputStream = application.applicationContext.assets.open("MpAndroidChartDataExample.json")
         val size = inputStream.available()
         val buffer = ByteArray(size)
@@ -82,7 +82,10 @@ class MpChartRecipePresenter @Inject constructor(
         val json = String(buffer)
 
         val gson = GsonBuilder().create()
-        return gson.fromJson(json, ChartDataSample::class.java)
+        val result = gson.fromJson(json, ChartDataSample::class.java)
+
+        view.hideProgressBar()
+        return result
     }
 
     fun onSpinnerItemClicked(item: Int) {
