@@ -6,6 +6,7 @@ import android.graphics.Paint
 import androidx.core.content.ContextCompat
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.mpchart.model.ChartDataSample
+import ar.com.wolox.android.cookbook.mpchart.model.SpinnerClickItem
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
@@ -92,16 +93,16 @@ class MpChartRecipePresenter @Inject constructor(
 
     fun onSpinnerItemClicked(item: Int) {
         when (item) {
-            0 -> clearScreen()
-            1 -> onBarChartSelected()
-            2 -> onBubbleChartSelected()
-            3 -> onCombinedChartSelected()
-            4 -> onHorizontalBarChartSelected()
-            5 -> onLineChartSelected()
-            6 -> onPieChartSelected()
-            7 -> onRadarChartSelected()
-            8 -> onCandleStickChartSelected()
-            9 -> onScatterChartSelected()
+            SpinnerClickItem.CLEAR.value -> clearScreen()
+            SpinnerClickItem.BAR_CHART.value -> onBarChartSelected()
+            SpinnerClickItem.BUBBLE_CHART.value -> onBubbleChartSelected()
+            SpinnerClickItem.COMBINED_CHART.value -> onCombinedChartSelected()
+            SpinnerClickItem.HORIZONTAL_BAR_CHART.value -> onHorizontalBarChartSelected()
+            SpinnerClickItem.LINE_CHART.value -> onLineChartSelected()
+            SpinnerClickItem.PIE_CHART.value -> onPieChartSelected()
+            SpinnerClickItem.RADAR_CHART.value -> onRadarChartSelected()
+            SpinnerClickItem.CANDLE_STICK_CHART.value -> onCandleStickChartSelected()
+            SpinnerClickItem.SCATTER_CHART.value -> onScatterChartSelected()
             else -> clearScreen()
         }
     }
