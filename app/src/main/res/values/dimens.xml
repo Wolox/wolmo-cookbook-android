@@ -46,6 +46,11 @@
     <dimen name="font_huge">24sp</dimen>
     <dimen name="font_huge_extra">26sp</dimen>
 
+    <!-- Images -->
+    <dimen name="icon_default_size">200dp</dimen>
+    <dimen name="icon_edit_size">30dp</dimen>
+    <dimen name="icon_delete_size">25dp</dimen>
+
     <!-- Recipe Picker -->
     <dimen name="recipe_picker_selection_padding">50dp</dimen>
     <dimen name="recipe_picker_title">40sp</dimen>
