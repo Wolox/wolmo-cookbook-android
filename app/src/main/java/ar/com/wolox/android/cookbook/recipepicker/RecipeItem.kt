@@ -1,7 +1,7 @@
 package ar.com.wolox.android.cookbook.recipepicker
 
-import android.support.annotation.DrawableRes
-import android.support.annotation.StringRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 
 data class RecipeItem(
     val recipe: Recipe,

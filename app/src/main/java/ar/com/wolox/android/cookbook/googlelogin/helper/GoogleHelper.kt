@@ -2,7 +2,7 @@ package ar.com.wolox.android.cookbook.googlelogin.helper
 
 import android.content.Context
 import android.content.Intent
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.View
 import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope

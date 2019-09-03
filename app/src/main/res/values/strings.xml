@@ -9,6 +9,8 @@
     <string name="recipe_picker_facebook_login">Facebook login</string>
     <string name="recipe_picker_navigation">Navigation Arch. Component</string>
     <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
+    <string name="recipe_picker_tests">Tests</string>
+    <string name="recipe_picker_koin">Koin</string>
     <string name="recipe_picker_notifications">Notifications</string>
 
     <!-- Google login -->
@@ -40,7 +42,7 @@
     <string name="facebook_login_error_cancelled">The sign in was cancelled by the user.</string>
     <string name="facebook_login_error_unexpected">Unexpected error</string>
     <string name="facebook_login_btn">Login with Facebook</string>
-    
+
     <!-- Notifications -->
     <string name="notifications_general_channel">General notifications</string>
     <string name="notifications_general_channel_id">general_notifications</string>
@@ -56,5 +58,21 @@
     <string name="notifications_actions_title">Show with actions</string>
     <string name="notifications_inbox_line_1">Line 1: this is the very first line of an inbox styled notification</string>
     <string name="notifications_inbox_line_2">Line 2: this is the very first line of an inbox styled notification</string>
+
+    <!-- Test Login -->
+    <string name="test_login_email">Email</string>
+    <string name="test_login_password">Password</string>
+    <string name="test_login_login">Login</string>
+    <string name="test_login_empty_field">Debe completar este campo</string>
+    <string name="test_login_invalid_email">Email invalido</string>
+    <string name="test_login_login_error">Incorrect user or password.</string>
+
+    <!-- Koin Login -->
+    <string name="koin_login_email">Email</string>
+    <string name="koin_login_password">Password</string>
+    <string name="koin_login_login">Login</string>
+    <string name="koin_login_empty_field">Debe completar este campo</string>
+    <string name="koin_login_invalid_email">Email invalido</string>
+    <string name="koin_login_login_error">Incorrect user or password.</string>
 
 </resources>

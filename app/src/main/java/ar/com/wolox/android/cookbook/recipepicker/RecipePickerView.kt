@@ -12,5 +12,9 @@ interface RecipePickerView {
 
     fun goToDataSyncRecipe()
 
+    fun goToTests()
+
+    fun goToKoin()
+
     fun goToNotificationsRecipe()
 }

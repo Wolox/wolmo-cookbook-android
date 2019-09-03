@@ -17,6 +17,8 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
             Recipe.FACEBOOK_LOGIN -> view.goToFacebookLogin()
             Recipe.NAVIGATION -> view.goToNavigation()
             Recipe.DATA_SYNC -> view.goToDataSyncRecipe()
+            Recipe.TESTS -> view.goToTests()
+            Recipe.KOIN -> view.goToKoin()
             Recipe.NOTIFICATIONS -> view.goToNotificationsRecipe()
         }
     }

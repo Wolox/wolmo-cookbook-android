@@ -2,7 +2,7 @@ package ar.com.wolox.android.cookbook.recipepicker
 
 import android.view.ViewGroup
 import android.view.LayoutInflater
-import android.support.v4.view.PagerAdapter
+import androidx.viewpager.widget.PagerAdapter
 import android.view.View
 import ar.com.wolox.android.cookbook.R
 import kotlinx.android.synthetic.main.item_recipe_image.view.*

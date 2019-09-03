@@ -1,12 +1,12 @@
 package ar.com.wolox.android.cookbook.datasync
 
-import android.arch.lifecycle.GenericLifecycleObserver
-import android.arch.lifecycle.Lifecycle.Event.ON_START
-import android.arch.lifecycle.Lifecycle.Event.ON_STOP
-import android.arch.lifecycle.LifecycleObserver
+import androidx.lifecycle.GenericLifecycleObserver
+import androidx.lifecycle.Lifecycle.Event.ON_START
+import androidx.lifecycle.Lifecycle.Event.ON_STOP
+import androidx.lifecycle.LifecycleObserver
 import android.os.Handler
 import android.os.Looper
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.view.View
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment

@@ -1,7 +1,7 @@
 package ar.com.wolox.android.cookbook.navigation
 
-import android.support.annotation.CallSuper
-import android.support.v4.app.Fragment
+import androidx.annotation.CallSuper
+import androidx.fragment.app.Fragment
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
 import ar.com.wolox.wolmo.core.fragment.IWolmoFragment
