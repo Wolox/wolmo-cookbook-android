@@ -10,11 +10,9 @@
     <!-- Data Sync -->
     <color name="pokemon_screen_background">#54BAD2</color>
 
-<<<<<<< HEAD
     <color name="chart_candle_set_data">#505050</color>
     <color name="chart_candle_increase">#7af254</color>
-=======
+
     <color name="color_black">#000000</color>
->>>>>>> room-db
 
 </resources>
