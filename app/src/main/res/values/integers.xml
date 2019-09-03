@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Image Sizes -->
+    <integer name="icon_default_view_port">512</integer>
+</resources>
