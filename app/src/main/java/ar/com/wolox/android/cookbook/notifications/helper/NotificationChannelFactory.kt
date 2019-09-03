@@ -4,7 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
 import javax.inject.Inject

@@ -4,9 +4,9 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.os.Build
 import android.provider.Settings
-import android.support.annotation.RequiresApi
-import android.support.v4.app.NotificationCompat
 import android.view.View
+import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity

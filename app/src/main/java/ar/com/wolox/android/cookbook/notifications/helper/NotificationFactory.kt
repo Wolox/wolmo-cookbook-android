@@ -3,8 +3,8 @@ package ar.com.wolox.android.cookbook.notifications.helper
 import android.app.Notification
 import android.content.Context
 import android.graphics.BitmapFactory
-import android.support.v4.app.NotificationCompat
-import android.support.v4.app.NotificationManagerCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.notifications.model.InboxNotification
 import ar.com.wolox.android.cookbook.notifications.model.SkeletalNotification

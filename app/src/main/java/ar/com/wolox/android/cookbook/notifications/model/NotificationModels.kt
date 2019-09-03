@@ -1,7 +1,7 @@
 package ar.com.wolox.android.cookbook.notifications.model
 
 import android.app.PendingIntent
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 
 sealed class SkeletalNotification(
     val channelId: String,
