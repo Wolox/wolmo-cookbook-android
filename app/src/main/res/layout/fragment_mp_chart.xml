@@ -7,7 +7,7 @@
 
     <Spinner
         android:id="@+id/vSpinnerChart"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/spacing_none"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/chart_padding_large"
         android:layout_marginTop="@dimen/chart_padding_large"
@@ -20,8 +20,8 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/vBarChart"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/spacing_none"
+        android:layout_height="@dimen/spacing_none"
         android:layout_marginStart="@dimen/chart_padding_default"
         android:layout_marginTop="@dimen/chart_padding_default"
         android:layout_marginEnd="@dimen/chart_padding_default"
@@ -34,8 +34,8 @@
 
     <com.github.mikephil.charting.charts.BubbleChart
         android:id="@+id/vBubbleChart"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/spacing_none"
+        android:layout_height="@dimen/spacing_none"
         android:layout_marginStart="@dimen/chart_padding_default"
         android:layout_marginTop="@dimen/chart_padding_default"
         android:layout_marginEnd="@dimen/chart_padding_default"
@@ -48,8 +48,8 @@
 
     <com.github.mikephil.charting.charts.CombinedChart
         android:id="@+id/vCombinedChart"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/spacing_none"
+        android:layout_height="@dimen/spacing_none"
         android:layout_marginStart="@dimen/chart_padding_default"
         android:layout_marginTop="@dimen/chart_padding_default"
         android:layout_marginEnd="@dimen/chart_padding_default"
@@ -62,8 +62,8 @@
 
     <com.github.mikephil.charting.charts.HorizontalBarChart
         android:id="@+id/vHorizontalBarChart"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/spacing_none"
+        android:layout_height="@dimen/spacing_none"
         android:layout_marginStart="@dimen/chart_padding_default"
         android:layout_marginTop="@dimen/chart_padding_default"
         android:layout_marginEnd="@dimen/chart_padding_default"
@@ -76,8 +76,8 @@
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/vLineChart"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/spacing_none"
+        android:layout_height="@dimen/spacing_none"
         android:layout_marginStart="@dimen/chart_padding_default"
         android:layout_marginTop="@dimen/chart_padding_default"
         android:layout_marginEnd="@dimen/chart_padding_default"
@@ -90,8 +90,8 @@
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/vPieChart"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/spacing_none"
+        android:layout_height="@dimen/spacing_none"
         android:layout_marginStart="@dimen/chart_padding_default"
         android:layout_marginTop="@dimen/chart_padding_default"
         android:layout_marginEnd="@dimen/chart_padding_default"
@@ -104,8 +104,8 @@
 
     <com.github.mikephil.charting.charts.RadarChart
         android:id="@+id/vRadarChart"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/spacing_none"
+        android:layout_height="@dimen/spacing_none"
         android:layout_marginStart="@dimen/chart_padding_default"
         android:layout_marginTop="@dimen/chart_padding_default"
         android:layout_marginEnd="@dimen/chart_padding_default"
@@ -118,8 +118,8 @@
 
     <com.github.mikephil.charting.charts.CandleStickChart
         android:id="@+id/vCandleStickChart"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/spacing_none"
+        android:layout_height="@dimen/spacing_none"
         android:layout_marginStart="@dimen/chart_padding_default"
         android:layout_marginTop="@dimen/chart_padding_default"
         android:layout_marginEnd="@dimen/chart_padding_default"
@@ -132,8 +132,8 @@
 
     <com.github.mikephil.charting.charts.ScatterChart
         android:id="@+id/vScatterChart"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/spacing_none"
+        android:layout_height="@dimen/spacing_none"
         android:layout_marginStart="@dimen/chart_padding_default"
         android:layout_marginTop="@dimen/chart_padding_default"
         android:layout_marginEnd="@dimen/chart_padding_default"
