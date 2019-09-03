@@ -535,28 +535,28 @@
       "data": "SS-CC1"
     },
     {
-      "xVal": 4,
-      "yVal": 1,
+      "xVal": 3,
+      "yVal": 3,
       "data": "SS-CC2"
     },
     {
-      "xVal": 6,
+      "xVal": 4,
       "yVal": 1,
       "data": "SS-CC3"
     },
     {
+      "xVal": 6,
+      "yVal": 1,
+      "data": "SS-CC4"
+    },
+    {
       "xVal": 8,
       "yVal": 3,
-      "data": "SS-CC4"
+      "data": "SS-CC5"
     },
     {
       "xVal": 7,
       "yVal": 4,
-      "data": "SS-CC5"
-    },
-    {
-      "xVal": 3,
-      "yVal": 3,
       "data": "SS-CC6"
     }
   ]

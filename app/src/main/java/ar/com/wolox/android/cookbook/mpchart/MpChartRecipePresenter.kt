@@ -62,7 +62,9 @@ class MpChartRecipePresenter @Inject constructor(
 
     private var dataSample: ChartDataSample? = null
 
-    fun onInit() {
+    override fun onViewAttached() {
+        super.onViewAttached()
+
         view.hideGraphs()
         dataSample = getSampleFromAssets()
     }
