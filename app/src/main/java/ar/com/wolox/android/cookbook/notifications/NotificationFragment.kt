@@ -87,14 +87,12 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
             generalChannelId,
             getString(R.string.notifications_basic_title),
             getString(R.string.notifications_short_content),
-            NotificationCompat.PRIORITY_DEFAULT
-        ).apply {
-            actions.clear()
-            actions.addAll(listOf(
+            NotificationCompat.PRIORITY_DEFAULT,
+            listOf(
                 NotificationAction(android.R.drawable.ic_menu_send, getString(R.string.recipe_picker_facebook_login), fbLoginIntent),
                 NotificationAction(android.R.drawable.ic_dialog_email, getString(R.string.recipe_picker_google_login), gLoginIntent)
             ))
-        })
+        )
     }
 
     private fun showInboxNotification() {

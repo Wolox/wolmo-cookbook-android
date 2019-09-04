@@ -8,15 +8,16 @@ sealed class SkeletalNotification(
     val title: String,
     val content: String,
     val priority: Int,
-    val actions: MutableList<NotificationAction> = mutableListOf()
+    val actions: List<NotificationAction> = listOf()
 )
 
 class BasicNotification(
     channelId: String,
     title: String,
     content: String,
-    priority: Int
-) : SkeletalNotification(channelId, title, content, priority)
+    priority: Int,
+    actions: List<NotificationAction> = listOf()
+) : SkeletalNotification(channelId, title, content, priority, actions)
 
 class TextExpandableNotification(
     channelId: String,
