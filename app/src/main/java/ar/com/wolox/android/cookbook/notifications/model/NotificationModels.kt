@@ -48,3 +48,11 @@ data class NotificationAction(
     val title: String,
     val actionIntent: PendingIntent
 )
+
+enum class NotificationType(val code: Int) {
+    BASIC(1),
+    TEXT_EXPANDABLE(2),
+    PICTURE_EXPANDABLE(3),
+    BASIC_ACTION(4),
+    INBOX(5)
+}

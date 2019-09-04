@@ -14,6 +14,7 @@ import ar.com.wolox.android.cookbook.notifications.helper.NotificationFactory
 import ar.com.wolox.android.cookbook.notifications.model.BasicNotification
 import ar.com.wolox.android.cookbook.notifications.model.InboxNotification
 import ar.com.wolox.android.cookbook.notifications.model.NotificationAction
+import ar.com.wolox.android.cookbook.notifications.model.NotificationType
 import ar.com.wolox.android.cookbook.notifications.model.PictureExpandableNotification
 import ar.com.wolox.android.cookbook.notifications.model.TextExpandableNotification
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
@@ -49,7 +50,7 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
     }
 
     private fun showBasicNotification() {
-        notificationFactory.showNotification(1, BasicNotification(
+        notificationFactory.showNotification(NotificationType.BASIC.code, BasicNotification(
             generalChannelId,
             getString(R.string.notifications_basic_title),
             getString(R.string.notifications_short_content),
@@ -58,7 +59,7 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
     }
 
     private fun showTextExpandableNotification() {
-        notificationFactory.showNotification(2, TextExpandableNotification(
+        notificationFactory.showNotification(NotificationType.TEXT_EXPANDABLE.code, TextExpandableNotification(
             generalChannelId,
             getString(R.string.notifications_basic_title),
             getString(R.string.notifications_short_content),
@@ -68,7 +69,7 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
     }
 
     private fun showPictureNotification() {
-        notificationFactory.showNotification(3, PictureExpandableNotification(
+        notificationFactory.showNotification(NotificationType.PICTURE_EXPANDABLE.code, PictureExpandableNotification(
             generalChannelId,
             getString(R.string.notifications_basic_title),
             getString(R.string.notifications_short_content),
@@ -82,7 +83,7 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
         val fbLoginIntent = PendingIntent.getActivity(requireContext(), 0, Intent(requireContext(), FacebookLoginRecipeActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT)
         val gLoginIntent = PendingIntent.getActivity(requireContext(), 0, Intent(requireContext(), GoogleLoginRecipeActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT)
 
-        notificationFactory.showNotification(4, BasicNotification(
+        notificationFactory.showNotification(NotificationType.BASIC_ACTION.code, BasicNotification(
             generalChannelId,
             getString(R.string.notifications_basic_title),
             getString(R.string.notifications_short_content),
@@ -97,7 +98,7 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
     }
 
     private fun showInboxNotification() {
-        notificationFactory.showNotification(5, InboxNotification(
+        notificationFactory.showNotification(NotificationType.INBOX.code, InboxNotification(
             generalChannelId,
             getString(R.string.notifications_basic_title),
             getString(R.string.notifications_short_content),

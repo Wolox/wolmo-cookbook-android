@@ -1,5 +1,6 @@
 package ar.com.wolox.android.cookbook
 
+import android.os.Build
 import ar.com.wolox.android.cookbook.CookbookModules.initializeModules
 import ar.com.wolox.android.cookbook.common.di.CookbookNetworkingComponent
 import ar.com.wolox.android.cookbook.common.di.DaggerAppComponent
@@ -37,7 +38,9 @@ class CookbookApplication : WolmoApplication() {
             initializeModules()
         }
 
-        notificationChannelFactory.init(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationChannelFactory.init()
+        }
     }
 
     private fun initializeLeakCanary() {

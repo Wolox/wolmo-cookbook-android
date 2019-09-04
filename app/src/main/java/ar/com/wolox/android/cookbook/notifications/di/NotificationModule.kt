@@ -8,5 +8,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class NotificationModule {
 
     @ContributesAndroidInjector
-    abstract fun notificationMFragment(): NotificationFragment
+    abstract fun notificationFragment(): NotificationFragment
 }
