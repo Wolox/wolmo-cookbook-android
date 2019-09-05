@@ -6,5 +6,5 @@ package ar.com.wolox.android.cookbook.recipepicker
  */
 enum class Recipe {
 
-    GOOGLE_LOGIN, FACEBOOK_LOGIN, NAVIGATION, DATA_SYNC, TESTS, KOIN
+    GOOGLE_LOGIN, FACEBOOK_LOGIN, NAVIGATION, DATA_SYNC, TESTS, KOIN, NOTIFICATIONS
 }
