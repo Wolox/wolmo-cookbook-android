@@ -11,14 +11,14 @@ import javax.inject.Inject
 
 @ApplicationScope
 @RequiresApi(Build.VERSION_CODES.O)
-class NotificationChannelFactory @Inject constructor(@ApplicationScope val context: Context) {
+class NotificationChannelFactory @Inject constructor(val context: Context) {
 
     private val notificationChannels: MutableList<NotificationChannel> = arrayListOf()
 
     fun createChannel(channelInfo: NotificationChannelInfo): NotificationChannel =
         NotificationChannel(channelInfo.id, channelInfo.name, channelInfo.priority).apply {
-                this.description = channelInfo.description
-            }
+            description = channelInfo.description
+        }
 
     fun init() {
         val generalChannel = createChannel(

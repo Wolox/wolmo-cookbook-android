@@ -14,7 +14,7 @@ import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
 import javax.inject.Inject
 
 @ApplicationScope
-class NotificationFactory @Inject constructor(@ApplicationScope val context: Context) {
+class NotificationFactory @Inject constructor(val context: Context) {
 
     private fun createNotification(model: SkeletalNotification): Notification {
         return NotificationCompat.Builder(context, model.channelId)

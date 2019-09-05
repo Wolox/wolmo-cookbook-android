@@ -50,7 +50,7 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
     }
 
     private fun showBasicNotification() {
-        notificationFactory.showNotification(NotificationType.BASIC.code, BasicNotification(
+        notificationFactory.showNotification(NotificationType.BASIC.ordinal, BasicNotification(
             generalChannelId,
             getString(R.string.notifications_basic_title),
             getString(R.string.notifications_short_content),
@@ -59,7 +59,7 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
     }
 
     private fun showTextExpandableNotification() {
-        notificationFactory.showNotification(NotificationType.TEXT_EXPANDABLE.code, TextExpandableNotification(
+        notificationFactory.showNotification(NotificationType.TEXT_EXPANDABLE.ordinal, TextExpandableNotification(
             generalChannelId,
             getString(R.string.notifications_basic_title),
             getString(R.string.notifications_short_content),
@@ -69,7 +69,7 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
     }
 
     private fun showPictureNotification() {
-        notificationFactory.showNotification(NotificationType.PICTURE_EXPANDABLE.code, PictureExpandableNotification(
+        notificationFactory.showNotification(NotificationType.PICTURE_EXPANDABLE.ordinal, PictureExpandableNotification(
             generalChannelId,
             getString(R.string.notifications_basic_title),
             getString(R.string.notifications_short_content),
@@ -83,7 +83,7 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
         val fbLoginIntent = PendingIntent.getActivity(requireContext(), 0, Intent(requireContext(), FacebookLoginRecipeActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT)
         val gLoginIntent = PendingIntent.getActivity(requireContext(), 0, Intent(requireContext(), GoogleLoginRecipeActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT)
 
-        notificationFactory.showNotification(NotificationType.BASIC_ACTION.code, BasicNotification(
+        notificationFactory.showNotification(NotificationType.BASIC_ACTION.ordinal, BasicNotification(
             generalChannelId,
             getString(R.string.notifications_basic_title),
             getString(R.string.notifications_short_content),
@@ -96,7 +96,7 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
     }
 
     private fun showInboxNotification() {
-        notificationFactory.showNotification(NotificationType.INBOX.code, InboxNotification(
+        notificationFactory.showNotification(NotificationType.INBOX.ordinal, InboxNotification(
             generalChannelId,
             getString(R.string.notifications_basic_title),
             getString(R.string.notifications_short_content),
