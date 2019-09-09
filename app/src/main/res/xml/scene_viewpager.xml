@@ -3,14 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
+    <!-- Define your Transition start and end constraint sets and it's attributes -->
+
     <Transition
         motion:constraintSetStart="@+id/start"
         motion:constraintSetEnd="@+id/end"
         motion:duration="1000"
         motion:motionInterpolator="linear">
 
-
+        <!-- Define your start constraint set it's constraints per view that you want to animate -->
         <ConstraintSet android:id="@+id/start">
+            <!-- Define start Constraint's for the view that you want to animate -->
             <Constraint
                 android:id="@+id/plane"
                 android:layout_width="64dp"
@@ -31,7 +34,9 @@
             </Constraint>
         </ConstraintSet>
 
+        <!-- Define your end constraint set it's constraints per view that you want to animate -->
         <ConstraintSet android:id="@+id/end">
+            <!-- Define end Constraint's for the view that you want to animate -->
             <Constraint
                 android:id="@id/plane"
                 android:layout_width="64dp"
@@ -41,6 +46,7 @@
                 motion:layout_constraintBottom_toBottomOf="@id/cloud"
                 motion:layout_constraintEnd_toEndOf="parent">
             </Constraint>
+
             <Constraint
                 android:id="@id/cloud"
                 android:layout_width="64dp"
@@ -50,8 +56,13 @@
                 android:text="Button"
                 motion:layout_constraintStart_toStartOf="parent">
             </Constraint>
+
         </ConstraintSet>
+
+        <!-- Define key frame set's for the view that you want to animate for defining constraints between the start and end positions-->
+
         <KeyFrameSet>
+
             <KeyPosition
                 motion:keyPositionType="pathRelative"
                 motion:percentY="0.10"
@@ -67,5 +78,7 @@
                 motion:transitionEasing="decelerate"/>
 
         </KeyFrameSet>
+
     </Transition>
+
 </MotionScene>

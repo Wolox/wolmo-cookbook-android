@@ -66,4 +66,10 @@
 
     <!-- Data Sync -->
     <dimen name="pokemon_image_size">200dp</dimen>
+    <dimen name="plane_width">60dp</dimen>
+    <dimen name="plane_height">60dp</dimen>
+    <dimen name="plane_margin">10dp</dimen>
+    <dimen name="cloud_height">60dp</dimen>
+    <dimen name="cloud_width">60dp</dimen>
+    <dimen name="toolbar_height">48dp</dimen>
 </resources>

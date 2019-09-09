@@ -12,6 +12,8 @@ import ar.com.wolox.android.cookbook.motionLayout.viewPager.page1.Page1Fragment
 import ar.com.wolox.android.cookbook.motionLayout.viewPager.page2.Page2Fragment
 import ar.com.wolox.wolmo.core.adapter.viewpager.SimpleFragmentPagerAdapter
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
+import kotlinx.android.synthetic.main.fragment_viewpagermotion.*
+import kotlinx.android.synthetic.main.motionlayout_viewpager.*
 import javax.inject.Inject
 
 class ViewPagerFragment @Inject constructor() : WolmoFragment<MotionPresenter>() {
@@ -20,8 +22,6 @@ class ViewPagerFragment @Inject constructor() : WolmoFragment<MotionPresenter>()
     @Inject
     lateinit var page1Fragment: Page1Fragment
     private lateinit var fragmentPagerAdapter: SimpleFragmentPagerAdapter
-    private lateinit var motionLayout: MotionLayout
-    private lateinit var vViewPager: ViewPager
     private lateinit var vHometabs: TabLayout
     private var numberOfPages: Int = 0
 
@@ -29,37 +29,42 @@ class ViewPagerFragment @Inject constructor() : WolmoFragment<MotionPresenter>()
         fun newInstance(): ViewPagerFragment {
             return ViewPagerFragment()
         }
+
+        const val PAGE1_NAME = "page1"
+        const val PAGE2_NAME = "page2"
     }
 
     override fun layout(): Int = R.layout.fragment_viewpagermotion
 
     override fun init() {
         initViewPager()
-        motionLayout = activity!!.findViewById(R.id.motionLayout)
-        vViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+
+    }
+
+    private fun initViewPager() {
+        fragmentPagerAdapter = SimpleFragmentPagerAdapter(childFragmentManager)
+        fragmentPagerAdapter.addFragments(
+                Pair<Fragment, String>(page1Fragment, PAGE1_NAME),
+                Pair<Fragment, String>(page2Fragment, PAGE2_NAME))
+        vViewPagerMotion.adapter = fragmentPagerAdapter
+        vHomeTabsMotion.setupWithViewPager(vViewPagerMotion)
+        numberOfPages = 2
+        setUpViewPagerMotionListener()
+    }
+
+    private fun setUpViewPagerMotionListener(){
+        vViewPagerMotion.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
             }
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 Handler().postDelayed({
-                    motionLayout.progress = (position + positionOffset) / (numberOfPages - 1)
-                }, 10)
+                    /* change motion layout progress according to the viewPager position */
+                    vMotionLayout.progress = (position + positionOffset) / (numberOfPages - 1)
+                }, 100)
             }
 
-            override fun onPageSelected(position: Int) {
-            }
+            override fun onPageSelected(position: Int) {}
         })
-    }
-
-    private fun initViewPager() {
-        vViewPager = activity!!.findViewById(R.id.vViewPagerMotion)
-        vHometabs = activity!!.findViewById(R.id.vHomeTabsMotion)
-        fragmentPagerAdapter = SimpleFragmentPagerAdapter(childFragmentManager)
-        fragmentPagerAdapter.addFragments(
-                Pair<Fragment, String>(page1Fragment, "page1"),
-                Pair<Fragment, String>(page2Fragment, "page2"))
-        vViewPager.adapter = fragmentPagerAdapter
-        vHometabs.setupWithViewPager(vViewPager)
-        numberOfPages = 2
     }
 }

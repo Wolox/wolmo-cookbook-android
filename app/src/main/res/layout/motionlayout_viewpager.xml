@@ -4,28 +4,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/motionLayout"
+    android:id="@+id/vMotionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_light"
     app:layoutDescription="@xml/scene_viewpager">
+    <!-- Define @layoutDescription your scene file defined in xml folder-->
 
     <ImageView
         android:id="@+id/plane"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_margin="10dp"
+        android:layout_width="@dimen/plane_width"
+        android:layout_height="@dimen/plane_height"
+        android:layout_margin="@dimen/plane_margin"
         android:src="@drawable/plane"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="333dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageView
         android:id="@+id/cloud"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/cloud_height"
+        android:layout_height="@dimen/cloud_width"
         android:src="@drawable/cloud"
         app:layout_constraintBaseline_toBaselineOf="@+id/plane"
-        app:layout_constraintBottom_toBottomOf="@+id/plane"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/plane" />
 
 </android.support.constraint.motion.MotionLayout>
