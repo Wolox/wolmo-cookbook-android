@@ -1,8 +1,6 @@
 package ar.com.wolox.android.cookbook.motionLayout.viewPager
 
 import android.os.Handler
-import android.support.constraint.motion.MotionLayout
-import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.util.Pair
 import android.support.v4.view.ViewPager
@@ -22,7 +20,6 @@ class ViewPagerFragment @Inject constructor() : WolmoFragment<MotionPresenter>()
     @Inject
     lateinit var page1Fragment: Page1Fragment
     private lateinit var fragmentPagerAdapter: SimpleFragmentPagerAdapter
-    private lateinit var vHometabs: TabLayout
     private var numberOfPages: Int = 0
 
     companion object {
@@ -38,21 +35,22 @@ class ViewPagerFragment @Inject constructor() : WolmoFragment<MotionPresenter>()
 
     override fun init() {
         initViewPager()
-
     }
 
     private fun initViewPager() {
-        fragmentPagerAdapter = SimpleFragmentPagerAdapter(childFragmentManager)
-        fragmentPagerAdapter.addFragments(
-                Pair<Fragment, String>(page1Fragment, PAGE1_NAME),
-                Pair<Fragment, String>(page2Fragment, PAGE2_NAME))
+        fragmentPagerAdapter = SimpleFragmentPagerAdapter(childFragmentManager).apply {
+            fragmentPagerAdapter.addFragments(
+                    Pair<Fragment, String>(page1Fragment, PAGE1_NAME),
+                    Pair<Fragment, String>(page2Fragment, PAGE2_NAME)
+            )
+        }
         vViewPagerMotion.adapter = fragmentPagerAdapter
         vHomeTabsMotion.setupWithViewPager(vViewPagerMotion)
         numberOfPages = 2
         setUpViewPagerMotionListener()
     }
 
-    private fun setUpViewPagerMotionListener(){
+    private fun setUpViewPagerMotionListener() {
         vViewPagerMotion.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
             }
