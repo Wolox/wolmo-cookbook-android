@@ -58,7 +58,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     override fun setListeners() {
         super.setListeners()
 
-        vSpinnerChart.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        vChartList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 presenter.onSpinnerItemClicked(p2)
             }
@@ -82,7 +82,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
     override fun showBarChart(barData: BarData) {
 
-        vBarChart.apply {
+        vBarChart.run {
             visibility = View.VISIBLE
             data = barData
             animateY(ANIMATION_DELAY)
@@ -112,7 +112,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
              * the next condition -> (BarWidth  + BarSpace) * NumberDataSet + GroupSpace = 1
              */
             val groupSpace = UNIT - ((barData.barWidth + BAR_SPACE) * barData.dataSetCount)
-            groupBars(ZERO, groupSpace, BAR_SPACE)
+            groupBars(0f, groupSpace, BAR_SPACE)
 
             /**
              * xAxisMaximum for multiple dataSet (to fit in chart) need to follow the next condition
@@ -124,8 +124,8 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
              * BarSpace = space between bars of each dataSet
              * AdditionalSpace = space between bars of the same dataSet
              */
-            xAxis.apply {
-                axisMinimum = ZERO
+            xAxis.run {
+                axisMinimum = 0f
                 axisMaximum = barData.xMax + (((barData.barWidth + BAR_SPACE) * barData.dataSetCount) + groupSpace)
                 position = XAxis.XAxisPosition.BOTTOM
                 setCenterAxisLabels(true)
@@ -138,7 +138,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
     override fun showBubbleChart(bubbleData: BubbleData) {
 
-        vBubbleChart.apply {
+        vBubbleChart.run {
             visibility = View.VISIBLE
             data = bubbleData
             isDragEnabled = true
@@ -165,7 +165,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showCombinedChart(combinedData: CombinedData) {
-        vCombinedChart.apply {
+        vCombinedChart.run {
             visibility = View.VISIBLE
             data = combinedData
 
@@ -174,19 +174,19 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             setDrawGridBackground(false)
             isHighlightFullBarEnabled = false
 
-            axisRight.apply {
+            axisRight.run {
                 setDrawGridLines(false)
-                axisMinimum = ZERO
+                axisMinimum = 0f
             }
 
-            axisLeft.apply {
+            axisLeft.run {
                 setDrawGridLines(false)
-                axisMinimum = ZERO
+                axisMinimum = 0f
             }
 
-            xAxis.apply {
+            xAxis.run {
                 position = XAxis.XAxisPosition.BOTH_SIDED
-                axisMinimum = ZERO
+                axisMinimum = 0f
                 granularity = GRANULARITY
                 axisMaximum = data.xMax + AXIS_PHASE
             }
@@ -197,13 +197,13 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showHorizontalBarChart(hBarData: BarData) {
-        vHorizontalBarChart.apply {
+        vHorizontalBarChart.run {
             visibility = View.VISIBLE
             data = hBarData
             animateY(ANIMATION_DELAY)
             isDragEnabled = true
 
-            axisLeft.mAxisMinimum = ZERO
+            axisLeft.mAxisMinimum = 0f
 
             setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
                 override fun onValueSelected(e: Entry?, h: Highlight?) {
@@ -221,8 +221,8 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
                 }
             })
 
-            xAxis.apply {
-                mAxisMinimum = ZERO
+            xAxis.run {
+                mAxisMinimum = 0f
                 position = XAxis.XAxisPosition.BOTTOM
                 setCenterAxisLabels(true)
             }
@@ -233,7 +233,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showLineChart(lineData: LineData) {
-        vLineChart.apply {
+        vLineChart.run {
             visibility = View.VISIBLE
 
             data = lineData
@@ -243,21 +243,21 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
             animateX(ANIMATION_DELAY)
 
-            xAxis.apply {
-                enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, ZERO)
+            xAxis.run {
+                enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, 0f)
                 labelCount = lineData.dataSetCount
                 position = XAxis.XAxisPosition.BOTTOM
             }
 
-            axisRight.enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, ZERO)
-            axisLeft.enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, ZERO)
+            axisRight.enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, 0f)
+            axisLeft.enableGridDashedLine(DEFAULT_LENGTH, DEFAULT_LENGTH, 0f)
         }
     }
 
     override fun showPieChart(pieData: PieData) {
         vPieChart.visibility = View.VISIBLE
 
-        vPieChart.apply {
+        vPieChart.run {
             data = pieData
             centerTextRadiusPercent = RADIUS_PERCENT
             animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
@@ -278,7 +278,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showRadarChart(radarData: RadarData) {
-        vRadarChart.apply {
+        vRadarChart.run {
             visibility = View.VISIBLE
             data = radarData
             description.text = getString(R.string.mp_chart_radar)
@@ -287,7 +287,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showCandleStickChart(candleData: CandleData) {
-        vCandleStickChart.apply {
+        vCandleStickChart.run {
             visibility = View.VISIBLE
             data = candleData
             description.text = getString(R.string.mp_chart_candle)
@@ -297,7 +297,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showScatterChart(scatterData: ScatterData) {
-        vScatterChart.apply {
+        vScatterChart.run {
             visibility = View.VISIBLE
             data = scatterData
             description.text = getString(R.string.mp_chart_scatter)
@@ -324,8 +324,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun showProgressBar() {
-        progressDialog = ProgressDialog(context)
-        progressDialog.apply {
+        progressDialog = ProgressDialog(context).apply {
             setProgressStyle(ProgressDialog.STYLE_SPINNER)
             setCancelable(false)
             setCanceledOnTouchOutside(false)
@@ -335,7 +334,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
     }
 
     override fun hideProgressBar() {
-        progressDialog.apply {
+        progressDialog.run {
             setProgressStyle(ProgressDialog.STYLE_SPINNER)
             dismiss()
         }
@@ -343,7 +342,6 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
 
     companion object {
         private const val ANIMATION_DELAY = 2500
-        private const val ZERO = 0f
         private const val RADIUS_PERCENT = 1f
         private const val DEFAULT_LENGTH = 5f
         private const val GRANULARITY = 1f

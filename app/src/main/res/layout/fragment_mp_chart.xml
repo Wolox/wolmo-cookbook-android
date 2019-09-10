@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Spinner
-        android:id="@+id/vSpinnerChart"
+        android:id="@+id/vChartList"
         android:layout_width="@dimen/spacing_none"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/chart_padding_large"
@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSpinnerChart" />
+        app:layout_constraintTop_toBottomOf="@+id/vChartList" />
 
     <com.github.mikephil.charting.charts.BubbleChart
         android:id="@+id/vBubbleChart"
@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSpinnerChart" />
+        app:layout_constraintTop_toBottomOf="@+id/vChartList" />
 
     <com.github.mikephil.charting.charts.CombinedChart
         android:id="@+id/vCombinedChart"
@@ -58,7 +58,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSpinnerChart" />
+        app:layout_constraintTop_toBottomOf="@+id/vChartList" />
 
     <com.github.mikephil.charting.charts.HorizontalBarChart
         android:id="@+id/vHorizontalBarChart"
@@ -72,7 +72,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSpinnerChart" />
+        app:layout_constraintTop_toBottomOf="@+id/vChartList" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/vLineChart"
@@ -86,7 +86,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSpinnerChart" />
+        app:layout_constraintTop_toBottomOf="@+id/vChartList" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/vPieChart"
@@ -100,7 +100,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSpinnerChart" />
+        app:layout_constraintTop_toBottomOf="@+id/vChartList" />
 
     <com.github.mikephil.charting.charts.RadarChart
         android:id="@+id/vRadarChart"
@@ -114,7 +114,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSpinnerChart" />
+        app:layout_constraintTop_toBottomOf="@+id/vChartList" />
 
     <com.github.mikephil.charting.charts.CandleStickChart
         android:id="@+id/vCandleStickChart"
@@ -128,7 +128,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSpinnerChart" />
+        app:layout_constraintTop_toBottomOf="@+id/vChartList" />
 
     <com.github.mikephil.charting.charts.ScatterChart
         android:id="@+id/vScatterChart"
@@ -142,6 +142,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSpinnerChart" />
+        app:layout_constraintTop_toBottomOf="@+id/vChartList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
