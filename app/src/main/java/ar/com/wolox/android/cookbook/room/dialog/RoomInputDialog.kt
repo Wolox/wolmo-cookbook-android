@@ -23,21 +23,19 @@ class RoomInputDialog @Inject constructor() {
             isFocusableInTouchMode = true
         }
 
-        this.run {
-            setTitle(context.getString(title))
-            setView(input)
+        setTitle(context.getString(title))
+        setView(input)
 
-            setPositiveButton(context.getString(R.string.room_input_positive)) { dialog, _ ->
-                hideSoftKeyboard(context)
-                dialog?.dismiss()
-                listener.onPositiveButtonClicked(input.text.toString())
-            }
+        setPositiveButton(context.getString(R.string.room_input_positive)) { dialog, _ ->
+            hideSoftKeyboard(context)
+            dialog?.dismiss()
+            listener.onPositiveButtonClicked(input.text.toString())
+        }
 
-            setNeutralButton(context.getString(R.string.room_input_negative)) { dialog, _ ->
-                hideSoftKeyboard(context)
-                dialog?.dismiss()
-                listener.onNegativeButtonClicked()
-            }
+        setNeutralButton(context.getString(R.string.room_input_negative)) { dialog, _ ->
+            hideSoftKeyboard(context)
+            dialog?.dismiss()
+            listener.onNegativeButtonClicked()
         }
     }
 
