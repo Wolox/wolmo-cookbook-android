@@ -21,7 +21,7 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
     override fun layout(): Int = R.layout.fragment_room
 
     override fun init() {
-        vSessionBtn.apply {
+        vSessionBtn.run {
             visibility = View.VISIBLE
             text = getString(R.string.room_login)
         }
@@ -42,19 +42,23 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         }
 
         vAddBtn.setOnClickListener {
-            RoomInputDialog().showDialog(requireContext(), R.string.room_input_title_add, object : RoomInputDialogListener {
-                override fun onPositiveButtonClicked(data: String) {
-                    presenter.onAddButtonClicked(data)
-                }
-
-                override fun onNegativeButtonClicked() {
-                }
-            }).show()
+            presenter.onAddButtonClicked()
         }
 
         vClearBtn.setOnClickListener {
             presenter.onClearButtonClicked()
         }
+    }
+
+    override fun showInputDialog() {
+        RoomInputDialog().showDialog(requireContext(), R.string.room_input_title_add, object : RoomInputDialogListener {
+            override fun onPositiveButtonClicked(data: String) {
+                presenter.onPositiveButtonClicked(data)
+            }
+
+            override fun onNegativeButtonClicked() {
+            }
+        }).show()
     }
 
     override fun updateEntities(entities: List<RoomDataEntity>) {
@@ -63,7 +67,7 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         entityItemList.addAll(entities)
 
         viewAdapter = RoomListAdapter(entityItemList, { item -> editClickListener(item) }, { item -> deleteClickListener(item) })
-        vRecyclerView.apply {
+        vRecyclerView.run {
             visibility = View.VISIBLE
             setHasFixedSize(true)
             layoutManager = viewManager
@@ -101,7 +105,7 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
 
     override fun logout() {
         vSessionBtn.text = getString(R.string.room_login)
-        vUser.apply {
+        vUser.run {
             isEnabled = true
             setText("")
         }

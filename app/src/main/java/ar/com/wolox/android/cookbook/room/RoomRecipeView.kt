@@ -10,6 +10,8 @@ interface RoomRecipeView {
 
     fun logout()
 
+    fun showInputDialog()
+
     fun updateEntities(entities: List<RoomDataEntity>)
 
     fun insertEntity(entity: RoomDataEntity)

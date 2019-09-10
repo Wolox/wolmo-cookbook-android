@@ -40,7 +40,11 @@ class RoomRecipePresenter @Inject constructor(
         }
     }
 
-    fun onAddButtonClicked(newData: String) {
+    fun onAddButtonClicked() {
+        view.showInputDialog()
+    }
+
+    fun onPositiveButtonClicked(newData: String) {
         Thread(Runnable {
             val entity = RoomDataEntity()
             var index = db.RoomDataDao().getLastIndex()
