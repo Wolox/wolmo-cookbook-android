@@ -1,7 +1,6 @@
 package ar.com.wolox.android.cookbook.room
 
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.cookbook.R
@@ -10,9 +9,13 @@ import ar.com.wolox.android.cookbook.room.dialog.RoomInputDialog
 import ar.com.wolox.android.cookbook.room.dialog.RoomInputDialogListener
 import ar.com.wolox.android.cookbook.room.list.RoomListAdapter
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
+import ar.com.wolox.wolmo.core.util.ToastFactory
 import kotlinx.android.synthetic.main.fragment_room.*
+import javax.inject.Inject
 
-class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView {
+class RoomRecipeFragment @Inject constructor(
+    val toastFactory: ToastFactory
+) : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView {
 
     private lateinit var viewAdapter: RoomListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -100,7 +103,7 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
     }
 
     override fun showLoginError() {
-        Toast.makeText(context, getString(R.string.room_login_error), Toast.LENGTH_LONG).show()
+        toastFactory.show(R.string.room_login_error)
     }
 
     override fun doSessionLogout() {
@@ -112,26 +115,26 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         vRecyclerView.visibility = View.INVISIBLE
         vAddBtn.visibility = View.INVISIBLE
         vClearBtn.visibility = View.INVISIBLE
-        Toast.makeText(context, getString(R.string.room_logout), Toast.LENGTH_LONG).show()
+        toastFactory.show(R.string.room_logout)
     }
 
     override fun insertEntity(entity: RoomDataEntity) {
         viewAdapter.addData(entity)
-        Toast.makeText(context, getString(R.string.room_row_inserted), Toast.LENGTH_SHORT).show()
+        toastFactory.show(R.string.room_row_inserted)
     }
 
     override fun clearEntities() {
         viewAdapter.clearData()
-        Toast.makeText(context, getString(R.string.room_rows_deleted), Toast.LENGTH_SHORT).show()
+        toastFactory.show(R.string.room_rows_deleted)
     }
 
     override fun deleteEntity(entity: RoomDataEntity) {
         viewAdapter.deleteData(entity)
-        Toast.makeText(context, getString(R.string.room_row_deleted), Toast.LENGTH_SHORT).show()
+        toastFactory.show(R.string.room_row_deleted)
     }
 
     override fun modifyEntity(entity: RoomDataEntity) {
         viewAdapter.editData(entity)
-        Toast.makeText(context, getString(R.string.room_row_modified), Toast.LENGTH_SHORT).show()
+        toastFactory.show(R.string.room_row_modified)
     }
 }
