@@ -4,13 +4,15 @@ import ar.com.wolox.android.cookbook.room.database.RoomDataEntity
 
 interface RoomRecipeView {
 
-    fun loginSuccess()
+    fun showLoginSuccess()
 
-    fun loginError()
+    fun showLoginError()
 
-    fun logout()
+    fun doSessionLogout()
 
-    fun showInputDialog()
+    fun showAddInputDialog()
+
+    fun showEditInputDialog(entity: RoomDataEntity)
 
     fun updateEntities(entities: List<RoomDataEntity>)
 

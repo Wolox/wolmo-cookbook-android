@@ -50,10 +50,10 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         }
     }
 
-    override fun showInputDialog() {
+    override fun showAddInputDialog() {
         RoomInputDialog().showDialog(requireContext(), R.string.room_input_title_add, object : RoomInputDialogListener {
             override fun onPositiveButtonClicked(data: String) {
-                presenter.onPositiveButtonClicked(data)
+                presenter.onPositiveAddButtonClicked(data)
             }
 
             override fun onNegativeButtonClicked() {
@@ -66,7 +66,11 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         entityItemList = mutableListOf()
         entityItemList.addAll(entities)
 
-        viewAdapter = RoomListAdapter(entityItemList, { item -> editClickListener(item) }, { item -> deleteClickListener(item) })
+        viewAdapter = RoomListAdapter(entityItemList, {
+            item -> presenter.onEditButtonClicked(item)
+        }, {
+            item -> presenter.onDeleteButtonClicked(item)
+        })
         vRecyclerView.run {
             visibility = View.VISIBLE
             setHasFixedSize(true)
@@ -76,10 +80,10 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         viewAdapter.notifyDataSetChanged()
     }
 
-    private fun editClickListener(item: RoomDataEntity) {
+    override fun showEditInputDialog(entity: RoomDataEntity) {
         RoomInputDialog().showDialog(requireContext(), R.string.room_input_title_modify, object : RoomInputDialogListener {
             override fun onPositiveButtonClicked(data: String) {
-                presenter.onEditButtonClicked(item, data)
+                presenter.onPositiveEditButtonClicked(entity, data)
             }
 
             override fun onNegativeButtonClicked() {
@@ -87,11 +91,7 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         }).show()
     }
 
-    private fun deleteClickListener(item: RoomDataEntity) {
-        presenter.onDeleteButtonClicked(item)
-    }
-
-    override fun loginSuccess() {
+    override fun showLoginSuccess() {
         vSessionBtn.text = getString(R.string.room_logout)
         vUser.isEnabled = false
         vRecyclerView.visibility = View.VISIBLE
@@ -99,11 +99,11 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         vClearBtn.visibility = View.VISIBLE
     }
 
-    override fun loginError() {
+    override fun showLoginError() {
         Toast.makeText(context, getString(R.string.room_login_error), Toast.LENGTH_LONG).show()
     }
 
-    override fun logout() {
+    override fun doSessionLogout() {
         vSessionBtn.text = getString(R.string.room_login)
         vUser.run {
             isEnabled = true
