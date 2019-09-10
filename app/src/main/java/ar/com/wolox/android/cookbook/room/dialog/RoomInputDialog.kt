@@ -15,8 +15,7 @@ class RoomInputDialog @Inject constructor() {
 
     fun showDialog(context: Context, title: Int, listener: RoomInputDialogListener) = AlertDialog.Builder(context).apply {
 
-        input = EditText(context)
-        input.run {
+        input = EditText(context).apply {
             inputType = InputType.TYPE_CLASS_TEXT
             filters = arrayOf<InputFilter>(InputFilter.LengthFilter(MAX_LENGTH))
             textSize = TEXT_SIZE

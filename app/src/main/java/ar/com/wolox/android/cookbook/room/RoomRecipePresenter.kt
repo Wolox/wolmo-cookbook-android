@@ -46,15 +46,10 @@ class RoomRecipePresenter @Inject constructor(
 
     fun onPositiveAddButtonClicked(newData: String) {
         Thread(Runnable {
-            val entity = RoomDataEntity()
             var index = db.RoomDataDao().getLastIndex()
             index = if (index <= 0) 1 else index + 1
 
-            entity.run {
-                id = index
-                user = userName!!
-                data = newData
-            }
+            val entity = RoomDataEntity(index, userName!!, newData)
 
             db.RoomDataDao().insertAll(entity)
             handler.post { view.insertEntity(entity) }
