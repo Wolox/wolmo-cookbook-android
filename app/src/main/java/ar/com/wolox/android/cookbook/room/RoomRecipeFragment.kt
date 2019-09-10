@@ -1,7 +1,6 @@
 package ar.com.wolox.android.cookbook.room
 
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.cookbook.R
@@ -10,9 +9,13 @@ import ar.com.wolox.android.cookbook.room.dialog.RoomInputDialog
 import ar.com.wolox.android.cookbook.room.dialog.RoomInputDialogListener
 import ar.com.wolox.android.cookbook.room.list.RoomListAdapter
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
+import ar.com.wolox.wolmo.core.util.ToastFactory
 import kotlinx.android.synthetic.main.fragment_room.*
+import javax.inject.Inject
 
-class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView {
+class RoomRecipeFragment @Inject constructor(
+    val toastFactory: ToastFactory
+) : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView {
 
     private lateinit var viewAdapter: RoomListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -21,7 +24,7 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
     override fun layout(): Int = R.layout.fragment_room
 
     override fun init() {
-        vSessionBtn.apply {
+        vSessionBtn.run {
             visibility = View.VISIBLE
             text = getString(R.string.room_login)
         }
@@ -42,14 +45,7 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         }
 
         vAddBtn.setOnClickListener {
-            RoomInputDialog().showDialog(requireContext(), R.string.room_input_title_add, object : RoomInputDialogListener {
-                override fun onPositiveButtonClicked(data: String) {
-                    presenter.onAddButtonClicked(data)
-                }
-
-                override fun onNegativeButtonClicked() {
-                }
-            }).show()
+            presenter.onAddButtonClicked()
         }
 
         vClearBtn.setOnClickListener {
@@ -57,13 +53,28 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         }
     }
 
+    override fun showAddInputDialog() {
+        RoomInputDialog().showDialog(requireContext(), R.string.room_input_title_add, object : RoomInputDialogListener {
+            override fun onPositiveButtonClicked(data: String) {
+                presenter.onPositiveAddButtonClicked(data)
+            }
+
+            override fun onNegativeButtonClicked() {
+            }
+        }).show()
+    }
+
     override fun updateEntities(entities: List<RoomDataEntity>) {
 
         entityItemList = mutableListOf()
         entityItemList.addAll(entities)
 
-        viewAdapter = RoomListAdapter(entityItemList, { item -> editClickListener(item) }, { item -> deleteClickListener(item) })
-        vRecyclerView.apply {
+        viewAdapter = RoomListAdapter(entityItemList, {
+            item -> presenter.onEditButtonClicked(item)
+        }, {
+            item -> presenter.onDeleteButtonClicked(item)
+        })
+        vRecyclerView.run {
             visibility = View.VISIBLE
             setHasFixedSize(true)
             layoutManager = viewManager
@@ -72,10 +83,10 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         viewAdapter.notifyDataSetChanged()
     }
 
-    private fun editClickListener(item: RoomDataEntity) {
+    override fun showEditInputDialog(entity: RoomDataEntity) {
         RoomInputDialog().showDialog(requireContext(), R.string.room_input_title_modify, object : RoomInputDialogListener {
             override fun onPositiveButtonClicked(data: String) {
-                presenter.onEditButtonClicked(item, data)
+                presenter.onPositiveEditButtonClicked(entity, data)
             }
 
             override fun onNegativeButtonClicked() {
@@ -83,11 +94,7 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         }).show()
     }
 
-    private fun deleteClickListener(item: RoomDataEntity) {
-        presenter.onDeleteButtonClicked(item)
-    }
-
-    override fun loginSuccess() {
+    override fun showLoginSuccess() {
         vSessionBtn.text = getString(R.string.room_logout)
         vUser.isEnabled = false
         vRecyclerView.visibility = View.VISIBLE
@@ -95,39 +102,39 @@ class RoomRecipeFragment : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView 
         vClearBtn.visibility = View.VISIBLE
     }
 
-    override fun loginError() {
-        Toast.makeText(context, getString(R.string.room_login_error), Toast.LENGTH_LONG).show()
+    override fun showLoginError() {
+        toastFactory.show(R.string.room_login_error)
     }
 
-    override fun logout() {
+    override fun doSessionLogout() {
         vSessionBtn.text = getString(R.string.room_login)
-        vUser.apply {
+        vUser.run {
             isEnabled = true
             setText("")
         }
         vRecyclerView.visibility = View.INVISIBLE
         vAddBtn.visibility = View.INVISIBLE
         vClearBtn.visibility = View.INVISIBLE
-        Toast.makeText(context, getString(R.string.room_logout), Toast.LENGTH_LONG).show()
+        toastFactory.show(R.string.room_logout)
     }
 
     override fun insertEntity(entity: RoomDataEntity) {
         viewAdapter.addData(entity)
-        Toast.makeText(context, getString(R.string.room_row_inserted), Toast.LENGTH_SHORT).show()
+        toastFactory.show(R.string.room_row_inserted)
     }
 
     override fun clearEntities() {
         viewAdapter.clearData()
-        Toast.makeText(context, getString(R.string.room_rows_deleted), Toast.LENGTH_SHORT).show()
+        toastFactory.show(R.string.room_rows_deleted)
     }
 
     override fun deleteEntity(entity: RoomDataEntity) {
         viewAdapter.deleteData(entity)
-        Toast.makeText(context, getString(R.string.room_row_deleted), Toast.LENGTH_SHORT).show()
+        toastFactory.show(R.string.room_row_deleted)
     }
 
     override fun modifyEntity(entity: RoomDataEntity) {
         viewAdapter.editData(entity)
-        Toast.makeText(context, getString(R.string.room_row_modified), Toast.LENGTH_SHORT).show()
+        toastFactory.show(R.string.room_row_modified)
     }
 }

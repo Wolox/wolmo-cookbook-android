@@ -15,8 +15,7 @@ class RoomInputDialog @Inject constructor() {
 
     fun showDialog(context: Context, title: Int, listener: RoomInputDialogListener) = AlertDialog.Builder(context).apply {
 
-        input = EditText(context)
-        input.apply {
+        input = EditText(context).apply {
             inputType = InputType.TYPE_CLASS_TEXT
             filters = arrayOf<InputFilter>(InputFilter.LengthFilter(MAX_LENGTH))
             textSize = TEXT_SIZE
@@ -24,21 +23,19 @@ class RoomInputDialog @Inject constructor() {
             isFocusableInTouchMode = true
         }
 
-        this.apply {
-            setTitle(context.getString(title))
-            setView(input)
+        setTitle(context.getString(title))
+        setView(input)
 
-            setPositiveButton(context.getString(R.string.room_input_positive)) { dialog, _ ->
-                hideSoftKeyboard(context)
-                dialog?.dismiss()
-                listener.onPositiveButtonClicked(input.text.toString())
-            }
+        setPositiveButton(context.getString(R.string.room_input_positive)) { dialog, _ ->
+            hideSoftKeyboard(context)
+            dialog?.dismiss()
+            listener.onPositiveButtonClicked(input.text.toString())
+        }
 
-            setNeutralButton(context.getString(R.string.room_input_negative)) { dialog, _ ->
-                hideSoftKeyboard(context)
-                dialog?.dismiss()
-                listener.onNegativeButtonClicked()
-            }
+        setNeutralButton(context.getString(R.string.room_input_negative)) { dialog, _ ->
+            hideSoftKeyboard(context)
+            dialog?.dismiss()
+            listener.onNegativeButtonClicked()
         }
     }
 
