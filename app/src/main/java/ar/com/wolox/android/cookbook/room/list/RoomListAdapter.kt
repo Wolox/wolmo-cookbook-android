@@ -41,7 +41,9 @@ class RoomListAdapter(
     }
 
     fun editData(dataEntity: RoomDataEntity) {
-        this.dataSet[dataEntity.id - 1] = dataEntity
+        val position = dataSet.indexOfFirst { it.id == dataEntity.id }
+        this.dataSet.removeAt(position)
+        this.dataSet.add(position, dataEntity)
         notifyDataSetChanged()
     }
 

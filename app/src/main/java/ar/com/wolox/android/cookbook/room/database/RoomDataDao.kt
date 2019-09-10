@@ -12,13 +12,13 @@ import androidx.room.Update
 @Dao
 interface RoomDataDao {
 
-    @Query("Select id from personal_notes order by id desc limit 1")
+    @Query("Select id from user_list order by id desc limit 1")
     fun getLastIndex(): Int
 
-    @Query("Select * from personal_notes")
+    @Query("Select * from user_list")
     fun getAll(): List<RoomDataEntity>
 
-    @Query("Select * from personal_notes where user like :user")
+    @Query("Select * from user_list where user like :user")
     fun findByUser(user: String): RoomDataEntity
 
     @Insert

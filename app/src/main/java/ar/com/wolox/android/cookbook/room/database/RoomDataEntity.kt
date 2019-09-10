@@ -8,11 +8,10 @@ import androidx.room.PrimaryKey
  * Entity represents data for a single table row, constructed using an annotated java data object.
  * Each entity is persisted into its own table.
  */
-@Entity(tableName = "personal_notes")
+@Entity(tableName = "user_list")
 class RoomDataEntity {
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
     var id: Int = -1
 
     @ColumnInfo(name = "user")
