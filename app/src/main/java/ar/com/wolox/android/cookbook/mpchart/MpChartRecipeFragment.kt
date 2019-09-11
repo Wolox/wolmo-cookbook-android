@@ -48,7 +48,7 @@ import javax.inject.Inject
  * description.text: text with a short description of the chart (in the right bottom of the screen)
  */
 class MpChartRecipeFragment @Inject constructor(
-        val toastFactory: ToastFactory
+    val toastFactory: ToastFactory
 ) : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
 
     private lateinit var progressDialog: ProgressDialog
@@ -62,11 +62,12 @@ class MpChartRecipeFragment @Inject constructor(
         super.setListeners()
 
         vChartList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                presenter.onSpinnerItemClicked(p2)
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, positionInt: Int,
+                                        positionLong: Long) {
+                presenter.onSpinnerItemClicked(positionInt)
             }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
+            override fun onNothingSelected(adapterView: AdapterView<*>?) {
             }
         }
     }
@@ -92,14 +93,14 @@ class MpChartRecipeFragment @Inject constructor(
             isDragEnabled = true
 
             setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
-                override fun onValueSelected(e: Entry?, h: Highlight?) {
-                    val entry = e as BarEntry
+                override fun onValueSelected(entry: Entry?, highlight: Highlight?) {
+                    val barEntry = entry as BarEntry
 
                     /**
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    toastFactory.show(getString(R.string.mp_chart_item_bar, entry.y, entry.data))
+                    toastFactory.show(getString(R.string.mp_chart_item_bar, barEntry.y, barEntry.data))
                 }
 
                 override fun onNothingSelected() {
@@ -149,15 +150,15 @@ class MpChartRecipeFragment @Inject constructor(
             animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
 
             setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
-                override fun onValueSelected(e: Entry?, h: Highlight?) {
-                    val entry = e as BubbleEntry
+                override fun onValueSelected(entry: Entry?, highlight: Highlight?) {
+                    val bubbleEntry = entry as BubbleEntry
 
                     /**
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    toastFactory.show(getString(R.string.mp_chart_item_bubble, entry.x, entry.y,
-                            entry.size, entry.data))
+                    toastFactory.show(getString(R.string.mp_chart_item_bubble, bubbleEntry.x,
+                            bubbleEntry.y, bubbleEntry.size, bubbleEntry.data))
                 }
 
                 override fun onNothingSelected() {
@@ -208,14 +209,14 @@ class MpChartRecipeFragment @Inject constructor(
             axisLeft.mAxisMinimum = 0f
 
             setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
-                override fun onValueSelected(e: Entry?, h: Highlight?) {
-                    val entry = e as BarEntry
+                override fun onValueSelected(entry: Entry?, highlight: Highlight?) {
+                    val barEntry = entry as BarEntry
 
                     /**
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    toastFactory.show(getString(R.string.mp_chart_item_bar, entry.y, entry.data))
+                    toastFactory.show(getString(R.string.mp_chart_item_bar, barEntry.y, barEntry.data))
                 }
 
                 override fun onNothingSelected() {
@@ -266,9 +267,9 @@ class MpChartRecipeFragment @Inject constructor(
             description.text = getString(R.string.mp_chart_pie)
 
             setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
-                override fun onValueSelected(e: Entry?, h: Highlight?) {
-                    val entry = e as PieEntry
-                    toastFactory.show(getString(R.string.mp_chart_item_pie, entry.label, entry.value))
+                override fun onValueSelected(entry: Entry?, highlight: Highlight?) {
+                    val pieEntry = entry as PieEntry
+                    toastFactory.show(getString(R.string.mp_chart_item_pie, pieEntry.label, pieEntry.value))
                 }
 
                 override fun onNothingSelected() {
@@ -303,14 +304,14 @@ class MpChartRecipeFragment @Inject constructor(
             description.text = getString(R.string.mp_chart_scatter)
 
             setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
-                override fun onValueSelected(e: Entry?, h: Highlight?) {
-                    val entry = e as BarEntry
+                override fun onValueSelected(entry: Entry?, highlight: Highlight?) {
+                    val barEntry = entry as BarEntry
 
                     /**
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    toastFactory.show(getString(R.string.mp_chart_item_bar, entry.y, entry.data))
+                    toastFactory.show(getString(R.string.mp_chart_item_bar, barEntry.y, barEntry.data))
                 }
 
                 override fun onNothingSelected() {
