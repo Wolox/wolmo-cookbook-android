@@ -3,9 +3,9 @@ package ar.com.wolox.android.cookbook.mpchart
 import android.app.ProgressDialog
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Toast
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
+import ar.com.wolox.wolmo.core.util.ToastFactory
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarEntry
@@ -22,6 +22,7 @@ import com.github.mikephil.charting.data.ScatterData
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import kotlinx.android.synthetic.main.fragment_mp_chart.*
+import javax.inject.Inject
 
 /**
  * Note: Many of the chart have the same parameters of configuration, specific parameters are defined
@@ -46,7 +47,9 @@ import kotlinx.android.synthetic.main.fragment_mp_chart.*
  *
  * description.text: text with a short description of the chart (in the right bottom of the screen)
  */
-class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
+class MpChartRecipeFragment @Inject constructor(
+        val toastFactory: ToastFactory
+) : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
 
     private lateinit var progressDialog: ProgressDialog
 
@@ -96,8 +99,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    Toast.makeText(context, getString(R.string.mp_chart_item_bar, entry.y, entry.data),
-                            Toast.LENGTH_SHORT).show()
+                    toastFactory.show(getString(R.string.mp_chart_item_bar, entry.y, entry.data))
                 }
 
                 override fun onNothingSelected() {
@@ -154,8 +156,8 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    Toast.makeText(context, getString(R.string.mp_chart_item_bubble, entry.x, entry.y,
-                            entry.size, entry.data), Toast.LENGTH_SHORT).show()
+                    toastFactory.show(getString(R.string.mp_chart_item_bubble, entry.x, entry.y,
+                            entry.size, entry.data))
                 }
 
                 override fun onNothingSelected() {
@@ -213,8 +215,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    Toast.makeText(context, getString(R.string.mp_chart_item_bar, entry.y, entry.data),
-                            Toast.LENGTH_SHORT).show()
+                    toastFactory.show(getString(R.string.mp_chart_item_bar, entry.y, entry.data))
                 }
 
                 override fun onNothingSelected() {
@@ -267,8 +268,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
             setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
                 override fun onValueSelected(e: Entry?, h: Highlight?) {
                     val entry = e as PieEntry
-                    Toast.makeText(context, getString(R.string.mp_chart_item_pie, entry.label, entry.value),
-                            Toast.LENGTH_SHORT).show()
+                    toastFactory.show(getString(R.string.mp_chart_item_pie, entry.label, entry.value))
                 }
 
                 override fun onNothingSelected() {
@@ -310,8 +310,7 @@ class MpChartRecipeFragment : WolmoFragment<MpChartRecipePresenter>(), MpChartRe
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    Toast.makeText(context, getString(R.string.mp_chart_item_bar, entry.y, entry.data),
-                            Toast.LENGTH_SHORT).show()
+                    toastFactory.show(getString(R.string.mp_chart_item_bar, entry.y, entry.data))
                 }
 
                 override fun onNothingSelected() {

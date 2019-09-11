@@ -93,16 +93,16 @@ class MpChartRecipePresenter @Inject constructor(
 
     fun onSpinnerItemClicked(item: Int) {
         when (item) {
-            SpinnerClickItem.CLEAR.value -> clearScreen()
-            SpinnerClickItem.BAR_CHART.value -> onBarChartSelected()
-            SpinnerClickItem.BUBBLE_CHART.value -> onBubbleChartSelected()
-            SpinnerClickItem.COMBINED_CHART.value -> onCombinedChartSelected()
-            SpinnerClickItem.HORIZONTAL_BAR_CHART.value -> onHorizontalBarChartSelected()
-            SpinnerClickItem.LINE_CHART.value -> onLineChartSelected()
-            SpinnerClickItem.PIE_CHART.value -> onPieChartSelected()
-            SpinnerClickItem.RADAR_CHART.value -> onRadarChartSelected()
-            SpinnerClickItem.CANDLE_STICK_CHART.value -> onCandleStickChartSelected()
-            SpinnerClickItem.SCATTER_CHART.value -> onScatterChartSelected()
+            SpinnerClickItem.CLEAR.ordinal -> clearScreen()
+            SpinnerClickItem.BAR_CHART.ordinal -> onBarChartSelected()
+            SpinnerClickItem.BUBBLE_CHART.ordinal -> onBubbleChartSelected()
+            SpinnerClickItem.COMBINED_CHART.ordinal -> onCombinedChartSelected()
+            SpinnerClickItem.HORIZONTAL_BAR_CHART.ordinal -> onHorizontalBarChartSelected()
+            SpinnerClickItem.LINE_CHART.ordinal -> onLineChartSelected()
+            SpinnerClickItem.PIE_CHART.ordinal -> onPieChartSelected()
+            SpinnerClickItem.RADAR_CHART.ordinal -> onRadarChartSelected()
+            SpinnerClickItem.CANDLE_STICK_CHART.ordinal -> onCandleStickChartSelected()
+            SpinnerClickItem.SCATTER_CHART.ordinal -> onScatterChartSelected()
             else -> clearScreen()
         }
     }
