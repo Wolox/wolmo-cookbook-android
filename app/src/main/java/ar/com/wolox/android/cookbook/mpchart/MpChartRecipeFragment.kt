@@ -48,7 +48,7 @@ import javax.inject.Inject
  * description.text: text with a short description of the chart (in the right bottom of the screen)
  */
 class MpChartRecipeFragment @Inject constructor(
-        val toastFactory: ToastFactory
+    val toastFactory: ToastFactory
 ) : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
 
     private lateinit var progressDialog: ProgressDialog
@@ -63,10 +63,10 @@ class MpChartRecipeFragment @Inject constructor(
 
         vChartList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                    adapterView: AdapterView<*>?,
-                    view: View?,
-                    positionInt: Int,
-                    positionLong: Long
+                adapterView: AdapterView<*>?,
+                view: View?,
+                positionInt: Int,
+                positionLong: Long
             ) {
                 presenter.onSpinnerItemClicked(positionInt)
             }
