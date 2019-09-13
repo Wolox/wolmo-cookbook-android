@@ -21,11 +21,11 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
 
     override fun setListeners() {
         vDefaultLoginBtn.setOnClickListener {
-            presenter.onDefaultButtonClicked()
+            presenter.onTwitterLoginButtonClicked()
         }
 
         vCustomLoginBtn.setOnClickListener {
-            presenter.onCustomButtonClicked()
+            presenter.onLoginWithTwitterApiButtonClicked()
         }
 
         vGetProfileBtn.setOnClickListener {

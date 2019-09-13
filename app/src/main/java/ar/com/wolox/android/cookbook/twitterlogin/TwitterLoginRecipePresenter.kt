@@ -49,7 +49,10 @@ class TwitterLoginRecipePresenter @Inject constructor(
         }))
     }
 
-    fun onDefaultButtonClicked() {
+    /**
+     * Login button provided by twitter sdk
+     */
+    fun onTwitterLoginButtonClicked() {
         if (isNetworkAvailable()) {
             getTwitterSession()?.let { fetchTwitterEmail(it) } ?: run { defaultTwitterLogin() }
         } else {
@@ -61,7 +64,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
      * Custom login button don't use the interface provided by twitter (default login button),
      * instead, it use API directly.
      */
-    fun onCustomButtonClicked() {
+    fun onLoginWithTwitterApiButtonClicked() {
 
         if (isNetworkAvailable()) {
             view.requireActivity()?.let { it ->
