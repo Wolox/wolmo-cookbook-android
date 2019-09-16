@@ -62,15 +62,15 @@ class TwitterLoginRecipePresenter @Inject constructor(
     }
 
     /**
-     * Custom login button don't use the interface provided by twitter (default login button),
-     * instead, it use API directly.
+     *Other way to login with Twitter is work directly with API and avoid te button provided by the
+     * sdk. Both ways ends in the same point.
      */
     fun onLoginWithTwitterApiButtonClicked() {
 
         if (isNetworkAvailable()) {
             view.requireActivity()?.let { it ->
-                getTwitterSession()?.let { gamma ->
-                    fetchTwitterEmail(gamma)
+                getTwitterSession()?.let { twitterSession ->
+                    fetchTwitterEmail(twitterSession)
                 } ?: run {
                     twitterAdapter.authorizeClient(it, object : TwitterLoginAuthListener {
                         override fun onAuthSuccess(result: TwitterSession) {
