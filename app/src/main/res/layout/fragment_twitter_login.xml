@@ -8,13 +8,13 @@
 
     <!-- default twitter login button -->
     <com.twitter.sdk.android.core.identity.TwitterLoginButton
-        android:id="@+id/vDefaultLoginBtn"
+        android:id="@+id/vTwitterLoginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <!-- custom login button -->
     <Button
-        android:id="@+id/vCustomLoginBtn"
+        android:id="@+id/vApiTwitterLoginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/twitter_margin_low"

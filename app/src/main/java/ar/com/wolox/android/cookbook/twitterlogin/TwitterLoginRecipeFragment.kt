@@ -20,11 +20,11 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
     }
 
     override fun setListeners() {
-        vDefaultLoginBtn.setOnClickListener {
+        vTwitterLoginBtn.setOnClickListener {
             presenter.onTwitterLoginButtonClicked()
         }
 
-        vCustomLoginBtn.setOnClickListener {
+        vApiTwitterLoginBtn.setOnClickListener {
             presenter.onLoginWithTwitterApiButtonClicked()
         }
 
@@ -42,12 +42,12 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
     }
 
     override fun setLoginCallback(callback: Callback<TwitterSession>) {
-        vDefaultLoginBtn.callback = callback
+        vTwitterLoginBtn.callback = callback
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        vDefaultLoginBtn.onActivityResult(requestCode, resultCode, data)
+        vTwitterLoginBtn.onActivityResult(requestCode, resultCode, data)
         presenter.onActivityResultFinished(requestCode, requestCode, data)
     }
 
@@ -80,7 +80,7 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
     }
 
     override fun toggleLoginButtonState(status: Boolean) {
-        vDefaultLoginBtn.isClickable = status
+        vTwitterLoginBtn.isClickable = status
     }
 
     override fun showLoginData(response: YoutubeEmailResponse) {
