@@ -4,6 +4,7 @@ import ar.com.wolox.android.cookbook.CookbookApplication
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.navigation.screens.Navigation1Screen
 import ar.com.wolox.android.cookbook.navigation.screens.NavigationActivityScreen
+import ar.com.wolox.android.cookbook.navigation.screens.NavigationAnimationTransitionProvider
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
 import me.aartikov.alligator.NavigationContext
 import me.aartikov.alligator.annotations.RegisterScreen
@@ -24,6 +25,7 @@ class NavigationActivity : WolmoActivity() {
         super.onResumeFragments()
         val navigationContext = NavigationContext.Builder(this)
                 .containerId(R.id.vActivityBaseContent)
+                .transitionAnimationProvider(NavigationAnimationTransitionProvider())
                 .build()
         navigationContextBinder.bind(navigationContext)
     }
