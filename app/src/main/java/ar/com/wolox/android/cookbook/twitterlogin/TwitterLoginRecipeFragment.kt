@@ -5,6 +5,7 @@ import android.net.Uri
 import android.view.View
 import android.widget.Toast
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.twitterlogin.model.TypeErrorMessage
 import ar.com.wolox.android.cookbook.twitterlogin.model.YoutubeEmailResponse
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import com.twitter.sdk.android.core.Callback
@@ -55,28 +56,15 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
         vDetails.text = message
     }
 
-    override fun showAuthFail() {
-        vDetails.text = getString(R.string.twitter_auth_error)
-    }
-
-    override fun showEmailFail() {
-        vDetails.text = getString(R.string.twitter_email_error)
-    }
-
-    override fun showPictureFail() {
-        vDetails.text = getString(R.string.twitter_picture_error)
-    }
-
-    override fun showCredentialsFail() {
-        vDetails.text = getString(R.string.twitter_credentials_error)
-    }
-
-    override fun showUnAuthError() {
-        vDetails.text = getString(R.string.twitter_un_auth_error)
-    }
-
-    override fun showInternalError() {
-        vDetails.text = getString(R.string.twitter_internal_error)
+    override fun showApiError(type: TypeErrorMessage) {
+        when (type) {
+            TypeErrorMessage.AUTH -> { vDetails.text = getString(R.string.twitter_auth_error) }
+            TypeErrorMessage.EMAIL -> { vDetails.text = getString(R.string.twitter_email_error) }
+            TypeErrorMessage.PICTURE -> { vDetails.text = getString(R.string.twitter_picture_error) }
+            TypeErrorMessage.CREDENTIALS -> { vDetails.text = getString(R.string.twitter_credentials_error) }
+            TypeErrorMessage.UN_AUTH -> { vDetails.text = getString(R.string.twitter_un_auth_error) }
+            else -> { vDetails.text = getString(R.string.twitter_internal_error) }
+        }
     }
 
     override fun toggleLoginButtonState(status: Boolean) {
