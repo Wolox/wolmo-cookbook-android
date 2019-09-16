@@ -170,6 +170,10 @@ dependencies {
 
     // Facebook Login
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
+
+    // Alligator
+    implementation 'com.github.aartikov.Alligator:alligator:3.0.0'
+    kapt 'com.github.aartikov.Alligator:alligator-compiler:3.0.0'
 }
 
 dependencies {

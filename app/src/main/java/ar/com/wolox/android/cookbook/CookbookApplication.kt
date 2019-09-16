@@ -12,6 +12,11 @@ import com.google.gson.FieldNamingPolicy
 import com.readystatesoftware.chuck.ChuckInterceptor
 import com.squareup.leakcanary.LeakCanary
 import dagger.android.AndroidInjector
+import me.aartikov.alligator.AndroidNavigator
+import me.aartikov.alligator.NavigationContextBinder
+import me.aartikov.alligator.Navigator
+import me.aartikov.alligator.ScreenResolver
+import me.aartikov.alligator.navigationfactories.GeneratedNavigationFactory
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
 import org.koin.android.ext.koin.androidContext
@@ -32,6 +37,7 @@ class CookbookApplication : WolmoApplication() {
         // Initialize Application stuff here
         initializeLeakCanary()
         initializeFresco()
+        initializeAlligator()
 
         startKoin {
             androidContext(this@CookbookApplication)
@@ -41,6 +47,10 @@ class CookbookApplication : WolmoApplication() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notificationChannelFactory.init()
         }
+    }
+
+    private fun initializeAlligator() {
+        androidNavigator = AndroidNavigator(GeneratedNavigationFactory())
     }
 
     private fun initializeLeakCanary() {
@@ -83,9 +93,15 @@ class CookbookApplication : WolmoApplication() {
         return HttpLoggingInterceptor().apply { this.level = newLevel }
     }
 
-    private companion object {
+    companion object {
 
         const val SHARED_PREFERENCES_NAME = "wolmo-cookbook-sp"
         const val PLACEHOLDER_URL = "https://jsonplaceholder.typicode.com"
+
+        private lateinit var androidNavigator: AndroidNavigator
+
+        fun getNavigator(): Navigator = androidNavigator
+        fun getNavigationContextBinder(): NavigationContextBinder = androidNavigator
+        fun getScreenResolver(): ScreenResolver = androidNavigator.screenResolver
     }
 }

@@ -1,30 +1,35 @@
 package ar.com.wolox.android.cookbook.navigation
 
-import androidx.annotation.CallSuper
-import androidx.fragment.app.Fragment
+import ar.com.wolox.android.cookbook.CookbookApplication
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.navigation.screens.Navigation1Screen
+import ar.com.wolox.android.cookbook.navigation.screens.NavigationActivityScreen
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
-import ar.com.wolox.wolmo.core.fragment.IWolmoFragment
+import me.aartikov.alligator.NavigationContext
+import me.aartikov.alligator.annotations.RegisterScreen
 
+@RegisterScreen(NavigationActivityScreen::class)
 class NavigationActivity : WolmoActivity() {
 
-    override fun layout() = R.layout.activity_base_navigation
+    private val navigationContextBinder = CookbookApplication.getNavigationContextBinder()
+    private val navigator = CookbookApplication.getNavigator()
 
-    override fun init() {}
+    override fun layout() = R.layout.activity_base
 
-    @CallSuper
-    override fun onBackPressed() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.vActivityBaseContent)!!
-        val fragments = navHostFragment.childFragmentManager.fragments
-        val var2 = fragments.iterator()
+    override fun init() {
+        navigator.reset(Navigation1Screen())
+    }
 
-        while (var2.hasNext()) {
-            val childFragment = var2.next() as Fragment
-            if (childFragment is IWolmoFragment && childFragment.isVisible && (childFragment as IWolmoFragment).onBackPressed()) {
-                return
-            }
-        }
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        val navigationContext = NavigationContext.Builder(this)
+                .containerId(R.id.vActivityBaseContent)
+                .build()
+        navigationContextBinder.bind(navigationContext)
+    }
 
-        super.onBackPressed()
+    override fun onPause() {
+        super.onPause()
+        navigationContextBinder.unbind(this)
     }
 }
