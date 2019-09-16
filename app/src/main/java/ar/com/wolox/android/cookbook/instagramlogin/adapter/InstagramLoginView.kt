@@ -34,9 +34,9 @@ class InstagramLoginView @Inject constructor() {
                         val uri = Uri.parse(it)
                         token = uri.encodedFragment
 
-                        token?.let { lambda ->
+                        token?.let { tokenData ->
 
-                            val accessToken = lambda.substring(lambda.lastIndexOf("=") + 1)
+                            val accessToken = tokenData.substring(tokenData.lastIndexOf("=") + 1)
                             authComplete = true
                             listener.onCodeReceived(accessToken)
                             dismiss()

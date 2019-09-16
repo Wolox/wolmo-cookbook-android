@@ -9,6 +9,7 @@ import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.instagramlogin.adapter.InstagramLoginAuthListener
 import ar.com.wolox.android.cookbook.instagramlogin.adapter.InstagramLoginView
 import ar.com.wolox.android.cookbook.instagramlogin.model.InstagramDataItem
+import ar.com.wolox.android.cookbook.instagramlogin.model.TypeErrorMessage
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_instagram_login.*
 
@@ -49,14 +50,6 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
         }
     }
 
-    override fun showLoginError() {
-        Toast.makeText(context, getString(R.string.instagram_error_login), Toast.LENGTH_LONG).show()
-    }
-
-    override fun showLogoutError() {
-        Toast.makeText(context, getString(R.string.instagram_error_cookies), Toast.LENGTH_LONG).show()
-    }
-
     override fun showLoginSuccessMsg() {
         Toast.makeText(context, getString(R.string.instagram_login_success), Toast.LENGTH_SHORT).show()
     }
@@ -68,10 +61,6 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
     override fun deleteListData() {
         pictureList = mutableListOf()
         vRecyclerView.visibility = View.INVISIBLE
-    }
-
-    override fun showNetworkUnavailableError() {
-        Toast.makeText(context, getString(R.string.instagram_error_network_unavailable), Toast.LENGTH_LONG).show()
     }
 
     override fun showWebView(url: String) {
@@ -104,15 +93,29 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
         viewAdapter.notifyDataSetChanged()
     }
 
-    override fun showErrorInService() {
-        Toast.makeText(context, getString(R.string.instagram_error_api), Toast.LENGTH_LONG).show()
-    }
-
     override fun showFailInService(error: String) {
         Toast.makeText(context, error, Toast.LENGTH_LONG).show()
     }
 
-    override fun showFetchDataError() {
-        Toast.makeText(context, getString(R.string.instagram_error_fetch_data), Toast.LENGTH_LONG).show()
+    override fun showError(type: TypeErrorMessage) {
+        val message: String = when (type) {
+            TypeErrorMessage.LOGIN -> {
+                getString(R.string.instagram_error_login)
+            }
+            TypeErrorMessage.LOGOUT -> {
+                getString(R.string.instagram_error_cookies)
+            }
+            TypeErrorMessage.NETWORK_UNAVAILABLE -> {
+                getString(R.string.instagram_error_network_unavailable)
+            }
+            TypeErrorMessage.SERVICE -> {
+                getString(R.string.instagram_error_api)
+            }
+            TypeErrorMessage.DATA -> {
+                getString(R.string.instagram_error_fetch_data)
+            }
+        }
+
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 }

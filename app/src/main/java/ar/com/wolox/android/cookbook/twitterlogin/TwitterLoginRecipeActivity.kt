@@ -11,8 +11,8 @@ import ar.com.wolox.wolmo.core.activity.WolmoActivity
  * "Callback URL" (complete with "twittersdk://", "Terms of service URL" and "Privacy policy URL"
  * 3. App permissions: Enable "Request email address"
  * 4. Save "API Key" and "API Secret Key" from keys and tokens view
- * 5. Add dependencies (see "Notes" at bottom)
- * 6. Initialize TwitterApp in application (see "Notes" at bottom)
+ * 5. Add dependencies
+ * 6. Initialize TwitterApp in application
  */
 class TwitterLoginRecipeActivity : WolmoActivity() {
 
@@ -27,18 +27,3 @@ class TwitterLoginRecipeActivity : WolmoActivity() {
                 ?.onActivityResult(requestCode, resultCode, data)
     }
 }
-
-/**
- * Notes:
- * *) In manifest.xml add dependencies:
- * implementation 'com.twitter.sdk.android:twitter-core:3.1.1'
- * implementation 'com.twitter.sdk.android:tweet-ui:3.1.1'
- *
- * *) In WolmoApplication, initialize Twitter App:
- * val config = TwitterConfig.Builder(this)
- *              .logger(DefaultLogger(Log.DEBUG)) // enable logging when app is in debug mode
- *              .twitterAuthConfig(TwitterAuthConfig(API_KEY, API_SECRET_KEY))
- *              .debug(true) // enable debug mode
- *              .build()
- *              Twitter.initialize(config)
- **/

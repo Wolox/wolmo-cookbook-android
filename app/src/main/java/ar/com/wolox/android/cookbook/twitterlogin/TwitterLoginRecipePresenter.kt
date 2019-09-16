@@ -10,6 +10,7 @@ import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginAuthListen
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginCredentialsListener
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginEmailListener
 import ar.com.wolox.android.cookbook.twitterlogin.adapter.TwitterLoginPictureListener
+import ar.com.wolox.android.cookbook.twitterlogin.model.TypeErrorMessage
 import ar.com.wolox.android.cookbook.twitterlogin.model.YoutubeEmailResponse
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import com.twitter.sdk.android.core.TwitterCore
@@ -40,16 +41,19 @@ class TwitterLoginRecipePresenter @Inject constructor(
             }
 
             override fun onAuthError(message: String?) {
-                message?.let { view.showError(it) } ?: run { view.showAuthFail() }
+                message?.let { view.showError(it) } ?: run { view.showApiError(TypeErrorMessage.AUTH) }
             }
 
             override fun onAuthFail() {
-                view.showAuthFail()
+                view.showApiError(TypeErrorMessage.AUTH)
             }
         }))
     }
 
-    fun onDefaultButtonClicked() {
+    /**
+     * Login button provided by twitter sdk
+     */
+    fun onTwitterLoginButtonClicked() {
         if (isNetworkAvailable()) {
             getTwitterSession()?.let { fetchTwitterEmail(it) } ?: run { defaultTwitterLogin() }
         } else {
@@ -58,15 +62,15 @@ class TwitterLoginRecipePresenter @Inject constructor(
     }
 
     /**
-     * Custom login button don't use the interface provided by twitter (default login button),
-     * instead, it use API directly.
+     *Other way to login with Twitter is work directly with API and avoid te button provided by the
+     * sdk. Both ways ends in the same point.
      */
-    fun onCustomButtonClicked() {
+    fun onLoginWithTwitterApiButtonClicked() {
 
         if (isNetworkAvailable()) {
             view.requireActivity()?.let { it ->
-                getTwitterSession()?.let { gamma ->
-                    fetchTwitterEmail(gamma)
+                getTwitterSession()?.let { twitterSession ->
+                    fetchTwitterEmail(twitterSession)
                 } ?: run {
                     twitterAdapter.authorizeClient(it, object : TwitterLoginAuthListener {
                         override fun onAuthSuccess(result: TwitterSession) {
@@ -74,11 +78,11 @@ class TwitterLoginRecipePresenter @Inject constructor(
                         }
 
                         override fun onAuthError(message: String?) {
-                            message?.let { lambda -> view.showError(lambda) } ?: run { view.showAuthFail() }
+                            message?.let { lambda -> view.showError(lambda) } ?: run { view.showApiError(TypeErrorMessage.AUTH) }
                         }
 
                         override fun onAuthFail() {
-                            view.showAuthFail()
+                            view.showApiError(TypeErrorMessage.AUTH)
                         }
                     })
                 }
@@ -106,11 +110,11 @@ class TwitterLoginRecipePresenter @Inject constructor(
                     }
 
                     override fun onUserFail() {
-                        view.showPictureFail()
+                        view.showApiError(TypeErrorMessage.PICTURE)
                     }
                 })
             } ?: run {
-                view.showUnAuthError()
+                view.showApiError(TypeErrorMessage.UN_AUTH)
             }
         } else {
             view.showNetworkUnavailableError()
@@ -127,7 +131,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
                     }
 
                     override fun onClearCredentialsError() {
-                        view.showCredentialsFail()
+                        view.showApiError(TypeErrorMessage.CREDENTIALS)
                     }
                 })
             }
@@ -165,11 +169,11 @@ class TwitterLoginRecipePresenter @Inject constructor(
                 }
 
                 override fun onEmailFailure() {
-                    view.showEmailFail()
+                    view.showApiError(TypeErrorMessage.EMAIL)
                 }
             })
         } ?: run {
-            view.showInternalError()
+            view.showApiError(TypeErrorMessage.INTERNAL)
         }
     }
 

@@ -1,6 +1,7 @@
 package ar.com.wolox.android.cookbook.instagramlogin
 
 import ar.com.wolox.android.cookbook.instagramlogin.model.InstagramDataItem
+import ar.com.wolox.android.cookbook.instagramlogin.model.TypeErrorMessage
 
 interface InstagramLoginRecipeView {
 
@@ -8,17 +9,11 @@ interface InstagramLoginRecipeView {
 
     fun enableLogoutBtn()
 
-    fun showLoginError()
-
-    fun showLogoutError()
-
     fun showLoginSuccessMsg()
 
     fun showLogoutSuccessMsg()
 
     fun deleteListData()
-
-    fun showNetworkUnavailableError()
 
     fun showWebView(url: String)
 
@@ -26,9 +21,7 @@ interface InstagramLoginRecipeView {
 
     fun showIGData(data: List<InstagramDataItem>)
 
-    fun showErrorInService()
-
     fun showFailInService(error: String)
 
-    fun showFetchDataError()
+    fun showError(type: TypeErrorMessage)
 }
