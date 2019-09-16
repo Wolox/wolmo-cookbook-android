@@ -52,7 +52,7 @@ class CookbookApplication : WolmoApplication() {
                 .logger(DefaultLogger(Log.DEBUG)) // enable logging when app is in debug mode
                 .twitterAuthConfig(TwitterAuthConfig(this.resources.getString(R.string.twitter_consumer_key),
                         this.resources.getString(R.string.twitter_consumer_secret)))
-                .debug(true) // enable debug mode
+                .debug(BuildConfig.DEBUG) // enable debug mode
                 .build()
         Twitter.initialize(config)
     }
