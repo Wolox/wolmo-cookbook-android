@@ -1,6 +1,7 @@
 package ar.com.wolox.android.cookbook.twitterlogin
 
 import androidx.fragment.app.FragmentActivity
+import ar.com.wolox.android.cookbook.twitterlogin.model.TypeErrorMessage
 import ar.com.wolox.android.cookbook.twitterlogin.model.YoutubeEmailResponse
 import com.twitter.sdk.android.core.TwitterSession
 import com.twitter.sdk.android.core.models.User
@@ -23,15 +24,5 @@ interface TwitterLoginRecipeView {
 
     fun showError(message: String)
 
-    fun showAuthFail()
-
-    fun showEmailFail()
-
-    fun showPictureFail()
-
-    fun showCredentialsFail()
-
-    fun showUnAuthError()
-
-    fun showInternalError()
+    fun showApiError(type: TypeErrorMessage)
 }
