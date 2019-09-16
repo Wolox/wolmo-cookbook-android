@@ -45,7 +45,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/twitter_margin_high" />
 
-    <!-- text view to show user details -->
+    <!-- text view to log events occurs and data received -->
     <TextView
         android:id="@+id/vDetails"
         android:layout_width="wrap_content"
