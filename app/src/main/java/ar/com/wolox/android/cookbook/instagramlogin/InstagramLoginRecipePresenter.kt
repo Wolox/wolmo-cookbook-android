@@ -6,6 +6,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.Uri
 import ar.com.wolox.android.cookbook.instagramlogin.model.InstagramDataItem
+import ar.com.wolox.android.cookbook.instagramlogin.model.TypeErrorMessage
 import ar.com.wolox.android.cookbook.instagramlogin.proxy.InstagramProxy
 import ar.com.wolox.android.cookbook.instagramlogin.proxy.InstagramProxyListener
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
@@ -46,7 +47,7 @@ class InstagramLoginRecipePresenter @Inject constructor(
                 view.showWebView(uriBuilder.toString())
             }
         } else {
-            view.showNetworkUnavailableError()
+            view.showError(TypeErrorMessage.NETWORK_UNAVAILABLE)
         }
     }
 
@@ -61,7 +62,7 @@ class InstagramLoginRecipePresenter @Inject constructor(
         } else {
             view.run {
                 enableLogoutBtn()
-                showLogoutError()
+                showError(TypeErrorMessage.LOGOUT)
             }
         }
     }
@@ -78,7 +79,7 @@ class InstagramLoginRecipePresenter @Inject constructor(
         accessToken = null
         view.run {
             enableLoginBtn()
-            showLoginError()
+            showError(TypeErrorMessage.LOGIN)
         }
     }
 
@@ -86,7 +87,7 @@ class InstagramLoginRecipePresenter @Inject constructor(
         accessToken = null
         view.run {
             enableLoginBtn()
-            showLoginError()
+            showError(TypeErrorMessage.LOGIN)
         }
     }
 
@@ -99,22 +100,22 @@ class InstagramLoginRecipePresenter @Inject constructor(
                     }
 
                     override fun onError() {
-                        view.showErrorInService()
+                        view.showError(TypeErrorMessage.SERVICE)
                     }
 
                     override fun onFail(message: String?) {
                         message?.let { lambda ->
                             view.showFailInService(lambda)
                         } ?: run {
-                            view.showErrorInService()
+                            view.showError(TypeErrorMessage.SERVICE)
                         }
                     }
                 })
             } ?: run {
-                view.showFetchDataError()
+                view.showError(TypeErrorMessage.DATA)
             }
         } else {
-            view.showNetworkUnavailableError()
+            view.showError(TypeErrorMessage.NETWORK_UNAVAILABLE)
         }
     }
 
