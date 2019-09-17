@@ -2,6 +2,7 @@ package ar.com.wolox.android.cookbook.navigation
 
 import ar.com.wolox.android.cookbook.CookbookApplication
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.navigation.screens.Navigation1Screen
 import ar.com.wolox.android.cookbook.navigation.screens.Navigation3Screen
 import ar.com.wolox.android.cookbook.navigation.screens.Navigation4Screen
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
@@ -26,7 +27,7 @@ class Navigation3Fragment : WolmoFragment<BasePresenter<Any>>() {
 
     override fun onBackPressed(): Boolean {
         // Going back to Navigation1Fragment and popup backstack
-        navigator.goBack()
+        navigator.goBackTo(Navigation1Screen::class.java)
         return true
     }
 }
