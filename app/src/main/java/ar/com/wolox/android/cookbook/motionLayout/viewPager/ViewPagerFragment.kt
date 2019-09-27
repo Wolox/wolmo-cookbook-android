@@ -15,10 +15,8 @@ import kotlinx.android.synthetic.main.motionlayout_viewpager.*
 import javax.inject.Inject
 
 class ViewPagerFragment @Inject constructor() : WolmoFragment<MotionPresenter>() {
-    @Inject
-    lateinit var page2Fragment: Page2Fragment
-    @Inject
-    lateinit var page1Fragment: Page1Fragment
+    @Inject    lateinit var page2Fragment: Page2Fragment
+    @Inject    lateinit var page1Fragment: Page1Fragment
     private lateinit var fragmentPagerAdapter: SimpleFragmentPagerAdapter
     private var numberOfPages: Int = 0
 
