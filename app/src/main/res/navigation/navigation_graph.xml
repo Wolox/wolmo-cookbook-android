@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation1Fragment"
-        android:name="ar.com.wolox.android.cookbook.navigation.Navigation1Fragment"
+        android:name="ar.com.wolox.android.cookbook.navigation.one.Navigation1Fragment"
         android:label="NavigationAFragment"
         tools:layout="@layout/fragment_navigation1">
         <action

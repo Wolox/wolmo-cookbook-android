@@ -3,6 +3,7 @@ package ar.com.wolox.android.cookbook.common.di
 import android.app.Application
 import ar.com.wolox.android.cookbook.CookbookApplication
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeModule
+import ar.com.wolox.android.cookbook.navigation.NavigationModule
 import ar.com.wolox.android.cookbook.navigation.NavigationRecipeModule
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeModule
 import ar.com.wolox.android.cookbook.notifications.di.NotificationRecipeModule
@@ -22,7 +23,8 @@ import javax.inject.Named
         modules = [
             AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class,
             AppModule::class, NavigationRecipeModule::class, DataSyncRecipeModule::class,
-            RxJava2Module::class, TestLoginRecipeModule::class, NotificationRecipeModule::class
+            RxJava2Module::class, TestLoginRecipeModule::class, NotificationRecipeModule::class,
+            NavigationModule::class
         ]
 )
 interface AppComponent : AndroidInjector<CookbookApplication> {

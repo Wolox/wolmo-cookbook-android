@@ -1,30 +1,31 @@
 package ar.com.wolox.android.cookbook.navigation
 
-import androidx.annotation.CallSuper
-import androidx.fragment.app.Fragment
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.navigation.one.Navigation1Fragment
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
-import ar.com.wolox.wolmo.core.fragment.IWolmoFragment
+import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.android.support.SupportAppNavigator
+import javax.inject.Inject
 
 class NavigationActivity : WolmoActivity() {
 
-    override fun layout() = R.layout.activity_base_navigation
+    @Inject lateinit var navigatorHolder: NavigatorHolder
 
-    override fun init() {}
+    private val navigator = SupportAppNavigator(this, R.id.vActivityBaseContent)
 
-    @CallSuper
-    override fun onBackPressed() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.vActivityBaseContent)!!
-        val fragments = navHostFragment.childFragmentManager.fragments
-        val var2 = fragments.iterator()
+    override fun layout() = R.layout.activity_base
 
-        while (var2.hasNext()) {
-            val childFragment = var2.next() as Fragment
-            if (childFragment is IWolmoFragment && childFragment.isVisible && (childFragment as IWolmoFragment).onBackPressed()) {
-                return
-            }
-        }
+    override fun init() {
+        replaceFragment(R.id.vActivityBaseContent, Navigation1Fragment())
+    }
 
-        super.onBackPressed()
+    override fun onResume() {
+        super.onResume()
+        navigatorHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        navigatorHolder.removeNavigator()
+        super.onPause()
     }
 }

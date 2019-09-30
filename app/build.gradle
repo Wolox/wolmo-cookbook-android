@@ -116,6 +116,7 @@ buildscript {
     ext.robolectric_version = '4.2'
     ext.fragment_testing_version = '1.1.0-alpha07'
     ext.koin_version = '2.0.1'
+    ext.cicerone_version = '5.0.0'
 }
 
 dependencies {
@@ -170,6 +171,9 @@ dependencies {
 
     // Facebook Login
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
+
+    // Cicerone
+    implementation "ru.terrakok.cicerone:cicerone:$cicerone_version"
 }
 
 dependencies {

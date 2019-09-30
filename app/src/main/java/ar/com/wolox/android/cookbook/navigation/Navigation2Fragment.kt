@@ -13,13 +13,10 @@ class Navigation2Fragment : WolmoFragment<BasePresenter<Any>>() {
 
         // Going back programatically
         fragment_navigation2_to1_button.setOnClickListener {
-            requireNavController().popBackStack()
         }
 
         // Fragment2B to Fragment3 / When clicking back on Fragment3 it will return to Fragment1
         fragment_navigation2_to3_button.setOnClickListener {
-            requireNavController().navigate(R.id.action_navigation2Fragment_to_navigation3Fragment, null,
-                    createOptionsWithDefaultAnimations())
         }
     }
 }

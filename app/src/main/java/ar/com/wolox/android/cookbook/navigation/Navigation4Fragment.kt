@@ -11,7 +11,7 @@ class Navigation4Fragment : WolmoFragment<BasePresenter<Any>>() {
 
     override fun init() {
         // Setting arguments from Fragment3
-        fragment4_text_view.setText(arguments?.getString("test_string").toString())
+        fragment4_text_view.text = arguments?.getString("test_string").toString()
     }
 
     override fun onBackPressed(): Boolean {

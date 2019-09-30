@@ -1,5 +1,6 @@
 package ar.com.wolox.android.cookbook.navigation
 
+import ar.com.wolox.android.cookbook.navigation.one.Navigation1Fragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
