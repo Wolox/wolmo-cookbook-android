@@ -4,7 +4,7 @@ import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_navigation1.*
 
-class Navigation1Fragment : WolmoFragment<Navigation1Presenter>() {
+class Navigation1Fragment : WolmoFragment<NavigationPresenter>() {
 
     override fun layout(): Int = R.layout.fragment_navigation1
 
