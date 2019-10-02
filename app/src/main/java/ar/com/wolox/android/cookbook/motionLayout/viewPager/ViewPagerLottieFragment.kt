@@ -43,6 +43,7 @@ class ViewPagerLottieFragment @Inject constructor() : WolmoFragment<MotionPresen
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 Handler().postDelayed({
+                    /* change motion layout progress according to the viewPager position */
                     vMotionLayoutLottie.progress = (position + positionOffset) / (fragmentPagerAdapter.count - 1)
                 }, 100)
             }
