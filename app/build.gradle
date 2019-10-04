@@ -116,6 +116,8 @@ buildscript {
     ext.robolectric_version = '4.2'
     ext.fragment_testing_version = '1.1.0-alpha07'
     ext.koin_version = '2.0.1'
+    ext.magellan_version = '1.1.0'
+
 }
 
 dependencies {
@@ -170,6 +172,12 @@ dependencies {
 
     // Facebook Login
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
+
+    // Magellan
+    implementation "com.wealthfront:magellan:$magellan_version"
+    implementation "com.wealthfront:magellan-support:$magellan_version"
+    implementation "com.wealthfront:magellan-rx:$magellan_version"
+    implementation "com.wealthfront:magellan-rx2:$magellan_version"
 }
 
 dependencies {

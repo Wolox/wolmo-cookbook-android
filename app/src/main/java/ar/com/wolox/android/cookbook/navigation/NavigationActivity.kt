@@ -1,30 +1,17 @@
 package ar.com.wolox.android.cookbook.navigation
 
-import androidx.annotation.CallSuper
-import androidx.fragment.app.Fragment
+import com.wealthfront.magellan.Navigator
+import com.wealthfront.magellan.support.SingleActivity
+import android.os.Bundle
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.wolmo.core.activity.WolmoActivity
-import ar.com.wolox.wolmo.core.fragment.IWolmoFragment
+import ar.com.wolox.android.cookbook.navigation.navigation1.Navigation1Screen
 
-class NavigationActivity : WolmoActivity() {
+class NavigationActivity : SingleActivity() {
 
-    override fun layout() = R.layout.activity_base_navigation
+    override fun createNavigator(): Navigator = Navigator.withRoot(Navigation1Screen()).build()
 
-    override fun init() {}
-
-    @CallSuper
-    override fun onBackPressed() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.vActivityBaseContent)!!
-        val fragments = navHostFragment.childFragmentManager.fragments
-        val var2 = fragments.iterator()
-
-        while (var2.hasNext()) {
-            val childFragment = var2.next() as Fragment
-            if (childFragment is IWolmoFragment && childFragment.isVisible && (childFragment as IWolmoFragment).onBackPressed()) {
-                return
-            }
-        }
-
-        super.onBackPressed()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_base_magellan)
     }
 }
