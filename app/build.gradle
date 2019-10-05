@@ -170,6 +170,9 @@ dependencies {
 
     // Facebook Login
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
 }
 
 dependencies {

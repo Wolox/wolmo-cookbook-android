@@ -1,4 +1,4 @@
-package ar.com.wolox.android.cookbook.coroutines
+package ar.com.wolox.android.cookbook.coroutines.modules
 
 import javax.inject.Scope
 

@@ -2,7 +2,7 @@ package ar.com.wolox.android.cookbook.common.di
 
 import android.app.Application
 import ar.com.wolox.android.cookbook.CookbookApplication
-import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeModule
+import ar.com.wolox.android.cookbook.coroutines.modules.CoroutinesRecipeModule
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeModule
 import ar.com.wolox.android.cookbook.navigation.NavigationRecipeModule
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeModule

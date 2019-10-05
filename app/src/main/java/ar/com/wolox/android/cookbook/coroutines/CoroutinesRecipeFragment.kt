@@ -35,4 +35,9 @@ class CoroutinesRecipeFragment : WolmoFragment<CoroutinesRecipePresenter>(), Cor
     override fun showEmptyPasswordError() {
         vCoroutinesPasswordInput.error = getString(R.string.coroutines_empty_field)
     }
+
+    companion object {
+
+        fun newInstance() = CoroutinesRecipeFragment()
+    }
 }

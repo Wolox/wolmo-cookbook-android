@@ -1,5 +1,7 @@
-package ar.com.wolox.android.cookbook.coroutines
+package ar.com.wolox.android.cookbook.coroutines.modules
 
+import ar.com.wolox.android.cookbook.coroutines.networking.CoroutinesUsersRepository
+import ar.com.wolox.android.cookbook.coroutines.networking.UsersService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

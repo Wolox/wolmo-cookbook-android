@@ -1,5 +1,7 @@
-package ar.com.wolox.android.cookbook.coroutines
+package ar.com.wolox.android.cookbook.coroutines.modules
 
+import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeActivity
+import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

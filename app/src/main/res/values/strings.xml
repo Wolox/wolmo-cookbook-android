@@ -58,7 +58,7 @@
     <string name="koin_login_invalid_email">Email invalido</string>
     <string name="koin_login_login_error">Incorrect user or password.</string>
 
-    <!-- Test Login -->
+    <!-- Coroutines Login -->
     <string name="coroutines_email">Email</string>
     <string name="coroutines_password">Password</string>
     <string name="coroutines_login">Login</string>
