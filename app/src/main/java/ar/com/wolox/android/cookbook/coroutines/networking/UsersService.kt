@@ -13,9 +13,9 @@ interface UsersService {
      */
     @GET("/users")
     suspend fun getUser(
-            @Query("token") token: String,
-            @Query("email") email: String,
-            @Query("password") password: String
+        @Query("token") token: String,
+        @Query("email") email: String,
+        @Query("password") password: String
     ): List<CoroutinesUser>
 }
 
