@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'idea'
 apply plugin: 'jacoco-android'
+apply plugin: 'com.apollographql.android'
 apply from: 'keystore.gradle'
 apply from: '../jacoco.gradle'
 apply from: '../quality.gradle'
@@ -170,6 +171,12 @@ dependencies {
 
     // Facebook Login
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
+
+    //GraphQL
+    implementation 'com.apollographql.apollo:apollo-runtime:1.1.3'
+    compileOnly 'org.jetbrains:annotations:13.0'
+    testCompileOnly 'org.jetbrains:annotations:13.0'
+    implementation 'javax.annotation:jsr250-api:1.0'
 }
 
 dependencies {
