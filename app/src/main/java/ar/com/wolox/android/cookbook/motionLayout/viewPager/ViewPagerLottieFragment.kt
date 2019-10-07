@@ -27,12 +27,13 @@ class ViewPagerLottieFragment @Inject constructor() : WolmoFragment<MotionPresen
     }
 
     private fun initViewPagerWithLottie() {
-        fragmentPagerAdapter = SimpleFragmentPagerAdapter(childFragmentManager)
-        fragmentPagerAdapter.addFragments(
-                Pair(page1Fragment, PAGE_ONE),
-                Pair(page2Fragment, PAGE_TWO),
-                Pair(page3Fragment, PAGE_THREE)
-        )
+        fragmentPagerAdapter = SimpleFragmentPagerAdapter(childFragmentManager).apply {
+                addFragments(
+                    Pair(page1Fragment, PAGE_ONE),
+                    Pair(page2Fragment, PAGE_TWO),
+                    Pair(page3Fragment, PAGE_THREE)
+            )
+        }
         vViewPagerLottie.adapter = fragmentPagerAdapter
         vTabsLottie.setupWithViewPager(vViewPagerLottie)
     }

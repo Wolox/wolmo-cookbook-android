@@ -39,7 +39,7 @@ class ViewPagerFragment @Inject constructor() : WolmoFragment<MotionPresenter>()
 
     private fun initViewPager() {
         fragmentPagerAdapter = SimpleFragmentPagerAdapter(childFragmentManager).apply {
-            fragmentPagerAdapter.addFragments(
+            addFragments(
                     Pair<Fragment, String>(page1Fragment, PAGE1_NAME),
                     Pair<Fragment, String>(page2Fragment, PAGE2_NAME)
             )
