@@ -75,4 +75,13 @@
     <string name="koin_login_invalid_email">Email invalido</string>
     <string name="koin_login_login_error">Incorrect user or password.</string>
 
+    <!-- QR -->
+    <string name="label_capture_qr">Scan QR</string>
+    <string name="label_go_back">Volver</string>
+    <string name="label_try_again_scan">Intentar Nuevamente</string>
+    <string name="label_scan_menu">Scan Menu</string>
+    <string name="label_generate_qr">Generar QR</string>
+
+
+
 </resources>

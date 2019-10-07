@@ -66,4 +66,7 @@
 
     <!-- Data Sync -->
     <dimen name="pokemon_image_size">200dp</dimen>
+    <dimen name="scanner_view_finder_width">280dp</dimen>
+    <dimen name="scanner_view_finder_height">280dp</dimen>
+    <dimen name="button_margin">40dp</dimen>
 </resources>

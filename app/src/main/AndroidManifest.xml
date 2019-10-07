@@ -56,6 +56,18 @@
             android:name=".notifications.NotificationActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".scanqr.CaptureQrActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".scanqr.ScanQrActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
         <!-- Activity and intent filter for Chrome Custom Tabs for Facebook Login -->
         <activity
             android:name="com.facebook.CustomTabActivity"

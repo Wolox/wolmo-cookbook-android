@@ -170,6 +170,11 @@ dependencies {
 
     // Facebook Login
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
+
+    //QR
+    implementation('com.journeyapps:zxing-android-embedded:3.6.0') { transitive = false }
+    implementation 'com.google.zxing:core:3.4.0'
+
 }
 
 dependencies {
