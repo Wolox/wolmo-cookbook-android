@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.KeyEvent
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import com.journeyapps.barcodescanner.CaptureManager
 import com.journeyapps.barcodescanner.DecoratedBarcodeView
 import com.journeyapps.barcodescanner.ViewfinderView
@@ -61,26 +60,25 @@ class CaptureQrActivity : Activity(), DecoratedBarcodeView.TorchListener {
         }
     }
 
-    private fun  setOnClickListeners(){
+    private fun setOnClickListeners() {
         btnGoBack.setOnClickListener {
             startActivity(Intent(this, ScanQrActivity::class.java))
         }
     }
 
     private fun hasFlash(): Boolean {
-        //CHECK IF FLASH IS AVAILABLE
+        // CHECK IF FLASH IS AVAILABLE
         return applicationContext.packageManager
                 .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
     }
 
     fun switchFlashlight(switch: Boolean) {
-        //TURN ON OR OFF FLASH
+        // TURN ON OR OFF FLASH
         when {
             switch -> barcodeScannerView?.setTorchOn()
             else -> barcodeScannerView?.setTorchOff()
         }
     }
-
 
     override fun onTorchOn() {
         // Do any ui modification once the flash is ON
@@ -89,5 +87,4 @@ class CaptureQrActivity : Activity(), DecoratedBarcodeView.TorchListener {
     override fun onTorchOff() {
         // Do any ui modification once the flash is OFF
     }
-
 }

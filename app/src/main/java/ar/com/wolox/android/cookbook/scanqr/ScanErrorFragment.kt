@@ -11,7 +11,7 @@ class ScanErrorFragment : WolmoFragment<ScanQrPresenter>() {
 
     override fun layout(): Int = R.layout.fragment_scan_error
 
-    private fun setOnClickListeners () {
+    private fun setOnClickListeners() {
         bGoToScanMenu.setOnClickListener {
             (activity as ScanQrActivity).goToScanMenuFragment()
         }
