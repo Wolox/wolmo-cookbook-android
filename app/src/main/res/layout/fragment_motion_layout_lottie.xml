@@ -7,7 +7,7 @@
     <android.support.constraint.motion.MotionLayout
         android:id="@+id/vMotionLayoutLottie"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="@dimen/motion_layout_for_lottie_height"
         app:motionProgress="0"
         app:layoutDescription="@xml/scene_with_lottie"
         app:layout_constraintLeft_toLeftOf="parent"
