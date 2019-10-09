@@ -11,20 +11,20 @@
 
     <TextView
         android:id="@+id/square"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/spacing_largest_extra"
+        android:layout_height="@dimen/spacing_largest_extra"
         android:gravity="center"/>
 
     <TextView
         android:id="@+id/title_position"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/spacing_largest_extra"
+        android:layout_height="@dimen/spacing_largest_extra"
         android:gravity="center"/>
 
     <ImageView
         android:id="@+id/plane_mode_image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/spacing_huge_extra"
+        android:layout_height="@dimen/spacing_huge_extra"
         android:src="@drawable/plane_mode"/>
 
 </android.support.constraint.motion.MotionLayout>
