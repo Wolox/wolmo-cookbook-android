@@ -7,6 +7,7 @@ import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeFragment
 import ar.com.wolox.android.cookbook.motionLayout.MotionActivity
 import ar.com.wolox.android.cookbook.motionLayout.MotionMenuFragment
 import ar.com.wolox.android.cookbook.motionLayout.viewPager.ViewPagerFragment
+import ar.com.wolox.android.cookbook.motionLayout.viewPager.ViewPagerLottieFragment
 import ar.com.wolox.android.cookbook.motionLayout.viewPager.page1.Page1Fragment
 import ar.com.wolox.android.cookbook.motionLayout.viewPager.page2.Page2Fragment
 import ar.com.wolox.android.cookbook.recipepicker.RecipePickerActivity
@@ -49,4 +50,7 @@ abstract class AppModule {
 
     @ContributesAndroidInjector
     abstract fun page2Fragment(): Page2Fragment
+
+    @ContributesAndroidInjector
+    abstract fun viewPagerLottieFragment(): ViewPagerLottieFragment
 }

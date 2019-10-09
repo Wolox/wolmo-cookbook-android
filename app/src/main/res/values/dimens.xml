@@ -72,4 +72,8 @@
     <dimen name="cloud_height">60dp</dimen>
     <dimen name="cloud_width">60dp</dimen>
     <dimen name="toolbar_height">48dp</dimen>
+
+    <!-- Motion Layout -->
+    <dimen name="motion_layout_for_lottie_height">230dp</dimen>
+
 </resources>
