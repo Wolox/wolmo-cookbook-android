@@ -8,6 +8,7 @@ import ar.com.wolox.android.cookbook.motionLayout.MotionActivity
 import ar.com.wolox.android.cookbook.motionLayout.MotionMenuFragment
 import ar.com.wolox.android.cookbook.motionLayout.animations.AnimationsFragment
 import ar.com.wolox.android.cookbook.motionLayout.viewPager.ViewPagerFragment
+import ar.com.wolox.android.cookbook.motionLayout.viewPager.ViewPagerLottieFragment
 import ar.com.wolox.android.cookbook.motionLayout.viewPager.page1.Page1Fragment
 import ar.com.wolox.android.cookbook.motionLayout.viewPager.page2.Page2Fragment
 import ar.com.wolox.android.cookbook.recipepicker.RecipePickerActivity
@@ -53,4 +54,7 @@ abstract class AppModule {
 
     @ContributesAndroidInjector
     abstract fun animationsFragment(): AnimationsFragment
+
+    @ContributesAndroidInjector
+    abstract fun viewPagerLottieFragment(): ViewPagerLottieFragment
 }
