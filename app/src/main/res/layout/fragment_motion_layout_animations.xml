@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.motion.MotionLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/vMotionLayoutAnimations"
+    app:layoutDescription="@xml/animations_scene"
+    tools:showPaths="true">
+
+    <TextView
+        android:id="@+id/square"
+        android:layout_width="@dimen/spacing_largest_extra"
+        android:layout_height="@dimen/spacing_largest_extra"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/title_position"
+        android:layout_width="@dimen/spacing_largest_extra"
+        android:layout_height="@dimen/spacing_largest_extra"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/plane_mode_image"
+        android:layout_width="@dimen/spacing_huge_extra"
+        android:layout_height="@dimen/spacing_huge_extra"
+        android:src="@drawable/plane_mode"/>
+
+</android.support.constraint.motion.MotionLayout>

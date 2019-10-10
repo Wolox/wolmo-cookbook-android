@@ -43,7 +43,7 @@
 
     <!-- Motion Layout -->
     <string name="label_wolox">Wolox</string>
-
-
+    <string name="motion_layout_animations_alert_dialog">You can touch over the text \"Right\" or swipe down and up.</string>
+    <string name="motion_layout_animations_alert_dialog_positive_button">Let\'s try !</string>
 
 </resources>
