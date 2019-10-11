@@ -1,37 +1,24 @@
 package ar.com.wolox.android.cookbook.coroutines
 
 import ar.com.wolox.android.cookbook.coroutines.core.CoroutineBasePresenter
-import ar.com.wolox.android.cookbook.coroutines.networking.FootbalRepository
-import kotlinx.coroutines.isActive
+import ar.com.wolox.android.cookbook.coroutines.core.mapCooperative
+import ar.com.wolox.android.cookbook.coroutines.core.unit
+import ar.com.wolox.android.cookbook.coroutines.networking.CoroutineFootballRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CoroutinesRecipePresenter @Inject constructor(
-    private val footbalRepository: FootbalRepository
+        private val footballRepository: CoroutineFootballRepository
 ) : CoroutineBasePresenter<CoroutinesRecipeView>() {
 
-    override fun onViewAttached() = launch {
-        val competition = footbalRepository.getCompetitionAndTeams(SPAIN_COMPETITION_ID).run {
-            copy(teams = teams
-                    .shuffled()
-                    .take(MAX_REQUESTS)
-                    .mapCooperative { footbalRepository.getTeam(it.id) }
-                    .orEmpty())
-        }
+    override fun onViewAttached() = launch { view.showCompetition(fetchCompetition()) }.unit
 
-        view.showCompetition(competition)
-    }.unit
-
-    private val <T> T.unit: Unit
-        get() = Unit
-
-    inline fun <T, R> Iterable<T>.mapCooperative(transform: (T) -> R): List<R>? = run {
-        map {
-            if (!isActive) {
-                return@run null
-            }
-            transform(it)
-        }
+    private suspend fun fetchCompetition() = footballRepository.getCompetition(SPAIN_COMPETITION_ID).run {
+        copy(teams = teams
+                .shuffled()
+                .take(MAX_REQUESTS)
+                .mapCooperative { footballRepository.getTeam(it.id) }
+                .orEmpty())
     }
 
     companion object {

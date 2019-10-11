@@ -1,7 +1,9 @@
 package ar.com.wolox.android.cookbook.coroutines.modules
 
-import ar.com.wolox.android.cookbook.coroutines.networking.FootbalRepository
-import ar.com.wolox.android.cookbook.coroutines.networking.FootballService
+import ar.com.wolox.android.cookbook.coroutines.networking.CallbackFootballRepository
+import ar.com.wolox.android.cookbook.coroutines.networking.CallbackFootballService
+import ar.com.wolox.android.cookbook.coroutines.networking.CoroutineFootballRepository
+import ar.com.wolox.android.cookbook.coroutines.networking.CoroutineFootballService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -13,12 +15,24 @@ object FootballModule {
     @JvmStatic
     @CoroutinesRecipeScope
     @Provides
-    internal fun providesBooksRepository(footballService: FootballService) = FootbalRepository(footballService)
+    internal fun providesCoroutineFootballService(retrofit: Retrofit): CoroutineFootballService {
+        return retrofit.newBuilder().baseUrl(BASE_URL).build().create(CoroutineFootballService::class.java)
+    }
 
     @JvmStatic
     @CoroutinesRecipeScope
     @Provides
-    internal fun providesBooksService(retrofit: Retrofit): FootballService {
-        return retrofit.newBuilder().baseUrl(BASE_URL).build().create(FootballService::class.java)
+    internal fun providesCoroutineFootballRepository(footballService: CoroutineFootballService) = CoroutineFootballRepository(footballService)
+
+    @JvmStatic
+    @CoroutinesRecipeScope
+    @Provides
+    internal fun providesCallbackFootballService(retrofit: Retrofit): CallbackFootballService {
+        return retrofit.newBuilder().baseUrl(BASE_URL).build().create(CallbackFootballService::class.java)
     }
+
+    @JvmStatic
+    @CoroutinesRecipeScope
+    @Provides
+    internal fun providesCallbackFootballRepository(footballService: CallbackFootballService) = CallbackFootballRepository(footballService)
 }
