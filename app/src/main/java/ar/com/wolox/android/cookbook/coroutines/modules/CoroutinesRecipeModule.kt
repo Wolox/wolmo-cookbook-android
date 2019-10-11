@@ -11,7 +11,7 @@ abstract class CoroutinesRecipeModule {
     @ContributesAndroidInjector
     abstract fun CoroutinesRecipeActivity(): CoroutinesRecipeActivity
 
-    @CoroutinesScope
-    @ContributesAndroidInjector(modules = [CoroutinesUsersNetworkModule::class])
+    @CoroutinesRecipeScope
+    @ContributesAndroidInjector(modules = [FootballModule::class])
     abstract fun CoroutinesRecipeFragment(): CoroutinesRecipeFragment
 }

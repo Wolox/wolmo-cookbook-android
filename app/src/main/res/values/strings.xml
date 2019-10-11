@@ -59,12 +59,8 @@
     <string name="koin_login_login_error">Incorrect user or password.</string>
 
     <!-- Coroutines Login -->
-    <string name="coroutines_email">Email</string>
-    <string name="coroutines_password">Password</string>
-    <string name="coroutines_login">Login</string>
-    <string name="coroutines_empty_field">Debe completar este campo</string>
-    <string name="coroutines_invalid_email">Email invalido</string>
-    <string name="coroutines_login_error">Incorrect user or password.</string>
-    <string name="coroutines_welcome">Welcome %s!</string>
+    <string name="coroutines_author">Author</string>
+    <string name="coroutines_search">Search now!</string>
+    <string name="coroutines_empty_author_error">Please complete the author!</string>
 
 </resources>

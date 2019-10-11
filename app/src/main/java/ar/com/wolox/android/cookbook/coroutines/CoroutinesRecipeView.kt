@@ -1,14 +1,10 @@
 package ar.com.wolox.android.cookbook.coroutines
 
+import ar.com.wolox.android.cookbook.coroutines.model.Competition
+
 interface CoroutinesRecipeView {
 
-    fun showLoginError()
+    fun showCompetition(competition: Competition)
 
-    fun showEmptyEmailError()
-
-    fun showInvalidEmailError()
-
-    fun showEmptyPasswordError()
-
-    fun showWelcomeMessage(name: String)
+    fun showEmptyAuthorError()
 }

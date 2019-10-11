@@ -4,25 +4,18 @@
 	android:layout_height="match_parent"
 	android:orientation="vertical">
 
-	<EditText
-		android:id="@+id/vCoroutinesEmailInput"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:hint="@string/coroutines_email"
-		android:textAlignment="center" />
+	<TextView
+		android:id="@+id/competitionName"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
 
-	<EditText
-		android:id="@+id/vCoroutinesPasswordInput"
+	<ScrollView
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="@dimen/spacing_large_extra"
-		android:hint="@string/coroutines_password"
-		android:inputType="textPassword"
-		android:textAlignment="center" />
+		android:layout_height="match_parent">
 
-	<Button
-		android:id="@+id/vCoroutinesLoginBtn"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:text="@string/coroutines_login" />
+		<TextView
+			android:id="@+id/teamsList"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+	</ScrollView>
 </LinearLayout>
