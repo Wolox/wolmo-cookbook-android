@@ -10,7 +10,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class CallbackRecipePresenter @Inject constructor(
-        private val footballRepository: CallbackFootballRepository
+    private val footballRepository: CallbackFootballRepository
 ) : CoroutineBasePresenter<CoroutinesRecipeView>() {
 
     // FIRST APPROACH
