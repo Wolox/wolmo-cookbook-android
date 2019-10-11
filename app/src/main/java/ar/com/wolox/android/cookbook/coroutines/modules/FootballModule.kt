@@ -8,7 +8,6 @@ import retrofit2.Retrofit
 
 @Module
 object FootballModule {
-
     private const val BASE_URL = "http://api.football-data.org/"
 
     @JvmStatic
