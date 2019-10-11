@@ -13,7 +13,7 @@ class CallbackRecipePresenter @Inject constructor(
     private val footballRepository: CallbackFootballRepository
 ) : CoroutineBasePresenter<CoroutinesRecipeView>() {
 
-    // FIRST APPROACH
+    // FIRST APPROACH (I'm keeping this to show how would be this function if it's all done here)
     //    private fun fetchCompetition() {
     //        footballRepository.getCompetition(SPAIN_COMPETITION_ID, object : Callback<Competition> {
     //            override fun onResponse(call: Call<Competition>, response: Response<Competition>) {
@@ -43,9 +43,7 @@ class CallbackRecipePresenter @Inject constructor(
     //        })
     //    }
 
-    override fun onViewAttached() {
-        fetchCompetition()
-    }
+    override fun onViewAttached() = fetchCompetition()
 
     private fun fetchCompetition() {
         footballRepository.getCompetition(SPAIN_COMPETITION_ID, object : Callback<Competition> {
