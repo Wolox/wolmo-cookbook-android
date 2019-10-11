@@ -5,7 +5,7 @@ import ar.com.wolox.android.cookbook.coroutines.core.fromHtml
 import ar.com.wolox.android.cookbook.coroutines.model.Competition
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
-import kotlinx.android.synthetic.main.fragment_coroutines_login.*
+import kotlinx.android.synthetic.main.fragment_coroutines_example.*
 import javax.inject.Inject
 
 class CoroutinesRecipeFragment : WolmoFragment<CoroutinesRecipePresenter>(), CoroutinesRecipeView {
@@ -13,10 +13,9 @@ class CoroutinesRecipeFragment : WolmoFragment<CoroutinesRecipePresenter>(), Cor
     @Inject
     internal lateinit var toastFactory: ToastFactory
 
-    override fun layout() = R.layout.fragment_coroutines_login
+    override fun layout() = R.layout.fragment_coroutines_example
 
-    override fun init() {
-    }
+    override fun init() {}
 
     override fun showCompetition(competition: Competition) {
         competitionName.text = competition.name
@@ -25,12 +24,7 @@ class CoroutinesRecipeFragment : WolmoFragment<CoroutinesRecipePresenter>(), Cor
         }.fromHtml()
     }
 
-    override fun showEmptyAuthorError() = toastFactory.show(R.string.coroutines_empty_author_error)
-
     companion object {
-
-        private const val SHOW_BOOK_FORMAT = "%s<br>%s<br><br><br><br>%s<br>"
-
         fun newInstance() = CoroutinesRecipeFragment()
     }
 }
