@@ -2,6 +2,7 @@ package ar.com.wolox.android.cookbook.common.di
 
 import android.app.Application
 import ar.com.wolox.android.cookbook.CookbookApplication
+import ar.com.wolox.android.cookbook.coroutines.examples.CoroutinesExampleModule
 import ar.com.wolox.android.cookbook.coroutines.football.modules.CoroutinesFootballModule
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeModule
 import ar.com.wolox.android.cookbook.navigation.NavigationRecipeModule
@@ -22,7 +23,8 @@ import javax.inject.Named
         modules = [
             AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class,
             AppModule::class, NavigationRecipeModule::class, DataSyncRecipeModule::class,
-            RxJava2Module::class, TestLoginRecipeModule::class, CoroutinesFootballModule::class
+            RxJava2Module::class, TestLoginRecipeModule::class, CoroutinesFootballModule::class,
+            CoroutinesExampleModule::class
         ]
 )
 interface AppComponent : AndroidInjector<CookbookApplication> {

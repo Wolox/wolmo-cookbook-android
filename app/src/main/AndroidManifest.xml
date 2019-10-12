@@ -49,6 +49,9 @@
         <activity
             android:name=".coroutines.football.CoroutinesFootballActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".coroutines.examples.CoroutinesExampleActivity"
+            android:screenOrientation="portrait" />
         <!-- Metadata for Facebook Login -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

@@ -1,9 +1,13 @@
 package ar.com.wolox.android.cookbook.coroutines
 
 import android.content.Context
-import ar.com.wolox.android.cookbook.coroutines.football.CoroutinesFootballActivity
+import ar.com.wolox.android.cookbook.coroutines.examples.CoroutinesExampleActivity
 
 object CoroutinesRecipe {
 
-    fun start(context: Context) = CoroutinesFootballActivity.start(context)
+    /** Uncomment this to check Coroutines examples. */
+    fun start(context: Context) = CoroutinesExampleActivity.start(context)
+
+    /** Uncomment this to check Coroutines football API call. */
+//    fun start(context: Context) = CoroutinesFootballActivity.start(context)
 }
