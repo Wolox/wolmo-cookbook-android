@@ -1,9 +1,9 @@
-package ar.com.wolox.android.cookbook.coroutines.modules
+package ar.com.wolox.android.cookbook.coroutines.football.modules
 
-import ar.com.wolox.android.cookbook.coroutines.networking.CallbackFootballRepository
-import ar.com.wolox.android.cookbook.coroutines.networking.CallbackFootballService
-import ar.com.wolox.android.cookbook.coroutines.networking.CoroutineFootballRepository
-import ar.com.wolox.android.cookbook.coroutines.networking.CoroutineFootballService
+import ar.com.wolox.android.cookbook.coroutines.football.networking.CallbackFootballRepository
+import ar.com.wolox.android.cookbook.coroutines.football.networking.CallbackFootballService
+import ar.com.wolox.android.cookbook.coroutines.football.networking.CoroutineFootballRepository
+import ar.com.wolox.android.cookbook.coroutines.football.networking.CoroutineFootballService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

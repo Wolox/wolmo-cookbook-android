@@ -1,4 +1,4 @@
-package ar.com.wolox.android.cookbook.coroutines.networking
+package ar.com.wolox.android.cookbook.coroutines.football.networking
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -1,4 +1,4 @@
-package ar.com.wolox.android.cookbook.coroutines.modules
+package ar.com.wolox.android.cookbook.coroutines.football.modules
 
 import javax.inject.Scope
 

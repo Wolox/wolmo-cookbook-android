@@ -1,4 +1,4 @@
-package ar.com.wolox.android.cookbook.coroutines.model
+package ar.com.wolox.android.cookbook.coroutines.football.model
 
 import com.google.gson.annotations.SerializedName
 

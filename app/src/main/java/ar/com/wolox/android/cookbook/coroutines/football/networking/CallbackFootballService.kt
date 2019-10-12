@@ -1,7 +1,7 @@
-package ar.com.wolox.android.cookbook.coroutines.networking
+package ar.com.wolox.android.cookbook.coroutines.football.networking
 
-import ar.com.wolox.android.cookbook.coroutines.model.Competition
-import ar.com.wolox.android.cookbook.coroutines.model.Team
+import ar.com.wolox.android.cookbook.coroutines.football.model.Competition
+import ar.com.wolox.android.cookbook.coroutines.football.model.Team
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers

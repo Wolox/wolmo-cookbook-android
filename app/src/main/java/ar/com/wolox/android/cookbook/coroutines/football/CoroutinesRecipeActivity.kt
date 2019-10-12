@@ -1,4 +1,4 @@
-package ar.com.wolox.android.cookbook.coroutines
+package ar.com.wolox.android.cookbook.coroutines.football
 
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.activity.WolmoActivity

@@ -1,9 +1,9 @@
-package ar.com.wolox.android.cookbook.coroutines
+package ar.com.wolox.android.cookbook.coroutines.football
 
 import ar.com.wolox.android.cookbook.coroutines.core.CoroutineBasePresenter
 import ar.com.wolox.android.cookbook.coroutines.core.mapCooperative
 import ar.com.wolox.android.cookbook.coroutines.core.unit
-import ar.com.wolox.android.cookbook.coroutines.networking.CoroutineFootballRepository
+import ar.com.wolox.android.cookbook.coroutines.football.networking.CoroutineFootballRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

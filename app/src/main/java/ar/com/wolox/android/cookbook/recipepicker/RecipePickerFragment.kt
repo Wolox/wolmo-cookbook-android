@@ -2,7 +2,7 @@ package ar.com.wolox.android.cookbook.recipepicker
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeActivity
+import ar.com.wolox.android.cookbook.coroutines.football.CoroutinesRecipeActivity
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity

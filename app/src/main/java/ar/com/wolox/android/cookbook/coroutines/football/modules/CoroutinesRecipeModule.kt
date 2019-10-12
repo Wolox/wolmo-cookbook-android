@@ -1,7 +1,7 @@
-package ar.com.wolox.android.cookbook.coroutines.modules
+package ar.com.wolox.android.cookbook.coroutines.football.modules
 
-import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeActivity
-import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeFragment
+import ar.com.wolox.android.cookbook.coroutines.football.CoroutinesRecipeActivity
+import ar.com.wolox.android.cookbook.coroutines.football.CoroutinesRecipeFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

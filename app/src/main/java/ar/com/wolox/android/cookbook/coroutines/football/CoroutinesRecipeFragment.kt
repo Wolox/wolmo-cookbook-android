@@ -1,8 +1,8 @@
-package ar.com.wolox.android.cookbook.coroutines
+package ar.com.wolox.android.cookbook.coroutines.football
 
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.coroutines.core.fromHtml
-import ar.com.wolox.android.cookbook.coroutines.model.Competition
+import ar.com.wolox.android.cookbook.coroutines.football.model.Competition
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import kotlinx.android.synthetic.main.fragment_coroutines_example.*

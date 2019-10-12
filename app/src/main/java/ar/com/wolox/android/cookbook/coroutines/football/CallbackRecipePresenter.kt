@@ -1,9 +1,9 @@
-package ar.com.wolox.android.cookbook.coroutines
+package ar.com.wolox.android.cookbook.coroutines.football
 
 import ar.com.wolox.android.cookbook.coroutines.core.CoroutineBasePresenter
-import ar.com.wolox.android.cookbook.coroutines.model.Competition
-import ar.com.wolox.android.cookbook.coroutines.model.Team
-import ar.com.wolox.android.cookbook.coroutines.networking.CallbackFootballRepository
+import ar.com.wolox.android.cookbook.coroutines.football.model.Competition
+import ar.com.wolox.android.cookbook.coroutines.football.model.Team
+import ar.com.wolox.android.cookbook.coroutines.football.networking.CallbackFootballRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

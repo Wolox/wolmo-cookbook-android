@@ -47,7 +47,7 @@
             android:name=".koin.KoinLoginRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".coroutines.CoroutinesRecipeActivity"
+            android:name=".coroutines.football.CoroutinesRecipeActivity"
             android:screenOrientation="portrait" />
         <!-- Metadata for Facebook Login -->
         <meta-data
