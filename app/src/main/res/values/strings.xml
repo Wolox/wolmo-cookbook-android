@@ -11,6 +11,7 @@
     <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
     <string name="recipe_picker_tests">Tests</string>
     <string name="recipe_picker_koin">Koin</string>
+    <string name="recipe_picker_coroutines">Coroutines</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
