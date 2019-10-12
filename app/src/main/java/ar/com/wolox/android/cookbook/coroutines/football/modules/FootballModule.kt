@@ -13,26 +13,26 @@ object FootballModule {
     private const val BASE_URL = "http://api.football-data.org/"
 
     @JvmStatic
-    @CoroutinesRecipeScope
+    @CoroutinesFootbalScope
     @Provides
     internal fun providesCoroutineFootballService(retrofit: Retrofit): CoroutineFootballService {
         return retrofit.newBuilder().baseUrl(BASE_URL).build().create(CoroutineFootballService::class.java)
     }
 
     @JvmStatic
-    @CoroutinesRecipeScope
+    @CoroutinesFootbalScope
     @Provides
     internal fun providesCoroutineFootballRepository(footballService: CoroutineFootballService) = CoroutineFootballRepository(footballService)
 
     @JvmStatic
-    @CoroutinesRecipeScope
+    @CoroutinesFootbalScope
     @Provides
     internal fun providesCallbackFootballService(retrofit: Retrofit): CallbackFootballService {
         return retrofit.newBuilder().baseUrl(BASE_URL).build().create(CallbackFootballService::class.java)
     }
 
     @JvmStatic
-    @CoroutinesRecipeScope
+    @CoroutinesFootbalScope
     @Provides
     internal fun providesCallbackFootballRepository(footballService: CallbackFootballService) = CallbackFootballRepository(footballService)
 }

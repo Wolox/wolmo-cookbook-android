@@ -9,9 +9,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class CallbackRecipePresenter @Inject constructor(
+class CallbackFootballPresenter @Inject constructor(
     private val footballRepository: CallbackFootballRepository
-) : CoroutineBasePresenter<CoroutinesRecipeView>() {
+) : CoroutineBasePresenter<CoroutinesFootballView>() {
 
     // FIRST APPROACH (I'm keeping this to show how would be this function if it's all done here)
     //    private fun fetchCompetition() {

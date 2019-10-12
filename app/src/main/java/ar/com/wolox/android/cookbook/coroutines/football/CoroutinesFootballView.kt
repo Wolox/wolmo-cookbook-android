@@ -2,7 +2,7 @@ package ar.com.wolox.android.cookbook.coroutines.football
 
 import ar.com.wolox.android.cookbook.coroutines.football.model.Competition
 
-interface CoroutinesRecipeView {
+interface CoroutinesFootballView {
 
     fun showCompetition(competition: Competition)
 }

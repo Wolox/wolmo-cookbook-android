@@ -8,7 +8,7 @@ import ar.com.wolox.wolmo.core.util.ToastFactory
 import kotlinx.android.synthetic.main.fragment_coroutines_example.*
 import javax.inject.Inject
 
-class CoroutinesRecipeFragment : WolmoFragment<CoroutinesRecipePresenter>(), CoroutinesRecipeView {
+class CoroutinesFootballFragment : WolmoFragment<CoroutinesFootballPresenter>(), CoroutinesFootballView {
 
     @Inject
     internal lateinit var toastFactory: ToastFactory
@@ -25,6 +25,6 @@ class CoroutinesRecipeFragment : WolmoFragment<CoroutinesRecipePresenter>(), Cor
     }
 
     companion object {
-        fun newInstance() = CoroutinesRecipeFragment()
+        fun newInstance() = CoroutinesFootballFragment()
     }
 }

@@ -9,9 +9,9 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CoroutinesRecipePresenter @Inject constructor(
+class CoroutinesFootballPresenter @Inject constructor(
     private val footballRepository: CoroutineFootballRepository
-) : CoroutineBasePresenter<CoroutinesRecipeView>() {
+) : CoroutineBasePresenter<CoroutinesFootballView>() {
 
     override fun onViewAttached() = launch { view.showCompetition(fetchCompetitionAsync()) }.unit
 
