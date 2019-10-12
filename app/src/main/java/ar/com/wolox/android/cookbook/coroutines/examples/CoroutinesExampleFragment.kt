@@ -1,6 +1,8 @@
 package ar.com.wolox.android.cookbook.coroutines.examples
 
 import android.view.MotionEvent
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
@@ -19,8 +21,8 @@ class CoroutinesExampleFragment : WolmoFragment<CoroutinesExamplePresenter>(), C
         container.setOnTouchListener { _, motionEvent ->
             if (motionEvent.actionMasked == MotionEvent.ACTION_MOVE || motionEvent.actionMasked == MotionEvent.ACTION_DOWN) {
                 with(movingView) {
-                    x = motionEvent.rawX
-                    y = motionEvent.rawY
+                    x = motionEvent.rawX - movingView.width / 2
+                    y = motionEvent.rawY - movingView.height / 2
                 }
             }
             true
@@ -28,7 +30,23 @@ class CoroutinesExampleFragment : WolmoFragment<CoroutinesExamplePresenter>(), C
     }
 
     override fun showOptions(options: List<CoroutinesExamplePresenter.CoroutinesExampleOption>) {
-        optionsSpinner.adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_item, options)
+        val spinnerOptions = options.map { resources.getString(it.titleRes) }
+        with(optionsSpinner) {
+            adapter = ArrayAdapter(
+                    requireActivity(),
+                    android.R.layout.simple_spinner_item,
+                    listOf(resources.getString(R.string.coroutines_examples_choose_one)) + spinnerOptions)
+            onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+                override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
+                    if (pos > 0) {
+                        presenter.onOptionSelected(options[pos - 1])
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {}
+            }
+        }
     }
 
     override fun closeView() = requireActivity().finish()

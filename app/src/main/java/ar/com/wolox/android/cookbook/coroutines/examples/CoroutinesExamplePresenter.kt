@@ -34,11 +34,11 @@ class CoroutinesExamplePresenter @Inject constructor() : CoroutineBasePresenter<
             launch { contextExample.changeView.fromMainContext() }.unit
     }
 
-    enum class CoroutinesExampleOption(@StringRes titleRes: Int) {
-        SCOPE(R.string.app_title),
-        CONTEXT_LONG_RUNNING_TASK_DEFAULT(R.string.app_title),
-        CONTEXT_LONG_RUNNING_TASK_MAIN(R.string.app_title),
-        CONTEXT_CHANGE_VIEW_DEFAULT(R.string.app_title),
-        CONTEXT_CHANGE_VIEW_MAIN(R.string.app_title)
+    enum class CoroutinesExampleOption(@StringRes val titleRes: Int) {
+        SCOPE(R.string.coroutines_examples_scope),
+        CONTEXT_LONG_RUNNING_TASK_DEFAULT(R.string.coroutines_examples_context_long_running_task_default),
+        CONTEXT_LONG_RUNNING_TASK_MAIN(R.string.coroutines_examples_context_long_running_task_main),
+        CONTEXT_CHANGE_VIEW_DEFAULT(R.string.coroutines_examples_context_change_view_default),
+        CONTEXT_CHANGE_VIEW_MAIN(R.string.coroutines_examples_context_change_view_main)
     }
 }

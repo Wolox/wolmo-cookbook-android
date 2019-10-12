@@ -7,8 +7,10 @@
 
 	<Spinner
 		android:id="@+id/optionsSpinner"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" />
+		style="@style/Widget.AppCompat.Spinner"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:prompt="@string/coroutines_examples_choose_one" />
 
 	<TextView
 		android:id="@+id/progressText"
@@ -17,7 +19,7 @@
 
 	<View
 		android:id="@+id/movingView"
-		android:layout_width="20dp"
-		android:layout_height="20dp"
+		android:layout_width="@dimen/coroutines_example_image_size"
+		android:layout_height="@dimen/coroutines_example_image_size"
 		android:background="@drawable/bg_cool_cat" />
 </LinearLayout>

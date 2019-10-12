@@ -66,4 +66,7 @@
 
     <!-- Data Sync -->
     <dimen name="pokemon_image_size">200dp</dimen>
+
+    <!-- Coroutines examples -->
+	<dimen name="coroutines_example_image_size">100dp</dimen>
 </resources>
