@@ -47,7 +47,7 @@
             android:name=".koin.KoinLoginRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".coroutines.football.CoroutinesFootballActivity"
+            android:name=".coroutines.football.FootballActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".coroutines.examples.CoroutinesExampleActivity"

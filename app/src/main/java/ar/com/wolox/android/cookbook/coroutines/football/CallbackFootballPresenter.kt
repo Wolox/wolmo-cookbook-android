@@ -1,83 +1,66 @@
 package ar.com.wolox.android.cookbook.coroutines.football
 
-import ar.com.wolox.android.cookbook.coroutines.core.CoroutineBasePresenter
-import ar.com.wolox.android.cookbook.coroutines.football.model.Competition
-import ar.com.wolox.android.cookbook.coroutines.football.model.Team
+import ar.com.wolox.android.cookbook.common.network.networkCallback
 import ar.com.wolox.android.cookbook.coroutines.football.networking.CallbackFootballRepository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import okhttp3.ResponseBody
 import javax.inject.Inject
 
 class CallbackFootballPresenter @Inject constructor(
     private val footballRepository: CallbackFootballRepository
-) : CoroutineBasePresenter<CoroutinesFootballView>() {
+) : FootballPresenter() {
 
-    // FIRST APPROACH (I'm keeping this to show how would be this function if it's all done here)
-    //    private fun fetchCompetition() {
-    //        footballRepository.getCompetition(SPAIN_COMPETITION_ID, object : Callback<Competition> {
-    //            override fun onResponse(call: Call<Competition>, response: Response<Competition>) {
-    //                val competition = response.body()
-    //                if (competition != null) {
-    //                    val teams = mutableListOf<Team>()
-    //                    var teamsLeft = MAX_REQUESTS
-    //                    competition.teams.shuffled().take(MAX_REQUESTS).forEach {
-    //                        footballRepository.getTeam(it.id, object : Callback<Team> {
-    //                            override fun onResponse(call: Call<Team>, response: Response<Team>) {
-    //                                response.body()?.let { team -> teams.add(team) }
-    //                                teamsLeft--
-    //
-    //                                if (teamsLeft == 0) {
-    //                                    view.showCompetition(competition.copy(teams = teams))
-    //                                }
-    //                            }
-    //
-    //                            override fun onFailure(call: Call<Team>, t: Throwable) {
-    //                            }
-    //                        })
-    //                    }
-    //                }
-    //            }
-    //
-    //            override fun onFailure(call: Call<Competition>, t: Throwable) {}
-    //        })
-    //    }
+    override fun onRandomPlayerMatchesButtonClicked() {
+        showRandomPlayerMatches()
+    }
 
-    override fun onViewAttached() = fetchCompetition()
+    override fun onRandomTeamsSquadsSequentialButtonClicked() = view.showNotAvailableError()
 
-    private fun fetchCompetition() {
-        footballRepository.getCompetition(SPAIN_COMPETITION_ID, object : Callback<Competition> {
+    override fun onRandomTeamsSquadsAsyncButtonClicked() = view.showNotAvailableError()
 
-            override fun onResponse(call: Call<Competition>, response: Response<Competition>) {
-                response.body()?.let { fetchTeams(it) }
+    private fun showRandomPlayerMatches() {
+        footballRepository.getCompetition(SPAIN_COMPETITION_ID, networkCallback {
+
+            onResponseSuccessful competitionCallback@{ competition ->
+                if (competition == null) {
+                    return@competitionCallback
+                }
+
+                footballRepository.getTeam(competition.teams.random().id, networkCallback {
+
+                    onResponseSuccessful teamCallback@{ team ->
+                        if (team == null) {
+                            return@teamCallback
+                        }
+
+                        val player = team.squad.random()
+
+                        footballRepository.getMatches(player.id, networkCallback {
+
+                            onResponseSuccessful matchesCallback@{ matches ->
+                                if (matches == null) {
+                                    return@matchesCallback
+                                }
+
+                                view.showPlayerMatches(team, player, matches)
+                            }
+
+                            onResponseFailed(::handleError)
+                        })
+                    }
+
+                    onResponseFailed(::handleError)
+                })
             }
 
-            override fun onFailure(call: Call<Competition>, t: Throwable) {}
+            onResponseFailed(::handleError)
         })
     }
 
-    private fun fetchTeams(competition: Competition) {
-        val teams = mutableListOf<Team>()
-        var teamsLeft = MAX_REQUESTS
-        competition.teams.shuffled().take(MAX_REQUESTS).forEach {
-            footballRepository.getTeam(it.id, object : Callback<Team> {
-                override fun onResponse(call: Call<Team>, response: Response<Team>) {
-                    response.body()?.let { team -> teams.add(team) }
-                    teamsLeft--
-
-                    if (teamsLeft == 0) {
-                        view.showCompetition(competition.copy(teams = teams))
-                    }
-                }
-
-                override fun onFailure(call: Call<Team>, t: Throwable) {
-                }
-            })
+    private fun handleError(body: ResponseBody?, code: Int) {
+        if (code == TOO_MANY_REQUESTS_ERROR_CODE) {
+            view.showTooManyRequestsError()
+        } else {
+            view.showUnexpectedError()
         }
-    }
-
-    companion object {
-        private const val SPAIN_COMPETITION_ID: Long = 2014
-        private const val MAX_REQUESTS = 2
     }
 }

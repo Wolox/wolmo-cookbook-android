@@ -1,11 +1,3 @@
 package ar.com.wolox.android.cookbook.coroutines.football.model
 
-import com.google.gson.annotations.SerializedName
-
-data class Competition(@SerializedName("competition") private val data: CompetitionData, val teams: List<Team>) {
-
-    val name: String
-        get() = data.name
-}
-
-data class CompetitionData(val name: String)
+data class Competition(val id: Long, val name: String, val teams: List<Team>)
