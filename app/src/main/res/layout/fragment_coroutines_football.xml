@@ -4,8 +4,35 @@
 	android:layout_height="match_parent"
 	android:orientation="vertical">
 
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/randomPlayerMatchesButton"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="Random player matches"/>
+
+		<Button
+			android:id="@+id/randomTeamsSquadsSequentialButton"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="Random teams squads (sequential)"/>
+
+		<Button
+			android:id="@+id/randomTeamsSquadsAsyncButton"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="Random teams squads (async)"/>
+	</LinearLayout>
+
 	<TextView
-		android:id="@+id/competitionName"
+		android:id="@+id/title"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content" />
 
@@ -14,7 +41,7 @@
 		android:layout_height="match_parent">
 
 		<TextView
-			android:id="@+id/teamsList"
+			android:id="@+id/description"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content" />
 	</ScrollView>

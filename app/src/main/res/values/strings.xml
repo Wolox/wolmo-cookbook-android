@@ -59,4 +59,9 @@
     <string name="koin_login_invalid_email">Email invalido</string>
     <string name="koin_login_login_error">Incorrect user or password.</string>
 
+    <!-- Football -->
+    <string name="football_too_many_requests_error">Too many requests, please wait a minute and retry.</string>
+    <string name="football_unexpected_error">Unexpected error.</string>
+    <string name="football_not_available_error">Feature not available on this mode.</string>
+
 </resources>

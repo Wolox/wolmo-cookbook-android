@@ -1,7 +1,7 @@
 package ar.com.wolox.android.cookbook.coroutines.football.modules
 
-import ar.com.wolox.android.cookbook.coroutines.football.CoroutinesFootballActivity
-import ar.com.wolox.android.cookbook.coroutines.football.CoroutinesFootballFragment
+import ar.com.wolox.android.cookbook.coroutines.football.FootballActivity
+import ar.com.wolox.android.cookbook.coroutines.football.FootballFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -9,9 +9,9 @@ import dagger.android.ContributesAndroidInjector
 abstract class CoroutinesFootballModule {
 
     @ContributesAndroidInjector
-    abstract fun CoroutinesRecipeActivity(): CoroutinesFootballActivity
+    abstract fun CoroutinesRecipeActivity(): FootballActivity
 
     @CoroutinesFootbalScope
     @ContributesAndroidInjector(modules = [FootballModule::class])
-    abstract fun CoroutinesRecipeFragment(): CoroutinesFootballFragment
+    abstract fun CoroutinesRecipeFragment(): FootballFragment
 }
