@@ -7,4 +7,6 @@ interface CoroutinesExampleView {
     fun showNumber(progress: Int)
 
     fun showOptions(options: List<CoroutinesExamplePresenter.CoroutinesExampleOption>)
+
+    fun showMessage(message: String)
 }

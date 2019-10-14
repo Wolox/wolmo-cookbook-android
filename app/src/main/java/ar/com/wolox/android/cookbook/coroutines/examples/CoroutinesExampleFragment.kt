@@ -55,6 +55,8 @@ class CoroutinesExampleFragment : WolmoFragment<CoroutinesExamplePresenter>(), C
         progressText.text = progress.toString()
     }
 
+    override fun showMessage(message: String) = toastFactory.show(message)
+
     companion object {
         fun newInstance() = CoroutinesExampleFragment()
     }
