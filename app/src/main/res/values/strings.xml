@@ -81,7 +81,7 @@
     <string name="label_try_again_scan">Intentar Nuevamente</string>
     <string name="label_scan_menu">Scan Menu</string>
     <string name="label_generate_qr">Generar QR</string>
-
+    <string name="label_result">Result:</string>
 
 
 </resources>

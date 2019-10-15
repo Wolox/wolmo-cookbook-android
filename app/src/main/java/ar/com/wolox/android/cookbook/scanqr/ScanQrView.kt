@@ -1,7 +1,8 @@
 package ar.com.wolox.android.cookbook.scanqr
 
 interface ScanQrView {
-    fun goToSuccessFragment()
+
+    fun goToSuccessFragment(result: String?)
 
     fun goToErrorFragment()
 

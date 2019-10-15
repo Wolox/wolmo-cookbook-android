@@ -17,4 +17,6 @@ interface RecipePickerView {
     fun goToKoin()
 
     fun goToNotificationsRecipe()
+
+    fun goToScanQrRecipe()
 }

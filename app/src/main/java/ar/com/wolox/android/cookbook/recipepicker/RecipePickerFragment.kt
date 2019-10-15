@@ -9,6 +9,7 @@ import ar.com.wolox.android.cookbook.koin.KoinLoginRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeActivity
 import ar.com.wolox.android.cookbook.notifications.NotificationActivity
+import ar.com.wolox.android.cookbook.scanqr.ScanQrActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_recipe_picker.*
 
@@ -39,6 +40,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
                 Recipe.TESTS -> RecipeItem(it, R.drawable.bg_tests, R.string.recipe_picker_tests)
                 Recipe.KOIN -> RecipeItem(it, R.drawable.bg_koin, R.string.recipe_picker_koin)
                 Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.bg_notification_recipe, R.string.recipe_picker_notifications)
+                Recipe.QR -> RecipeItem(it, R.drawable.bg_scan_qr, R.string.label_capture_qr)
             }
         }
     }
@@ -69,6 +71,10 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     override fun goToNotificationsRecipe() {
         requireContext().startActivity(Intent(requireContext(), NotificationActivity::class.java))
+    }
+
+    override fun goToScanQrRecipe() {
+        requireContext().startActivity(Intent(requireContext(), ScanQrActivity::class.java))
     }
 
     companion object {
