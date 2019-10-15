@@ -8,18 +8,17 @@ import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
-private var jobA: Job? = null
-private var jobB: Job? = null
-private var jobC: Job? = null
+sealed class JobToCancel
+object JobA : JobToCancel()
+object JobB : JobToCancel()
+object JobC : JobToCancel()
 
 fun CoroutinesExamplePresenter.startChildrenCancellation(view: CoroutinesExampleView) {
     launch(Dispatchers.Default) {
-        launchThreeJobsAndCancel("Cancelling C") { jobC }
-        launchThreeJobsAndCancel("Cancelling B") { jobB }
-        launchThreeJobsAndCancel("Cancelling A") { jobA }
+        launchThreeJobsAndCancel("Cancelling C", JobC)
+        launchThreeJobsAndCancel("Cancelling B", JobB)
+        launchThreeJobsAndCancel("Cancelling A", JobA)
     }
 }
 
@@ -37,29 +36,33 @@ fun CoroutinesExamplePresenter.startCooperativeCancellation(view: CoroutinesExam
  * If the job B is cancelled, then the job C will be cancelled too.
  * If the job C is cancelled, then just it will be cancelled.
  */
-private suspend fun CoroutinesExamplePresenter.launchThreeJobsAndCancel(exampleName: String, jobToCancel: () -> Job?) {
+private suspend fun CoroutinesExamplePresenter.launchThreeJobsAndCancel(exampleName: String, jobToCancel: JobToCancel) {
 
-    suspendCoroutine<Unit> {
+    lateinit var jobA: Job
+    lateinit var jobB: Job
+    lateinit var jobC: Job
 
-        Log.d(TAG, "Starting example $exampleName")
+    Log.d(TAG, "Starting example $exampleName")
 
-        jobA = launch {
-            jobB = launch {
-                jobC = launch {
-                    logSeconds("Job C")
-                }
-                logSeconds("Job B")
+    jobA = launch {
+        jobB = launch {
+            jobC = launch {
+                logSeconds("Job C")
             }
-            logSeconds("Job A")
+            logSeconds("Job B")
         }
-
-        launch {
-            delay(2_000)
-            jobToCancel()?.cancel()
-        }
-
-        jobA?.invokeOnCompletion { _ -> it.resume(Unit) }
+        logSeconds("Job A")
     }
+
+    delay(2_000)
+
+    when (jobToCancel) {
+        JobA -> jobA.cancel()
+        JobB -> jobB.cancel()
+        JobC -> jobC.cancel()
+    }
+
+    jobA.join()
 }
 
 /**
