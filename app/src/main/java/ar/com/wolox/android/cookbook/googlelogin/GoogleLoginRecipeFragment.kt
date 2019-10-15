@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 /**
  * Before begin its necessary to configure a Google API Console project and set up your Android Studio project
- * The documentation to do this: https://developers.google.com/identity/sign-in/android/start-integrating
+ * The documentation to do this: https://developers.google.com/identity/sign-in/android/startChildrenCancellation-integrating
  *
  * Check to add to the build.gradle this:
  *  dependencies {

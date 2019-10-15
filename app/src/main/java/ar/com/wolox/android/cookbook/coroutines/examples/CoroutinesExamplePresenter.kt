@@ -10,6 +10,7 @@ import javax.inject.Inject
 class CoroutinesExamplePresenter @Inject constructor() : CoroutineBasePresenter<CoroutinesExampleView>() {
 
     private lateinit var contextExample: CoroutinesContextExample
+    private val cancellationsExample = CoroutinesCancellationsExample()
 
     override fun onViewAttached() {
         contextExample = CoroutinesContextExample(view)
@@ -26,6 +27,12 @@ class CoroutinesExamplePresenter @Inject constructor() : CoroutineBasePresenter<
 
         CoroutinesExampleOption.BUILDER_ASYNC ->
             startAsyncBuilderExample(view).unit
+
+        CoroutinesExampleOption.CANCELLATION_CHILDRENS ->
+            run(cancellationsExample.startChildrenCancellation)
+
+        CoroutinesExampleOption.CANCELLATION_COOPERATIVE ->
+            run(cancellationsExample.startCooperativeCancellation)
 
         CoroutinesExampleOption.CONTEXT_LONG_RUNNING_TASK_DEFAULT ->
             launch { contextExample.longRunningTask.fromDefaultContext() }.unit
@@ -44,6 +51,8 @@ class CoroutinesExamplePresenter @Inject constructor() : CoroutineBasePresenter<
         SCOPE(R.string.coroutines_examples_scope),
         BUILDER_LAUNCH(R.string.coroutines_examples_builder_launch),
         BUILDER_ASYNC(R.string.coroutines_examples_builder_async),
+        CANCELLATION_CHILDRENS(R.string.coroutines_examples_builder_launch),
+        CANCELLATION_COOPERATIVE(R.string.coroutines_examples_builder_launch),
         CONTEXT_LONG_RUNNING_TASK_DEFAULT(R.string.coroutines_examples_context_long_running_task_default),
         CONTEXT_LONG_RUNNING_TASK_MAIN(R.string.coroutines_examples_context_long_running_task_main),
         CONTEXT_CHANGE_VIEW_DEFAULT(R.string.coroutines_examples_context_change_view_default),

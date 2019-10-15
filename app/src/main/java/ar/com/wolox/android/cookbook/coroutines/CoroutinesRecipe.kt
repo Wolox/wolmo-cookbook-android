@@ -9,5 +9,5 @@ object CoroutinesRecipe {
     fun start(context: Context) = CoroutinesExampleActivity.start(context)
 
     /** Uncomment this to check Coroutines football API call. */
-    // fun start(context: Context) = FootballActivity.start(context)
+    // fun startChildrenCancellation(context: Context) = FootballActivity.startChildrenCancellation(context)
 }

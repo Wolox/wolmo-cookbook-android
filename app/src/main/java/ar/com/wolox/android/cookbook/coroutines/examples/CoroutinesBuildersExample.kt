@@ -25,9 +25,9 @@ fun CoroutinesExamplePresenter.startAsyncBuilderExample(view: CoroutinesExampleV
 
 private fun CoroutinesExamplePresenter.startBuilderExample(
     view: CoroutinesExampleView,
-    block: suspend IntRange.() -> List<Int>
+    transformation: suspend IntRange.() -> List<Int>
 ) = launch {
-    val time = measureTimeMillis { view.showNumber((1..20).let { it.block() }.average().roundToInt()) }
+    val time = measureTimeMillis { view.showNumber((1..20).transformation().average().roundToInt()) }
     view.showMessage("It takes ${TimeUnit.MILLISECONDS.toSeconds(time)} seconds ($time ms) to run")
 }
 
