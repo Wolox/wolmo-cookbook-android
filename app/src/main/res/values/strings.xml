@@ -64,6 +64,8 @@
     <string name="coroutines_examples_scope">Start scope example</string>
     <string name="coroutines_examples_builder_launch">Start builder launch example</string>
     <string name="coroutines_examples_builder_async">Start builder async example</string>
+    <string name="coroutines_examples_cancel_children">Start children cancellation example</string>
+    <string name="coroutines_examples_cancel_cooperative">Start cooperative cancellation example</string>
     <string name="coroutines_examples_context_long_running_task_default">Run long running task on default context</string>
     <string name="coroutines_examples_context_long_running_task_main">Run long running task on main context</string>
     <string name="coroutines_examples_context_change_view_default">Change view from default context</string>
