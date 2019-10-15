@@ -23,6 +23,14 @@ fun CoroutinesExamplePresenter.startAsyncBuilderExample(view: CoroutinesExampleV
     }
 }
 
+/**
+ * Start a builder example by doing a transformation to a range of numbers and showing the average.
+ *
+ * By using [async] all the transformations will be done concurrently.
+ * By using [launch] the transformations will be done sequentially, one after another.
+ *
+ * At last, it'll show the elapsed time of the executed transformation.
+ */
 private fun CoroutinesExamplePresenter.startBuilderExample(
     view: CoroutinesExampleView,
     transformation: suspend IntRange.() -> List<Int>

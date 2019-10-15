@@ -10,7 +10,6 @@ import javax.inject.Inject
 class CoroutinesExamplePresenter @Inject constructor() : CoroutineBasePresenter<CoroutinesExampleView>() {
 
     private lateinit var contextExample: CoroutinesContextExample
-    private val cancellationsExample = CoroutinesCancellationsExample()
 
     override fun onViewAttached() {
         contextExample = CoroutinesContextExample(view)
@@ -29,10 +28,10 @@ class CoroutinesExamplePresenter @Inject constructor() : CoroutineBasePresenter<
             startAsyncBuilderExample(view).unit
 
         CoroutinesExampleOption.CANCELLATION_CHILDREN ->
-            run(cancellationsExample.startChildrenCancellation)
+            startChildrenCancellation(view)
 
         CoroutinesExampleOption.CANCELLATION_COOPERATIVE ->
-            run(cancellationsExample.startCooperativeCancellation)
+            startCooperativeCancellation(view)
 
         CoroutinesExampleOption.CONTEXT_LONG_RUNNING_TASK_DEFAULT ->
             launch { contextExample.longRunningTask.fromDefaultContext() }.unit
