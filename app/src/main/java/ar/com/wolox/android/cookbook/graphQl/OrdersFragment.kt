@@ -1,6 +1,5 @@
 package ar.com.wolox.android.cookbook.graphQl
 
-import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.wolox.android.cookbook.R
@@ -13,17 +12,12 @@ class OrdersFragment : WolmoFragment<OrdersPresenter>(), OrdersView {
     private lateinit var ordersAdapter: OrdersAdapter
     private lateinit var layoutManager: LinearLayoutManager
 
-    override fun init() {
-        presenter.init()
-    }
+    override fun layout(): Int = R.layout.fragment_orders
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun init() {
         setUpRecyclerView()
         setOnClickListeners()
     }
-
-    override fun layout(): Int = R.layout.fragment_orders
 
     override fun onOrdersLoaded(orders: List<ModelOrder>) {
         requireActivity().runOnUiThread {
@@ -55,5 +49,10 @@ class OrdersFragment : WolmoFragment<OrdersPresenter>(), OrdersView {
 
     override fun toggleProgress(toggle: Boolean) {
         vProgressBar.visibility = if (toggle) View.VISIBLE else View.GONE
+    }
+
+    companion object {
+        const val PAGE_ONE = 1
+        const val PAGE_LIMIT = 10
     }
 }

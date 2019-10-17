@@ -6,13 +6,7 @@ import kotlinx.android.synthetic.main.activity_graph_ql.*
 
 class OrdersActivity : WolmoActivity() {
 
-    override fun init() {
-        showOrdersFragment()
-    }
+    override fun init() = replaceFragment(R.id.vActivityFrameLayout, OrdersFragment())
 
     override fun layout(): Int = R.layout.activity_graph_ql
-
-    private fun showOrdersFragment() {
-        replaceFragment(R.id.vActivityFrameLayout, OrdersFragment())
-    }
 }
