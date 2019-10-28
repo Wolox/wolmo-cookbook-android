@@ -1,24 +1,18 @@
 package ar.com.wolox.android.cookbook.room
 
-import android.app.Application
-import android.os.Handler
-import ar.com.wolox.android.cookbook.room.database.RoomDataEntity
-import ar.com.wolox.android.cookbook.room.database.RoomDatabaseManager
+import ar.com.wolox.android.cookbook.room.database.models.NoteEntity
+import ar.com.wolox.android.cookbook.room.database.services.interfaces.NoteService
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class RoomRecipePresenter @Inject constructor(
-    val application: Application
+    private val noteService: NoteService
 ) : BasePresenter<RoomRecipeView>() {
 
-    private lateinit var db: RoomDatabaseManager
     private var userName: String? = null
-    private val handler = Handler()
-
-    override fun onViewAttached() {
-        super.onViewAttached()
-        db = RoomDatabaseManager.invoke(application.baseContext)
-    }
 
     fun onSessionButtonClicked(user: String) {
         userName?.let {
@@ -27,13 +21,14 @@ class RoomRecipePresenter @Inject constructor(
         } ?: run {
             if (user.isNotEmpty()) {
                 userName = user
-                Thread(Runnable {
-                    val data = db.RoomDataDao().getAll()
-                    handler.post {
-                        view.updateEntities(data)
-                        view.showLoginSuccess()
+
+                GlobalScope.launch(Dispatchers.Main) {
+                    val data = noteService.getAll()
+                    with(view) {
+                        updateEntities(data)
+                        showLoginSuccess()
                     }
-                }).start()
+                }
             } else {
                 view.showLoginError()
             }
@@ -45,44 +40,38 @@ class RoomRecipePresenter @Inject constructor(
     }
 
     fun onPositiveAddButtonClicked(newData: String) {
-        Thread(Runnable {
-            var index = db.RoomDataDao().getLastIndex()
-            index = if (index <= 0) 1 else index + 1
+        GlobalScope.launch(Dispatchers.Main) {
+            val lastIndex = noteService.getLastIndex()
 
-            val entity = RoomDataEntity(index, userName!!, newData)
-
-            db.RoomDataDao().insertAll(entity)
-            handler.post { view.insertEntity(entity) }
-        }).start()
+            val entity = NoteEntity(lastIndex + 1, userName!!, newData)
+            noteService.save(entity)
+            view.insertEntity(entity)
+        }
     }
 
     fun onClearButtonClicked() {
-        Thread(Runnable {
-            db.clearAllTables()
-            handler.post { view.clearEntities() }
-        }).start()
+        GlobalScope.launch(Dispatchers.Main) {
+            noteService.deleteAll()
+            view.clearEntities()
+        }
     }
 
-    fun onEditButtonClicked(item: RoomDataEntity) {
+    fun onEditButtonClicked(item: NoteEntity) {
         view.showEditInputDialog(item)
     }
 
-    fun onPositiveEditButtonClicked(entity: RoomDataEntity, newData: String) {
-        Thread(Runnable {
-            entity.run {
-                user = userName!!
-                data = newData
-            }
-
-            db.RoomDataDao().updateEntity(entity)
-            handler.post { view.modifyEntity(entity) }
-        }).start()
+    fun onPositiveEditButtonClicked(entity: NoteEntity, newData: String) {
+        GlobalScope.launch(Dispatchers.Main) {
+            val newEntity = entity.copy(user = userName!!, data = newData)
+            noteService.save(newEntity)
+            view.modifyEntity(newEntity)
+        }
     }
 
-    fun onDeleteButtonClicked(entity: RoomDataEntity) {
-        Thread(Runnable {
-            db.RoomDataDao().deleteEntity(entity)
-            handler.post { view.deleteEntity(entity) }
-        }).start()
+    fun onDeleteButtonClicked(entity: NoteEntity) {
+        GlobalScope.launch(Dispatchers.Main) {
+            noteService.delete(entity)
+            view.deleteEntity(entity)
+        }
     }
 }

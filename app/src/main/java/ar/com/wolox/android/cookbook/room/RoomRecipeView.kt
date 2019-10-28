@@ -1,6 +1,6 @@
 package ar.com.wolox.android.cookbook.room
 
-import ar.com.wolox.android.cookbook.room.database.RoomDataEntity
+import ar.com.wolox.android.cookbook.room.database.models.NoteEntity
 
 interface RoomRecipeView {
 
@@ -12,15 +12,15 @@ interface RoomRecipeView {
 
     fun showAddInputDialog()
 
-    fun showEditInputDialog(entity: RoomDataEntity)
+    fun showEditInputDialog(entity: NoteEntity)
 
-    fun updateEntities(entities: List<RoomDataEntity>)
+    fun updateEntities(entities: List<NoteEntity>)
 
-    fun insertEntity(entity: RoomDataEntity)
+    fun insertEntity(entity: NoteEntity)
 
     fun clearEntities()
 
-    fun deleteEntity(entity: RoomDataEntity)
+    fun deleteEntity(entity: NoteEntity)
 
-    fun modifyEntity(entity: RoomDataEntity)
+    fun modifyEntity(entity: NoteEntity)
 }

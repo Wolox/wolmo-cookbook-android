@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.room.database.RoomDataEntity
+import ar.com.wolox.android.cookbook.room.database.models.NoteEntity
 import ar.com.wolox.android.cookbook.room.dialog.RoomInputDialog
 import ar.com.wolox.android.cookbook.room.dialog.RoomInputDialogListener
 import ar.com.wolox.android.cookbook.room.list.RoomListAdapter
@@ -19,7 +19,7 @@ class RoomRecipeFragment @Inject constructor(
 
     private lateinit var viewAdapter: RoomListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
-    private lateinit var entityItemList: MutableList<RoomDataEntity>
+    private lateinit var entityItemList: MutableList<NoteEntity>
 
     override fun layout(): Int = R.layout.fragment_room
 
@@ -64,7 +64,7 @@ class RoomRecipeFragment @Inject constructor(
         }).show()
     }
 
-    override fun updateEntities(entities: List<RoomDataEntity>) {
+    override fun updateEntities(entities: List<NoteEntity>) {
 
         entityItemList = mutableListOf()
         entityItemList.addAll(entities)
@@ -83,7 +83,7 @@ class RoomRecipeFragment @Inject constructor(
         viewAdapter.notifyDataSetChanged()
     }
 
-    override fun showEditInputDialog(entity: RoomDataEntity) {
+    override fun showEditInputDialog(entity: NoteEntity) {
         RoomInputDialog().showDialog(requireContext(), R.string.room_input_title_modify, object : RoomInputDialogListener {
             override fun onPositiveButtonClicked(data: String) {
                 presenter.onPositiveEditButtonClicked(entity, data)
@@ -118,7 +118,7 @@ class RoomRecipeFragment @Inject constructor(
         toastFactory.show(R.string.room_logout)
     }
 
-    override fun insertEntity(entity: RoomDataEntity) {
+    override fun insertEntity(entity: NoteEntity) {
         viewAdapter.addData(entity)
         toastFactory.show(R.string.room_row_inserted)
     }
@@ -128,12 +128,12 @@ class RoomRecipeFragment @Inject constructor(
         toastFactory.show(R.string.room_rows_deleted)
     }
 
-    override fun deleteEntity(entity: RoomDataEntity) {
+    override fun deleteEntity(entity: NoteEntity) {
         viewAdapter.deleteData(entity)
         toastFactory.show(R.string.room_row_deleted)
     }
 
-    override fun modifyEntity(entity: RoomDataEntity) {
+    override fun modifyEntity(entity: NoteEntity) {
         viewAdapter.editData(entity)
         toastFactory.show(R.string.room_row_modified)
     }
