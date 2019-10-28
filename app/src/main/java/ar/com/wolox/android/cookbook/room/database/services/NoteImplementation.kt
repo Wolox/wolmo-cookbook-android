@@ -36,5 +36,4 @@ class NoteImplementation(val dao: NoteDao) : NoteService {
             dao.deleteAll()
         }
     }
-
 }
