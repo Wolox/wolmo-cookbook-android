@@ -9,9 +9,9 @@ import ar.com.wolox.android.cookbook.room.database.models.NoteEntity
 import kotlinx.android.synthetic.main.item_db_row.view.*
 
 class RoomListAdapter(
-        private val dataSet: MutableList<NoteEntity>,
-        private val editClickListener: (NoteEntity) -> Unit,
-        private val deleteClickListener: (NoteEntity) -> Unit
+    private val dataSet: MutableList<NoteEntity>,
+    private val editClickListener: (NoteEntity) -> Unit,
+    private val deleteClickListener: (NoteEntity) -> Unit
 ) : RecyclerView.Adapter<RoomListAdapter.EntityViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EntityViewHolder {
@@ -50,9 +50,9 @@ class RoomListAdapter(
     class EntityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(
-                entity: NoteEntity,
-                editClickListener: (NoteEntity) -> Unit,
-                deleteClickListener: (NoteEntity) -> Unit
+            entity: NoteEntity,
+            editClickListener: (NoteEntity) -> Unit,
+            deleteClickListener: (NoteEntity) -> Unit
         ) {
 
             val dataStr = itemView.context.getString(R.string.room_row_data, entity.user, entity.data)
