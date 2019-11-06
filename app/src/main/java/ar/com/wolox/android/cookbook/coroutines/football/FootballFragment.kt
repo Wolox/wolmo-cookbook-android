@@ -1,24 +1,21 @@
 package ar.com.wolox.android.cookbook.coroutines.football
 
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.coroutines.core.fromHtml
+import ar.com.wolox.android.cookbook.coroutines.core.CoroutinesRecipeItemFragment
 import ar.com.wolox.android.cookbook.coroutines.football.model.Competition
 import ar.com.wolox.android.cookbook.coroutines.football.model.Match
 import ar.com.wolox.android.cookbook.coroutines.football.model.Player
 import ar.com.wolox.android.cookbook.coroutines.football.model.Team
-import ar.com.wolox.wolmo.core.fragment.WolmoFragment
-import ar.com.wolox.wolmo.core.util.ToastFactory
 import kotlinx.android.synthetic.main.fragment_coroutines_football.*
 import javax.inject.Inject
 
-class FootballFragment : WolmoFragment<CoroutinesFootballPresenter>(), FootballView {
+class FootballFragment @Inject constructor() : CoroutinesRecipeItemFragment<CoroutinesFootballPresenter>(), FootballView {
 
-    @Inject
-    internal lateinit var toastFactory: ToastFactory
+    override val childrenLayout = R.layout.fragment_coroutines_football
 
-    override fun layout() = R.layout.fragment_coroutines_football
+    override val titleRes = R.string.football_title
 
-    override fun init() {}
+    override val descriptionRes = R.string.football_description
 
     override fun setListeners() {
         randomPlayerMatchesButton.setOnClickListener {
@@ -33,23 +30,23 @@ class FootballFragment : WolmoFragment<CoroutinesFootballPresenter>(), FootballV
     }
 
     override fun showCompetition(competition: Competition) {
-        title.text = competition.name
-        description.text = competition.teams.joinToString("<br><br>") {
-            it.name + ":<br>-" + it.squad.joinToString("<br>-") { player -> "${player.name} - ${player.position}" }
-        }.fromHtml()
+        footballTitle.text = competition.name
+        footballDescription.text = competition.teams.joinToString("\n\n") {
+            it.name + ":\n-" + it.squad.joinToString("\n-") { player -> "${player.name} - ${player.position}" }
+        }
     }
 
     override fun showPlayerMatches(team: Team, player: Player, matches: List<Match>) {
-        title.text = "%s: %s - %s".format(team.name, player.name, player.position)
-        description.text = matches.joinToString("<br><br>") {
-            "%s - %s<br>%s %d - %d %s".format(
+        footballTitle.text = "%s: %s - %s".format(team.name, player.name, player.position)
+        footballDescription.text = matches.joinToString("\n") {
+            "%s - %s\n%s %d - %d %s".format(
                     it.date.toString(),
                     it.competition.name,
                     it.homeTeam.name,
                     it.score.fulltime.home,
                     it.score.fulltime.away,
                     it.awayTeam.name)
-        }.fromHtml()
+        }
     }
 
     override fun showElapsedTime(elapsedTime: Long) = toastFactory.show("It takes $elapsedTime ms to perform the task")

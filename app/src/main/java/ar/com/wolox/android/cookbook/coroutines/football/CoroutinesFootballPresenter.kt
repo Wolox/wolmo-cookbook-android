@@ -1,6 +1,6 @@
 package ar.com.wolox.android.cookbook.coroutines.football
 
-import ar.com.wolox.android.cookbook.coroutines.core.mapCooperative
+import ar.com.wolox.android.cookbook.coroutines.core.unit
 import ar.com.wolox.android.cookbook.coroutines.football.networking.CoroutineFootballRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -13,17 +13,17 @@ class CoroutinesFootballPresenter @Inject constructor(
     private val footballRepository: CoroutineFootballRepository
 ) : FootballPresenter() {
 
-    override fun onRandomPlayerMatchesButtonClicked() {
-        launch { showRandomPlayerMatches() }
-    }
+    override fun onRandomPlayerMatchesButtonClicked() = launch {
+        showRandomPlayerMatches()
+    }.unit
 
-    override fun onRandomTeamsSquadsSequentialButtonClicked() {
-        launch { measureTimeAndShow { showCompetitionSequential() } }
-    }
+    override fun onRandomTeamsSquadsSequentialButtonClicked() = launch {
+        measureTimeAndShow { showCompetitionSequential() }
+    }.unit
 
-    override fun onRandomTeamsSquadsAsyncButtonClicked() {
-        launch { measureTimeAndShow { showCompetitionAsync() } }
-    }
+    override fun onRandomTeamsSquadsAsyncButtonClicked() = launch {
+        measureTimeAndShow { showCompetitionAsync() }
+    }.unit
 
     /** Gets a random player from a random team from spain and shows the matches he played. */
     private suspend fun showRandomPlayerMatches() {
@@ -34,7 +34,7 @@ class CoroutinesFootballPresenter @Inject constructor(
             val matches = footballRepository.getMatches(player.id)
             view.showPlayerMatches(team, player, matches)
         } catch (exception: HttpException) {
-            handleError(exception)
+            handleError(null, exception.code())
         }
     }
 
@@ -48,13 +48,12 @@ class CoroutinesFootballPresenter @Inject constructor(
                 copy(teams = teams
                         .shuffled()
                         .take(MAX_REQUESTS)
-                        .mapCooperative { footballRepository.getTeam(it.id) }
-                        .orEmpty())
+                        .map { footballRepository.getTeam(it.id) })
             }
 
             view.showCompetition(competition)
         } catch (exception: HttpException) {
-            handleError(exception)
+            handleError(null, exception.code())
         }
     }
 
@@ -68,22 +67,13 @@ class CoroutinesFootballPresenter @Inject constructor(
                 copy(teams = teams
                         .shuffled()
                         .take(MAX_REQUESTS)
-                        .mapCooperative { async { footballRepository.getTeam(it.id) } }
-                        .orEmpty()
+                        .map { async { footballRepository.getTeam(it.id) } }
                         .awaitAll())
             }
 
             view.showCompetition(competition)
         } catch (exception: HttpException) {
-            handleError(exception)
-        }
-    }
-
-    private fun handleError(exception: HttpException) {
-        if (exception.code() == TOO_MANY_REQUESTS_ERROR_CODE) {
-            view.showTooManyRequestsError()
-        } else {
-            view.showUnexpectedError()
+            handleError(null, exception.code())
         }
     }
 

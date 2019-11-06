@@ -2,7 +2,7 @@ package ar.com.wolox.android.cookbook.recipepicker
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipe
+import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeActivity
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
@@ -57,7 +57,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     override fun goToKoin() = goTo(KoinLoginRecipeActivity::class.java)
 
-    override fun goToCoroutines() = CoroutinesRecipe.start(requireContext())
+    override fun goToCoroutines() = goTo(CoroutinesRecipeActivity::class.java)
 
     companion object {
         fun newInstance() = RecipePickerFragment()

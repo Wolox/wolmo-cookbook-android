@@ -1,78 +1,126 @@
 <resources>
 
-    <!-- General -->
-    <string name="app_title">Wolmo Android\nCookbook</string>
-    <string name="app_example_recipe_description">The Bad Boy of the Block. You can\'t resist him, huh?</string>
+	<!-- General -->
+	<string name="app_title">Wolmo Android\nCookbook</string>
+	<string name="app_example_recipe_description">The Bad Boy of the Block. You can\'t resist him, huh?</string>
 
-    <!-- Recipe Picker -->
-    <string name="recipe_picker_google_login">Google login</string>
-    <string name="recipe_picker_facebook_login">Facebook login</string>
-    <string name="recipe_picker_navigation">Navigation Arch. Component</string>
-    <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
-    <string name="recipe_picker_tests">Tests</string>
-    <string name="recipe_picker_koin">Koin</string>
-    <string name="recipe_picker_coroutines">Coroutines</string>
+	<!-- Recipe Picker -->
+	<string name="recipe_picker_google_login">Google login</string>
+	<string name="recipe_picker_facebook_login">Facebook login</string>
+	<string name="recipe_picker_navigation">Navigation Arch. Component</string>
+	<string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
+	<string name="recipe_picker_tests">Tests</string>
+	<string name="recipe_picker_koin">Koin</string>
+	<string name="recipe_picker_coroutines">Coroutines</string>
 
-    <!-- Google login -->
-    <string name="google_login_logout">Logout</string>
-    <string name="google_login_error_cancelled">The sign in was cancelled by the user.</string>
-    <string name="google_login_error_in_progress">A sign in process is currently in progress and the current one cannot continue.</string>
-    <string name="google_login_error_failed">The sign in attempt didn\'t succeed with the current account.</string>
-    <string name="google_login_error_unexpected">Unexpected error.</string>
+	<!-- Google login -->
+	<string name="google_login_logout">Logout</string>
+	<string name="google_login_error_cancelled">The sign in was cancelled by the user.</string>
+	<string name="google_login_error_in_progress">A sign in process is currently in progress and the current one cannot continue.</string>
+	<string name="google_login_error_failed">The sign in attempt didn\'t succeed with the current account.</string>
+	<string name="google_login_error_unexpected">Unexpected error.</string>
 
-    <!-- Navigation -->
-    <string name="navigation_navigation1">Navigation 1</string>
-    <string name="navigation_navigation2">Navigation 2</string>
-    <string name="navigation_navigation3">Navigation 3</string>
-    <string name="navigation_navigation4">Navigation 4</string>
-    <string name="navigation_go_to_1">GO TO 1</string>
-    <string name="navigation_go_to_2">GO TO 2</string>
-    <string name="navigation_go_to_3">GO TO 3</string>
-    <string name="navigation_go_to_4">GO TO 4</string>
-    <string name="navigation_go_to_new_activity">GO TO NEW ACTIVITY</string>
+	<!-- Navigation -->
+	<string name="navigation_navigation1">Navigation 1</string>
+	<string name="navigation_navigation2">Navigation 2</string>
+	<string name="navigation_navigation3">Navigation 3</string>
+	<string name="navigation_navigation4">Navigation 4</string>
+	<string name="navigation_go_to_1">GO TO 1</string>
+	<string name="navigation_go_to_2">GO TO 2</string>
+	<string name="navigation_go_to_3">GO TO 3</string>
+	<string name="navigation_go_to_4">GO TO 4</string>
+	<string name="navigation_go_to_new_activity">GO TO NEW ACTIVITY</string>
 
-    <!-- Data Sync -->
-    <string name="data_sync_no_pokemon">No Pokemon Found!</string>
-    <string name="data_sync_search_pokemon">Search a Pokemon</string>
-    <string name="data_sync_check_it_out">Check it out!</string>
+	<!-- Data Sync -->
+	<string name="data_sync_no_pokemon">No Pokemon Found!</string>
+	<string name="data_sync_search_pokemon">Search a Pokemon</string>
+	<string name="data_sync_check_it_out">Check it out!</string>
 
-    <!-- Facebook -->
-    <string name="facebook_login_app_id">329539014322126</string>
-    <string name="facebook_login_protocol_scheme">fb329539014322126</string>
-    <string name="facebook_login_error_cancelled">The sign in was cancelled by the user.</string>
-    <string name="facebook_login_error_unexpected">Unexpected error</string>
-    <string name="facebook_login_btn">Login with Facebook</string>
+	<!-- Facebook -->
+	<string name="facebook_login_app_id">329539014322126</string>
+	<string name="facebook_login_protocol_scheme">fb329539014322126</string>
+	<string name="facebook_login_error_cancelled">The sign in was cancelled by the user.</string>
+	<string name="facebook_login_error_unexpected">Unexpected error</string>
+	<string name="facebook_login_btn">Login with Facebook</string>
 
-    <!-- Test Login -->
-    <string name="test_login_email">Email</string>
-    <string name="test_login_password">Password</string>
-    <string name="test_login_login">Login</string>
-    <string name="test_login_empty_field">Debe completar este campo</string>
-    <string name="test_login_invalid_email">Email invalido</string>
-    <string name="test_login_login_error">Incorrect user or password.</string>
+	<!-- Test Login -->
+	<string name="test_login_email">Email</string>
+	<string name="test_login_password">Password</string>
+	<string name="test_login_login">Login</string>
+	<string name="test_login_empty_field">Debe completar este campo</string>
+	<string name="test_login_invalid_email">Email invalido</string>
+	<string name="test_login_login_error">Incorrect user or password.</string>
 
-    <!-- Koin Login -->
-    <string name="koin_login_email">Email</string>
-    <string name="koin_login_password">Password</string>
-    <string name="koin_login_login">Login</string>
-    <string name="koin_login_empty_field">Debe completar este campo</string>
-    <string name="koin_login_invalid_email">Email invalido</string>
-    <string name="koin_login_login_error">Incorrect user or password.</string>
+	<!-- Koin Login -->
+	<string name="koin_login_email">Email</string>
+	<string name="koin_login_password">Password</string>
+	<string name="koin_login_login">Login</string>
+	<string name="koin_login_empty_field">Debe completar este campo</string>
+	<string name="koin_login_invalid_email">Email invalido</string>
+	<string name="koin_login_login_error">Incorrect user or password.</string>
 
-    <!-- Coroutines examples -->
-    <string name="coroutines_examples_choose_one">Choose an example</string>
-    <string name="coroutines_examples_scope">Start scope example</string>
-    <string name="coroutines_examples_builder_launch">Start builder launch example</string>
-    <string name="coroutines_examples_builder_async">Start builder async example</string>
-    <string name="coroutines_examples_cancel_children">Start children cancellation example</string>
-    <string name="coroutines_examples_cancel_cooperative">Start cooperative cancellation example</string>
-    <string name="coroutines_examples_context_long_running_task_default">Run long running task on default context</string>
-    <string name="coroutines_examples_context_long_running_task_main">Run long running task on main context</string>
-    <string name="coroutines_examples_context_change_view_default">Change view from default context</string>
-    <string name="coroutines_examples_context_change_view_main">Change view from main context</string>
+	<!-- Coroutines examples (builders) -->
+	<string name="coroutines_examples_builders_title">Builders</string>
+	<string name="coroutines_examples_builders_description">
+        Example that starts a Coroutine that gets 5 random numbers (get this random number takes
+        1 second) and then shows its average. By making it sequential it will take 5 seconds,
+        but if all the numbers are taken concurrently with async it\'ll take just 1 second.
+    </string>
+	<string name="coroutines_examples_builders_sequential">Sequential (launch)</string>
+	<string name="coroutines_examples_builders_concurrent">Concurrent (launch + async)</string>
 
-    <!-- Football -->
-    <string name="football_too_many_requests_error">Too many requests, please wait a minute and retry.</string>
-    <string name="football_unexpected_error">Unexpected error.</string>
-    <string name="football_not_available_error">Feature not available on this mode.</string>
+	<!-- Coroutines examples (context - long running taks) -->
+	<string name="coroutines_examples_context_long_task_title">Context - Long running task</string>
+	<string name="coroutines_examples_context_long_task_description">
+        Example that starts a Coroutine with a long running task that group 15 long running tasks.
+        If it\'s run on the Main dispatcher, the view will be freezed and it will probably crash.
+        If it\'s run on the Default dispatcher, you\'ll be able to use the view (move the cat to
+        the sides!) while it\'s being performed.
+    </string>
+	<string name="coroutines_examples_context_long_task_main">Perform on main</string>
+	<string name="coroutines_examples_context_long_task_default">Perform on default</string>
+
+	<!-- Coroutines examples (scope) -->
+	<string name="coroutines_examples_scope_title">Scopes</string>
+	<string name="coroutines_examples_scope_description">
+        Example that starts one Coroutine that logs five seconds on a scope. After two and a half
+		seconds the view is destroyed. If it uses the he presenter\'s scope, the Coroutine stops.
+		If the GlobalScope is used, the Coroutine continue working and keep trying to change the
+		view, so the App crashes.\n
+		For this you need to see the Logcat with the tag "SCOPE_EXAMPLE"!
+    </string>
+	<string name="coroutines_examples_scope_global">GlobalScope</string>
+	<string name="coroutines_examples_scope_presenter">Presenter\'s scope</string>
+
+	<!-- Coroutines examples (cascade cancellation) -->
+	<string name="coroutines_examples_cascade_cancellation_title">Cascade cancellation</string>
+	<string name="coroutines_examples_cascade_cancellation_description">
+        Example that starts three coroutines that will log the seconds, one inside each other
+        (launches A, inside A launches B and inside B launches C).
+        Then, after two seconds, the selected job will be cancelled.
+    </string>
+	<string name="coroutines_examples_cascade_cancellation_cancel_A">Cancel A</string>
+	<string name="coroutines_examples_cascade_cancellation_cancel_B">Cancel B</string>
+	<string name="coroutines_examples_cascade_cancellation_cancel_C">Cancel C</string>
+
+	<!-- Coroutines examples (cooperative cancellation) -->
+	<string name="coroutines_examples_cooperative_cancellation_title">Cooperative cancellation</string>
+	<string name="coroutines_examples_cooperative_cancellation_description">
+        Example that starts a Coroutine that waste CPU for 5 seconds and immediately after it
+        starts it\'s cancelled. If it\'s cooperative by using `isActive` it\'ll finish
+        immediately, if not it will wait until it\'s finish.\n
+		For this you need to see the Logcat with the tag "COOPERATIVE_CANCEL"!
+    </string>
+	<string name="coroutines_examples_cooperative_cancellation_cooperative">Cooperative</string>
+	<string name="coroutines_examples_cooperative_cancellation_non_cooperative">Non cooperative</string>
+
+	<!-- Football -->
+	<string name="football_title">Networking</string>
+	<string name="football_description">Example that shows the usage of Retrofit+Coroutines.</string>
+	<string name="football_random_player_matches">Random player matches</string>
+	<string name="football_random_team_squads_sequential">Random teams squads (sequential)</string>
+	<string name="football_random_team_squads_async">Random teams squads (async)</string>
+	<string name="football_too_many_requests_error">Too many requests, please wait a minute and retry.</string>
+	<string name="football_unexpected_error">Unexpected error.</string>
+	<string name="football_not_available_error">Feature not available on this mode.</string>
 </resources>

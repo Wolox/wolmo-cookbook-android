@@ -4,18 +4,13 @@ import androidx.annotation.CallSuper
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 
-abstract class CoroutineBasePresenter<T> : BasePresenter<T>(), CoroutineScope {
-
-    private val job = Job() + Dispatchers.Main
-
-    override val coroutineContext = job
+abstract class CoroutineBasePresenter<T> : BasePresenter<T>(), CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @CallSuper
     override fun onViewDetached() {
-        job.cancel()
+        cancel()
         super.onViewDetached()
     }
 }

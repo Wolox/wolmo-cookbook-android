@@ -2,16 +2,13 @@ package ar.com.wolox.android.cookbook.coroutines.football
 
 import ar.com.wolox.android.cookbook.common.network.networkCallback
 import ar.com.wolox.android.cookbook.coroutines.football.networking.CallbackFootballRepository
-import okhttp3.ResponseBody
 import javax.inject.Inject
 
 class CallbackFootballPresenter @Inject constructor(
     private val footballRepository: CallbackFootballRepository
 ) : FootballPresenter() {
 
-    override fun onRandomPlayerMatchesButtonClicked() {
-        showRandomPlayerMatches()
-    }
+    override fun onRandomPlayerMatchesButtonClicked() = showRandomPlayerMatches()
 
     override fun onRandomTeamsSquadsSequentialButtonClicked() = view.showNotAvailableError()
 
@@ -54,13 +51,5 @@ class CallbackFootballPresenter @Inject constructor(
 
             onResponseFailed(::handleError)
         })
-    }
-
-    private fun handleError(body: ResponseBody?, code: Int) {
-        if (code == TOO_MANY_REQUESTS_ERROR_CODE) {
-            view.showTooManyRequestsError()
-        } else {
-            view.showUnexpectedError()
-        }
     }
 }

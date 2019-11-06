@@ -2,11 +2,11 @@ package ar.com.wolox.android.cookbook.coroutines.examples
 
 interface CoroutinesExampleView {
 
-    fun closeView()
-
-    fun showNumber(progress: Int)
-
-    fun showOptions(options: List<CoroutinesExamplePresenter.CoroutinesExampleOption>)
-
-    fun showMessage(message: String)
+    fun log(type: LogType, message: String)
 }
+
+sealed class LogType(val text: String)
+object D : LogType("D")
+object I : LogType("I")
+object E : LogType("E")
+object W : LogType("W")

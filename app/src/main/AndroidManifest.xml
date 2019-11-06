@@ -50,7 +50,7 @@
             android:name=".coroutines.football.FootballActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".coroutines.examples.CoroutinesExampleActivity"
+            android:name=".coroutines.CoroutinesRecipeActivity"
             android:screenOrientation="portrait" />
         <!-- Metadata for Facebook Login -->
         <meta-data
