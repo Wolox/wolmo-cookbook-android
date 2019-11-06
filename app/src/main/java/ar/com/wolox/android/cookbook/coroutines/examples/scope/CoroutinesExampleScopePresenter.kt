@@ -22,14 +22,9 @@ class CoroutinesExampleScopePresenter @Inject constructor() : CoroutinesExampleB
      * After two seconds, the view is destroyed.
      */
     private fun start(scope: CoroutineScope) = launch(Dispatchers.Default) {
-        Log.d("DylanLog", "Llega!")
-
         scope.launch(Dispatchers.Default) { logSeconds() }
-
         delay(2_500)
-
         log(D, "Destroy view")
-
         withContext(Dispatchers.Main) {
             view.close()
         }
