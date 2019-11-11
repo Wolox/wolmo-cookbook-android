@@ -6,7 +6,8 @@ import ar.com.wolox.android.cookbook.room.database.services.interfaces.NoteServi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class NoteImplementation(val dao: NoteDao) : NoteService {
+class NoteServiceImplementation(val dao: NoteDao) : NoteService {
+
     override suspend fun getLastIndex(): Int = withContext(Dispatchers.IO) {
         dao.getLastIndex()
     }

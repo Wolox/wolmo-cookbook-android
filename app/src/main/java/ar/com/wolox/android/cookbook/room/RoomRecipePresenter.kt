@@ -1,77 +1,21 @@
 package ar.com.wolox.android.cookbook.room
 
+import ar.com.wolox.android.cookbook.room.database.core.CoroutineBasePresenter
 import ar.com.wolox.android.cookbook.room.database.models.NoteEntity
-import ar.com.wolox.android.cookbook.room.database.services.interfaces.NoteService
-import ar.com.wolox.wolmo.core.presenter.BasePresenter
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class RoomRecipePresenter @Inject constructor(
-    private val noteService: NoteService
-) : BasePresenter<RoomRecipeView>() {
+abstract class RoomRecipePresenter : CoroutineBasePresenter<RoomRecipeView>() {
 
-    private var userName: String? = null
+    abstract fun onSessionButtonClicked(user: String)
 
-    fun onSessionButtonClicked(user: String) {
-        userName?.let {
-            userName = null
-            view.doSessionLogout()
-        } ?: run {
-            if (user.isNotEmpty()) {
-                userName = user
+    abstract fun onAddButtonClicked()
 
-                GlobalScope.launch(Dispatchers.Main) {
-                    val data = noteService.getAll()
-                    with(view) {
-                        updateEntities(data)
-                        showLoginSuccess()
-                    }
-                }
-            } else {
-                view.showLoginError()
-            }
-        }
-    }
+    abstract fun onPositiveAddButtonClicked(newData: String)
 
-    fun onAddButtonClicked() {
-        view.showAddInputDialog()
-    }
+    abstract fun onClearButtonClicked()
 
-    fun onPositiveAddButtonClicked(newData: String) {
-        GlobalScope.launch(Dispatchers.Main) {
-            val lastIndex = noteService.getLastIndex()
+    abstract fun onEditButtonClicked(item: NoteEntity)
 
-            val entity = NoteEntity(lastIndex + 1, userName!!, newData)
-            noteService.save(entity)
-            view.insertEntity(entity)
-        }
-    }
+    abstract fun onPositiveEditButtonClicked(entity: NoteEntity, newData: String)
 
-    fun onClearButtonClicked() {
-        GlobalScope.launch(Dispatchers.Main) {
-            noteService.deleteAll()
-            view.clearEntities()
-        }
-    }
-
-    fun onEditButtonClicked(item: NoteEntity) {
-        view.showEditInputDialog(item)
-    }
-
-    fun onPositiveEditButtonClicked(entity: NoteEntity, newData: String) {
-        GlobalScope.launch(Dispatchers.Main) {
-            val newEntity = entity.copy(user = userName!!, data = newData)
-            noteService.save(newEntity)
-            view.modifyEntity(newEntity)
-        }
-    }
-
-    fun onDeleteButtonClicked(entity: NoteEntity) {
-        GlobalScope.launch(Dispatchers.Main) {
-            noteService.delete(entity)
-            view.deleteEntity(entity)
-        }
-    }
+    abstract fun onDeleteButtonClicked(entity: NoteEntity)
 }

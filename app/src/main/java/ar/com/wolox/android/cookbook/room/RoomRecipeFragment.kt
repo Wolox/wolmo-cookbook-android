@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.fragment_room.*
 import javax.inject.Inject
 
 class RoomRecipeFragment @Inject constructor(
-    val toastFactory: ToastFactory
-) : WolmoFragment<RoomRecipePresenter>(), RoomRecipeView {
+        val toastFactory: ToastFactory
+) : WolmoFragment<CoroutinesRoomRecipePresenter>(), RoomRecipeView {
 
     private lateinit var viewAdapter: RoomListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -69,10 +69,10 @@ class RoomRecipeFragment @Inject constructor(
         entityItemList = mutableListOf()
         entityItemList.addAll(entities)
 
-        viewAdapter = RoomListAdapter(entityItemList, {
-            item -> presenter.onEditButtonClicked(item)
-        }, {
-            item -> presenter.onDeleteButtonClicked(item)
+        viewAdapter = RoomListAdapter(entityItemList, { item ->
+            presenter.onEditButtonClicked(item)
+        }, { item ->
+            presenter.onDeleteButtonClicked(item)
         })
         vRecyclerView.run {
             visibility = View.VISIBLE

@@ -8,6 +8,7 @@ import dagger.Provides
 
 @Module
 class PersistenceModule {
+
     @Provides
     internal fun providesRoomDataDao(manager: DatabaseManager): NoteDao = manager.RoomDataDao()
 

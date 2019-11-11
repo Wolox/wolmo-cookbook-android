@@ -12,8 +12,6 @@ import java.io.Serializable
 data class NoteEntity(
     @PrimaryKey
     val id: Int,
-
     val user: String,
-
     val data: String
 ) : Serializable
