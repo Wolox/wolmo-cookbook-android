@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_room.*
 import javax.inject.Inject
 
 class RoomRecipeFragment @Inject constructor(
-        val toastFactory: ToastFactory
+    val toastFactory: ToastFactory
 ) : WolmoFragment<CoroutinesRoomRecipePresenter>(), RoomRecipeView {
 
     private lateinit var viewAdapter: RoomListAdapter

@@ -6,7 +6,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CoroutinesRoomRecipePresenter @Inject constructor(
-        private val noteService: NoteService
+    private val noteService: NoteService
 ) : RoomRecipePresenter() {
 
     private var userName: String? = null
