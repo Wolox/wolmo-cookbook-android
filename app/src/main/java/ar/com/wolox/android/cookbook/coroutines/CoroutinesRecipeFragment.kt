@@ -30,19 +30,17 @@ class CoroutinesRecipeFragment : WolmoFragment<BasePresenter<Any>>() {
     @Inject
     internal lateinit var cooperativeCancellation: CoroutinesExampleCooperativeCancellationFragment
 
-    private lateinit var fragmentPagerAdapter: SimpleFragmentPagerAdapter
-
     override fun layout() = R.layout.fragment_coroutines_example
 
     override fun init() {
-        fragmentPagerAdapter = SimpleFragmentPagerAdapter(childFragmentManager)
-        fragmentPagerAdapter.addFragments(
-                Pair(builders, ""),
-                Pair(contextLongTask, ""),
-                Pair(scope, ""),
-                Pair(cascadeCancellation, ""),
-                Pair(cooperativeCancellation, ""))
-        viewPager.adapter = fragmentPagerAdapter
+        viewPager.adapter = SimpleFragmentPagerAdapter(childFragmentManager).apply {
+            addFragments(
+                    Pair(builders, ""),
+                    Pair(contextLongTask, ""),
+                    Pair(scope, ""),
+                    Pair(cascadeCancellation, ""),
+                    Pair(cooperativeCancellation, ""))
+        }
     }
 
     companion object {
