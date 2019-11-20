@@ -19,7 +19,6 @@ class ViewPagerFragment @Inject constructor() : WolmoFragment<MotionPresenter>()
     @Inject lateinit var page2Fragment: Page2Fragment
     @Inject lateinit var page1Fragment: Page1Fragment
     private lateinit var fragmentPagerAdapter: SimpleFragmentPagerAdapter
-    private var numberOfPages: Int = 0
 
     companion object {
         fun newInstance(): ViewPagerFragment {
@@ -45,7 +44,6 @@ class ViewPagerFragment @Inject constructor() : WolmoFragment<MotionPresenter>()
         }
         vViewPagerMotion.adapter = fragmentPagerAdapter
         vHomeTabsMotion.setupWithViewPager(vViewPagerMotion)
-        numberOfPages = 2
         setUpViewPagerMotionListener()
     }
 
@@ -57,7 +55,7 @@ class ViewPagerFragment @Inject constructor() : WolmoFragment<MotionPresenter>()
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 Handler().postDelayed({
                     /* change motion layout progress according to the viewPager position */
-                    vMotionLayout.progress = (position + positionOffset) / (numberOfPages - 1)
+                    vMotionLayout.progress = (position + positionOffset) / (fragmentPagerAdapter.count - 1)
                 }, 100)
             }
 
