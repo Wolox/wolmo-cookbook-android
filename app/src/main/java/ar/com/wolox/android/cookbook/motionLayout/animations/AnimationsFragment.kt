@@ -14,7 +14,7 @@ class AnimationsFragment @Inject constructor() : WolmoFragment<MotionPresenter>(
     override fun init() {
         AlertDialog.Builder(requireActivity())
                 .setMessage(R.string.motion_layout_animations_alert_dialog)
-                .setPositiveButton(R.string.motion_layout_animations_alert_dialog_positive_button) { _, _ -> }
+                .setPositiveButton(R.string.motion_layout_animations_alert_dialog_positive_button, null)
                 .show()
     }
 
