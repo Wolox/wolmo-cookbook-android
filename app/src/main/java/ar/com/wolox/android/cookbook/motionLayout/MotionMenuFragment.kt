@@ -12,11 +12,9 @@ class MotionMenuFragment : WolmoFragment<MotionPresenter>(), IMotionView {
 
     override fun layout(): Int = R.layout.fragment_motion_layout_menu
 
-    override fun init() {
-        setUpListeners()
-    }
+    override fun init() {}
 
-    fun setUpListeners() {
+    override fun setListeners() {
         bViewPagerMotion.setOnClickListener {
             replaceFragment(R.id.vActivityBaseContent, ViewPagerFragment.newInstance())
         }
@@ -29,7 +27,7 @@ class MotionMenuFragment : WolmoFragment<MotionPresenter>(), IMotionView {
     }
 
     private fun replaceFragment(resId: Int, fragment: Fragment) {
-        var fragmentTransaction = fragmentManager?.beginTransaction()
+        val fragmentTransaction = fragmentManager?.beginTransaction()
         fragmentTransaction?.replace(resId, fragment)
         fragmentTransaction?.commit()
     }
