@@ -6,6 +6,8 @@ import ar.com.wolox.android.cookbook.common.di.modules.ChartModule
 import ar.com.wolox.android.cookbook.common.di.modules.InstagramModule
 import ar.com.wolox.android.cookbook.common.di.modules.RoomModule
 import ar.com.wolox.android.cookbook.common.di.modules.TwitterModule
+import ar.com.wolox.android.cookbook.common.di.room.PersistenceModule
+import ar.com.wolox.android.cookbook.common.di.room.ServiceModule
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeModule
 import ar.com.wolox.android.cookbook.navigation.NavigationRecipeModule
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeModule
@@ -27,7 +29,8 @@ import javax.inject.Named
             AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class,
             AppModule::class, TwitterModule::class, InstagramModule::class, RoomModule::class,
             ChartModule::class, NavigationRecipeModule::class, DataSyncRecipeModule::class,
-            RxJava2Module::class, TestLoginRecipeModule::class, NotificationRecipeModule::class
+            RxJava2Module::class, TestLoginRecipeModule::class, PersistenceModule::class, ServiceModule::class,
+            NotificationRecipeModule::class
         ]
 )
 interface AppComponent : AndroidInjector<CookbookApplication> {

@@ -123,6 +123,7 @@ buildscript {
     ext.lyfecycle_version = '2.0.0'
     ext.legacy_version = '1.0.0'
     ext.mp_chart = '3.1.0'
+    ext.coroutines_version = '1.2.1'
 }
 
 dependencies {
@@ -191,6 +192,10 @@ dependencies {
 
     // MpChart
     implementation "com.github.PhilJay:MPAndroidChart:v$mp_chart"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     //GraphQL
     implementation 'com.apollographql.apollo:apollo-runtime:1.1.3'
