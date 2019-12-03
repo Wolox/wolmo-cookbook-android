@@ -53,5 +53,4 @@
         android:layout_marginTop="@dimen/twitter_margin_low"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/twitter_text_size" />
-
 </LinearLayout>

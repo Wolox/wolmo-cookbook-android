@@ -73,7 +73,16 @@
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" /> <!-- Activity and intent filter for Chrome Custom Tabs for Facebook Login -->
+            android:label="@string/app_name" /> <!-- Activity for Notifications -->
+        <activity
+            android:name=".notifications.NotificationActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".graphQl.OrdersActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- Activity and intent filter for Chrome Custom Tabs for Facebook Login -->
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
