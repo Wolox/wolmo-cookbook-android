@@ -13,6 +13,9 @@
     <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
     <string name="recipe_picker_tests">Tests</string>
     <string name="recipe_picker_koin">Koin</string>
+    <string name="recipe_picker_notifications">Notifications</string>
+    <string name="recipe_picker_graph_ql">Graph QL</string>
+
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
@@ -59,6 +62,23 @@
     <string name="twitter_error_network_unavailable">Network is unavailable, please try later…</string>
     <string name="twitter_login_data">User ID: %1$s \nUsername: %2$s \nEmail ID: %3$s</string>
     <string name="twitter_picture_data">User ID: %1$d \nUsername: %2$s \nEmail ID: %3$s \nDescription: %4$s</string>
+=======
+    <!-- Notifications -->
+    <string name="notifications_general_channel">General notifications</string>
+    <string name="notifications_general_channel_id">general_notifications</string>
+    <string name="notifications_general_channel_description">All notifications with a normal priority will use this channel</string>
+    <string name="notifications_basic_type_title">Show simple notification</string>
+    <string name="notifications_text_expandable_type_title">Show with expandable text</string>
+    <string name="notifications_inbox_title">Show with inbox style</string>
+    <string name="notifications_settings_title">Open channel notifications</string>
+    <string name="notifications_short_content">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="notifications_basic_title">Basic notification</string>
+    <string name="notifications_large_content">Recently we have discussed the emerging concept of smart farming that makes agriculture more efficient and effective with the help of high-precision algorithms. The mechanism that drives it is Machine Learning — the scientific field that gives machines the ability to learn without being strictly programmed. It has emerged together with big data technologies and high-performance computing to create new opportunities to unravel, quantify, and understand data intensive processes in agricultural operational environments.</string>
+    <string name="notifications_big_picture_title">Show with a picture</string>
+    <string name="notifications_actions_title">Show with actions</string>
+    <string name="notifications_inbox_line_1">Line 1: this is the very first line of an inbox styled notification</string>
+    <string name="notifications_inbox_line_2">Line 2: this is the very first line of an inbox styled notification</string>
+>>>>>>> master
 
     <!-- Instagram -->
     <string name="instagram_title"><u>Instagram Login</u></string>
@@ -90,5 +110,12 @@
     <string name="koin_login_empty_field">Debe completar este campo</string>
     <string name="koin_login_invalid_email">Email invalido</string>
     <string name="koin_login_login_error">Incorrect user or password.</string>
+
+    <!-- Koin Login -->
+    <string name="label_make_request">Make Request</string>
+    <string name="order_id">Order ID: %1$s</string>
+    <string name="order_total">Order Total: %1$s</string>
+    <string name="order_username">Username: %1$s</string>
+    <string name="order_delivery_address">Delivery Address: %1$s</string>
 
 </resources>
