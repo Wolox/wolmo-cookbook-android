@@ -46,6 +46,11 @@
     <dimen name="font_huge">24sp</dimen>
     <dimen name="font_huge_extra">26sp</dimen>
 
+    <!-- Images -->
+    <dimen name="icon_default_size">200dp</dimen>
+    <dimen name="icon_edit_size">30dp</dimen>
+    <dimen name="icon_delete_size">25dp</dimen>
+
     <!-- Recipe Picker -->
     <dimen name="recipe_picker_selection_padding">50dp</dimen>
     <dimen name="recipe_picker_title">40sp</dimen>
@@ -74,6 +79,14 @@
     <dimen name="instagram_web_height">600dp</dimen>
     <dimen name="instagram_picture_size">80dp</dimen>
     <dimen name="instagram_large_default_padding">24dp</dimen>
+
+    <!-- Room -->
+    <dimen name="room_default_padding">8dp</dimen>
+    <dimen name="room_padding_large">16dp</dimen>
+
+    <!-- MpAndroidChart -->
+    <dimen name="chart_padding_default">8dp</dimen>
+    <dimen name="chart_padding_large">16dp</dimen>
 
     <!-- Navigation -->
     <dimen name="navigation_button_width">100dp</dimen>

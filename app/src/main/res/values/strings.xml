@@ -9,6 +9,8 @@
     <string name="recipe_picker_facebook_login">Facebook login</string>
     <string name="recipe_picker_twitter_login">Twitter login</string>
     <string name="recipe_picker_instagram_login">Instagram login</string>
+    <string name="recipe_picker_room">Room Database</string>
+    <string name="recipe_picker_mp_chart">MP Chart</string>
     <string name="recipe_picker_navigation">Navigation Arch. Component</string>
     <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
     <string name="recipe_picker_tests">Tests</string>
@@ -94,6 +96,53 @@
     <string name="instagram_error_fetch_data">You need to login before download personal data</string>
     <string name="instagram_error_internal">Internal error… Please try later</string>
     <string name="instagram_login_data">ID: %1$s, FullName: %2$s, UserName: %3$s</string>
+
+    <!-- Room -->
+    <string name="room_login">Login</string>
+    <string name="room_logout">Logout</string>
+    <string name="room_add_row">Insert Row</string>
+    <string name="room_clear_db">Clear DB</string>
+    <string name="room_user">User</string>
+    <string name="room_login_error">You need to login first</string>
+    <string name="room_row_inserted">Data saved in DB</string>
+    <string name="room_rows_deleted">Data in DB deleted</string>
+    <string name="room_row_deleted">Data item deleted</string>
+    <string name="room_row_modified">Data item modified</string>
+    <string name="room_input_title_add">New Item</string>
+    <string name="room_input_title_modify">Edit Item</string>
+    <string name="room_input_positive">Accept</string>
+    <string name="room_input_negative">Cancel</string>
+    <string name="room_row_data">User: %1$s, Data: %2$s</string>
+
+    <!-- Mp Chart -->
+    <string name="mp_chart_prompt">Chose a chart</string>
+    <string-array name="mp_chart_types">
+        <item>NONE</item>
+        <item>Bar Chart</item>
+        <item>Bubble Chart</item>
+        <item>Combined Chart</item>
+        <item>Horizontal Bar Chart</item>
+        <item>Line Chart</item>
+        <item>Pie Chart</item>
+        <item>Radar Chart</item>
+        <item>Candle Stick Chart</item>
+        <item>Scatter Chart</item>
+    </string-array>
+    <string name="mp_chart_label">Data Set</string>
+    <string name="mp_chart_bar">Description of BarChart</string>
+    <string name="mp_chart_pie">Description of PieChart</string>
+    <string name="mp_chart_bubble">Description of BubbleChart</string>
+    <string name="mp_chart_combined">Description of CombinedChart</string>
+    <string name="mp_chart_h_bar">Description of HorizontalBarChart</string>
+    <string name="mp_chart_radar">Description of RadarChart</string>
+    <string name="mp_chart_candle">Description of CandleStickChart</string>
+    <string name="mp_chart_scatter">Description of ScatterChart</string>
+    <string name="mp_chart_title">Title of DataSet</string>
+    <string name="mp_chart_p_dialog">Getting data from assets sample</string>
+
+    <string name="mp_chart_item_bar">Value: %1$f | Data: %2$s</string>
+    <string name="mp_chart_item_pie">Item: %1$s | Value: %2$f</string>
+    <string name="mp_chart_item_bubble">X: %1$f | Y: %2$f | Size: %3$f | Data: %4$s</string>
 
     <!-- Test Login -->
     <string name="test_login_email">Email</string>
