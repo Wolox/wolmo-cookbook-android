@@ -10,6 +10,12 @@ interface RecipePickerView {
 
     fun goToTwitterLogin()
 
+    fun goToInstagramLogin()
+
+    fun goToRoom()
+
+    fun goToMpChart()
+
     fun goToNavigation()
 
     fun goToDataSyncRecipe()
