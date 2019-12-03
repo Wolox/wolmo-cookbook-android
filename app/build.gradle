@@ -122,6 +122,7 @@ buildscript {
     ext.room_version = '2.1.0-alpha01'
     ext.lyfecycle_version = '2.0.0'
     ext.legacy_version = '1.0.0'
+    ext.mp_chart = '3.1.0'
     ext.coroutines_version = '1.2.1'
 }
 
@@ -188,6 +189,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lyfecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lyfecycle_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    // MpChart
+    implementation "com.github.PhilJay:MPAndroidChart:v$mp_chart"
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"

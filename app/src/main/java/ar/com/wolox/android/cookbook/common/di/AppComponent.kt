@@ -2,6 +2,7 @@ package ar.com.wolox.android.cookbook.common.di
 
 import android.app.Application
 import ar.com.wolox.android.cookbook.CookbookApplication
+import ar.com.wolox.android.cookbook.common.di.modules.ChartModule
 import ar.com.wolox.android.cookbook.common.di.modules.InstagramModule
 import ar.com.wolox.android.cookbook.common.di.modules.RoomModule
 import ar.com.wolox.android.cookbook.common.di.modules.TwitterModule
@@ -27,8 +28,8 @@ import javax.inject.Named
         modules = [
             AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class,
             AppModule::class, TwitterModule::class, InstagramModule::class, RoomModule::class,
-            NavigationRecipeModule::class, DataSyncRecipeModule::class, RxJava2Module::class,
-            TestLoginRecipeModule::class, PersistenceModule::class, ServiceModule::class,
+            ChartModule::class, NavigationRecipeModule::class, DataSyncRecipeModule::class,
+            RxJava2Module::class, TestLoginRecipeModule::class, PersistenceModule::class, ServiceModule::class,
             NotificationRecipeModule::class
         ]
 )

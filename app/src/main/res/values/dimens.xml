@@ -84,6 +84,10 @@
     <dimen name="room_default_padding">8dp</dimen>
     <dimen name="room_padding_large">16dp</dimen>
 
+    <!-- MpAndroidChart -->
+    <dimen name="chart_padding_default">8dp</dimen>
+    <dimen name="chart_padding_large">16dp</dimen>
+
     <!-- Navigation -->
     <dimen name="navigation_button_width">100dp</dimen>
     <dimen name="navigation_button_height">100dp</dimen>

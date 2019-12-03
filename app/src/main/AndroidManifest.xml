@@ -11,6 +11,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name=".recipepicker.RecipePickerActivity"
@@ -55,6 +57,9 @@
         </activity>
         <activity
             android:name=".room.RoomRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mpchart.MpChartRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".tests.TestLoginRecipeActivity"
