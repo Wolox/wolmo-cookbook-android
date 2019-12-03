@@ -6,6 +6,7 @@ import ar.com.wolox.android.cookbook.common.di.modules.TwitterModule
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeModule
 import ar.com.wolox.android.cookbook.navigation.NavigationRecipeModule
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeModule
+import ar.com.wolox.android.cookbook.notifications.di.NotificationRecipeModule
 import ar.com.wolox.wolmo.core.di.modules.ContextModule
 import ar.com.wolox.wolmo.core.di.modules.DefaultModule
 import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
@@ -21,8 +22,10 @@ import javax.inject.Named
         dependencies = [CookbookNetworkingComponent::class],
         modules = [
             AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class,
+
             AppModule::class, TwitterModule::class, NavigationRecipeModule::class,
-            DataSyncRecipeModule::class, RxJava2Module::class, TestLoginRecipeModule::class
+            DataSyncRecipeModule::class, RxJava2Module::class, TestLoginRecipeModule::class,
+            NotificationRecipeModule::class
         ]
 )
 interface AppComponent : AndroidInjector<CookbookApplication> {

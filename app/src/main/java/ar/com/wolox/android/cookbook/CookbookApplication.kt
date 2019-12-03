@@ -1,10 +1,12 @@
 package ar.com.wolox.android.cookbook
 
 import android.util.Log
+import android.os.Build
 import ar.com.wolox.android.cookbook.CookbookModules.initializeModules
 import ar.com.wolox.android.cookbook.common.di.CookbookNetworkingComponent
 import ar.com.wolox.android.cookbook.common.di.DaggerAppComponent
 import ar.com.wolox.android.cookbook.common.di.DaggerCookbookNetworkingComponent
+import ar.com.wolox.android.cookbook.notifications.helper.NotificationChannelFactory
 import ar.com.wolox.wolmo.core.WolmoApplication
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.gson.FieldNamingPolicy
@@ -19,8 +21,12 @@ import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import javax.inject.Inject
 
 class CookbookApplication : WolmoApplication() {
+
+    @Inject
+    lateinit var notificationChannelFactory: NotificationChannelFactory
 
     override fun onInit() {
         if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -36,6 +42,10 @@ class CookbookApplication : WolmoApplication() {
         startKoin {
             androidContext(this@CookbookApplication)
             initializeModules()
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationChannelFactory.init()
         }
     }
 
@@ -85,7 +95,7 @@ class CookbookApplication : WolmoApplication() {
      * @param newLevel - Logging newLevel for the interceptor.
      * @return New instance of interceptor
      */
-    private fun buildHttpLoggingInterceptor(newLevel: HttpLoggingInterceptor.Level): HttpLoggingInterceptor {
+    private fun buildHttpLoggingInterceptor(newLevel: Level): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply { this.level = newLevel }
     }
 

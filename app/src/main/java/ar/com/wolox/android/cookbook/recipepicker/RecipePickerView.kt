@@ -17,4 +17,8 @@ interface RecipePickerView {
     fun goToTests()
 
     fun goToKoin()
+
+    fun goToNotificationsRecipe()
+
+    fun goToGraphQlRecipe()
 }
