@@ -1,0 +1,25 @@
+query GetOrders($page: Int, $limit: Int){
+  orders(page: $page, limit: $limit){
+    orders{
+      id
+      variants {
+          id
+          size
+          color
+          price
+          imageUrl
+      }
+      deliveryAddress
+      totalAmount
+      user {
+          name
+          username
+          email
+          id
+      }
+    }
+    current_count
+    total_count
+    total_pages
+  }
+}

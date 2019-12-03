@@ -53,7 +53,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
     /**
      * Login button provided by twitter sdk
      */
-    fun onTwitterLoginButtonClicked() {
+    fun doTwitterLogin() {
         if (isNetworkAvailable()) {
             getTwitterSession()?.let { fetchTwitterEmail(it) } ?: run { defaultTwitterLogin() }
         } else {
@@ -65,7 +65,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
      *Other way to login with Twitter is work directly with API and avoid te button provided by the
      * sdk. Both ways ends in the same point.
      */
-    fun onLoginWithTwitterApiButtonClicked() {
+    fun doTwitterLoginWithApi() {
 
         if (isNetworkAvailable()) {
             view.requireActivity()?.let { it ->
@@ -97,7 +97,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
      * picture, followers, description, creation date, profile background picture, ...), but needs
      * an user logged to works with code 200
      */
-    fun onFetchDataButtonClicked() {
+    fun doFetchData() {
         if (isNetworkAvailable()) {
             getTwitterSession()?.let {
                 twitterAdapter.requestProfileImage(object : TwitterLoginPictureListener {
@@ -121,7 +121,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
         }
     }
 
-    fun onLogoutButtonClicked() {
+    fun doLogoutOnTwitter() {
         if (isNetworkAvailable()) {
             getTwitterSession()?.let {
                 twitterAdapter.logoutSession(object : TwitterLoginCredentialsListener {
