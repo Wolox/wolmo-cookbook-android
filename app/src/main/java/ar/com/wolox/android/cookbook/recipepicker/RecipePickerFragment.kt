@@ -5,10 +5,14 @@ import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
+import ar.com.wolox.android.cookbook.instagramlogin.InstagramLoginRecipeActivity
 import ar.com.wolox.android.cookbook.graphQl.OrdersActivity
 import ar.com.wolox.android.cookbook.koin.KoinLoginRecipeActivity
+import ar.com.wolox.android.cookbook.mpchart.MpChartRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
+import ar.com.wolox.android.cookbook.room.RoomRecipeActivity
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeActivity
+import ar.com.wolox.android.cookbook.twitterlogin.TwitterLoginRecipeActivity
 import ar.com.wolox.android.cookbook.notifications.NotificationActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_recipe_picker.*
@@ -36,6 +40,10 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
             when (it) {
                 Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.bg_google_login, R.string.recipe_picker_google_login)
                 Recipe.FACEBOOK_LOGIN -> RecipeItem(it, R.drawable.bg_facebook_login, R.string.recipe_picker_facebook_login)
+                Recipe.TWITTER_LOGIN -> RecipeItem(it, R.drawable.bg_twitter_login, R.string.recipe_picker_twitter_login)
+                Recipe.INSTAGRAM_LOGIN -> RecipeItem(it, R.drawable.bg_instagram_login, R.string.recipe_picker_instagram_login)
+                Recipe.ROOM -> RecipeItem(it, R.drawable.bg_room, R.string.recipe_picker_room)
+                Recipe.MP_CHART -> RecipeItem(it, R.drawable.bg_mp_chart, R.string.recipe_picker_mp_chart)
                 Recipe.NAVIGATION -> RecipeItem(it, R.drawable.bg_navigation, R.string.recipe_picker_navigation)
                 Recipe.DATA_SYNC -> RecipeItem(it, R.drawable.bg_data_sync_pokemon, R.string.recipe_picker_data_sync)
                 Recipe.TESTS -> RecipeItem(it, R.drawable.bg_tests, R.string.recipe_picker_tests)
@@ -52,6 +60,22 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     override fun goToFacebookLogin() {
         requireActivity().startActivity(Intent(requireContext(), FacebookLoginRecipeActivity::class.java))
+    }
+
+    override fun goToTwitterLogin() {
+        requireActivity().startActivity(Intent(requireContext(), TwitterLoginRecipeActivity::class.java))
+    }
+
+    override fun goToInstagramLogin() {
+        requireActivity().startActivity(Intent(requireContext(), InstagramLoginRecipeActivity::class.java))
+    }
+
+    override fun goToRoom() {
+        requireActivity().startActivity(Intent(requireContext(), RoomRecipeActivity::class.java))
+    }
+
+    override fun goToMpChart() {
+        requireActivity().startActivity(Intent(requireContext(), MpChartRecipeActivity::class.java))
     }
 
     override fun goToNavigation() {

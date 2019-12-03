@@ -117,6 +117,13 @@ buildscript {
     ext.robolectric_version = '4.2'
     ext.fragment_testing_version = '1.1.0-alpha07'
     ext.koin_version = '2.0.1'
+    ext.twitter_core = '3.1.1'
+    ext.tweet_ui = '3.1.1'
+    ext.room_version = '2.1.0-alpha01'
+    ext.lyfecycle_version = '2.0.0'
+    ext.legacy_version = '1.0.0'
+    ext.mp_chart = '3.1.0'
+    ext.coroutines_version = '1.2.1'
 }
 
 dependencies {
@@ -171,6 +178,24 @@ dependencies {
 
     // Facebook Login
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
+
+    // Twitter Login
+    implementation "com.twitter.sdk.android:twitter-core:$twitter_core"
+    implementation "com.twitter.sdk.android:tweet-ui:$tweet_ui"
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.legacy:legacy-support-v4:$legacy_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lyfecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lyfecycle_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // MpChart
+    implementation "com.github.PhilJay:MPAndroidChart:v$mp_chart"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     //GraphQL
     implementation 'com.apollographql.apollo:apollo-runtime:1.1.3'
