@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/vPicture"
+        android:layout_width="@dimen/instagram_picture_size"
+        android:layout_height="@dimen/instagram_picture_size"
+        android:layout_marginStart="@dimen/instagram_double_default_padding"
+        android:layout_marginTop="@dimen/instagram_default_padding"
+        android:layout_marginBottom="@dimen/instagram_default_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/vUser"
+        android:layout_width="@dimen/spacing_none"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/instagram_default_padding"
+        android:layout_marginTop="@dimen/instagram_default_padding"
+        android:layout_marginEnd="@dimen/instagram_default_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/vPicture"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="USER: username" />
+
+    <TextView
+        android:id="@+id/vDescription"
+        android:layout_width="@dimen/spacing_none"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/instagram_default_padding"
+        android:layout_marginTop="@dimen/instagram_default_padding"
+        android:layout_marginEnd="@dimen/instagram_default_padding"
+        android:layout_marginBottom="@dimen/instagram_default_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/vPicture"
+        app:layout_constraintTop_toBottomOf="@+id/vUser"
+        tools:text="DESCRIPTION: image description from Instagram API" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

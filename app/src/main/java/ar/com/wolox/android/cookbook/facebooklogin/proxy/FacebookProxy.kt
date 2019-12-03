@@ -49,7 +49,7 @@ class FacebookProxy @Inject constructor(context: Context) {
 
     /**
      * This method is for the button that Facebook API provides.
-     * This button already has the login and logout actions.
+     * This button already has the login and doSessionLogout actions.
      */
     fun setFacebookOriginalButtonAction(
         loginButton: LoginButton,
@@ -82,7 +82,7 @@ class FacebookProxy @Inject constructor(context: Context) {
     }
 
     /**
-     * This method is to give the logout action to a personal button or any clickable view.
+     * This method is to give the doSessionLogout action to a personal button or any clickable view.
      */
     fun setFacebookLogoutAction(view: View, listener: LogoutListener) {
         setLogoutListener(listener)
