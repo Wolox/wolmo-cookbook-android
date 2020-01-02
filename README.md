@@ -23,14 +23,12 @@ The Cookbook will also be used as a playground to test new stuff out. That does 
 
 
 ## Initial Setup
-To build project, `keystone.gradle` file will be needed (it won't be included in the repository due to security reasons). Default file could be created to run project (it is attached below), however, original file will be needed to deploy in Google Play Store. 
-
-
+Setup the production keystore credentials: run scripts/keystore.sh from the project root directory or create app/keystore.gradle file manually:
 ```
-ext.release_keystore=file('keystore/debug.keystore')
-ext.key_alias='androiddebugkey'
-ext.key_password='android'
-ext.store_password='android'
+ext.release_keystore=file('...')
+ext.key_alias='...'
+ext.key_password='...'
+ext.store_password='...'
 ```
 
 On the other hand, assets for project will be located in raw folder and warp.py script will create all drawable needed for all resolutions. For more information, you can check it's repository: https://github.com/Wolox/warp
