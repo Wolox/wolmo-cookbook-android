@@ -34,20 +34,18 @@ class CoroutinesRecipeFragment : WolmoFragment<BasePresenter<Any>>() {
     @Inject
     internal lateinit var football: FootballFragment
 
-    private lateinit var fragmentPagerAdapter: SimpleFragmentPagerAdapter
-
     override fun layout() = R.layout.fragment_coroutines_example
 
     override fun init() {
-        fragmentPagerAdapter = SimpleFragmentPagerAdapter(childFragmentManager)
-        fragmentPagerAdapter.addFragments(
+        viewPager.adapter = SimpleFragmentPagerAdapter(childFragmentManager).apply {
+            addFragments(
                 Pair(builders, ""),
                 Pair(contextLongTask, ""),
                 Pair(scope, ""),
                 Pair(cascadeCancellation, ""),
                 Pair(cooperativeCancellation, ""),
                 Pair(football, ""))
-        viewPager.adapter = fragmentPagerAdapter
+        }
     }
 
     companion object {

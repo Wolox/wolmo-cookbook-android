@@ -49,7 +49,7 @@ abstract class CoroutinesRecipeItemFragment<T : BasePresenter<*>> : WolmoFragmen
     override fun log(type: LogType, message: String) {
         progressText.addView(TextView(context).apply {
             text = "%s %s/...: %s".format(
-                    SimpleDateFormat("HH:mm:ss", Locale.US).format(Calendar.getInstance().time),
+                    SimpleDateFormat(DATE_FORMAT, Locale.US).format(Calendar.getInstance().time),
                     type.text,
                     message)
         }, LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply { topMargin = separationBetweenLogs })
@@ -57,5 +57,9 @@ abstract class CoroutinesRecipeItemFragment<T : BasePresenter<*>> : WolmoFragmen
         progressText.post {
             scrollView.fullScroll(View.FOCUS_DOWN)
         }
+    }
+
+    companion object {
+        private const val DATE_FORMAT = "HH:mm:ss"
     }
 }
