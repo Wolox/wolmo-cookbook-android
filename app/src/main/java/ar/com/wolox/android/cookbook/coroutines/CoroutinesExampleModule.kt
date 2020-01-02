@@ -5,6 +5,7 @@ import ar.com.wolox.android.cookbook.coroutines.examples.cascadecancellation.Cor
 import ar.com.wolox.android.cookbook.coroutines.examples.context.CoroutinesExampleContextLongRunningTaskFragment
 import ar.com.wolox.android.cookbook.coroutines.examples.cooperativecancellation.CoroutinesExampleCooperativeCancellationFragment
 import ar.com.wolox.android.cookbook.coroutines.examples.scope.CoroutinesExampleScopeFragment
+import ar.com.wolox.android.cookbook.coroutines.football.FootballFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -31,4 +32,7 @@ abstract class CoroutinesExampleModule {
 
     @ContributesAndroidInjector
     abstract fun coroutinesExampleScopeFragment(): CoroutinesExampleScopeFragment
+
+    @ContributesAndroidInjector
+    abstract fun footballFragment(): FootballFragment
 }

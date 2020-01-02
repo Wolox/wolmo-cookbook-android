@@ -139,5 +139,15 @@
     <string name="coroutines_examples_cooperative_cancellation_cooperative">Cooperative</string>
     <string name="coroutines_examples_cooperative_cancellation_non_cooperative">Non cooperative</string>
 
+    <!-- Football -->
+    <string name="football_title">Networking</string>
+    <string name="football_description">Example that shows the usage of Retrofit+Coroutines.</string>
+    <string name="football_random_player_matches">Random player matches</string>
+    <string name="football_random_team_squads_sequential">Random teams squads (sequential)</string>
+    <string name="football_random_team_squads_async">Random teams squads (async)</string>
+    <string name="football_too_many_requests_error">Too many requests, please wait a minute and retry.</string>
+    <string name="football_unexpected_error">Unexpected error.</string>
+    <string name="football_not_available_error">Feature not available on this mode.</string>
+    <string name="football_elapsed_time">It takes %s ms to perform the task.</string>
 
 </resources>

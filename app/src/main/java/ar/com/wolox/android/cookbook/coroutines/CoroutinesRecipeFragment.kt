@@ -7,6 +7,7 @@ import ar.com.wolox.android.cookbook.coroutines.examples.cascadecancellation.Cor
 import ar.com.wolox.android.cookbook.coroutines.examples.context.CoroutinesExampleContextLongRunningTaskFragment
 import ar.com.wolox.android.cookbook.coroutines.examples.cooperativecancellation.CoroutinesExampleCooperativeCancellationFragment
 import ar.com.wolox.android.cookbook.coroutines.examples.scope.CoroutinesExampleScopeFragment
+import ar.com.wolox.android.cookbook.coroutines.football.FootballFragment
 import ar.com.wolox.wolmo.core.adapter.viewpager.SimpleFragmentPagerAdapter
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
@@ -30,16 +31,20 @@ class CoroutinesRecipeFragment : WolmoFragment<BasePresenter<Any>>() {
     @Inject
     internal lateinit var cooperativeCancellation: CoroutinesExampleCooperativeCancellationFragment
 
+    @Inject
+    internal lateinit var football: FootballFragment
+
     override fun layout() = R.layout.fragment_coroutines_example
 
     override fun init() {
         viewPager.adapter = SimpleFragmentPagerAdapter(childFragmentManager).apply {
             addFragments(
-                    Pair(builders, ""),
-                    Pair(contextLongTask, ""),
-                    Pair(scope, ""),
-                    Pair(cascadeCancellation, ""),
-                    Pair(cooperativeCancellation, ""))
+                Pair(builders, ""),
+                Pair(contextLongTask, ""),
+                Pair(scope, ""),
+                Pair(cascadeCancellation, ""),
+                Pair(cooperativeCancellation, ""),
+                Pair(football, ""))
         }
     }
 
