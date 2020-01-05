@@ -12,6 +12,8 @@
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name=".recipepicker.RecipePickerActivity"
@@ -39,6 +41,26 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".facebooklogin.FacebookLoginRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".twitterlogin.TwitterLoginRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".instagramlogin.InstagramLoginRecipeActivity"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="instagram.com" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".room.RoomRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mpchart.MpChartRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".tests.TestLoginRecipeActivity"

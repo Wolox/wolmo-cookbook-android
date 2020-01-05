@@ -7,6 +7,10 @@
     <!-- Recipe Picker -->
     <string name="recipe_picker_google_login">Google login</string>
     <string name="recipe_picker_facebook_login">Facebook login</string>
+    <string name="recipe_picker_twitter_login">Twitter login</string>
+    <string name="recipe_picker_instagram_login">Instagram login</string>
+    <string name="recipe_picker_room">Room Database</string>
+    <string name="recipe_picker_mp_chart">MP Chart</string>
     <string name="recipe_picker_navigation">Navigation Arch. Component</string>
     <string name="recipe_picker_data_sync">Data Sync Recipe with a Pokemon flavor!</string>
     <string name="recipe_picker_tests">Tests</string>
@@ -45,6 +49,22 @@
     <string name="facebook_login_error_unexpected">Unexpected error</string>
     <string name="facebook_login_btn">Login with Facebook</string>
 
+    <!-- Twitter -->
+    <string name="twitter_consumer_key">GT7c84P1Ua0sCOWMirLZPI5RG</string>
+    <string name="twitter_consumer_secret">98IyZsqCAhojROEGpj8l5u0STuuI4zYa0p5cnhzPasAszUlom6</string>
+    <string name="twitter_custom_login">Custom Log in with Twitter</string>
+    <string name="twitter_profile_image">Fetch Profile Image</string>
+    <string name="twitter_logout">Logout</string>
+    <string name="twitter_auth_error">Twitter: Authorize Failed</string>
+    <string name="twitter_email_error">Twitter: Email validation Failed</string>
+    <string name="twitter_picture_error">Twitter: Picture download Failed</string>
+    <string name="twitter_un_auth_error">Twitter: You need to login first</string>
+    <string name="twitter_credentials_error">Twitter: Error while try to logout</string>
+    <string name="twitter_internal_error">Internal error…</string>
+    <string name="twitter_error_network_unavailable">Network is unavailable, please try later…</string>
+    <string name="twitter_login_data">User ID: %1$s \nUsername: %2$s \nEmail ID: %3$s</string>
+    <string name="twitter_picture_data">User ID: %1$d \nUsername: %2$s \nEmail ID: %3$s \nDescription: %4$s</string>
+
     <!-- Notifications -->
     <string name="notifications_general_channel">General notifications</string>
     <string name="notifications_general_channel_id">general_notifications</string>
@@ -60,6 +80,68 @@
     <string name="notifications_actions_title">Show with actions</string>
     <string name="notifications_inbox_line_1">Line 1: this is the very first line of an inbox styled notification</string>
     <string name="notifications_inbox_line_2">Line 2: this is the very first line of an inbox styled notification</string>
+
+    <!-- Instagram -->
+    <string name="instagram_title"><u>Instagram Login</u></string>
+    <string name="instagram_login_btn">Login</string>
+    <string name="instagram_logout_btn">Logout</string>
+    <string name="instagram_fetch_data_btn">Fetch Data</string>
+    <string name="instagram_login_success">Login Success!!</string>
+    <string name="instagram_logout_success">Loogut Success!!</string>
+    <string name="instagram_error_login">An error occurs during login, please try again…</string>
+    <string name="instagram_error_network_unavailable">Network is unavailable, please try later…</string>
+    <string name="instagram_error_cookies">Error occurs during logout…</string>
+    <string name="instagram_error_api">An error occurs during data download, please try again…</string>
+    <string name="instagram_error_fetch_data">You need to login before download personal data</string>
+    <string name="instagram_error_internal">Internal error… Please try later</string>
+    <string name="instagram_login_data">ID: %1$s, FullName: %2$s, UserName: %3$s</string>
+
+    <!-- Room -->
+    <string name="room_login">Login</string>
+    <string name="room_logout">Logout</string>
+    <string name="room_add_row">Insert Row</string>
+    <string name="room_clear_db">Clear DB</string>
+    <string name="room_user">User</string>
+    <string name="room_login_error">You need to login first</string>
+    <string name="room_row_inserted">Data saved in DB</string>
+    <string name="room_rows_deleted">Data in DB deleted</string>
+    <string name="room_row_deleted">Data item deleted</string>
+    <string name="room_row_modified">Data item modified</string>
+    <string name="room_input_title_add">New Item</string>
+    <string name="room_input_title_modify">Edit Item</string>
+    <string name="room_input_positive">Accept</string>
+    <string name="room_input_negative">Cancel</string>
+    <string name="room_row_data">User: %1$s, Data: %2$s</string>
+
+    <!-- Mp Chart -->
+    <string name="mp_chart_prompt">Chose a chart</string>
+    <string-array name="mp_chart_types">
+        <item>NONE</item>
+        <item>Bar Chart</item>
+        <item>Bubble Chart</item>
+        <item>Combined Chart</item>
+        <item>Horizontal Bar Chart</item>
+        <item>Line Chart</item>
+        <item>Pie Chart</item>
+        <item>Radar Chart</item>
+        <item>Candle Stick Chart</item>
+        <item>Scatter Chart</item>
+    </string-array>
+    <string name="mp_chart_label">Data Set</string>
+    <string name="mp_chart_bar">Description of BarChart</string>
+    <string name="mp_chart_pie">Description of PieChart</string>
+    <string name="mp_chart_bubble">Description of BubbleChart</string>
+    <string name="mp_chart_combined">Description of CombinedChart</string>
+    <string name="mp_chart_h_bar">Description of HorizontalBarChart</string>
+    <string name="mp_chart_radar">Description of RadarChart</string>
+    <string name="mp_chart_candle">Description of CandleStickChart</string>
+    <string name="mp_chart_scatter">Description of ScatterChart</string>
+    <string name="mp_chart_title">Title of DataSet</string>
+    <string name="mp_chart_p_dialog">Getting data from assets sample</string>
+
+    <string name="mp_chart_item_bar">Value: %1$f | Data: %2$s</string>
+    <string name="mp_chart_item_pie">Item: %1$s | Value: %2$f</string>
+    <string name="mp_chart_item_bubble">X: %1$f | Y: %2$f | Size: %3$f | Data: %4$s</string>
 
     <!-- Test Login -->
     <string name="test_login_email">Email</string>

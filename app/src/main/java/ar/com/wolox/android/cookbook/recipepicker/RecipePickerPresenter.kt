@@ -15,13 +15,17 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
         when (clickedRecipe) {
             Recipe.GOOGLE_LOGIN -> view.goToGoogleLogin()
             Recipe.FACEBOOK_LOGIN -> view.goToFacebookLogin()
+            Recipe.TWITTER_LOGIN -> view.goToTwitterLogin()
+            Recipe.INSTAGRAM_LOGIN -> view.goToInstagramLogin()
+            Recipe.ROOM -> view.goToRoom()
+            Recipe.MP_CHART -> view.goToMpChart()
             Recipe.NAVIGATION -> view.goToNavigation()
             Recipe.DATA_SYNC -> view.goToDataSyncRecipe()
             Recipe.TESTS -> view.goToTests()
             Recipe.KOIN -> view.goToKoin()
             Recipe.COROUTINES -> view.goToCoroutines()
             Recipe.NOTIFICATIONS -> view.goToNotificationsRecipe()
-            Recipe.GraphQL -> view.goToGraphQlRecipe()
+            Recipe.GRAPH_QL -> view.goToGraphQlRecipe()
         }
     }
 }
