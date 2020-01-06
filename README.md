@@ -8,18 +8,19 @@ The Cookbook will also be used as a playground to test new stuff out. That does 
 
 ## <a name="topic-contributing"></a> Current recipes
 
-1.  <b>Google login:</b> Using Google's API to verify user authentication
-2.  <b>Facebook login:</b> Using Facebook's API to verify user authentication
-3.  <b>Instagram login:</b> Using Instagram's API to verify user authentication
-4.  <b>Twitter login:</b> Using Twitter's API to verify user authentication
-5.  <b>Room DB:</b> Saving, editing and removing data from a database without a back-end connection.
-6.  <b>MP Chart:</b> Creating different charts using this library. Bar, line and pie charts are some of the examples included
-7.  <b>Navigation Architecture Component:</b> A different way of navigating through Activities and Fragments.
-8.  <b>Data Sync Recipe:</b> Implementation of observer that react to network request to fill information on screen.
-9.  <b>Tests:</b>Testing different situation that could happened when dealing with a login.
-10. <b>Koin: </b> An alternative of Dagger to inject dependencies.
-11. <b>Notifications:</b> Implementation of local notifications with different designs (expandable text, picture, actions, etc).
-12. <b>Graph QL: </b>A GET example using this network component.
+1.  <b>Coroutines:</b> Basic coroutines features examples and retrofit Coroutine vs. Callback example.
+2.  <b>Google login:</b> Using Google's API to verify user authentication.
+3.  <b>Facebook login:</b> Using Facebook's API to verify user authentication.
+4.  <b>Instagram login:</b> Using Instagram's API to verify user authentication.
+5.  <b>Twitter login:</b> Using Twitter's API to verify user authentication.
+6.  <b>Room DB:</b> Saving, editing and removing data from a database without a back-end connection.
+7.  <b>MP Chart:</b> Creating different charts using this library. Bar, line and pie charts are some of the examples included.
+8.  <b>Navigation Architecture Component:</b> A different way of navigating through Activities and Fragments.
+9.  <b>Data Sync Recipe:</b> Implementation of observer that react to network request to fill information on screen.
+10.  <b>Tests:</b>Testing different situation that could happened when dealing with a login.
+11. <b>Koin: </b> An alternative of Dagger to inject dependencies.
+12. <b>Notifications:</b> Implementation of local notifications with different designs (expandable text, picture, actions, etc).
+13. <b>Graph QL: </b>A GET example using this network component.
 
 
 ## Initial Setup
