@@ -1,6 +1,5 @@
 package ar.com.wolox.android.cookbook.coroutines
 
-import androidx.core.util.Pair
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.coroutines.examples.builders.CoroutinesExampleBuildersFragment
 import ar.com.wolox.android.cookbook.coroutines.examples.cascadecancellation.CoroutinesExampleCascadeCancellationFragment
@@ -39,12 +38,12 @@ class CoroutinesRecipeFragment : WolmoFragment<BasePresenter<Any>>() {
     override fun init() {
         viewPager.adapter = SimpleFragmentPagerAdapter(childFragmentManager).apply {
             addFragments(
-                Pair(builders, ""),
-                Pair(contextLongTask, ""),
-                Pair(scope, ""),
-                Pair(cascadeCancellation, ""),
-                Pair(cooperativeCancellation, ""),
-                Pair(football, ""))
+                builders to "",
+                contextLongTask to "",
+                scope to "",
+                cascadeCancellation to "",
+                cooperativeCancellation to "",
+                football to "")
         }
     }
 

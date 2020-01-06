@@ -32,11 +32,11 @@ class CoroutinesFootballPresenter @Inject constructor(
             val team = footballRepository.getTeam(competition.teams.random().id)
             val player = team.squad.random()
             val matches = footballRepository.getMatches(player.id)
-            view.showPlayerMatches(team, player, matches)
+            view?.showPlayerMatches(team, player, matches)
         } catch (exception: HttpException) {
             handleError(null, exception.code())
         } catch (exception: Exception) {
-            view.showUnexpectedError()
+            view?.showUnexpectedError()
         }
     }
 
@@ -53,11 +53,11 @@ class CoroutinesFootballPresenter @Inject constructor(
                         .map { footballRepository.getTeam(it.id) })
             }
 
-            view.showCompetition(competition)
+            view?.showCompetition(competition)
         } catch (exception: HttpException) {
             handleError(null, exception.code())
         } catch (exception: Exception) {
-            view.showUnexpectedError()
+            view?.showUnexpectedError()
         }
     }
 
@@ -75,16 +75,16 @@ class CoroutinesFootballPresenter @Inject constructor(
                         .awaitAll())
             }
 
-            view.showCompetition(competition)
+            view?.showCompetition(competition)
         } catch (exception: HttpException) {
             handleError(null, exception.code())
         } catch (exception: Exception) {
-            view.showUnexpectedError()
+            view?.showUnexpectedError()
         }
     }
 
     private inline fun measureTimeAndShow(block: () -> Unit) {
         val elapsedTime = measureTimeMillis { block() }
-        view.showElapsedTime(elapsedTime)
+        view?.showElapsedTime(elapsedTime)
     }
 }

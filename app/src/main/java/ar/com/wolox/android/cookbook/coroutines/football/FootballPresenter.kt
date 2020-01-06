@@ -13,9 +13,9 @@ abstract class FootballPresenter : CoroutineBasePresenter<FootballView>() {
 
     protected fun handleError(body: ResponseBody?, code: Int) {
         if (code == TOO_MANY_REQUESTS_ERROR_CODE) {
-            view.showTooManyRequestsError()
+            view?.showTooManyRequestsError()
         } else {
-            view.showUnexpectedError()
+            view?.showUnexpectedError()
         }
     }
 

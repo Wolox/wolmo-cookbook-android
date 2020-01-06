@@ -26,7 +26,7 @@ class CoroutinesExampleScopePresenter @Inject constructor() : CoroutinesExampleB
         delay(2_500)
         log(D, "Destroy view")
         withContext(Dispatchers.Main) {
-            view.close()
+            view?.close()
         }
     }
 

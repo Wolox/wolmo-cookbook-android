@@ -8,6 +8,6 @@ abstract class CoroutinesExampleBasePresenter<T : CoroutinesExampleView> : Corou
 
     /** Logging on the view will be performed on the main dispatcher. */
     protected suspend fun log(logType: LogType, text: String) = withContext(Dispatchers.Main) {
-        view.log(logType, text)
+        view?.log(logType, text)
     }
 }

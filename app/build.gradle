@@ -134,7 +134,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Wolmo
-    implementation "com.github.Wolox:wolmo-core-android:$wolmo_core_version"
+    implementation("com.github.Wolox:wolmo-core-android:new-cool-stuff-SNAPSHOT") {
+        force = true
+    }
     implementation "com.github.Wolox:wolmo-networking-android:$wolmo_networking_version"
 
     // Android support libraries
