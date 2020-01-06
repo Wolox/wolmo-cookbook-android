@@ -23,8 +23,9 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
             Recipe.DATA_SYNC -> view.goToDataSyncRecipe()
             Recipe.TESTS -> view.goToTests()
             Recipe.KOIN -> view.goToKoin()
+            Recipe.COROUTINES -> view.goToCoroutines()
             Recipe.NOTIFICATIONS -> view.goToNotificationsRecipe()
-            Recipe.GraphQL -> view.goToGraphQlRecipe()
+            Recipe.GRAPH_QL -> view.goToGraphQlRecipe()
         }
     }
 }

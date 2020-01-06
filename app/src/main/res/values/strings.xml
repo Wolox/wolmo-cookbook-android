@@ -17,7 +17,7 @@
     <string name="recipe_picker_koin">Koin</string>
     <string name="recipe_picker_notifications">Notifications</string>
     <string name="recipe_picker_graph_ql">Graph QL</string>
-
+    <string name="recipe_picker_coroutines">Coroutines</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
@@ -64,7 +64,7 @@
     <string name="twitter_error_network_unavailable">Network is unavailable, please try later…</string>
     <string name="twitter_login_data">User ID: %1$s \nUsername: %2$s \nEmail ID: %3$s</string>
     <string name="twitter_picture_data">User ID: %1$d \nUsername: %2$s \nEmail ID: %3$s \nDescription: %4$s</string>
-=======
+
     <!-- Notifications -->
     <string name="notifications_general_channel">General notifications</string>
     <string name="notifications_general_channel_id">general_notifications</string>
@@ -80,7 +80,6 @@
     <string name="notifications_actions_title">Show with actions</string>
     <string name="notifications_inbox_line_1">Line 1: this is the very first line of an inbox styled notification</string>
     <string name="notifications_inbox_line_2">Line 2: this is the very first line of an inbox styled notification</string>
->>>>>>> master
 
     <!-- Instagram -->
     <string name="instagram_title"><u>Instagram Login</u></string>
@@ -160,11 +159,77 @@
     <string name="koin_login_invalid_email">Email invalido</string>
     <string name="koin_login_login_error">Incorrect user or password.</string>
 
-    <!-- Koin Login -->
-    <string name="label_make_request">Make Request</string>
+    <!-- GraphQL -->
+    <string name="label_make_request">Make <Reques></Reques>t</string>
     <string name="order_id">Order ID: %1$s</string>
     <string name="order_total">Order Total: %1$s</string>
     <string name="order_username">Username: %1$s</string>
     <string name="order_delivery_address">Delivery Address: %1$s</string>
+
+    <!-- Coroutines examples (builders) -->
+    <string name="coroutines_examples_builders_title">Builders</string>
+    <string name="coroutines_examples_builders_description">
+        Example that starts a Coroutine that gets 5 random numbers (get this random number takes
+        1 second) and then shows its average. By making it sequential it will take 5 seconds,
+        but if all the numbers are taken concurrently with async it\'ll take just 1 second.
+    </string>
+    <string name="coroutines_examples_builders_sequential">Sequential (launch)</string>
+    <string name="coroutines_examples_builders_concurrent">Concurrent (launch + async)</string>
+
+    <!-- Coroutines examples (context - long running taks) -->
+    <string name="coroutines_examples_context_long_task_title">Context - Long running task</string>
+    <string name="coroutines_examples_context_long_task_description">
+        Example that starts a Coroutine with a long running task that group 15 long running tasks.
+        If it\'s run on the Main dispatcher, the view will be freezed and it will probably crash.
+        If it\'s run on the Default dispatcher, you\'ll be able to use the view (move the cat to
+        the sides!) while it\'s being performed.
+    </string>
+    <string name="coroutines_examples_context_long_task_main">Perform on main</string>
+    <string name="coroutines_examples_context_long_task_default">Perform on default</string>
+
+    <!-- Coroutines examples (scope) -->
+    <string name="coroutines_examples_scope_title">Scopes</string>
+    <string name="coroutines_examples_scope_description">
+        Example that starts one Coroutine that logs five seconds on a scope. After two and a half
+        seconds the view is destroyed. If it uses the he presenter\'s scope, the Coroutine stops.
+        If the GlobalScope is used, the Coroutine continue working and keep trying to change the
+        view, so the App crashes.\n
+        For this you need to see the Logcat with the tag "SCOPE_EXAMPLE"!
+    </string>
+    <string name="coroutines_examples_scope_global">GlobalScope</string>
+    <string name="coroutines_examples_scope_presenter">Presenter\'s scope</string>
+
+    <!-- Coroutines examples (cascade cancellation) -->
+    <string name="coroutines_examples_cascade_cancellation_title">Cascade cancellation</string>
+    <string name="coroutines_examples_cascade_cancellation_description">
+        Example that starts three coroutines that will log the seconds, one inside each other
+        (launches A, inside A launches B and inside B launches C).
+        Then, after two seconds, the selected job will be cancelled.
+    </string>
+    <string name="coroutines_examples_cascade_cancellation_cancel_A">Cancel A</string>
+    <string name="coroutines_examples_cascade_cancellation_cancel_B">Cancel B</string>
+    <string name="coroutines_examples_cascade_cancellation_cancel_C">Cancel C</string>
+
+    <!-- Coroutines examples (cooperative cancellation) -->
+    <string name="coroutines_examples_cooperative_cancellation_title">Cooperative cancellation</string>
+    <string name="coroutines_examples_cooperative_cancellation_description">
+        Example that starts a Coroutine that waste CPU for 5 seconds and immediately after it
+        starts it\'s cancelled. If it\'s cooperative by using `isActive` it\'ll finish
+        immediately, if not it will wait until it\'s finish.\n
+        For this you need to see the Logcat with the tag "COOPERATIVE_CANCEL"!
+    </string>
+    <string name="coroutines_examples_cooperative_cancellation_cooperative">Cooperative</string>
+    <string name="coroutines_examples_cooperative_cancellation_non_cooperative">Non cooperative</string>
+
+    <!-- Football -->
+    <string name="football_title">Networking</string>
+    <string name="football_description">Example that shows the usage of Retrofit+Coroutines.</string>
+    <string name="football_random_player_matches">Random player matches</string>
+    <string name="football_random_team_squads_sequential">Random teams squads (sequential)</string>
+    <string name="football_random_team_squads_async">Random teams squads (async)</string>
+    <string name="football_too_many_requests_error">Too many requests, please wait a minute and retry.</string>
+    <string name="football_unexpected_error">Unexpected error.</string>
+    <string name="football_not_available_error">Feature not available on this mode.</string>
+    <string name="football_elapsed_time">It takes %s ms to perform the task.</string>
 
 </resources>

@@ -2,6 +2,8 @@ package ar.com.wolox.android.cookbook.common.di
 
 import android.app.Application
 import ar.com.wolox.android.cookbook.CookbookApplication
+import ar.com.wolox.android.cookbook.coroutines.CoroutinesExampleModule
+import ar.com.wolox.android.cookbook.coroutines.football.modules.FootballModule
 import ar.com.wolox.android.cookbook.common.di.modules.ChartModule
 import ar.com.wolox.android.cookbook.common.di.modules.InstagramModule
 import ar.com.wolox.android.cookbook.common.di.modules.RoomModule
@@ -10,8 +12,8 @@ import ar.com.wolox.android.cookbook.common.di.room.PersistenceModule
 import ar.com.wolox.android.cookbook.common.di.room.ServiceModule
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeModule
 import ar.com.wolox.android.cookbook.navigation.NavigationRecipeModule
-import ar.com.wolox.android.cookbook.tests.TestLoginRecipeModule
 import ar.com.wolox.android.cookbook.notifications.di.NotificationRecipeModule
+import ar.com.wolox.android.cookbook.tests.TestLoginRecipeModule
 import ar.com.wolox.wolmo.core.di.modules.ContextModule
 import ar.com.wolox.wolmo.core.di.modules.DefaultModule
 import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
@@ -27,10 +29,10 @@ import javax.inject.Named
         dependencies = [CookbookNetworkingComponent::class],
         modules = [
             AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class,
-            AppModule::class, TwitterModule::class, InstagramModule::class, RoomModule::class,
-            ChartModule::class, NavigationRecipeModule::class, DataSyncRecipeModule::class,
-            RxJava2Module::class, TestLoginRecipeModule::class, PersistenceModule::class, ServiceModule::class,
-            NotificationRecipeModule::class
+            TwitterModule::class, InstagramModule::class, RoomModule::class, ChartModule::class,
+            AppModule::class, NavigationRecipeModule::class, DataSyncRecipeModule::class,
+            RxJava2Module::class, TestLoginRecipeModule::class, NotificationRecipeModule::class,
+            CoroutinesExampleModule::class, FootballModule::class, PersistenceModule::class, ServiceModule::class
         ]
 )
 interface AppComponent : AndroidInjector<CookbookApplication> {

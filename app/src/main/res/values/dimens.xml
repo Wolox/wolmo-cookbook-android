@@ -95,6 +95,8 @@
     <!-- Data Sync -->
     <dimen name="pokemon_image_size">200dp</dimen>
 
+    <!-- Coroutines examples (context) -->
+    <dimen name="coroutines_examples_context_cat_size">100dp</dimen>
 
     <!-- GraphQL -->
     <dimen name="orders_margin">10dp</dimen>
