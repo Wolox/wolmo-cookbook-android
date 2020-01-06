@@ -1,6 +1,6 @@
 package ar.com.wolox.android.cookbook.coroutines.football
 
-import ar.com.wolox.android.cookbook.coroutines.core.CoroutineBasePresenter
+import ar.com.wolox.wolmo.core.presenter.CoroutineBasePresenter
 import okhttp3.ResponseBody
 
 abstract class FootballPresenter : CoroutineBasePresenter<FootballView>() {
