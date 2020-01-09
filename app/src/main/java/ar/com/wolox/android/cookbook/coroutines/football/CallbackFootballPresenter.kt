@@ -10,9 +10,13 @@ class CallbackFootballPresenter @Inject constructor(
 
     override fun onRandomPlayerMatchesButtonClicked() = showRandomPlayerMatches()
 
-    override fun onRandomTeamsSquadsSequentialButtonClicked() = view.showNotAvailableError()
+    override fun onRandomTeamsSquadsSequentialButtonClicked() {
+        view?.showNotAvailableError()
+    }
 
-    override fun onRandomTeamsSquadsAsyncButtonClicked() = view.showNotAvailableError()
+    override fun onRandomTeamsSquadsAsyncButtonClicked() {
+        view?.showNotAvailableError()
+    }
 
     private fun showRandomPlayerMatches() {
         footballRepository.getCompetition(SPAIN_COMPETITION_ID, networkCallback {
@@ -38,7 +42,7 @@ class CallbackFootballPresenter @Inject constructor(
                                     return@matchesCallback
                                 }
 
-                                view.showPlayerMatches(team, player, matches)
+                                view?.showPlayerMatches(team, player, matches)
                             }
 
                             onResponseFailed(::handleError)

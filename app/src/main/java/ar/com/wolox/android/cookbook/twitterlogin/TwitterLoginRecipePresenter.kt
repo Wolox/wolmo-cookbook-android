@@ -35,17 +35,17 @@ class TwitterLoginRecipePresenter @Inject constructor(
      * isn't attached, the app throws an exception (null callback)
      **/
     private fun initLoginButton() {
-        view.setLoginCallback(twitterAdapter.twitterCallback(object : TwitterLoginAuthListener {
+        view?.setLoginCallback(twitterAdapter.twitterCallback(object : TwitterLoginAuthListener {
             override fun onAuthSuccess(result: TwitterSession) {
                 fetchTwitterEmail(result)
             }
 
             override fun onAuthError(message: String?) {
-                message?.let { view.showError(it) } ?: run { view.showApiError(TypeErrorMessage.AUTH) }
+                message?.let { view?.showError(it) } ?: run { view?.showApiError(TypeErrorMessage.AUTH) }
             }
 
             override fun onAuthFail() {
-                view.showApiError(TypeErrorMessage.AUTH)
+                view?.showApiError(TypeErrorMessage.AUTH)
             }
         }))
     }
@@ -57,7 +57,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
         if (isNetworkAvailable()) {
             getTwitterSession()?.let { fetchTwitterEmail(it) } ?: run { defaultTwitterLogin() }
         } else {
-            view.showNetworkUnavailableError()
+            view?.showNetworkUnavailableError()
         }
     }
 
@@ -68,7 +68,7 @@ class TwitterLoginRecipePresenter @Inject constructor(
     fun doTwitterLoginWithApi() {
 
         if (isNetworkAvailable()) {
-            view.requireActivity()?.let { it ->
+            view?.requireActivity()?.let { it ->
                 getTwitterSession()?.let { twitterSession ->
                     fetchTwitterEmail(twitterSession)
                 } ?: run {
@@ -78,17 +78,17 @@ class TwitterLoginRecipePresenter @Inject constructor(
                         }
 
                         override fun onAuthError(message: String?) {
-                            message?.let { lambda -> view.showError(lambda) } ?: run { view.showApiError(TypeErrorMessage.AUTH) }
+                            message?.let { lambda -> view?.showError(lambda) } ?: run { view?.showApiError(TypeErrorMessage.AUTH) }
                         }
 
                         override fun onAuthFail() {
-                            view.showApiError(TypeErrorMessage.AUTH)
+                            view?.showApiError(TypeErrorMessage.AUTH)
                         }
                     })
                 }
             }
         } else {
-            view.showNetworkUnavailableError()
+            view?.showNetworkUnavailableError()
         }
     }
 
@@ -102,22 +102,22 @@ class TwitterLoginRecipePresenter @Inject constructor(
             getTwitterSession()?.let {
                 twitterAdapter.requestProfileImage(object : TwitterLoginPictureListener {
                     override fun onUserSuccess(user: User) {
-                        view.showPictureData(user)
+                        view?.showPictureData(user)
                     }
 
                     override fun onUserError(message: String) {
-                        view.showError(message)
+                        view?.showError(message)
                     }
 
                     override fun onUserFail() {
-                        view.showApiError(TypeErrorMessage.PICTURE)
+                        view?.showApiError(TypeErrorMessage.PICTURE)
                     }
                 })
             } ?: run {
-                view.showApiError(TypeErrorMessage.UN_AUTH)
+                view?.showApiError(TypeErrorMessage.UN_AUTH)
             }
         } else {
-            view.showNetworkUnavailableError()
+            view?.showNetworkUnavailableError()
         }
     }
 
@@ -126,17 +126,17 @@ class TwitterLoginRecipePresenter @Inject constructor(
             getTwitterSession()?.let {
                 twitterAdapter.logoutSession(object : TwitterLoginCredentialsListener {
                     override fun onClearCredentialsSuccess() {
-                        view.showCredentialsCleared()
-                        view.toggleLoginButtonState(true)
+                        view?.showCredentialsCleared()
+                        view?.toggleLoginButtonState(true)
                     }
 
                     override fun onClearCredentialsError() {
-                        view.showApiError(TypeErrorMessage.CREDENTIALS)
+                        view?.showApiError(TypeErrorMessage.CREDENTIALS)
                     }
                 })
             }
         } else {
-            view.showNetworkUnavailableError()
+            view?.showNetworkUnavailableError()
         }
     }
 
@@ -160,20 +160,20 @@ class TwitterLoginRecipePresenter @Inject constructor(
                     val emailResponse = YoutubeEmailResponse(it.userId.toString(),
                             response,
                             it.userName)
-                    view.showLoginData(emailResponse)
-                    view.toggleLoginButtonState(false)
+                    view?.showLoginData(emailResponse)
+                    view?.toggleLoginButtonState(false)
                 }
 
                 override fun onEmailError(message: String) {
-                    view.showError(message)
+                    view?.showError(message)
                 }
 
                 override fun onEmailFailure() {
-                    view.showApiError(TypeErrorMessage.EMAIL)
+                    view?.showApiError(TypeErrorMessage.EMAIL)
                 }
             })
         } ?: run {
-            view.showApiError(TypeErrorMessage.INTERNAL)
+            view?.showApiError(TypeErrorMessage.INTERNAL)
         }
     }
 

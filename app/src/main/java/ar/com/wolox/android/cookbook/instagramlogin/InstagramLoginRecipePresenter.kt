@@ -23,16 +23,16 @@ class InstagramLoginRecipePresenter @Inject constructor(
         super.onViewAttached()
 
         accessToken?.let {
-            view.enableLogoutBtn()
+            view?.enableLogoutBtn()
         } ?: run {
-            view.enableLoginBtn()
+            view?.enableLoginBtn()
         }
     }
 
     fun onSessionButtonClicked() {
         if (isNetworkAvailable()) {
             accessToken?.let {
-                view.igLogout()
+                view?.igLogout()
             } ?: run {
                 val uriBuilder: Uri.Builder = Uri.Builder()
                 uriBuilder.scheme(SCHEME)
@@ -44,23 +44,23 @@ class InstagramLoginRecipePresenter @Inject constructor(
                         .appendQueryParameter(RESPONSE_KEY, RESPONSE_VALUE)
                         .appendQueryParameter(DISPLAY_KEY, DISPLAY_VALUE)
 
-                view.showWebView(uriBuilder.toString())
+                view?.showWebView(uriBuilder.toString())
             }
         } else {
-            view.showError(TypeErrorMessage.NETWORK_UNAVAILABLE)
+            view?.showError(TypeErrorMessage.NETWORK_UNAVAILABLE)
         }
     }
 
     fun onLogoutResponse(response: Boolean) {
         if (response) {
             accessToken = null
-            view.run {
+            view?.run {
                 enableLoginBtn()
                 deleteListData()
                 showLogoutSuccessMsg()
             }
         } else {
-            view.run {
+            view?.run {
                 enableLogoutBtn()
                 showError(TypeErrorMessage.LOGOUT)
             }
@@ -69,7 +69,7 @@ class InstagramLoginRecipePresenter @Inject constructor(
 
     fun onLoginSuccessResponse(token: String) {
         accessToken = token
-        view.run {
+        view?.run {
             enableLogoutBtn()
             showLoginSuccessMsg()
         }
@@ -77,7 +77,7 @@ class InstagramLoginRecipePresenter @Inject constructor(
 
     fun onLoginErrorResponse() {
         accessToken = null
-        view.run {
+        view?.run {
             enableLoginBtn()
             showError(TypeErrorMessage.LOGIN)
         }
@@ -85,7 +85,7 @@ class InstagramLoginRecipePresenter @Inject constructor(
 
     fun onLoginFailResponse() {
         accessToken = null
-        view.run {
+        view?.run {
             enableLoginBtn()
             showError(TypeErrorMessage.LOGIN)
         }
@@ -96,26 +96,26 @@ class InstagramLoginRecipePresenter @Inject constructor(
             accessToken?.let {
                 adapter.getInstagramData(it, object : InstagramProxyListener {
                     override fun onResponse(data: List<InstagramDataItem>) {
-                        view.showIGData(data)
+                        view?.showIGData(data)
                     }
 
                     override fun onError() {
-                        view.showError(TypeErrorMessage.SERVICE)
+                        view?.showError(TypeErrorMessage.SERVICE)
                     }
 
                     override fun onFail(message: String?) {
                         message?.let { lambda ->
-                            view.showFailInService(lambda)
+                            view?.showFailInService(lambda)
                         } ?: run {
-                            view.showError(TypeErrorMessage.SERVICE)
+                            view?.showError(TypeErrorMessage.SERVICE)
                         }
                     }
                 })
             } ?: run {
-                view.showError(TypeErrorMessage.DATA)
+                view?.showError(TypeErrorMessage.DATA)
             }
         } else {
-            view.showError(TypeErrorMessage.NETWORK_UNAVAILABLE)
+            view?.showError(TypeErrorMessage.NETWORK_UNAVAILABLE)
         }
     }
 

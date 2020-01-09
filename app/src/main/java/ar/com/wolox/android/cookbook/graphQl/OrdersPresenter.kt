@@ -25,7 +25,7 @@ class OrdersPresenter @Inject constructor() : BasePresenter<OrdersView>() {
             override fun onResponse(response: Response<GetOrdersQuery.Data>) {
                 response.data()?.orders()?.orders()?.forEach {
                     this@OrdersPresenter.orderList?.add(ModelOrder.fromGraphQl(it))
-                    view.onOrdersLoaded(orderList!!)
+                    view?.onOrdersLoaded(orderList!!)
                 }
             }
         })
