@@ -5,22 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/static_spacing_huge_extra"
-        android:fontFamily="@font/cookie"
-        android:gravity="center"
-        android:text="@string/app_title"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="@dimen/recipe_picker_title"
-        android:textStyle="bold"
-        android:shadowColor="@android:color/holo_green_light"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="4" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_recipe_picker"
+        android:scaleType="centerCrop"
+        android:alpha="0.05"
+        tools:ignore="ContentDescription" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vRecipePickerSelectionViewPager"
@@ -37,31 +33,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="bottom|right"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium">
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginEnd="@dimen/spacing_medium"
             android:src="@drawable/ic_question_mark" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/recipe_picker_contact" />
+            android:text="@string/recipe_picker_contact"
+            style="@style/Text.asd.Grey"/>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/gradient_background"/>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/bg_recipe_picker"
-        android:scaleType="centerCrop"
-        android:alpha="0.05"
-        tools:ignore="ContentDescription" />
 
 </FrameLayout>

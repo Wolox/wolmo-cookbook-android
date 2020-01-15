@@ -63,7 +63,10 @@
             android:screenOrientation="portrait" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_login_app_id" /> <!-- Activity for Facebook Login -->
+            android:value="@string/facebook_login_app_id" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" /> <!-- Activity for Facebook Login -->
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"

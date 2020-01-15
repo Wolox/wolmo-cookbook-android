@@ -13,4 +13,28 @@
         <item name="android:textSize">@dimen/font_medium_extra</item>
     </style>
 
+    <style name="FontFamily">
+        <item name="android:fontFamily">@font/bungee_inline</item>
+    </style>
+
+    <style name="Title" parent="FontFamily">
+        <item name="android:textSize">@dimen/font_huge_extra</item>
+    </style>
+
+    <style name="Text" parent="FontFamily">
+
+    </style>
+
+    <style name="Text.asd">
+
+    </style>
+
+    <style name="Text.asd.Grey">
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="Button" parent="FontFamily">
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
 </resources>
