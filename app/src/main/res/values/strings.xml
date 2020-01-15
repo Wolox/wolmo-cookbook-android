@@ -167,4 +167,11 @@
     <string name="order_username">Username: %1$s</string>
     <string name="order_delivery_address">Delivery Address: %1$s</string>
 
+    <!-- Home -->
+    <string name="home_title">Welcome to Wolox Android Cookbook</string>
+    <string name="home_button">Continue</string>
+
+    <!-- Info -->
+    <string name="info_button">Continue</string>
+
 </resources>
