@@ -51,7 +51,8 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
         // Create a RecipeItem with the desired image & text for it inside the 'when' statement
         return recipes.map {
             when (it) {
-                Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.ic_coroutines, R.string.recipe_picker_google_login)
+                Recipe.COROUTINES -> RecipeItem(it, R.drawable.ic_coroutines, R.string.recipe_picker_coroutines)
+                Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.ic_google, R.string.recipe_picker_google_login)
                 Recipe.FACEBOOK_LOGIN -> RecipeItem(it, R.drawable.ic_facebook, R.string.recipe_picker_facebook_login)
                 Recipe.TWITTER_LOGIN -> RecipeItem(it, R.drawable.ic_twitter, R.string.recipe_picker_twitter_login)
                 Recipe.INSTAGRAM_LOGIN -> RecipeItem(it, R.drawable.ic_instagram, R.string.recipe_picker_instagram_login)
@@ -113,6 +114,10 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     override fun goToGraphQlRecipe() {
         requireContext().startActivity(Intent(requireContext(), OrdersActivity::class.java))
+    }
+
+    override fun goToCoroutines() {
+        // requireContext().startActivity(Intent(requireContext(), CoroutinesCoroutinesRecipe CoroutinesRecipeActivity::class.java))
     }
 
     companion object {

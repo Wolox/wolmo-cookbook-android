@@ -37,13 +37,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_big_extra"
         android:gravity="center"
-        android:fontFamily="@font/indie_flower"
         android:maxLines="3"
         android:textStyle="bold"
-        android:textSize="@dimen/font_large"
         app:layout_constraintTop_toBottomOf="@id/vItemRecipeView"
         app:layout_constraintLeft_toLeftOf="@id/vItemRecipeView"
         app:layout_constraintRight_toRightOf="@id/vItemRecipeView"
-        tools:text="@string/app_example_recipe_description"/>
+        tools:text="@string/app_example_recipe_description"
+        style="@style/Text.Large.Black"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

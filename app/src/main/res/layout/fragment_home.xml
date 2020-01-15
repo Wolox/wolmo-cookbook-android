@@ -48,7 +48,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/home_button"
-        android:background="@drawable/rounded_corners"
         android:layout_marginHorizontal="@dimen/spacing_big_extra"
         android:layout_marginBottom="@dimen/spacing_big"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -18,6 +18,16 @@
         android:alpha="0.05"
         tools:ignore="ContentDescription" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Slide between recipes and tap the one you want to learn"
+        android:layout_gravity="top|center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/spacing_big"
+        android:layout_marginHorizontal="@dimen/spacing_big"
+        style="@style/Text.LargeExtra"/>
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vRecipePickerSelectionViewPager"
         android:layout_width="match_parent"
@@ -35,11 +45,11 @@
         android:layout_gravity="bottom|right"
         android:gravity="center_vertical"
         android:layout_marginBottom="@dimen/spacing_medium"
-        android:layout_marginEnd="@dimen/spacing_medium">
+        android:layout_marginEnd="@dimen/spacing_medium_extra">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/recipe_picker_question_mark_size"
+            android:layout_height="@dimen/recipe_picker_question_mark_size"
             android:layout_marginEnd="@dimen/spacing_medium"
             android:src="@drawable/ic_question_mark" />
 
@@ -47,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/recipe_picker_contact"
-            style="@style/Text.asd.Grey"/>
+            style="@style/Text.MediumExtra.Grey"/>
 
     </LinearLayout>
 

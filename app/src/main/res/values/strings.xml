@@ -5,6 +5,7 @@
     <string name="app_example_recipe_description">The Bad Boy of the Block. You can\'t resist him, huh?</string>
 
     <!-- Recipe Picker -->
+    <string name="recipe_picker_coroutines">Coroutines</string>
     <string name="recipe_picker_google_login">Google login</string>
     <string name="recipe_picker_facebook_login">Facebook login</string>
     <string name="recipe_picker_twitter_login">Twitter login</string>
