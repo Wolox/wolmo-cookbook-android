@@ -16,12 +16,25 @@ import ar.com.wolox.android.cookbook.twitterlogin.TwitterLoginRecipeActivity
 import ar.com.wolox.android.cookbook.notifications.NotificationActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_recipe_picker.*
+import android.net.Uri
 
 class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePickerView {
 
     override fun layout() = R.layout.fragment_recipe_picker
 
     override fun init() {}
+
+    override fun setListeners() {
+        super.setListeners()
+        vRecioePickerContactLayout.setOnClickListener {
+            presenter.onContactUsClicked()
+        }
+    }
+
+    override fun goToRepoWebsite() {
+        val intent = Intent(Intent.ACTION_VIEW).apply { data = Uri.parse(REPO_URL) }
+        startActivity(intent)
+    }
 
     override fun showRecipes(recipes: List<Recipe>) {
 
@@ -104,5 +117,6 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     companion object {
         fun newInstance() = RecipePickerFragment()
+        private const val REPO_URL = "https://github.com/Wolox/wolmo-cookbook-android"
     }
 }

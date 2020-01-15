@@ -5,12 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/bg_recipe_picker_grey"
-        android:scaleType="centerCrop"
-        tools:ignore="ContentDescription" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,5 +30,38 @@
         android:clipToPadding="false"
         android:paddingLeft="@dimen/recipe_picker_selection_padding"
         android:paddingRight="@dimen/recipe_picker_selection_padding" />
+
+    <LinearLayout
+        android:id="@+id/vRecioePickerContactLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom|right"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_question_mark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recipe_picker_contact" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_recipe_picker"
+        android:scaleType="centerCrop"
+        android:alpha="0.05"
+        tools:ignore="ContentDescription" />
 
 </FrameLayout>

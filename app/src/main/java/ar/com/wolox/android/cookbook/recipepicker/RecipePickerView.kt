@@ -27,4 +27,6 @@ interface RecipePickerView {
     fun goToNotificationsRecipe()
 
     fun goToGraphQlRecipe()
+
+    fun goToRepoWebsite()
 }

@@ -27,4 +27,6 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
             Recipe.GraphQL -> view.goToGraphQlRecipe()
         }
     }
+
+    fun onContactUsClicked() = view.goToRepoWebsite()
 }

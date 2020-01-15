@@ -17,6 +17,7 @@
     <string name="recipe_picker_koin">Koin</string>
     <string name="recipe_picker_notifications">Notifications</string>
     <string name="recipe_picker_graph_ql">Graph QL</string>
+    <string name="recipe_picker_contact">Contact us</string>
 
 
     <!-- Google login -->
