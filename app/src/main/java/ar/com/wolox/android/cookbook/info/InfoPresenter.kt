@@ -10,6 +10,6 @@ class InfoPresenter @Inject constructor(
 
     fun onInfoButtonClicked() {
         sharedPreferencesUtils.hasReadInfo = true
-        view.goToRecipePickerScreen()
+        view?.goToRecipePickerScreen()
     }
 }

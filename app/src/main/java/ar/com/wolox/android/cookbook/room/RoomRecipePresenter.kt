@@ -1,7 +1,7 @@
 package ar.com.wolox.android.cookbook.room
 
-import ar.com.wolox.android.cookbook.room.database.core.CoroutineBasePresenter
 import ar.com.wolox.android.cookbook.room.database.models.NoteEntity
+import ar.com.wolox.wolmo.core.presenter.CoroutineBasePresenter
 
 abstract class RoomRecipePresenter : CoroutineBasePresenter<RoomRecipeView>() {
 

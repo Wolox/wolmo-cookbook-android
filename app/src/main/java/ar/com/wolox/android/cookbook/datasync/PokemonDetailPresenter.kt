@@ -24,8 +24,8 @@ class PokemonDetailPresenter @Inject constructor(
                 .observeOn(mainThreadScheduler)
                 .subscribe {
                     when (it) {
-                        is Just<Pokemon> -> view.showPokemonDetail(it.value)
-                        is Empty -> view.showNoPokemon()
+                        is Just<Pokemon> -> view?.showPokemonDetail(it.value)
+                        is Empty -> view?.showNoPokemon()
                     }
                 }
     }

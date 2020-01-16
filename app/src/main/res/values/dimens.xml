@@ -63,8 +63,8 @@
     <dimen name="recipe_image">250dp</dimen>
 
     <!-- Google login -->
-    <dimen name="google_login_user_photo_width">48dp</dimen>
-    <dimen name="google_login_user_photo_height">48dp</dimen>
+    <dimen name="google_login_user_photo_width">100dp</dimen>
+    <dimen name="google_login_user_photo_height">100dp</dimen>
 
     <!-- Twitter login -->
     <dimen name="twitter_margin_low">10dp</dimen>
@@ -95,6 +95,9 @@
 
     <!-- Data Sync -->
     <dimen name="pokemon_image_size">200dp</dimen>
+
+    <!-- Coroutines examples (context) -->
+    <dimen name="coroutines_examples_context_cat_size">100dp</dimen>
 
     <!-- GraphQL -->
     <dimen name="orders_margin">10dp</dimen>

@@ -13,19 +13,20 @@ class GoogleLoginRecipePresenter @Inject constructor(private val googleHelper: G
         super.onViewAttached()
 
         val signedInAccount = googleHelper.getLastSignedInAccount()
-        if (signedInAccount != null) view.showUser(signedInAccount)
+        if (signedInAccount != null) view?.showUser(signedInAccount)
     }
 
     fun onGoogleLogin(googleAccountHelper: GoogleAccountHelper) =
-            googleAccountHelper.getAccount(view::showUser, ::handleError)
+            googleAccountHelper.getAccount({ view?.showUser(it) }, ::handleError)
 
-    private fun handleError(errorCode: Int?) =
-            when (errorCode) {
-                GoogleSignInStatusCodes.SIGN_IN_CANCELLED -> view.showGoogleLoginErrorCancelled()
-                GoogleSignInStatusCodes.SIGN_IN_CURRENTLY_IN_PROGRESS -> view.showGoogleLoginErrorInProgress()
-                GoogleSignInStatusCodes.SIGN_IN_FAILED -> view.showGoogleLoginErrorFailed()
-                else -> view.showGoogleLoginErrorUnexpected()
-            }
+    private fun handleError(errorCode: Int?) {
+        when (errorCode) {
+            GoogleSignInStatusCodes.SIGN_IN_CANCELLED -> view?.showGoogleLoginErrorCancelled()
+            GoogleSignInStatusCodes.SIGN_IN_CURRENTLY_IN_PROGRESS -> view?.showGoogleLoginErrorInProgress()
+            GoogleSignInStatusCodes.SIGN_IN_FAILED -> view?.showGoogleLoginErrorFailed()
+            else -> view?.showGoogleLoginErrorUnexpected()
+        }
+    }
 
-    fun onGoogleLogout() = view.showNoUser()
+    fun onGoogleLogout() = view?.showNoUser()
 }

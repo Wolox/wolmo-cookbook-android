@@ -11,6 +11,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         android:hardwareAccelerated="false"
         android:largeHeap="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
@@ -61,6 +62,10 @@
         <activity
             android:name=".koin.KoinLoginRecipeActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".coroutines.CoroutinesRecipeActivity"
+            android:screenOrientation="portrait" />
+        <!-- Metadata for Facebook Login -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_login_app_id" />

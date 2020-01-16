@@ -66,7 +66,7 @@ class MpChartRecipePresenter @Inject constructor(
     override fun onViewAttached() {
         super.onViewAttached()
 
-        view.hideGraphs()
+        view?.hideGraphs()
         dataSample = getSampleFromAssets()
     }
 
@@ -75,7 +75,7 @@ class MpChartRecipePresenter @Inject constructor(
      * used in the example.
      */
     private fun getSampleFromAssets(): ChartDataSample? {
-        view.showProgressBar()
+        view?.showProgressBar()
 
         val inputStream = application.applicationContext.assets.open("MpAndroidChartDataExample.json")
         val size = inputStream.available()
@@ -87,7 +87,7 @@ class MpChartRecipePresenter @Inject constructor(
         val gson = GsonBuilder().create()
         val result = gson.fromJson(json, ChartDataSample::class.java)
 
-        view.hideProgressBar()
+        view?.hideProgressBar()
         return result
     }
 
@@ -108,7 +108,7 @@ class MpChartRecipePresenter @Inject constructor(
     }
 
     private fun clearScreen() {
-        view.hideGraphs()
+        view?.hideGraphs()
     }
 
     /**
@@ -122,7 +122,7 @@ class MpChartRecipePresenter @Inject constructor(
      *  i) barWidth: Float = sets the width each bar should have on the x-axis
      */
     private fun onBarChartSelected() {
-        view.hideGraphs()
+        view?.hideGraphs()
 
         val yBar1 = ArrayList<BarEntry>()
         val yBar2 = ArrayList<BarEntry>()
@@ -161,7 +161,7 @@ class MpChartRecipePresenter @Inject constructor(
 
         val data = BarData(barDataSet1, barDataSet2, barDataSet3)
         data.barWidth = BAR_WIDTH
-        view.showBarChart(data)
+        view?.showBarChart(data)
     }
 
     /**
@@ -173,7 +173,7 @@ class MpChartRecipePresenter @Inject constructor(
      *  iii) valueTextSize: Float = sets the text-size of the value-labels of this DataSet in dp
      */
     private fun onBubbleChartSelected() {
-        view.hideGraphs()
+        view?.hideGraphs()
 
         val yBubble = ArrayList<BubbleEntry>()
         var label = LABEL_DEFAULT
@@ -197,7 +197,7 @@ class MpChartRecipePresenter @Inject constructor(
 
         val data = BubbleData(dataSet)
 
-        view.showBubbleChart(data)
+        view?.showBubbleChart(data)
     }
 
     /**
@@ -208,7 +208,7 @@ class MpChartRecipePresenter @Inject constructor(
      *  i) setData: can add data from other charts (BarData, BubbleData, CandleData and ScatterData)
      */
     private fun onCombinedChartSelected() {
-        view.hideGraphs()
+        view?.hideGraphs()
 
         val yBar = ArrayList<BarEntry>()
         val yLine = ArrayList<Entry>()
@@ -254,7 +254,7 @@ class MpChartRecipePresenter @Inject constructor(
             setData(lineData)
         }
 
-        view.showCombinedChart(data)
+        view?.showCombinedChart(data)
     }
 
     /**
@@ -268,7 +268,7 @@ class MpChartRecipePresenter @Inject constructor(
      *  i) barWidth: Float = sets the width each bar should have on the x-axis
      */
     private fun onHorizontalBarChartSelected() {
-        view.hideGraphs()
+        view?.hideGraphs()
 
         val yBar = ArrayList<BarEntry>()
         var label = LABEL_DEFAULT
@@ -287,7 +287,7 @@ class MpChartRecipePresenter @Inject constructor(
         val data = BarData(hLineDataSet)
         data.barWidth = BAR_WIDTH
 
-        view.showHorizontalBarChart(data)
+        view?.showHorizontalBarChart(data)
     }
 
     /**
@@ -306,7 +306,7 @@ class MpChartRecipePresenter @Inject constructor(
      * 3. Data: -
      */
     private fun onLineChartSelected() {
-        view.hideGraphs()
+        view?.hideGraphs()
 
         val yLine = ArrayList<Entry>()
         var label = LABEL_DEFAULT
@@ -334,7 +334,7 @@ class MpChartRecipePresenter @Inject constructor(
 
         val data = LineData(dataSets)
 
-        view.showLineChart(data)
+        view?.showLineChart(data)
     }
 
     /**
@@ -349,7 +349,7 @@ class MpChartRecipePresenter @Inject constructor(
      * 3. Data: -
      */
     private fun onPieChartSelected() {
-        view.hideGraphs()
+        view?.hideGraphs()
 
         val yPie = ArrayList<PieEntry>()
         var label = LABEL_DEFAULT
@@ -372,7 +372,7 @@ class MpChartRecipePresenter @Inject constructor(
 
         val data = PieData(dataSet)
 
-        view.showPieChart(data)
+        view?.showPieChart(data)
     }
 
     /**
@@ -394,7 +394,7 @@ class MpChartRecipePresenter @Inject constructor(
      * 3. Data: -
      */
     private fun onRadarChartSelected() {
-        view.hideGraphs()
+        view?.hideGraphs()
 
         val yRadar = ArrayList<RadarEntry>()
         var label = LABEL_DEFAULT
@@ -419,7 +419,7 @@ class MpChartRecipePresenter @Inject constructor(
 
         val data = RadarData(radarDataSet)
 
-        view.showRadarChart(data)
+        view?.showRadarChart(data)
     }
 
     /**
@@ -442,7 +442,7 @@ class MpChartRecipePresenter @Inject constructor(
      * 3. Data: -
      */
     private fun onCandleStickChartSelected() {
-        view.hideGraphs()
+        view?.hideGraphs()
 
         val yCandle = ArrayList<CandleEntry>()
         var label = LABEL_DEFAULT
@@ -470,7 +470,7 @@ class MpChartRecipePresenter @Inject constructor(
 
         val data = CandleData(candleDataSet)
 
-        view.showCandleStickChart(data)
+        view?.showCandleStickChart(data)
     }
 
     /**
@@ -486,7 +486,7 @@ class MpChartRecipePresenter @Inject constructor(
      * 3. Data: -
      */
     private fun onScatterChartSelected() {
-        view.hideGraphs()
+        view?.hideGraphs()
 
         val yScatter = ArrayList<BarEntry>()
         var label = LABEL_DEFAULT
@@ -508,7 +508,7 @@ class MpChartRecipePresenter @Inject constructor(
 
         val data = ScatterData(scatterDataSet)
 
-        view.showScatterChart(data)
+        view?.showScatterChart(data)
     }
 
     companion object {
