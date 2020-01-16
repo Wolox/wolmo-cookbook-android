@@ -21,6 +21,7 @@
     <string name="recipe_picker_contact">Contact us</string>
 
     <!-- Google login -->
+    <string name="google_login_title">Google login</string>
     <string name="google_login_logout">Logout</string>
     <string name="google_login_instructions">To login with Google\'s API, please click on Sign In button. If you\'re not already signed, mail and password will be asked to continue.</string>
     <string name="google_logout_instructions">To logout please press button at bottom.</string>
@@ -46,6 +47,9 @@
     <string name="data_sync_check_it_out">Check it out!</string>
 
     <!-- Facebook -->
+    <string name="facebook_login_title">Facebook login</string>
+    <string name="facebook_login_instructions">To login with Facebook\'s API, please click on any Sign In button. If you\'re not already signed, user and password will be asked to continue.</string>
+    <string name="facebook_logout_instructions">To logout please press button at bottom.</string>
     <string name="facebook_login_app_id">329539014322126</string>
     <string name="facebook_login_protocol_scheme">fb329539014322126</string>
     <string name="facebook_login_error_cancelled">The sign in was cancelled by the user.</string>

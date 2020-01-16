@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_big"
-        android:text="Google login"
+        android:text="@string/google_login_title"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -64,10 +64,10 @@
         android:layout_height="@dimen/google_login_user_photo_height"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="@dimen/spacing_big_extra"
-        fresco:viewAspectRatio="1"
         app:layout_constraintTop_toBottomOf="@+id/vLoginGoogleLogOutInstructions"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        fresco:viewAspectRatio="1" />
 
     <TextView
         android:id="@+id/vLoginUserName"

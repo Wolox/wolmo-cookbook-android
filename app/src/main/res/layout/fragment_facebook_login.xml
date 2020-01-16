@@ -1,58 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="@dimen/spacing_large">
+    android:layout_height="match_parent">
 
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/vLoginFacebookOriginalLoginBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"/>
 
-    <Button
-        android:id="@+id/vLoginFacebookLoginBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/facebook_login_btn"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_recipe_picker"
+        android:scaleType="centerCrop"
+        android:alpha="0.05"
+        tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/vLoginFacebookUserName"
-        android:layout_width="match_parent"
+        android:id="@+id/vLoginFacebookTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_medium_more"
-        android:gravity="top|center_horizontal"
-        android:textSize="@dimen/font_medium_extra" />
+        android:layout_marginTop="@dimen/spacing_big"
+        android:text="@string/facebook_login_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/Title" />
 
     <TextView
-        android:id="@+id/vLoginFacebookUserEmail"
+        android:id="@+id/vLoginFacebookSignInInstructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_medium_more"
-        android:gravity="top|center_horizontal"
-        android:textSize="@dimen/font_medium_extra" />
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/spacing_large_extra"
+        android:layout_marginHorizontal="@dimen/spacing_big_extra"
+        android:text="@string/facebook_login_instructions"
+        app:layout_constraintTop_toBottomOf="@id/vLoginFacebookTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/Text.MediumMore.Black"/>
+
+    <TextView
+        android:id="@+id/vLoginGoogleLogOutInstructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/spacing_large_extra"
+        android:layout_marginHorizontal="@dimen/spacing_big_extra"
+        android:text="@string/google_logout_instructions"
+        app:layout_constraintTop_toBottomOf="@id/vLoginFacebookTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/Text.MediumMore.Black"/>
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/vLoginFacebookUserPhoto"
         android:layout_width="@dimen/google_login_user_photo_width"
         android:layout_height="@dimen/google_login_user_photo_height"
         android:layout_gravity="center_vertical"
-        android:layout_marginBottom="@dimen/spacing_medium_more"
+        android:layout_marginTop="@dimen/spacing_big_extra"
+        app:layout_constraintTop_toBottomOf="@+id/vLoginGoogleLogOutInstructions"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         fresco:viewAspectRatio="1" />
+
+    <TextView
+        android:id="@+id/vLoginFacebookUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/vLoginFacebookUserPhoto"
+        style="@style/Text.Medium.Black" />
+
+    <TextView
+        android:id="@+id/vLoginFacebookUserEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium_more"
+        android:gravity="top|center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/vLoginFacebookUserName"
+        style="@style/Text.Medium.Black" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/vLoginFacebookOriginalLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/spacing_big"
+        android:layout_marginHorizontal="@dimen/spacing_big_extra"
+        app:layout_constraintBottom_toTopOf="@+id/vLoginFacebookLoginBtn"/>
+
+    <Button
+        android:id="@+id/vLoginFacebookLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="@dimen/spacing_big_extra"
+        android:layout_marginBottom="@dimen/spacing_large_extra"
+        android:text="@string/facebook_login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/vLoginFacebookLogoutBtn"/>
 
     <Button
         android:id="@+id/vLoginFacebookLogoutBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_medium_more"
+        android:layout_marginBottom="@dimen/spacing_big"
+        android:layout_marginHorizontal="@dimen/spacing_big_extra"
         android:enabled="false"
-        android:gravity="top|center_horizontal"
         android:text="@string/google_login_logout"
-        android:textSize="@dimen/font_medium_extra" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/Button"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
