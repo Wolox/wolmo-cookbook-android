@@ -69,6 +69,15 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
 
     override fun toggleLoginButtonState(status: Boolean) {
         vTwitterLoginBtn.isClickable = status
+        vApiTwitterLoginBtn.isEnabled = status
+        vLogoutBtn.isEnabled = !status
+        if (status) {
+            vLoginTwitterSignInInstructions.visibility = View.VISIBLE
+            vLoginTwitterLogoutInstructions.visibility = View.GONE
+        } else {
+            vLoginTwitterSignInInstructions.visibility = View.GONE
+            vLoginTwitterLogoutInstructions.visibility = View.VISIBLE
+        }
     }
 
     override fun showLoginData(response: YoutubeEmailResponse) {

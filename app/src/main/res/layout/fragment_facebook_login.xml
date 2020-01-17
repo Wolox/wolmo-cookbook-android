@@ -103,7 +103,8 @@
         android:layout_marginHorizontal="@dimen/spacing_big_extra"
         android:layout_marginBottom="@dimen/spacing_large_extra"
         android:text="@string/facebook_login_btn"
-        app:layout_constraintBottom_toTopOf="@+id/vLoginFacebookLogoutBtn"/>
+        app:layout_constraintBottom_toTopOf="@+id/vLoginFacebookLogoutBtn"
+        style="@style/Button"/>
 
     <Button
         android:id="@+id/vLoginFacebookLogoutBtn"

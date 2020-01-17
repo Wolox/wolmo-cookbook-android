@@ -57,6 +57,9 @@
     <string name="facebook_login_btn">Login with Facebook</string>
 
     <!-- Twitter -->
+    <string name="twitter_title">Twitter login</string>
+    <string name="twitter_login_instructions">To login with Twitter\'s API, please click on any Log In button. If you\'re not already signed, user and password will be asked to continue.</string>
+    <string name="twitter_logout_instructions">To look for profile picture, press "Fetch profile image" and to logout press button at the bottom.</string>
     <string name="twitter_consumer_key">GT7c84P1Ua0sCOWMirLZPI5RG</string>
     <string name="twitter_consumer_secret">98IyZsqCAhojROEGpj8l5u0STuuI4zYa0p5cnhzPasAszUlom6</string>
     <string name="twitter_custom_login">Custom Log in with Twitter</string>
