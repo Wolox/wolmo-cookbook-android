@@ -15,10 +15,12 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bg_recipe_picker"
-        android:scaleType="centerCrop"
         android:alpha="0.05"
-        tools:ignore="ContentDescription" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_recipe_picker"
+        tools:ignore="ContentDescription"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/vTwitterLoginTitle"
@@ -63,7 +65,7 @@
         android:id="@+id/vProfileImg"
         android:layout_width="@dimen/twitter_image_profile_size"
         android:layout_height="@dimen/twitter_image_profile_size"
-        android:layout_marginTop="@dimen/twitter_margin_high"
+        android:layout_marginTop="@dimen/spacing_big_extra"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vLoginTwitterSignInInstructions"/>
@@ -85,6 +87,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_big_extra"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
         app:layout_constraintBottom_toTopOf="@+id/vApiTwitterLoginBtn" />
 
     <!-- custom login button -->
@@ -92,7 +96,6 @@
         android:id="@+id/vApiTwitterLoginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/twitter_margin_low"
         android:layout_marginHorizontal="@dimen/spacing_big_extra"
         android:text="@string/twitter_custom_login"
         app:layout_constraintBottom_toTopOf="@+id/vGetProfileBtn"
@@ -103,7 +106,6 @@
         android:id="@+id/vGetProfileBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/twitter_margin_low"
         android:layout_marginHorizontal="@dimen/spacing_big_extra"
         android:text="@string/twitter_profile_image"
         app:layout_constraintBottom_toTopOf="@+id/vLogoutBtn"

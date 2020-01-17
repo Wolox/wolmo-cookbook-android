@@ -31,6 +31,15 @@
         style="@style/Title" />
 
     <TextView
+        android:id="@+id/vLoginInstagramInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/instagram_instructions"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/Text"/>
+
+    <TextView
         android:id="@+id/vSeparator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +48,7 @@
         android:layout_marginEnd="@dimen/instagram_default_padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vLoginInstagramTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/vLoginInstagramInstructions" />
 
     <Button
         android:id="@+id/vSessionBtn"
@@ -51,7 +60,8 @@
         android:text="@string/instagram_login_btn"
         app:layout_constraintEnd_toStartOf="@+id/vSeparator"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vLoginInstagramTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/vLoginInstagramTitle"
+        style="@style/Button"/>
 
     <Button
         android:id="@+id/vDataBtn"
@@ -63,7 +73,8 @@
         android:text="@string/instagram_fetch_data_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/vSeparator"
-        app:layout_constraintTop_toBottomOf="@+id/vLoginInstagramTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/vLoginInstagramTitle"
+        style="@style/Button"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/vRecyclerView"

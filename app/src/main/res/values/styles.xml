@@ -19,6 +19,12 @@
         <item name="android:textColor">@color/black_transparent</item>
     </style>
 
+    <style name="Subtitle">
+        <item name="android:fontFamily">@font/bungee_inline</item>
+        <item name="android:textSize">@dimen/font_large_extra</item>
+        <item name="android:textColor">@color/black_transparent</item>
+    </style>
+
     <style name="Text">
         <item name="android:fontFamily">@font/bungee_inline</item>
     </style>
@@ -67,7 +73,7 @@
         <item name="android:textColor">@color/black_transparent</item>
     </style>
 
-    <style name="Button">
+    <style name="Button" parent="AppTheme">
         <item name="android:fontFamily">@font/bungee_inline</item>
         <item name="android:background">@drawable/rounded_corners</item>
         <item name="android:textSize">@dimen/font_medium</item>

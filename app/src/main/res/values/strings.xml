@@ -92,7 +92,8 @@
     <string name="notifications_inbox_line_2">Line 2: this is the very first line of an inbox styled notification</string>
 
     <!-- Instagram -->
-    <string name="instagram_title"><u>Instagram Login</u></string>
+    <string name="instagram_title">Instagram Login</string>
+    <string name="instagram_instructions"></string>
     <string name="instagram_login_btn">Login</string>
     <string name="instagram_logout_btn">Logout</string>
     <string name="instagram_fetch_data_btn">Fetch Data</string>
@@ -184,6 +185,7 @@
     <string name="info_button">Continue</string>
 
     <!-- Coroutines examples (builders) -->
+    <string name="coroutines_title">Coroutines</string>
     <string name="coroutines_examples_builders_title">Builders</string>
     <string name="coroutines_examples_builders_description">
         Example that starts a Coroutine that gets 5 random numbers (get this random number takes

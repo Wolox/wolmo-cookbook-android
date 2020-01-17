@@ -1,19 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@drawable/gradient_background"/>
+
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:src="@drawable/bg_recipe_picker"
+		android:scaleType="centerCrop"
+		android:alpha="0.05"
+		tools:ignore="ContentDescription" />
+
 	<TextView
-		android:id="@+id/title"
+		android:id="@+id/vCoroutinesTitle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_big"
+		android:text="@string/coroutines_title"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		style="@style/Title" />
+
+	<TextView
+		android:id="@+id/vCoroutinesSubtitle"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:padding="@dimen/spacing_medium_extra"
-		android:textSize="@dimen/font_large_extra"
 		android:textStyle="bold"
-		app:layout_constraintTop_toTopOf="parent"
-		tools:text="Title" />
+		app:layout_constraintTop_toBottomOf="@+id/vCoroutinesTitle"
+		tools:text="Title"
+		style="@style/Subtitle"/>
 
 	<TextView
 		android:id="@+id/description"
@@ -22,9 +47,9 @@
 		android:paddingStart="@dimen/spacing_medium_extra"
 		android:paddingEnd="@dimen/spacing_medium_extra"
 		android:paddingBottom="@dimen/spacing_medium_extra"
-		android:textSize="@dimen/font_medium_extra"
-		app:layout_constraintTop_toBottomOf="@id/title"
-		tools:text="Lorem ipsum..." />
+		app:layout_constraintTop_toBottomOf="@id/vCoroutinesSubtitle"
+		tools:text="Lorem ipsum..."
+		style="@style/Text.Medium"/>
 
 	<FrameLayout
 		android:id="@+id/container"
@@ -43,6 +68,7 @@
 			android:id="@+id/progressText"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical" />
+			android:orientation="vertical"
+			android:paddingHorizontal="@dimen/spacing_medium_extra" />
 	</ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
