@@ -60,6 +60,7 @@
     <dimen name="carousel_effect_max_translate_x">180dp</dimen>
 
     <!-- Recipe Image -->
+    <dimen name="recipe_image_size">150dp</dimen>
     <dimen name="recipe_image">250dp</dimen>
 
     <!-- Google login -->

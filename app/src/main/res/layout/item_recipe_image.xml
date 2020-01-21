@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/vItemRecipeImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/recipe_image_size"
+        android:layout_height="@dimen/recipe_image_size"
         android:background="@android:color/white"
         android:elevation="@dimen/spacing_large"
         android:outlineProvider="bounds"
