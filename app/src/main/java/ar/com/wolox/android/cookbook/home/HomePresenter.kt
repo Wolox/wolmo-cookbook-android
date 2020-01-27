@@ -9,6 +9,6 @@ class HomePresenter @Inject constructor(
 ) : BasePresenter<HomeView>() {
 
     fun onContinueButtonClicked() {
-        if (sharedPreferencesUtils.hasReadInfo) view?.goToRecipePickerScreen() else view?.goToInfoScreen()
+        if (sharedPreferencesUtils.hasReadInfo) view!!.goToRecipePickerScreen() else view!!.goToInfoScreen()
     }
 }
