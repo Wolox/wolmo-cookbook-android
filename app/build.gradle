@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'idea'
 apply plugin: 'jacoco-android'
 apply plugin: 'com.apollographql.android'
+apply plugin: 'com.google.gms.google-services'
 apply from: 'keystore.gradle'
 apply from: '../jacoco.gradle'
 apply from: '../quality.gradle'
@@ -205,6 +206,10 @@ dependencies {
     compileOnly 'org.jetbrains:annotations:13.0'
     testCompileOnly 'org.jetbrains:annotations:13.0'
     implementation 'javax.annotation:jsr250-api:1.0'
+
+    // Analytics
+    implementation 'com.google.firebase:firebase-core:17.2.2'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
 }
 
 dependencies {
