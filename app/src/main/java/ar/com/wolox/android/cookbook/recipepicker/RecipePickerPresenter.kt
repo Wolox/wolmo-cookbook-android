@@ -1,6 +1,6 @@
 package ar.com.wolox.android.cookbook.recipepicker
 
-import ar.com.wolox.android.cookbook.analytics.AnalyticsManager
+import ar.com.wolox.android.cookbook.analytics.core.AnalyticsManager
 import ar.com.wolox.android.cookbook.analytics.OpenRecipeEvent
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject

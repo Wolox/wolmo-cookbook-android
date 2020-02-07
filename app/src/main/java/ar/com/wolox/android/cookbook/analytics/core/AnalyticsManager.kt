@@ -1,4 +1,4 @@
-package ar.com.wolox.android.cookbook.analytics
+package ar.com.wolox.android.cookbook.analytics.core
 
 import android.content.Context
 import androidx.core.os.bundleOf
