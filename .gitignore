@@ -130,3 +130,9 @@ gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
+
+# Ignore drawable folders
+app/src/main/res/drawable-hdpi/
+app/src/main/res/drawable-xhdpi/
+app/src/main/res/drawable-xxhdpi/
+app/src/main/res/drawable-xxxhdpi/

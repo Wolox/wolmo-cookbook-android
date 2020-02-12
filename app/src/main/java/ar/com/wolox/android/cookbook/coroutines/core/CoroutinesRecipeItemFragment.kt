@@ -41,7 +41,7 @@ abstract class CoroutinesRecipeItemFragment<T : BasePresenter<*>> : WolmoFragmen
 
     @CallSuper
     override fun init() {
-        titleRes?.let { title.text = resources.getString(it) }
+        titleRes?.let { vCoroutinesSubtitle.text = resources.getString(it) }
         descriptionRes?.let { description.text = resources.getString(it) }
         childrenLayout?.let { View.inflate(context, it, container) }
     }

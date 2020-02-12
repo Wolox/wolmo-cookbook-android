@@ -6,18 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/vItemRecipeImage"
+    <View
+        android:id="@+id/vItemRecipeView"
         android:layout_width="@dimen/recipe_image"
         android:layout_height="@dimen/recipe_image"
+        android:background="@drawable/item_recipe_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageView
+        android:id="@+id/vItemRecipeImage"
+        android:layout_width="@dimen/recipe_image_size"
+        android:layout_height="@dimen/recipe_image_size"
         android:background="@android:color/white"
+        android:elevation="@dimen/spacing_large"
+        android:outlineProvider="bounds"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:elevation="@dimen/spacing_large"
-        android:outlineProvider="bounds"
-        android:scaleType="centerCrop"
         tools:src="@drawable/bg_cool_cat"
         tools:ignore="ContentDescription" />
 
@@ -26,14 +36,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_big_extra"
-        app:layout_constraintTop_toBottomOf="@id/vItemRecipeImage"
-        app:layout_constraintLeft_toLeftOf="@id/vItemRecipeImage"
-        app:layout_constraintRight_toRightOf="@id/vItemRecipeImage"
         android:gravity="center"
-        android:fontFamily="@font/indie_flower"
         android:maxLines="3"
         android:textStyle="bold"
-        android:textSize="@dimen/font_large"
-        tools:text="@string/app_example_recipe_description"/>
+        app:layout_constraintTop_toBottomOf="@id/vItemRecipeView"
+        app:layout_constraintLeft_toLeftOf="@id/vItemRecipeView"
+        app:layout_constraintRight_toRightOf="@id/vItemRecipeView"
+        tools:text="@string/app_example_recipe_description"
+        style="@style/Text.Large.Black"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

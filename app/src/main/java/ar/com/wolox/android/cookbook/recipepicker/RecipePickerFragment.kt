@@ -17,12 +17,25 @@ import ar.com.wolox.android.cookbook.tests.TestLoginRecipeActivity
 import ar.com.wolox.android.cookbook.twitterlogin.TwitterLoginRecipeActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_recipe_picker.*
+import android.net.Uri
 
 class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePickerView {
 
     override fun layout() = R.layout.fragment_recipe_picker
 
     override fun init() {}
+
+    override fun setListeners() {
+        super.setListeners()
+        vRecioePickerContactLayout.setOnClickListener {
+            presenter.onContactUsClicked()
+        }
+    }
+
+    override fun goToRepoWebsite() {
+        val intent = Intent(Intent.ACTION_VIEW).apply { data = Uri.parse(REPO_URL) }
+        startActivity(intent)
+    }
 
     override fun showRecipes(recipes: List<Recipe>) {
 
@@ -39,19 +52,19 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
         // Create a RecipeItem with the desired image & text for it inside the 'when' statement
         return recipes.map {
             when (it) {
-                Recipe.COROUTINES -> RecipeItem(it, R.drawable.bg_coroutines, R.string.recipe_picker_coroutines)
-                Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.bg_google_login, R.string.recipe_picker_google_login)
-                Recipe.FACEBOOK_LOGIN -> RecipeItem(it, R.drawable.bg_facebook_login, R.string.recipe_picker_facebook_login)
-                Recipe.TWITTER_LOGIN -> RecipeItem(it, R.drawable.bg_twitter_login, R.string.recipe_picker_twitter_login)
-                Recipe.INSTAGRAM_LOGIN -> RecipeItem(it, R.drawable.bg_instagram_login, R.string.recipe_picker_instagram_login)
-                Recipe.ROOM -> RecipeItem(it, R.drawable.bg_room, R.string.recipe_picker_room)
-                Recipe.MP_CHART -> RecipeItem(it, R.drawable.bg_mp_chart, R.string.recipe_picker_mp_chart)
-                Recipe.NAVIGATION -> RecipeItem(it, R.drawable.bg_navigation, R.string.recipe_picker_navigation)
+                Recipe.COROUTINES -> RecipeItem(it, R.drawable.ic_coroutines, R.string.recipe_picker_coroutines)
+                Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.ic_google, R.string.recipe_picker_google_login)
+                Recipe.FACEBOOK_LOGIN -> RecipeItem(it, R.drawable.ic_facebook, R.string.recipe_picker_facebook_login)
+                Recipe.TWITTER_LOGIN -> RecipeItem(it, R.drawable.ic_twitter, R.string.recipe_picker_twitter_login)
+                Recipe.INSTAGRAM_LOGIN -> RecipeItem(it, R.drawable.ic_instagram, R.string.recipe_picker_instagram_login)
+                Recipe.ROOM -> RecipeItem(it, R.drawable.ic_room, R.string.recipe_picker_room)
+                Recipe.MP_CHART -> RecipeItem(it, R.drawable.ic_graph, R.string.recipe_picker_mp_chart)
+                Recipe.NAVIGATION -> RecipeItem(it, R.drawable.ic_navigation, R.string.recipe_picker_navigation)
                 Recipe.DATA_SYNC -> RecipeItem(it, R.drawable.bg_data_sync_pokemon, R.string.recipe_picker_data_sync)
                 Recipe.TESTS -> RecipeItem(it, R.drawable.bg_tests, R.string.recipe_picker_tests)
                 Recipe.KOIN -> RecipeItem(it, R.drawable.bg_koin, R.string.recipe_picker_koin)
-                Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.bg_notification_recipe, R.string.recipe_picker_notifications)
-                Recipe.GRAPH_QL -> RecipeItem(it, R.drawable.bg_graph_ql, R.string.recipe_picker_graph_ql)
+                Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.ic_doorbell, R.string.recipe_picker_notifications)
+                Recipe.GRAPH_QL -> RecipeItem(it, R.drawable.ic_graphql, R.string.recipe_picker_graph_ql)
             }
         }
     }
@@ -86,5 +99,6 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     companion object {
         fun newInstance() = RecipePickerFragment()
+        private const val REPO_URL = "https://github.com/Wolox/wolmo-cookbook-android"
     }
 }

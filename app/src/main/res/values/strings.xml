@@ -5,6 +5,7 @@
     <string name="app_example_recipe_description">The Bad Boy of the Block. You can\'t resist him, huh?</string>
 
     <!-- Recipe Picker -->
+    <string name="recipe_picker_coroutines">Coroutines</string>
     <string name="recipe_picker_google_login">Google login</string>
     <string name="recipe_picker_facebook_login">Facebook login</string>
     <string name="recipe_picker_twitter_login">Twitter login</string>
@@ -17,10 +18,13 @@
     <string name="recipe_picker_koin">Koin</string>
     <string name="recipe_picker_notifications">Notifications</string>
     <string name="recipe_picker_graph_ql">Graph QL</string>
-    <string name="recipe_picker_coroutines">Coroutines</string>
+    <string name="recipe_picker_contact">Contact us</string>
 
     <!-- Google login -->
+    <string name="google_login_title">Google login</string>
     <string name="google_login_logout">Logout</string>
+    <string name="google_login_instructions">To login with Google\'s API, please click on Sign In button. If you\'re not already signed, mail and password will be asked to continue.</string>
+    <string name="google_logout_instructions">To logout please press button at bottom.</string>
     <string name="google_login_error_cancelled">The sign in was cancelled by the user.</string>
     <string name="google_login_error_in_progress">A sign in process is currently in progress and the current one cannot continue.</string>
     <string name="google_login_error_failed">The sign in attempt didn\'t succeed with the current account.</string>
@@ -43,6 +47,9 @@
     <string name="data_sync_check_it_out">Check it out!</string>
 
     <!-- Facebook -->
+    <string name="facebook_login_title">Facebook login</string>
+    <string name="facebook_login_instructions">To login with Facebook\'s API, please click on any Sign In button. If you\'re not already signed, user and password will be asked to continue.</string>
+    <string name="facebook_logout_instructions">To logout please press button at bottom.</string>
     <string name="facebook_login_app_id">329539014322126</string>
     <string name="facebook_login_protocol_scheme">fb329539014322126</string>
     <string name="facebook_login_error_cancelled">The sign in was cancelled by the user.</string>
@@ -50,6 +57,9 @@
     <string name="facebook_login_btn">Login with Facebook</string>
 
     <!-- Twitter -->
+    <string name="twitter_title">Twitter login</string>
+    <string name="twitter_login_instructions">To login with Twitter\'s API, please click on any Log In button. If you\'re not already signed, user and password will be asked to continue.</string>
+    <string name="twitter_logout_instructions">To look for profile picture, press "Fetch profile image" and to logout press button at the bottom.</string>
     <string name="twitter_consumer_key">GT7c84P1Ua0sCOWMirLZPI5RG</string>
     <string name="twitter_consumer_secret">98IyZsqCAhojROEGpj8l5u0STuuI4zYa0p5cnhzPasAszUlom6</string>
     <string name="twitter_custom_login">Custom Log in with Twitter</string>
@@ -82,7 +92,8 @@
     <string name="notifications_inbox_line_2">Line 2: this is the very first line of an inbox styled notification</string>
 
     <!-- Instagram -->
-    <string name="instagram_title"><u>Instagram Login</u></string>
+    <string name="instagram_title">Instagram Login</string>
+    <string name="instagram_instructions"></string>
     <string name="instagram_login_btn">Login</string>
     <string name="instagram_logout_btn">Logout</string>
     <string name="instagram_fetch_data_btn">Fetch Data</string>
@@ -166,7 +177,15 @@
     <string name="order_username">Username: %1$s</string>
     <string name="order_delivery_address">Delivery Address: %1$s</string>
 
+    <!-- Home -->
+    <string name="home_title">Welcome to Wolox Android Cookbook</string>
+    <string name="home_button">Continue</string>
+
+    <!-- Info -->
+    <string name="info_button">Continue</string>
+
     <!-- Coroutines examples (builders) -->
+    <string name="coroutines_title">Coroutines</string>
     <string name="coroutines_examples_builders_title">Builders</string>
     <string name="coroutines_examples_builders_description">
         Example that starts a Coroutine that gets 5 random numbers (get this random number takes
@@ -231,5 +250,6 @@
     <string name="football_unexpected_error">Unexpected error.</string>
     <string name="football_not_available_error">Feature not available on this mode.</string>
     <string name="football_elapsed_time">It takes %s ms to perform the task.</string>
+>>>>>>> master
 
 </resources>

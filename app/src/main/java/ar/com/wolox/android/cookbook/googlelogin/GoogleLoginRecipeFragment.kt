@@ -1,6 +1,7 @@
 package ar.com.wolox.android.cookbook.googlelogin
 
 import android.content.Intent
+import android.view.View
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.googlelogin.helper.GoogleAccountHelper
 import ar.com.wolox.android.cookbook.googlelogin.helper.GoogleHelper
@@ -50,7 +51,8 @@ class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), G
         if (user.picture != null) {
             vLoginUserPhoto.setImageRequest(ImageRequestBuilder.newBuilderWithSource(user.picture).build())
         }
-
+        vLoginGoogleSignInInstructions.visibility = View.GONE
+        vLoginGoogleLogOutInstructions.visibility = View.VISIBLE
         vLogoutGoogleBtn.isEnabled = true
         vLoginGoogleBtn.isEnabled = false
     }
@@ -60,6 +62,8 @@ class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), G
         vLoginUserEmail.text = ""
         vLoginUserPhoto.setImageRequest(null)
 
+        vLoginGoogleSignInInstructions.visibility = View.VISIBLE
+        vLoginGoogleLogOutInstructions.visibility = View.GONE
         vLogoutGoogleBtn.isEnabled = false
         vLoginGoogleBtn.isEnabled = true
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1D9BD7</color>
-    <color name="colorPrimaryDark">#0960B7</color>
+    <color name="colorPrimary">#8DC63F</color>
+    <color name="colorPrimaryDark">#0B466C</color>
     <color name="colorAccent">#8DC63F</color>
 
     <!-- Recipe Picker -->
@@ -14,5 +14,9 @@
     <color name="chart_candle_increase">#7af254</color>
 
     <color name="color_black">#000000</color>
+    <color name="blue">#0B466C</color>
+    <color name="green">#A5C638</color>
+    <color name="grey">#A1A1A1</color>
+    <color name="black_transparent">#AA000000</color>
 
 </resources>

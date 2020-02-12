@@ -1,18 +1,14 @@
 package ar.com.wolox.android.cookbook.facebooklogin
 
 import android.content.Intent
+import android.view.View
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.facebooklogin.proxy.FacebookProxy
 import ar.com.wolox.android.cookbook.facebooklogin.model.FacebookAccount
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import com.facebook.imagepipeline.request.ImageRequestBuilder
-import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookLoginBtn
-import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookLogoutBtn
-import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookOriginalLoginBtn
-import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookUserEmail
-import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookUserName
-import kotlinx.android.synthetic.main.fragment_facebook_login.vLoginFacebookUserPhoto
+import kotlinx.android.synthetic.main.fragment_facebook_login.*
 import javax.inject.Inject
 
 /**
@@ -44,7 +40,8 @@ class FacebookLoginRecipeFragment : WolmoFragment<FacebookLoginRecipePresenter>(
         user.picture?.let {
             vLoginFacebookUserPhoto.setImageRequest(ImageRequestBuilder.newBuilderWithSource(it).build())
         }
-
+        vLoginFacebookSignInInstructions.visibility = View.GONE
+        vLoginGoogleLogOutInstructions.visibility = View.VISIBLE
         vLoginFacebookLogoutBtn.isEnabled = true
         vLoginFacebookLoginBtn.isEnabled = false
     }
@@ -54,6 +51,8 @@ class FacebookLoginRecipeFragment : WolmoFragment<FacebookLoginRecipePresenter>(
         vLoginFacebookUserEmail.text = ""
         vLoginFacebookUserPhoto.setImageRequest(null)
 
+        vLoginFacebookSignInInstructions.visibility = View.VISIBLE
+        vLoginGoogleLogOutInstructions.visibility = View.GONE
         vLoginFacebookLogoutBtn.isEnabled = false
         vLoginFacebookLoginBtn.isEnabled = true
     }

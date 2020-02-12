@@ -13,4 +13,70 @@
         <item name="android:textSize">@dimen/font_medium_extra</item>
     </style>
 
+    <style name="Title">
+        <item name="android:fontFamily">@font/bungee_inline</item>
+        <item name="android:textSize">@dimen/font_huge_extra</item>
+        <item name="android:textColor">@color/black_transparent</item>
+    </style>
+
+    <style name="Subtitle">
+        <item name="android:fontFamily">@font/bungee_inline</item>
+        <item name="android:textSize">@dimen/font_large_extra</item>
+        <item name="android:textColor">@color/black_transparent</item>
+    </style>
+
+    <style name="Text">
+        <item name="android:fontFamily">@font/bungee_inline</item>
+    </style>
+
+    <style name="Text.Medium">
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+    <style name="Text.Medium.Black">
+        <item name="android:textColor">@color/black_transparent</item>
+    </style>
+
+    <style name="Text.MediumMore">
+        <item name="android:textSize">@dimen/font_medium_more</item>
+    </style>
+
+    <style name="Text.MediumMore.Black">
+        <item name="android:textColor">@color/black_transparent</item>
+    </style>
+
+    <style name="Text.MediumExtra">
+        <item name="android:textSize">@dimen/font_medium_extra</item>
+    </style>
+
+    <style name="Text.MediumExtra.Black">
+        <item name="android:textColor">@color/black_transparent</item>
+    </style>
+
+    <style name="Text.MediumExtra.Grey">
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="Text.Large">
+        <item name="android:textSize">@dimen/spacing_large</item>
+    </style>
+
+    <style name="Text.Large.Black">
+        <item name="android:textColor">@color/black_transparent</item>
+    </style>
+
+    <style name="Text.LargeExtra">
+        <item name="android:textSize">@dimen/spacing_large_extra</item>
+    </style>
+
+    <style name="Text.LargeExtra.Black">
+        <item name="android:textColor">@color/black_transparent</item>
+    </style>
+
+    <style name="Button" parent="AppTheme">
+        <item name="android:fontFamily">@font/bungee_inline</item>
+        <item name="android:background">@drawable/rounded_corners</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
 </resources>
