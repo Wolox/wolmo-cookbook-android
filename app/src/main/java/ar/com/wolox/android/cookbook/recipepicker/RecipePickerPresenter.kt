@@ -1,13 +1,9 @@
 package ar.com.wolox.android.cookbook.recipepicker
 
-import ar.com.wolox.android.cookbook.analytics.core.AnalyticsManager
-import ar.com.wolox.android.cookbook.analytics.OpenRecipeEvent
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 
-class RecipePickerPresenter @Inject constructor(
-    private val analyticsManager: AnalyticsManager
-) : BasePresenter<RecipePickerView>() {
+class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerView>() {
 
     override fun onViewAttached() {
         super.onViewAttached()
@@ -16,8 +12,8 @@ class RecipePickerPresenter @Inject constructor(
     }
 
     fun onRecipeClicked(clickedRecipe: Recipe) {
-        analyticsManager.logEvent(OpenRecipeEvent(clickedRecipe))
         when (clickedRecipe) {
+            Recipe.ANALYTICS -> view?.goToAnalyticsRecipe()
             Recipe.GOOGLE_LOGIN -> view?.goToGoogleLogin()
             Recipe.FACEBOOK_LOGIN -> view?.goToFacebookLogin()
             Recipe.TWITTER_LOGIN -> view?.goToTwitterLogin()

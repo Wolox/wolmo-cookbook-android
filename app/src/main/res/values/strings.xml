@@ -18,6 +18,7 @@
     <string name="recipe_picker_notifications">Notifications</string>
     <string name="recipe_picker_graph_ql">Graph QL</string>
     <string name="recipe_picker_coroutines">Coroutines</string>
+    <string name="recipe_picker_firebase">Firebase Analytics</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
@@ -231,5 +232,14 @@
     <string name="football_unexpected_error">Unexpected error.</string>
     <string name="football_not_available_error">Feature not available on this mode.</string>
     <string name="football_elapsed_time">It takes %s ms to perform the task.</string>
+
+    <!-- Analytics -->
+    <string name="analytics_help">I need help!</string>
+    <string name="analytics_age">The age of %s is %d</string>
+    <string name="analytics_empty_email_error">The email input is empty</string>
+    <string name="analytics_empty_password_error">The password input is empty</string>
+    <string name="analytics_invalid_user_error">The user is invalid. Check the email or the password.</string>
+    <string name="analytics_service_unavailable_error">The service is unavailable for the moment. Try again.</string>
+    <string name="analytics_view_age">Show my age!</string>
 
 </resources>

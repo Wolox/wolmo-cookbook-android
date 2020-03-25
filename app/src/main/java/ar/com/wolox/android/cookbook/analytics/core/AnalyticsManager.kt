@@ -16,6 +16,6 @@ class AnalyticsManager @Inject constructor(context: Context) {
     }
 
     fun logEvent(event: AnalyticsEvent) {
-        firebaseAnalytics.logEvent(event.name, bundleOf(*event.params.toTypedArray()))
+        firebaseAnalytics.logEvent(event.name, bundleOf(*event.params))
     }
 }

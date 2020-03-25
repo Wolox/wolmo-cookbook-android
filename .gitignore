@@ -132,4 +132,4 @@ gradle-app.setting
 !gradle-wrapper.jar
 
 # Confidential files
-google-services.json
+app/google-services.json
