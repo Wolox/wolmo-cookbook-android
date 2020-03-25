@@ -5,17 +5,18 @@ import androidx.core.os.bundleOf
 import com.google.firebase.analytics.FirebaseAnalytics
 import javax.inject.Inject
 
+/**
+ * This class is responsible of connecting to Firebase and logging [AnalyticsEvent]s.
+ */
 class AnalyticsManager @Inject constructor(context: Context) {
 
-    val firebaseAnalytics: FirebaseAnalytics by lazy {
+    private val firebaseAnalytics: FirebaseAnalytics by lazy {
         FirebaseAnalytics.getInstance(context)
     }
 
-    fun logEvent(id: String, vararg params: Pair<String, String>) {
-        firebaseAnalytics.logEvent(id, bundleOf(*params))
+    private fun logEvent(name: String, vararg params: Pair<String, Any>) {
+        firebaseAnalytics.logEvent(name, bundleOf(*params))
     }
 
-    fun logEvent(event: AnalyticsEvent) {
-        firebaseAnalytics.logEvent(event.name, bundleOf(*event.params))
-    }
+    fun logEvent(event: AnalyticsEvent) = logEvent(event.name, *event.parameters)
 }

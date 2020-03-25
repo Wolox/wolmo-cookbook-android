@@ -50,5 +50,8 @@ class AnalyticsRecipePresenter @Inject constructor(
         }
     }
 
-    fun onHelpButtonClicked() = view?.openHelp()
+    fun onHelpButtonClicked() {
+        analyticsManager.logEvent(OpenHelp)
+        view?.openHelp()
+    }
 }
