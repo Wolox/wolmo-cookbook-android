@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'idea'
 apply plugin: 'jacoco-android'
 apply plugin: 'com.apollographql.android'
-apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.gms.google-services' // It's important for analytics
 apply from: 'keystore.gradle'
 apply from: '../jacoco.gradle'
 apply from: '../quality.gradle'
