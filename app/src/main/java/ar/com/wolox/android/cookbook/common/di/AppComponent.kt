@@ -4,6 +4,7 @@ import android.app.Application
 import ar.com.wolox.android.cookbook.CookbookApplication
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRecipeModule
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRepositoryModule
+import ar.com.wolox.android.cookbook.analytics.core.AnalyticsModule
 import ar.com.wolox.android.cookbook.coroutines.CoroutinesExampleModule
 import ar.com.wolox.android.cookbook.coroutines.football.modules.FootballModule
 import ar.com.wolox.android.cookbook.common.di.modules.ChartModule
@@ -47,6 +48,7 @@ import javax.inject.Named
         FootballModule::class,
         PersistenceModule::class,
         ServiceModule::class,
+        AnalyticsModule::class,
         AnalyticsRecipeModule::class,
         AnalyticsRepositoryModule::class
     ]

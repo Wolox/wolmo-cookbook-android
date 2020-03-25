@@ -34,14 +34,10 @@ abstract class AnalyticsEvent(
                 throw InvalidAnalyticsEventNameException("The event name '$name' can be up to 40 characters")
             !name.first().isLetter() ->
                 throw InvalidAnalyticsEventNameException("The event name '$name' should start with an alphabetic character")
-            name.filterNot { it.isLetterOrDigit() || it == '_' }.isEmpty() ->
+            name.filterNot { it.isLetterOrDigit() || it == '_' }.isNotEmpty() ->
                 throw InvalidAnalyticsEventNameException("The event name '$name' should only contain alphanumeric characters or underscores")
-            name.startsWith("firebase_") ->
-                throw InvalidAnalyticsEventNameException("The event name '$name' is reserved: it can't start with 'firebase_'")
-            name.startsWith("google_") ->
-                throw InvalidAnalyticsEventNameException("The event name '$name' is reserved: it can't start with 'google_'")
-            name.startsWith("ga_") ->
-                throw InvalidAnalyticsEventNameException("The event name '$name' is reserved: it can't start with 'ga_'")
+            name.startsWith("firebase_") || name.startsWith("google_") || name.startsWith("ga_") ->
+                throw InvalidAnalyticsEventNameException("The event name '$name' is reserved: it can't start with either 'firebase_' or 'google_' or 'ga_'")
         }
 
         parameters.forEach {
@@ -54,15 +50,11 @@ abstract class AnalyticsEvent(
                     throw InvalidAnalyticsEventParamException("The $name parameter key '$key' can be up to 40 characters")
                 !key.first().isLetter() ->
                     throw InvalidAnalyticsEventParamException("The $name parameter key '$key' should start with an alphabetic character")
-                key.filterNot { letter -> letter.isLetterOrDigit() || letter == '_' }.isEmpty() ->
+                key.filterNot { letter -> letter.isLetterOrDigit() || letter == '_' }.isNotEmpty() ->
                     throw InvalidAnalyticsEventParamException("The $name parameter key '$key' should only contain alphanumeric characters or underscores")
-                key.startsWith("firebase_") ->
-                    throw InvalidAnalyticsEventParamException("The $name parameter key '$key' is reserved: it can't start with 'firebase_'")
-                key.startsWith("google_") ->
-                    throw InvalidAnalyticsEventParamException("The $name parameter key '$key' is reserved: it can't start with 'google_'")
-                key.startsWith("ga_") ->
-                    throw InvalidAnalyticsEventParamException("The $name parameter key '$key' is reserved: it can't start with 'ga_'")
-                value !is String || value !is Long || value !is Double ->
+                key.startsWith("firebase_") || key.startsWith("google_") || key.startsWith("ga_") ->
+                    throw InvalidAnalyticsEventParamException("The $name parameter key '$key' is reserved: it can't start with either 'firebase_' or 'google_' or 'ga_'")
+                value !is String && value !is Long && value !is Double ->
                     throw InvalidAnalyticsEventParamException("The $name parameter '$key' value can only be String, Double or Long")
                 value is String && value.length > 100 ->
                     throw InvalidAnalyticsEventParamException("The $name parameter '$key' value can be up to 100 characters")
