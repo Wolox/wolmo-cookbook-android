@@ -181,7 +181,7 @@ def cleanProject():
     storedHashedFiles = loadHashedFiles()
 
     # Delete all the stored files
-    for path, md5 in storedHashedFiles.iteritems():
+    for path, md5 in storedHashedFiles.items():
         assetToClean = ntpath.basename(path)
         print(Colors.BLUE + "DELETING ASSET: " + assetToClean + Colors.ENDC)
         deleteAsset(assetToClean)
@@ -238,7 +238,7 @@ def classifyRawFiles(upToDateFiles, deletedFiles, newFiles, modifiedFiles):
     saveHashedFiles(recentlyHashedFiles)
 
     # Classify files by comparing recent hashes with previously hased files
-    for path, md5 in recentlyHashedFiles.iteritems():
+    for path, md5 in recentlyHashedFiles.items():
         if path in storedHashedFiles:
             # CASE 1: The file is present and the hashes are the same (the file is the same)
             if md5 == recentlyHashedFiles[path]:
