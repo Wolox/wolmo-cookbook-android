@@ -1,3 +1,4 @@
+#!/bin/sh
 echo "Running style analysis..."
 
 ./gradlew checkstyle ktlintFormat
