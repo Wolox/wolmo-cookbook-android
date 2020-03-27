@@ -13,7 +13,9 @@ class AnalyticsRecipePresenter @Inject constructor(
     private fun validate(email: String, password: String): Boolean {
         var isValid = true
 
+            println("entro acá1 -> '$email'")
         if (email.isBlank()) {
+            println("entro acá2")
             analyticsManager.logEvent(EmptyEmailEvent)
             view?.showEmailEmptyError()
             isValid = false
@@ -34,7 +36,6 @@ class AnalyticsRecipePresenter @Inject constructor(
         }
 
         launch {
-            analyticsManager.logEvent(AgeRequested(email))
             try {
                 userRepository.getUser(email, password)?.let {
                     analyticsManager.logEvent(AgeRequestSuccessful(email))
