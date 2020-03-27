@@ -1,12 +1,18 @@
 package ar.com.wolox.android.cookbook.scanqr
 
+import android.content.Intent
+
 interface ScanQrView {
 
-    fun goToSuccessFragment(result: String?)
+    fun showSuccessFragment(result: String?)
 
-    fun goToErrorFragment()
+    fun showErrorFragment()
 
-    fun scanQr()
+    fun showScannerView()
 
-    fun goToScanMenuFragment()
+    fun showScanMenuFragment()
+
+    fun showCancelledScanEvent()
+
+    fun defaultActivityOnResult(requestCode: Int, resultCode: Int, data: Intent?)
 }

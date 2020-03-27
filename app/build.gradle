@@ -116,6 +116,8 @@ buildscript {
     ext.robolectric_version = '4.2'
     ext.fragment_testing_version = '1.1.0-alpha07'
     ext.koin_version = '2.0.1'
+    ext.zxing_android_version ='3.6.0'
+    ext.zxing_core_version ='3.4.0'
 }
 
 dependencies {
@@ -172,8 +174,8 @@ dependencies {
     implementation "com.facebook.android:facebook-login:$facebook_login_version"
 
     //QR
-    implementation('com.journeyapps:zxing-android-embedded:3.6.0') { transitive = false }
-    implementation 'com.google.zxing:core:3.4.0'
+    implementation("com.journeyapps:zxing-android-embedded:$zxing_android_version") { transitive = false }
+    implementation "com.google.zxing:core:$zxing_core_version"
 
 }
 

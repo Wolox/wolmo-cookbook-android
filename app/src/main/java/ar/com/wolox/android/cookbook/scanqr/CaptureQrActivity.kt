@@ -1,18 +1,18 @@
 package ar.com.wolox.android.cookbook.scanqr
 
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.KeyEvent
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.wolmo.core.activity.WolmoActivity
 import com.journeyapps.barcodescanner.CaptureManager
 import com.journeyapps.barcodescanner.DecoratedBarcodeView
 import com.journeyapps.barcodescanner.ViewfinderView
 import kotlinx.android.synthetic.main.custom_qr_scanner.*
 import kotlinx.android.synthetic.main.fragment_capture_qr.*
 
-class CaptureQrActivity : Activity(), DecoratedBarcodeView.TorchListener {
+class CaptureQrActivity : WolmoActivity(), DecoratedBarcodeView.TorchListener {
 
     private var capture: CaptureManager? = null
     private var barcodeScannerView: DecoratedBarcodeView? = null
@@ -20,9 +20,7 @@ class CaptureQrActivity : Activity(), DecoratedBarcodeView.TorchListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_capture_qr)
         setUpScannerView(savedInstanceState)
-        setOnClickListeners()
     }
 
     override fun onResume() {
@@ -40,14 +38,18 @@ class CaptureQrActivity : Activity(), DecoratedBarcodeView.TorchListener {
         capture?.onDestroy()
     }
 
+    override fun init() {
+        setOnClickListeners()
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         capture?.onSaveInstanceState(outState)
     }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        return barcodeScannerView!!.onKeyDown(keyCode, event) || super.onKeyDown(keyCode, event)
-    }
+    override fun layout(): Int = R.layout.fragment_capture_qr
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean = barcodeScannerView!!.onKeyDown(keyCode, event) || super.onKeyDown(keyCode, event)
 
     private fun setUpScannerView(savedInstanceState: Bundle?) {
         viewfinderView = zxing_viewfinder_view
@@ -66,11 +68,10 @@ class CaptureQrActivity : Activity(), DecoratedBarcodeView.TorchListener {
         }
     }
 
-    private fun hasFlash(): Boolean {
-        // CHECK IF FLASH IS AVAILABLE
-        return applicationContext.packageManager
-                .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
-    }
+    private fun hasFlash(): Boolean = applicationContext.packageManager
+            .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
+    // CHECK IF FLASH IS AVAILABLE
+
 
     fun switchFlashlight(switch: Boolean) {
         // TURN ON OR OFF FLASH

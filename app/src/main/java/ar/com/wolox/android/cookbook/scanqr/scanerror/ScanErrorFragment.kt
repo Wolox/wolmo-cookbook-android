@@ -8,14 +8,15 @@ import javax.inject.Inject
 
 class ScanErrorFragment @Inject constructor() : WolmoFragment<ScanErrorPresenter>() {
     override fun init() {
-        setOnClickListeners()
+        setListeners()
     }
 
     override fun layout(): Int = R.layout.fragment_scan_error
 
-    private fun setOnClickListeners() {
+    override fun setListeners() {
+        super.setListeners()
         bGoToScanMenu.setOnClickListener {
-            (activity as ScanQrActivity).goToScanMenuFragment()
+            (activity as ScanQrActivity).showScanMenuFragment()
         }
     }
 }

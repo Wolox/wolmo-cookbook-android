@@ -1,8 +1,7 @@
 package ar.com.wolox.android.cookbook.scanqr
 
-import android.app.Activity
 import android.content.Intent
-import android.widget.Toast
+import android.util.Log
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.scanqr.scanerror.ScanErrorFragment
 import ar.com.wolox.android.cookbook.scanqr.scanmenu.ScanMenuFragment
@@ -15,26 +14,19 @@ class ScanQrActivity : WolmoActivity(), ScanQrView {
 
     @Inject
     lateinit var presenter: ScanQrPresenter
-    var result: String? = null
 
     override fun init() {
-        presenter = ScanQrPresenter().apply {
-            setView(this@ScanQrActivity)
-        }
-        goToScanMenuFragment()
+        presenter.attachView(this)
+        showScanMenuFragment()
     }
 
     override fun layout(): Int = R.layout.activity_scan_qr
 
-    override fun goToSuccessFragment(result: String?) {
-        replaceFragment(R.id.vFragment_holder, ScanSuccessFragment.newInstance(result))
-    }
+    override fun showSuccessFragment(result: String?) = replaceFragment(R.id.vFragment_holder, ScanSuccessFragment.newInstance(result))
 
-    override fun goToErrorFragment() {
-        replaceFragment(R.id.vFragment_holder, ScanErrorFragment())
-    }
+    override fun showErrorFragment() = replaceFragment(R.id.vFragment_holder, ScanErrorFragment())
 
-    override fun scanQr() {
+    override fun showScannerView() {
         IntentIntegrator(this).run {
             /*
                 ADD ANY EXTRA THAT YOU WANT TO PASS TO CAPTURE QR ACTIVITY HERE
@@ -45,34 +37,23 @@ class ScanQrActivity : WolmoActivity(), ScanQrView {
         }
     }
 
-    override fun goToScanMenuFragment() {
-        replaceFragment(R.id.vFragment_holder, ScanMenuFragment())
+    override fun showScanMenuFragment() = replaceFragment(R.id.vFragment_holder, ScanMenuFragment())
+
+    override fun showCancelledScanEvent() {
+        Log.v("Activity Result Event", "CANCELLED SCAN")
+    }
+
+    override fun defaultActivityOnResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onResume() {
         super.onResume()
-        if (result != null) {
-            presenter.onScannedQR(result!!)
-        }
+        presenter.onResumeActivity()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (resultCode) {
-            Activity.RESULT_CANCELED -> {
-                /*
-                    ADD ANY BEHAVOUR YOU WANT IF YOU BACKPRESS WHEN SCANNING
-                 */
-            }
-            else -> {
-                val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-                result?.let {
-                    result.contents?.let {
-                        this.result = it
-                    }
-                } ?: run {
-                    super.onActivityResult(requestCode, resultCode, data)
-                }
-            }
-        }
+        super.onActivityResult(requestCode, resultCode, data)
+        presenter.onActivityResult(requestCode, resultCode, data)
     }
 }

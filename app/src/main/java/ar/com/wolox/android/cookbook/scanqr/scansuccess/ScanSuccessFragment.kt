@@ -11,22 +11,19 @@ class ScanSuccessFragment @Inject constructor() : WolmoFragment<ScanSuccessPrese
 
     override fun init() {
         presenter.init(arguments?.getString(RESULT_KEY))
-        setOnClickListeners()
+        setListeners()
     }
 
-    private fun setOnClickListeners() {
-        bScanMenu.setOnClickListener {
-            presenter.onScanMenuClicked()
-        }
+    override fun setListeners() {
+        super.setListeners()
+        presenter.onScanMenuClicked()
     }
 
     override fun setUi(result: String?) {
         vScanResult.text = result.orEmpty()
     }
 
-    override fun goToScanMenu() {
-        (activity as ScanQrActivity).goToScanMenuFragment()
-    }
+    override fun goToScanMenu() = (activity as ScanQrActivity).showScanMenuFragment()
 
     override fun layout(): Int = R.layout.fragment_scan_qr_success
 

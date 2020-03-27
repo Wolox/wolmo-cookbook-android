@@ -9,12 +9,13 @@ import javax.inject.Inject
 class ScanMenuFragment @Inject constructor() : WolmoFragment<ScanMenuPresenter>(), ScanMenuView {
 
     override fun init() {
-        setOnClickListeners()
+        setListeners()
     }
 
     override fun layout(): Int = R.layout.fragment_scan_menu
 
-    private fun setOnClickListeners() {
+    override fun setListeners() {
+        super.setListeners()
         bScanQr.setOnClickListener {
             presenter.onScanClicked()
         }
@@ -25,6 +26,6 @@ class ScanMenuFragment @Inject constructor() : WolmoFragment<ScanMenuPresenter>(
     }
 
     override fun goToScanScreen() {
-        (activity as ScanQrActivity).scanQr()
+        (activity as ScanQrActivity).showScannerView()
     }
 }
