@@ -72,7 +72,6 @@ class CaptureQrActivity : WolmoActivity(), DecoratedBarcodeView.TorchListener {
             .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
     // CHECK IF FLASH IS AVAILABLE
 
-
     fun switchFlashlight(switch: Boolean) {
         // TURN ON OR OFF FLASH
         when {
