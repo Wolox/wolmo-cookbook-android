@@ -1,6 +1,8 @@
 package ar.com.wolox.android.cookbook.analytics.core
 
+import android.app.Activity
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import com.google.firebase.analytics.FirebaseAnalytics
 import javax.inject.Inject
 import javax.inject.Provider
@@ -15,4 +17,8 @@ class AnalyticsManager @Inject constructor(private val firebaseAnalytics: Provid
     }
 
     fun logEvent(event: AnalyticsEvent) = logEvent(event.name, *event.parameters)
+
+    fun setCurrentScreen(fragment: Fragment) = setCurrentScreen(fragment.requireActivity(), fragment::class.java.simpleName)
+
+    fun setCurrentScreen(activity: Activity, screenName: String) = firebaseAnalytics.get().setCurrentScreen(activity, screenName, null)
 }
