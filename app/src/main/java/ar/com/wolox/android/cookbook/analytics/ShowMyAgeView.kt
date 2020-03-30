@@ -1,6 +1,10 @@
 package ar.com.wolox.android.cookbook.analytics
 
-interface AnalyticsRecipeView {
+import ar.com.wolox.android.cookbook.analytics.core.AnalyticsManager
+
+interface ShowMyAgeView {
+
+    fun setCurrentScreen(analyticsManager: AnalyticsManager)
 
     fun openHelp()
 

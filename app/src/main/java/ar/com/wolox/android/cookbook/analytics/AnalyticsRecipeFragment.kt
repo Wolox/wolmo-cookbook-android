@@ -6,33 +6,29 @@ import android.view.View
 import android.view.ViewGroup
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.databinding.FragmentAnalyticsBinding
+import ar.com.wolox.wolmo.core.adapter.viewpager.SimpleFragmentPagerAdapter
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
-import ar.com.wolox.wolmo.core.util.ToastFactory
-import ar.com.wolox.wolmo.core.util.openBrowser
+import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 
-class AnalyticsRecipeFragment : WolmoFragment<AnalyticsRecipePresenter>(), AnalyticsRecipeView {
+class AnalyticsRecipeFragment : WolmoFragment<BasePresenter<Any>>() {
 
     @Inject
-    lateinit var toastFactory: ToastFactory
+    internal lateinit var loremIpsumFragment: LoremIpsumFragment
+
+    @Inject
+    internal lateinit var showMyAgeFragment: ShowMyAgeFragment
 
     private var _binding: FragmentAnalyticsBinding? = null
-
-    // This property is only valid between onCreateView and onDestroyView.
-    private val binding
-        get() = _binding!!
+    private val binding get() = _binding!! // This property is only valid between onCreateView and onDestroyView.
 
     override fun layout() = R.layout.fragment_analytics
 
     override fun init() {
-    }
-
-    override fun setListeners() {
-        binding.ageRequestButton.setOnClickListener {
-            presenter.onAgeRequestButtonClicked(binding.emailInput.text.toString(), binding.passwordInput.text.toString())
-        }
-        binding.helpButton.setOnClickListener {
-            presenter.onHelpButtonClicked()
+        binding.viewPager.adapter = SimpleFragmentPagerAdapter(childFragmentManager).apply {
+            addFragments(
+                showMyAgeFragment to getString(R.string.analytics_show_my_age_title),
+                loremIpsumFragment to getString(R.string.analytics_lorem_ipsum_title))
         }
     }
 
@@ -47,21 +43,7 @@ class AnalyticsRecipeFragment : WolmoFragment<AnalyticsRecipePresenter>(), Analy
         _binding = null
     }
 
-    override fun openHelp() = requireContext().openBrowser(HELP_URL)
-
-    override fun showAge(name: String, age: Int) = toastFactory.show(resources.getString(R.string.analytics_age, name, age))
-
-    override fun showEmailEmptyError() = toastFactory.show(R.string.analytics_empty_email_error)
-
-    override fun showPasswordEmptyError() = toastFactory.show(R.string.analytics_empty_password_error)
-
-    override fun showInvalidUserError() = toastFactory.show(R.string.analytics_invalid_user_error)
-
-    override fun showServeUnavailableError() = toastFactory.show(R.string.analytics_service_unavailable_error)
-
     companion object {
-
-        const val HELP_URL = "https://www.google.com"
 
         fun newInstance() = AnalyticsRecipeFragment()
     }

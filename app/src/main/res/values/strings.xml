@@ -234,6 +234,8 @@
     <string name="football_elapsed_time">It takes %s ms to perform the task.</string>
 
     <!-- Analytics -->
+    <string name="analytics_show_my_age_title">Show my age</string>
+    <string name="analytics_lorem_ipsum_title">Lorem Ipsum</string>
     <string name="analytics_help">I need help!</string>
     <string name="analytics_age">The age of %s is %d</string>
     <string name="analytics_empty_email_error">The email input is empty</string>

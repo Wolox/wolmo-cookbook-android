@@ -5,10 +5,12 @@ import ar.com.wolox.wolmo.core.presenter.CoroutineBasePresenter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class AnalyticsRecipePresenter @Inject constructor(
+class ShowMyAgePresenter @Inject constructor(
     private val userRepository: UserRepository,
     private val analyticsManager: AnalyticsManager
-) : CoroutineBasePresenter<AnalyticsRecipeView>() {
+) : CoroutineBasePresenter<ShowMyAgeView>() {
+
+    fun onVisible() = view?.setCurrentScreen(analyticsManager)
 
     private fun validate(email: String, password: String): Boolean {
         var isValid = true

@@ -12,6 +12,12 @@ abstract class AnalyticsRecipeModule {
 
     @ContributesAndroidInjector
     abstract fun analyticsRecipeFragment(): AnalyticsRecipeFragment
+
+    @ContributesAndroidInjector
+    abstract fun showMyAgeFragment(): ShowMyAgeFragment
+
+    @ContributesAndroidInjector
+    abstract fun loremIpsumFragment(): LoremIpsumFragment
 }
 
 @Module
