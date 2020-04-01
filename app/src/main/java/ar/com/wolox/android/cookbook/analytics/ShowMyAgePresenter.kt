@@ -15,9 +15,7 @@ class ShowMyAgePresenter @Inject constructor(
     private fun validate(email: String, password: String): Boolean {
         var isValid = true
 
-            println("entro acá1 -> '$email'")
         if (email.isBlank()) {
-            println("entro acá2")
             analyticsManager.logEvent(EmptyEmailEvent)
             view?.showEmailEmptyError()
             isValid = false
@@ -47,6 +45,7 @@ class ShowMyAgePresenter @Inject constructor(
                     view?.showInvalidUserError()
                 }
             } catch (error: ServiceUnavailableException) {
+                println("entro acá2")
                 analyticsManager.logEvent(AgeRequestServiceUnavailable(email))
                 view?.showServeUnavailableError()
             }

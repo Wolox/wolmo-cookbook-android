@@ -5,6 +5,7 @@ import ar.com.wolox.android.cookbook.analytics.core.AnalyticsManager
 import ar.com.wolox.wolmo.core.tests.CoroutineTestRule
 import ar.com.wolox.wolmo.core.tests.WolmoPresenterTest
 import com.nhaarman.mockitokotlin2.argumentCaptor
+import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
@@ -18,7 +19,7 @@ import org.junit.Test
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 
-class AnalyticsRecipePresenterTest : WolmoPresenterTest<AnalyticsRecipeView, AnalyticsRecipePresenter>() {
+class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresenter>() {
 
     @ExperimentalCoroutinesApi
     @get:Rule
@@ -30,7 +31,7 @@ class AnalyticsRecipePresenterTest : WolmoPresenterTest<AnalyticsRecipeView, Ana
     @Mock
     lateinit var analyticsManager: AnalyticsManager
 
-    override fun getPresenterInstance() = AnalyticsRecipePresenter(userRepository, analyticsManager)
+    override fun getPresenterInstance() = ShowMyAgePresenter(userRepository, analyticsManager)
 
     @Test
     fun `given an empty email when age is requested then empty email event is logged`() {
@@ -118,5 +119,17 @@ class AnalyticsRecipePresenterTest : WolmoPresenterTest<AnalyticsRecipeView, Ana
             verify(analyticsManager).logEvent(capture())
             assertThat(firstValue, instanceOf(AgeRequestSuccessful::class.java))
         }
+    }
+
+    @Test
+    fun `when view is visible then set current screen`() {
+
+        // GIVEN
+
+        // WHEN
+        presenter.onVisible()
+
+        // THEN
+        verify(view).setCurrentScreen(eq(analyticsManager))
     }
 }
