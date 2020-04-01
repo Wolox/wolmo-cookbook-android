@@ -7,6 +7,7 @@ import ar.com.wolox.wolmo.core.tests.WolmoPresenterTest
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import junit.framework.Assert.assertEquals
@@ -76,7 +77,7 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         whenever(userRepository.getUser(anyString(), anyString())).thenThrow(ServiceUnavailableException)
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)
+        presenter.onAgeRequestButtonClicked(email, password)?.join()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
@@ -94,7 +95,7 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         whenever(userRepository.getUser(anyString(), anyString())).thenReturn(null)
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)
+        presenter.onAgeRequestButtonClicked(email, password)?.join()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
@@ -112,11 +113,11 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         whenever(userRepository.getUser(anyString(), anyString())).thenReturn(mock())
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)
+        presenter.onAgeRequestButtonClicked(email, password)?.join()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
-            verify(analyticsManager).logEvent(capture())
+            verify(analyticsManager, times(1)).logEvent(capture())
             assertThat(firstValue, instanceOf(AgeRequestSuccessful::class.java))
         }
     }
