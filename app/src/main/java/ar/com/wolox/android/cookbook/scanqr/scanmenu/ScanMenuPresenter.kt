@@ -6,5 +6,4 @@ import javax.inject.Inject
 class ScanMenuPresenter @Inject constructor() : BasePresenter<ScanMenuView>() {
 
     fun onScanClicked() = view?.goToScanScreen()
-
 }

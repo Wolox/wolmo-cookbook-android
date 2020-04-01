@@ -12,7 +12,6 @@ class ScanQrPresenter @Inject constructor() : BasePresenter<ScanQrView>() {
 
     fun init() = view?.showScanMenuScreen()
 
-
     fun onResult(result: String) {
         scanResult = result
         view?.showSuccessScreen(result)
@@ -23,7 +22,6 @@ class ScanQrPresenter @Inject constructor() : BasePresenter<ScanQrView>() {
     }
 
     fun onCancelledScan() = view?.showCancelledScanEvent()
-
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (resultCode) {
