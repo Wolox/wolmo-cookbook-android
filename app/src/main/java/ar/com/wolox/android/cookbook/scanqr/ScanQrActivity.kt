@@ -1,5 +1,6 @@
 package ar.com.wolox.android.cookbook.scanqr
 
+import android.app.Activity
 import android.content.Intent
 import android.util.Log
 import ar.com.wolox.android.cookbook.R
@@ -19,13 +20,11 @@ class ScanQrActivity : WolmoActivity(), ScanQrView {
     override fun layout(): Int = R.layout.activity_scan_qr
 
     override fun init() {
-        presenter.attachView(this)
-        showScanMenuFragment()
     }
 
-    override fun showSuccessFragment(result: String?) = replaceFragment(R.id.vFragmentHolder, ScanSuccessFragment.newInstance(result))
+    override fun showSuccessScreen(result: String) = replaceFragment(R.id.vFragmentHolder, ScanSuccessFragment.newInstance(result))
 
-    override fun showErrorFragment() = replaceFragment(R.id.vFragmentHolder, ScanErrorFragment())
+    override fun showErrorScreen() = replaceFragment(R.id.vFragmentHolder, ScanErrorFragment())
 
     override fun showScannerView() {
         IntentIntegrator(this).run {
@@ -38,7 +37,7 @@ class ScanQrActivity : WolmoActivity(), ScanQrView {
         }
     }
 
-    override fun showScanMenuFragment() = replaceFragment(R.id.vFragmentHolder, ScanMenuFragment())
+    override fun showScanMenuScreen() = replaceFragment(R.id.vFragmentHolder, ScanMenuFragment())
 
     override fun showCancelledScanEvent() {
         Log.v("Activity Result Event", "CANCELLED SCAN")
@@ -50,11 +49,20 @@ class ScanQrActivity : WolmoActivity(), ScanQrView {
 
     override fun onResume() {
         super.onResume()
-        presenter.onResumeActivity()
+        presenter.onResume()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        presenter.onActivityResult(requestCode, resultCode, data)
+        when (resultCode) {
+            Activity.RESULT_CANCELED -> presenter.onCancelledScan()
+            else -> {
+                IntentIntegrator.parseActivityResult(requestCode, resultCode, data)?.let {
+                    it.contents?.let { resultContent ->
+                        presenter.onResult(resultContent)
+                    }
+                }
+            }
+        }
     }
 }

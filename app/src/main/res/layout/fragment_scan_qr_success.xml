@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_medium_extra"
-        android:textSize="30sp"
+        android:textSize="@dimen/big_title_font_size"
         android:gravity="start"
         android:text="@string/label_result"/>
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_medium_extra"
-        android:textSize="30sp"
+        android:textSize="@dimen/big_title_font_size"
         android:gravity="center"
         android:textColor="@color/colorPrimary"/>
 

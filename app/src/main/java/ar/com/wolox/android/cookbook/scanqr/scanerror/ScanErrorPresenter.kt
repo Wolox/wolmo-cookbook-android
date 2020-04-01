@@ -6,5 +6,6 @@ import javax.inject.Inject
 class ScanErrorPresenter @Inject constructor() : BasePresenter<ScanErrorView>() {
 
     fun onBackToMenuPressed() {
+        view?.showScanMenuScreen()
     }
 }

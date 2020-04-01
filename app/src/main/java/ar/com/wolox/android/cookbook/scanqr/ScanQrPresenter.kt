@@ -8,18 +8,22 @@ import javax.inject.Inject
 
 class ScanQrPresenter @Inject constructor() : BasePresenter<ScanQrView>() {
 
-    private var activityResult: String? = null
+    private var scanResult: String? = null
 
-    fun handleResult(result: String) {
-        /*
-            PERFORM ANY DATA TRANSFORMATION OR REQUEST IF NECESSARY
-         */
-        view?.showSuccessFragment(result)
+    fun init() = view?.showScanMenuScreen()
+
+
+    fun onResult(result: String) {
+        scanResult = result
+        view?.showSuccessScreen(result)
     }
 
-    fun onResumeActivity() {
-        activityResult?.let { handleResult(it) }
+    fun onResume() {
+        scanResult?.let { onResult(it) }
     }
+
+    fun onCancelledScan() = view?.showCancelledScanEvent()
+
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (resultCode) {
@@ -27,7 +31,7 @@ class ScanQrPresenter @Inject constructor() : BasePresenter<ScanQrView>() {
             else -> {
                 IntentIntegrator.parseActivityResult(requestCode, resultCode, data)?.let {
                     it.contents?.let { resultContent ->
-                        activityResult = resultContent
+                        scanResult = resultContent
                     }
                 }
             }

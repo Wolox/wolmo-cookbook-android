@@ -7,13 +7,9 @@ import kotlinx.android.synthetic.main.fragment_scan_menu.*
 import javax.inject.Inject
 
 class ScanMenuFragment @Inject constructor() : WolmoFragment<ScanMenuPresenter>(), ScanMenuView {
+    override fun init() {}
 
     override fun layout(): Int = R.layout.fragment_scan_menu
-
-    override fun init() {
-        presenter.attachView(this)
-        setListeners()
-    }
 
     override fun setListeners() {
         super.setListeners()

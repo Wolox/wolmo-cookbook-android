@@ -86,9 +86,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
 
     override fun goToGraphQlRecipe() = goTo(OrdersActivity::class.java)
 
-    override fun goToScanQrRecipe() {
-        requireContext().startActivity(Intent(requireContext(), ScanQrActivity::class.java))
-    }
+    override fun goToScanQrRecipe() = goTo(ScanQrActivity::class.java)
 
     companion object {
         fun newInstance() = RecipePickerFragment()

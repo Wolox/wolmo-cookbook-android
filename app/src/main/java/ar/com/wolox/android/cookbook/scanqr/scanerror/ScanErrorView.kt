@@ -2,5 +2,5 @@ package ar.com.wolox.android.cookbook.scanqr.scanerror
 
 interface ScanErrorView {
 
-    fun showScanMenu()
+    fun showScanMenuScreen()
 }

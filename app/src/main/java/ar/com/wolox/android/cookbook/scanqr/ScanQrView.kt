@@ -4,13 +4,13 @@ import android.content.Intent
 
 interface ScanQrView {
 
-    fun showSuccessFragment(result: String?)
+    fun showSuccessScreen(result: String)
 
-    fun showErrorFragment()
+    fun showErrorScreen()
 
     fun showScannerView()
 
-    fun showScanMenuFragment()
+    fun showScanMenuScreen()
 
     fun showCancelledScanEvent()
 

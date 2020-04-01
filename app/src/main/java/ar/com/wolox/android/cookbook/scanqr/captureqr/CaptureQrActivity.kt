@@ -44,11 +44,6 @@ class CaptureQrActivity : WolmoActivity(), DecoratedBarcodeView.TorchListener, C
         capture?.onDestroy()
     }
 
-    override fun init() {
-        setListeners()
-        presenter.attachView(this)
-    }
-
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         capture?.onSaveInstanceState(outState)

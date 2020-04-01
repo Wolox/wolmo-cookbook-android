@@ -10,10 +10,7 @@ class ScanErrorFragment @Inject constructor() : WolmoFragment<ScanErrorPresenter
 
     override fun layout(): Int = R.layout.fragment_scan_error
 
-    override fun init() {
-        presenter.attachView(this)
-        setListeners()
-    }
+    override fun init() {}
 
     override fun setListeners() {
         super.setListeners()
@@ -22,7 +19,7 @@ class ScanErrorFragment @Inject constructor() : WolmoFragment<ScanErrorPresenter
         }
     }
 
-    override fun showScanMenu() {
-        (activity as ScanQrActivity).showScanMenuFragment()
+    override fun showScanMenuScreen() {
+        (activity as ScanQrActivity).showScanMenuScreen()
     }
 }
