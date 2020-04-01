@@ -8,6 +8,14 @@ interface RecipePickerView {
 
     fun goToFacebookLogin()
 
+    fun goToTwitterLogin()
+
+    fun goToInstagramLogin()
+
+    fun goToRoom()
+
+    fun goToMpChart()
+
     fun goToNavigation()
 
     fun goToDataSyncRecipe()
@@ -16,7 +24,11 @@ interface RecipePickerView {
 
     fun goToKoin()
 
+    fun goToCoroutines()
+
     fun goToNotificationsRecipe()
 
     fun goToScanQrRecipe()
+
+    fun goToGraphQlRecipe()
 }

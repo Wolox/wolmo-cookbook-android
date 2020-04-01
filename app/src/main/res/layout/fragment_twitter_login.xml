@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vTwitterDataContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/twitter_margin_low">
+
+    <!-- default twitter login button -->
+    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+        android:id="@+id/vTwitterLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- custom login button -->
+    <Button
+        android:id="@+id/vApiTwitterLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twitter_margin_low"
+        android:text="@string/twitter_custom_login" />
+
+    <!-- fetch profile image button -->
+    <Button
+        android:id="@+id/vGetProfileBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twitter_margin_low"
+        android:text="@string/twitter_profile_image" />
+
+    <!-- fetch profile image button -->
+    <Button
+        android:id="@+id/vLogoutBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twitter_margin_low"
+        android:text="@string/twitter_logout"
+        android:backgroundTint="@color/colorPrimaryDark"/>
+
+    <!-- image view to show user profile image -->
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/vProfileImg"
+        android:layout_width="@dimen/twitter_image_profile_size"
+        android:layout_height="@dimen/twitter_image_profile_size"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/twitter_margin_high" />
+
+    <!-- text view to log events occurs and data received -->
+    <TextView
+        android:id="@+id/vDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twitter_margin_low"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/twitter_text_size" />
+</LinearLayout>

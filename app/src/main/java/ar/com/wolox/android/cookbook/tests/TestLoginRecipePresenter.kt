@@ -7,10 +7,10 @@ class TestLoginRecipePresenter @Inject constructor(private val loginService: Tes
 
     fun onLoginButtonClick(email: String, password: String) {
         when {
-            email.isEmpty() -> view.showEmptyEmailError()
-            !isValidEmail(email) -> view.showInvalidEmailError()
-            password.isEmpty() -> view.showEmptyPasswordError()
-            else -> loginService.login(email, password, { view.goToNextWindow() }, { view.showLoginError() })
+            email.isEmpty() -> view?.showEmptyEmailError()
+            !isValidEmail(email) -> view?.showInvalidEmailError()
+            password.isEmpty() -> view?.showEmptyPasswordError()
+            else -> loginService.login(email, password, { view?.goToNextWindow() }, { view?.showLoginError() })
         }
     }
 

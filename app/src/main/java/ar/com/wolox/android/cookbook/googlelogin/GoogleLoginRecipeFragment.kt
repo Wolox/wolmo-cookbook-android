@@ -21,7 +21,7 @@ import javax.inject.Inject
  *  }
  *
  *  Advice to generate SHA1:
- *  Open Gradle projects with the gradle button on the right of the screen: Tasks -> android -> signingReport
+ *  Open Gradle projects with the gradle button on the right of the username: Tasks -> android -> signingReport
  */
 class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), GoogleLoginRecipeView {
 
@@ -34,7 +34,7 @@ class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), G
 
     override fun init() {
         googleHelper.setGoogleLoginAction(vLoginGoogleBtn, this, GOOGLE_SIGN_IN)
-        googleHelper.setGoogleLogoutAction(vLogoutGoogleBtn, this, presenter::onGoogleLogout)
+        googleHelper.setGoogleLogoutAction(vLogoutGoogleBtn, this) { presenter.onGoogleLogout() }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

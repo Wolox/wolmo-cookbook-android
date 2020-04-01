@@ -11,6 +11,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name=".recipepicker.RecipePickerActivity"
@@ -40,11 +43,35 @@
             android:name=".facebooklogin.FacebookLoginRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".twitterlogin.TwitterLoginRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".instagramlogin.InstagramLoginRecipeActivity"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="instagram.com" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".room.RoomRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mpchart.MpChartRecipeActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".tests.TestLoginRecipeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".koin.KoinLoginRecipeActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".coroutines.CoroutinesRecipeActivity"
+            android:screenOrientation="portrait" />
+        <!-- Metadata for Facebook Login -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_login_app_id" /> <!-- Activity for Facebook Login -->
@@ -67,6 +94,10 @@
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".graphQl.OrdersActivity"
+            android:screenOrientation="portrait" />
 
         <!-- Activity and intent filter for Chrome Custom Tabs for Facebook Login -->
         <activity

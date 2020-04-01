@@ -36,11 +36,11 @@ class GoogleHelper @Inject constructor(context: Context) {
     }
 
     /**
-     * Set google logout action to the view.
+     * Set google doSessionLogout action to the view.
      *
      * @param fragment where the button is used.
      *
-     * @param onComplete callback to be called on logout complete.
+     * @param onComplete callback to be called on doSessionLogout complete.
      */
     fun setGoogleLogoutAction(view: View, fragment: Fragment, onComplete: () -> Unit) {
         view.setOnClickListener { _ ->
@@ -53,7 +53,7 @@ class GoogleHelper @Inject constructor(context: Context) {
     /**
      * Get the google sign in client object.
      *
-     * @param fragment where the login/logout is.
+     * @param fragment where the login/doSessionLogout is.
      */
     private fun getClient(fragment: Fragment): GoogleSignInClient {
         // Configure Google Sign-in and the GoogleSignInClient object
@@ -68,7 +68,7 @@ class GoogleHelper @Inject constructor(context: Context) {
         /**
          * Get the signed in account from data received by intent on activity result.
          *
-         * @param data the intent received onActivityResult.
+         * @param data the intent received onActivityResultFinished.
          *
          * @param onSuccess called on success, receive an UserGoogle model with the signed in account.
          *
