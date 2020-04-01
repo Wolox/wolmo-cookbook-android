@@ -6,10 +6,10 @@ import javax.inject.Inject
 class ScanSuccessPresenter @Inject constructor() : BasePresenter<ScanSuccessView>() {
 
     fun init(result: String?) {
-        view.setUi(result)
+        view?.setUi(result)
     }
 
     fun onScanMenuClicked() {
-        view.goToScanMenu()
+        view?.goToScanMenu()
     }
 }

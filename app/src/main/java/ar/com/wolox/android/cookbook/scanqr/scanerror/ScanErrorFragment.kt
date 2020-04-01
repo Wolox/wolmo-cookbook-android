@@ -8,9 +8,6 @@ import javax.inject.Inject
 
 class ScanErrorFragment @Inject constructor() : WolmoFragment<ScanErrorPresenter>(), ScanErrorView {
 
-    @Inject
-    lateinit var presenter: ScanErrorPresenter
-
     override fun layout(): Int = R.layout.fragment_scan_error
 
     override fun init() {

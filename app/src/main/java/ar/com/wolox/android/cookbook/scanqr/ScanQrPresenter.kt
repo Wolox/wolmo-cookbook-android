@@ -14,7 +14,7 @@ class ScanQrPresenter @Inject constructor() : BasePresenter<ScanQrView>() {
         /*
             PERFORM ANY DATA TRANSFORMATION OR REQUEST IF NECESSARY
          */
-        view.showSuccessFragment(result)
+        view?.showSuccessFragment(result)
     }
 
     fun onResumeActivity() {
@@ -23,7 +23,7 @@ class ScanQrPresenter @Inject constructor() : BasePresenter<ScanQrView>() {
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (resultCode) {
-            Activity.RESULT_CANCELED -> view.showCancelledScanEvent()
+            Activity.RESULT_CANCELED -> view?.showCancelledScanEvent()
             else -> {
                 IntentIntegrator.parseActivityResult(requestCode, resultCode, data)?.let {
                     it.contents?.let { resultContent ->

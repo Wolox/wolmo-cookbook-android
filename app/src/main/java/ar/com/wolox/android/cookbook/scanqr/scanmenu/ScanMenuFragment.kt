@@ -8,9 +8,6 @@ import javax.inject.Inject
 
 class ScanMenuFragment @Inject constructor() : WolmoFragment<ScanMenuPresenter>(), ScanMenuView {
 
-    @Inject
-    lateinit var presenter: ScanMenuPresenter
-
     override fun layout(): Int = R.layout.fragment_scan_menu
 
     override fun init() {

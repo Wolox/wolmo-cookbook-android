@@ -13,7 +13,7 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
 
     fun onRecipeClicked(clickedRecipe: Recipe) {
         when (clickedRecipe) {
-            Recipe.QR -> view.goToScanQrRecipe()
+            Recipe.QR -> view?.goToScanQrRecipe()
             Recipe.GOOGLE_LOGIN -> view?.goToGoogleLogin()
             Recipe.FACEBOOK_LOGIN -> view?.goToFacebookLogin()
             Recipe.TWITTER_LOGIN -> view?.goToTwitterLogin()

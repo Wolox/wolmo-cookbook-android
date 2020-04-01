@@ -9,9 +9,6 @@ import javax.inject.Inject
 
 class ScanSuccessFragment @Inject constructor() : WolmoFragment<ScanSuccessPresenter>(), ScanSuccessView {
 
-    @Inject
-    lateinit var presenter: ScanSuccessPresenter
-
     override fun layout(): Int = R.layout.fragment_scan_qr_success
 
     override fun init() {
