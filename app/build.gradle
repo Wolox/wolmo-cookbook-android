@@ -130,6 +130,7 @@ buildscript {
     ext.lyfecycle_version = '2.0.0'
     ext.legacy_version = '1.0.0'
     ext.mp_chart = '3.1.0'
+    ext.firebase_version = '17.2.3'
 }
 
 dependencies {
@@ -212,8 +213,8 @@ dependencies {
     implementation 'javax.annotation:jsr250-api:1.0'
 
     // Analytics
-    implementation 'com.google.firebase:firebase-core:17.2.2'
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation "com.google.firebase:firebase-core:$firebase_version"
+    implementation "com.google.firebase:firebase-analytics:$firebase_version"
 }
 
 dependencies {
