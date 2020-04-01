@@ -10,7 +10,7 @@
         android:layout_gravity="center"/>
 
     <Button
-        android:id="@+id/bTryAgainScan"
+        android:id="@+id/vTryAgainScanButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_try_again_scan"
@@ -18,7 +18,7 @@
         android:layout_marginTop="@dimen/button_margin"/>
 
     <Button
-        android:id="@+id/bGoToScanMenu"
+        android:id="@+id/vGoToScanMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_scan_menu"

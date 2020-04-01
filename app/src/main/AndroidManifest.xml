@@ -57,7 +57,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".scanqr.CaptureQrActivity"
+            android:name=".scanqr.captureqr.CaptureQrActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />

@@ -8,19 +8,23 @@ import javax.inject.Inject
 
 class ScanMenuFragment @Inject constructor() : WolmoFragment<ScanMenuPresenter>(), ScanMenuView {
 
-    override fun init() {
-        setListeners()
-    }
+    @Inject
+    lateinit var presenter: ScanMenuPresenter
 
     override fun layout(): Int = R.layout.fragment_scan_menu
 
+    override fun init() {
+        presenter.attachView(this)
+        setListeners()
+    }
+
     override fun setListeners() {
         super.setListeners()
-        bScanQr.setOnClickListener {
+        vScanQrButton.setOnClickListener {
             presenter.onScanClicked()
         }
 
-        bGenerateQr.setOnClickListener {
+        vGenerateQrButton.setOnClickListener {
             // TODO GENERATE QR
         }
     }

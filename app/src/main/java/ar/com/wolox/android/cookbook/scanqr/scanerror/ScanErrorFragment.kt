@@ -6,17 +6,26 @@ import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_scan_error.*
 import javax.inject.Inject
 
-class ScanErrorFragment @Inject constructor() : WolmoFragment<ScanErrorPresenter>() {
-    override fun init() {
-        setListeners()
-    }
+class ScanErrorFragment @Inject constructor() : WolmoFragment<ScanErrorPresenter>(), ScanErrorView {
+
+    @Inject
+    lateinit var presenter: ScanErrorPresenter
 
     override fun layout(): Int = R.layout.fragment_scan_error
 
+    override fun init() {
+        presenter.attachView(this)
+        setListeners()
+    }
+
     override fun setListeners() {
         super.setListeners()
-        bGoToScanMenu.setOnClickListener {
-            (activity as ScanQrActivity).showScanMenuFragment()
+        vGoToScanMenuButton.setOnClickListener {
+            presenter.onBackToMenuPressed()
         }
+    }
+
+    override fun showScanMenu() {
+        (activity as ScanQrActivity).showScanMenuFragment()
     }
 }

@@ -9,7 +9,7 @@
         android:src="@drawable/bg_scan_home"/>
 
     <Button
-        android:id="@+id/bScanQr"
+        android:id="@+id/vScanQrButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_capture_qr"
@@ -17,7 +17,7 @@
         android:layout_marginTop="@dimen/button_margin"/>
 
     <Button
-        android:id="@+id/bGenerateQr"
+        android:id="@+id/vGenerateQrButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_generate_qr"

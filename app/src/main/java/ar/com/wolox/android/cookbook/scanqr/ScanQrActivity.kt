@@ -3,6 +3,7 @@ package ar.com.wolox.android.cookbook.scanqr
 import android.content.Intent
 import android.util.Log
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.scanqr.captureqr.CaptureQrActivity
 import ar.com.wolox.android.cookbook.scanqr.scanerror.ScanErrorFragment
 import ar.com.wolox.android.cookbook.scanqr.scanmenu.ScanMenuFragment
 import ar.com.wolox.android.cookbook.scanqr.scansuccess.ScanSuccessFragment
@@ -15,16 +16,16 @@ class ScanQrActivity : WolmoActivity(), ScanQrView {
     @Inject
     lateinit var presenter: ScanQrPresenter
 
+    override fun layout(): Int = R.layout.activity_scan_qr
+
     override fun init() {
         presenter.attachView(this)
         showScanMenuFragment()
     }
 
-    override fun layout(): Int = R.layout.activity_scan_qr
+    override fun showSuccessFragment(result: String?) = replaceFragment(R.id.vFragmentHolder, ScanSuccessFragment.newInstance(result))
 
-    override fun showSuccessFragment(result: String?) = replaceFragment(R.id.vFragment_holder, ScanSuccessFragment.newInstance(result))
-
-    override fun showErrorFragment() = replaceFragment(R.id.vFragment_holder, ScanErrorFragment())
+    override fun showErrorFragment() = replaceFragment(R.id.vFragmentHolder, ScanErrorFragment())
 
     override fun showScannerView() {
         IntentIntegrator(this).run {
@@ -37,7 +38,7 @@ class ScanQrActivity : WolmoActivity(), ScanQrView {
         }
     }
 
-    override fun showScanMenuFragment() = replaceFragment(R.id.vFragment_holder, ScanMenuFragment())
+    override fun showScanMenuFragment() = replaceFragment(R.id.vFragmentHolder, ScanMenuFragment())
 
     override fun showCancelledScanEvent() {
         Log.v("Activity Result Event", "CANCELLED SCAN")

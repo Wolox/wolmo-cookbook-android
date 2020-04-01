@@ -1,5 +1,6 @@
 package ar.com.wolox.android.cookbook.scanqr
 
+import ar.com.wolox.android.cookbook.scanqr.captureqr.CaptureQrActivity
 import ar.com.wolox.android.cookbook.scanqr.scanerror.ScanErrorFragment
 import ar.com.wolox.android.cookbook.scanqr.scanmenu.ScanMenuFragment
 import ar.com.wolox.android.cookbook.scanqr.scansuccess.ScanSuccessFragment

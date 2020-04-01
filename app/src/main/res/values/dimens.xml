@@ -69,4 +69,6 @@
     <dimen name="scanner_view_finder_width">280dp</dimen>
     <dimen name="scanner_view_finder_height">280dp</dimen>
     <dimen name="button_margin">40dp</dimen>
+    <dimen name="button_text_size">13sp</dimen>
+    <dimen name="capture_qr_title_size">16sp</dimen>
 </resources>

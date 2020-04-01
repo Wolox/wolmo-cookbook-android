@@ -9,14 +9,22 @@ import javax.inject.Inject
 
 class ScanSuccessFragment @Inject constructor() : WolmoFragment<ScanSuccessPresenter>(), ScanSuccessView {
 
+    @Inject
+    lateinit var presenter: ScanSuccessPresenter
+
+    override fun layout(): Int = R.layout.fragment_scan_qr_success
+
     override fun init() {
+        presenter.attachView(this)
         presenter.init(arguments?.getString(RESULT_KEY))
         setListeners()
     }
 
     override fun setListeners() {
         super.setListeners()
-        presenter.onScanMenuClicked()
+        vGoToScanMenuButton.setOnClickListener {
+            presenter.onScanMenuClicked()
+        }
     }
 
     override fun setUi(result: String?) {
@@ -24,8 +32,6 @@ class ScanSuccessFragment @Inject constructor() : WolmoFragment<ScanSuccessPrese
     }
 
     override fun goToScanMenu() = (activity as ScanQrActivity).showScanMenuFragment()
-
-    override fun layout(): Int = R.layout.fragment_scan_qr_success
 
     companion object {
         fun newInstance(result: String?): ScanSuccessFragment {
