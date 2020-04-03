@@ -56,4 +56,8 @@ class ShowMyAgePresenter @Inject constructor(
         analyticsManager.logEvent(OpenHelp)
         view?.openHelp()
     }
+
+    fun onCrashButtonClicked() {
+        view?.forceCrashApp()
+    }
 }
