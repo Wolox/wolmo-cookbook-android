@@ -34,6 +34,7 @@ import javax.inject.Named
         AndroidSupportInjectionModule::class,
         DefaultModule::class,
         ContextModule::class,
+        CoroutineDispatchersModule::class,
         TwitterModule::class,
         InstagramModule::class,
         RoomModule::class,

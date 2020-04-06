@@ -7,21 +7,24 @@ import ar.com.wolox.wolmo.core.tests.WolmoPresenterTest
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.CoreMatchers.instanceOf
 import org.hamcrest.MatcherAssert.assertThat
+import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 
+@ExperimentalCoroutinesApi
 class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresenter>() {
 
-    @ExperimentalCoroutinesApi
     @get:Rule
     val coroutineTestRule = CoroutineTestRule(runOnAllTests = true)
 
@@ -31,17 +34,26 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
     @Mock
     lateinit var analyticsManager: AnalyticsManager
 
-    override fun getPresenterInstance() = ShowMyAgePresenter(userRepository, analyticsManager)
+    private val testDispatcher = TestCoroutineDispatcher()
+
+    override fun getPresenterInstance() = ShowMyAgePresenter(userRepository, analyticsManager, testDispatcher)
+
+    @After
+    fun cleanUp() {
+        testDispatcher.cleanupTestCoroutines()
+    }
 
     @Test
-    fun `given an empty email when age is requested then empty email event is logged`() = runBlocking {
+    fun `given an empty email when age is requested then empty email event is logged`() = testDispatcher.runBlockingTest {
 
         // GIVEN
         val email = ""
         val password = "1234"
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)?.join()
+        testDispatcher.pauseDispatcher()
+        presenter.onAgeRequestButtonClicked(email, password)
+        testDispatcher.resumeDispatcher()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
@@ -51,14 +63,16 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
     }
 
     @Test
-    fun `given an empty password when age is requested then empty password event is logged`() = runBlocking {
+    fun `given an empty password when age is requested then empty password event is logged`() = testDispatcher.runBlockingTest {
 
         // GIVEN
         val email = "email@gmail.com"
         val password = ""
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)?.join()
+        testDispatcher.pauseDispatcher()
+        presenter.onAgeRequestButtonClicked(email, password)
+        testDispatcher.resumeDispatcher()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
@@ -68,7 +82,7 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
     }
 
     @Test
-    fun `given a service unavailable when age is requested then age request service unavailable event is logged`() = runBlocking {
+    fun `given a service unavailable when age is requested then age request service unavailable event is logged`() = testDispatcher.runBlockingTest {
 
         // GIVEN
         val email = "email@gmail.com"
@@ -76,7 +90,9 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         whenever(userRepository.getUser(anyString(), anyString())).thenThrow(ServiceUnavailableException)
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)?.join()
+        testDispatcher.pauseDispatcher()
+        presenter.onAgeRequestButtonClicked(email, password)
+        testDispatcher.resumeDispatcher()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
@@ -86,7 +102,7 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
     }
 
     @Test
-    fun `given an invalid user when age is requested then age request error event is logged`() = runBlocking {
+    fun `given an invalid user when age is requested then age request error event is logged`() = testDispatcher.runBlockingTest {
 
         // GIVEN
         val email = "email@gmail.com"
@@ -94,7 +110,9 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         whenever(userRepository.getUser(anyString(), anyString())).thenReturn(null)
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)?.join()
+        testDispatcher.pauseDispatcher()
+        presenter.onAgeRequestButtonClicked(email, password)
+        testDispatcher.resumeDispatcher()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
@@ -104,7 +122,7 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
     }
 
     @Test
-    fun `given a valid user when age is requested then age request successful event is logged`() = runBlocking {
+    fun `given a valid user when age is requested then age request successful event is logged`() = testDispatcher.runBlockingTest {
 
         // GIVEN
         val email = "email@gmail.com"
@@ -112,17 +130,19 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         whenever(userRepository.getUser(anyString(), anyString())).thenReturn(mock())
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)?.join()
+        testDispatcher.pauseDispatcher()
+        presenter.onAgeRequestButtonClicked(email, password)
+        testDispatcher.resumeDispatcher()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
-            verify(analyticsManager).logEvent(capture())
+            verify(analyticsManager, times(1)).logEvent(capture())
             assertThat(firstValue, instanceOf(AgeRequestSuccessful::class.java))
         }
     }
 
     @Test
-    fun `when view is visible then set current screen`() = runBlocking {
+    fun `when view is visible then set current screen`() {
 
         // GIVEN
 
