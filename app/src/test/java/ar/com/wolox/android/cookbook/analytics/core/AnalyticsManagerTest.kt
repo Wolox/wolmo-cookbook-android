@@ -16,7 +16,7 @@ import javax.inject.Provider
 @RunWith(RobolectricTestRunner::class)
 class AnalyticsManagerTest {
 
-    lateinit var analyticsManager: AnalyticsManager
+    private lateinit var analyticsManager: AnalyticsManager
 
     @Mock
     lateinit var firebaseAnalytics: FirebaseAnalytics
