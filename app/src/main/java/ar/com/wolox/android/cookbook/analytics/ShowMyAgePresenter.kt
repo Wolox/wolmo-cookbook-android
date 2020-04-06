@@ -40,7 +40,7 @@ class ShowMyAgePresenter @Inject constructor(
             return
         }
 
-        launch(mainDispatcher) {
+        launch {
             try {
                 userRepository.getUser(email, password)?.let {
                     analyticsManager.logEvent(AgeRequestSuccessful(email))
