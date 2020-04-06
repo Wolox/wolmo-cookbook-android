@@ -30,12 +30,10 @@ class ShowMyAgePresenter @Inject constructor(
         return isValid
     }
 
-    fun onAgeRequestButtonClicked(email: String, password: String) {
+    fun onAgeRequestButtonClicked(email: String, password: String) =
         if (!validate(email, password)) {
-            return
-        }
-
-        launch {
+            null
+        } else launch {
             try {
                 userRepository.getUser(email, password)?.let {
                     analyticsManager.logEvent(AgeRequestSuccessful(email))
@@ -45,12 +43,10 @@ class ShowMyAgePresenter @Inject constructor(
                     view?.showInvalidUserError()
                 }
             } catch (error: ServiceUnavailableException) {
-                println("entro acá2")
                 analyticsManager.logEvent(AgeRequestServiceUnavailable(email))
                 view?.showServeUnavailableError()
             }
         }
-    }
 
     fun onHelpButtonClicked() {
         analyticsManager.logEvent(OpenHelp)

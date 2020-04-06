@@ -34,14 +34,14 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
     override fun getPresenterInstance() = ShowMyAgePresenter(userRepository, analyticsManager)
 
     @Test
-    fun `given an empty email when age is requested then empty email event is logged`() {
+    fun `given an empty email when age is requested then empty email event is logged`() = runBlocking {
 
         // GIVEN
         val email = ""
         val password = "1234"
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)
+        presenter.onAgeRequestButtonClicked(email, password)?.join()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
@@ -51,14 +51,14 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
     }
 
     @Test
-    fun `given an empty password when age is requested then empty password event is logged`() {
+    fun `given an empty password when age is requested then empty password event is logged`() = runBlocking {
 
         // GIVEN
         val email = "email@gmail.com"
         val password = ""
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)
+        presenter.onAgeRequestButtonClicked(email, password)?.join()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
@@ -76,7 +76,7 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         whenever(userRepository.getUser(anyString(), anyString())).thenThrow(ServiceUnavailableException)
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)
+        presenter.onAgeRequestButtonClicked(email, password)?.join()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
@@ -94,7 +94,7 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         whenever(userRepository.getUser(anyString(), anyString())).thenReturn(null)
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)
+        presenter.onAgeRequestButtonClicked(email, password)?.join()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
@@ -112,7 +112,7 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         whenever(userRepository.getUser(anyString(), anyString())).thenReturn(mock())
 
         // WHEN
-        presenter.onAgeRequestButtonClicked(email, password)
+        presenter.onAgeRequestButtonClicked(email, password)?.join()
 
         // THEN
         with(argumentCaptor<AnalyticsEvent>()) {
@@ -122,7 +122,7 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
     }
 
     @Test
-    fun `when view is visible then set current screen`() {
+    fun `when view is visible then set current screen`() = runBlocking {
 
         // GIVEN
 
