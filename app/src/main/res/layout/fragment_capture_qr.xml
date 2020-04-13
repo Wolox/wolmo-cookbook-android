@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context="example.zxing.CustomScannerActivity">
+
+        <com.journeyapps.barcodescanner.DecoratedBarcodeView
+            android:id="@+id/zxing_qr_scanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:zxing_scanner_layout="@layout/custom_qr_scanner"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/zxing_status_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_margin"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="@dimen/capture_qr_title_size"
+        android:layout_marginTop="@dimen/button_margin"
+        android:background="@color/zxing_transparent"
+        android:text="@string/label_capture_qr"
+        android:textColor="@color/zxing_status_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout2"/>
+
+    <Button
+        android:id="@+id/vGoBackButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_margin"
+        android:layout_marginStart="@dimen/button_margin"
+        android:layout_marginEnd="@dimen/button_margin"
+        android:layout_marginTop="@dimen/button_margin"
+        android:layout_marginBottom="@dimen/button_margin"
+        android:text="@string/label_go_back"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

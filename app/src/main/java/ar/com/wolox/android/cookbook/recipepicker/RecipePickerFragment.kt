@@ -12,6 +12,7 @@ import ar.com.wolox.android.cookbook.koin.KoinLoginRecipeActivity
 import ar.com.wolox.android.cookbook.mpchart.MpChartRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
 import ar.com.wolox.android.cookbook.notifications.NotificationActivity
+import ar.com.wolox.android.cookbook.scanqr.ScanQrActivity
 import ar.com.wolox.android.cookbook.room.RoomRecipeActivity
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeActivity
 import ar.com.wolox.android.cookbook.twitterlogin.TwitterLoginRecipeActivity
@@ -51,6 +52,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
                 Recipe.TESTS -> RecipeItem(it, R.drawable.bg_tests, R.string.recipe_picker_tests)
                 Recipe.KOIN -> RecipeItem(it, R.drawable.bg_koin, R.string.recipe_picker_koin)
                 Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.bg_notification_recipe, R.string.recipe_picker_notifications)
+                Recipe.QR -> RecipeItem(it, R.drawable.bg_scan_qr, R.string.label_capture_qr)
                 Recipe.GRAPH_QL -> RecipeItem(it, R.drawable.bg_graph_ql, R.string.recipe_picker_graph_ql)
             }
         }
@@ -83,6 +85,8 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     override fun goToNotificationsRecipe() = goTo(NotificationActivity::class.java)
 
     override fun goToGraphQlRecipe() = goTo(OrdersActivity::class.java)
+
+    override fun goToScanQrRecipe() = goTo(ScanQrActivity::class.java)
 
     companion object {
         fun newInstance() = RecipePickerFragment()

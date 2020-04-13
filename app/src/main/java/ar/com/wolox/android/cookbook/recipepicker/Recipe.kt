@@ -5,17 +5,19 @@ package ar.com.wolox.android.cookbook.recipepicker
  * to select. To add a [Recipe], just create a new instance under this enum.
  */
 enum class Recipe {
-    COROUTINES,
+
     GOOGLE_LOGIN,
     FACEBOOK_LOGIN,
-    TWITTER_LOGIN,
-    INSTAGRAM_LOGIN,
-    ROOM,
-    MP_CHART,
     NAVIGATION,
     DATA_SYNC,
     TESTS,
     KOIN,
     NOTIFICATIONS,
+    QR,
+    COROUTINES,
+    TWITTER_LOGIN,
+    INSTAGRAM_LOGIN,
+    ROOM,
+    MP_CHART,
     GRAPH_QL
 }

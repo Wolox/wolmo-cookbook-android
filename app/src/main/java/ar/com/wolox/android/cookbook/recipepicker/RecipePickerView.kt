@@ -28,5 +28,7 @@ interface RecipePickerView {
 
     fun goToNotificationsRecipe()
 
+    fun goToScanQrRecipe()
+
     fun goToGraphQlRecipe()
 }
