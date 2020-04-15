@@ -1,14 +1,19 @@
 package ar.com.wolox.android.cookbook.analytics
 
 import ar.com.wolox.android.cookbook.analytics.core.AnalyticsManager
+import ar.com.wolox.android.cookbook.common.di.CoroutineDispatchersModule
 import ar.com.wolox.wolmo.core.presenter.CoroutineBasePresenter
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import javax.inject.Named
 
 class ShowMyAgePresenter @Inject constructor(
     private val userRepository: UserRepository,
-    private val analyticsManager: AnalyticsManager
-) : CoroutineBasePresenter<ShowMyAgeView>() {
+    private val analyticsManager: AnalyticsManager,
+    @Named(CoroutineDispatchersModule.MAIN)
+    private val mainDispatcher: CoroutineDispatcher
+) : CoroutineBasePresenter<ShowMyAgeView>(mainDispatcher) {
 
     fun onVisible() = view?.setCurrentScreen(analyticsManager)
 
@@ -36,7 +41,6 @@ class ShowMyAgePresenter @Inject constructor(
         }
 
         launch {
-            analyticsManager.logEvent(AgeRequested(email))
             try {
                 userRepository.getUser(email, password)?.let {
                     analyticsManager.logEvent(AgeRequestSuccessful(email))

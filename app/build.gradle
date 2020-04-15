@@ -231,6 +231,7 @@ dependencies {
     testImplementation "org.assertj:assertj-core:$assertj_core"
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
     testImplementation "org.koin:koin-test:$koin_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
 }
 
 dependencies {
