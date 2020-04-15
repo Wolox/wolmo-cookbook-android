@@ -13,6 +13,5 @@ object EmptyPasswordEvent : AnalyticsEvent("empty_password")
 class AgeRequested(email: String) : AnalyticsEvent("age_requested", "email" to email)
 class AgeRequestSuccessful(email: String) : AnalyticsEvent("age_request_successful", "email" to email)
 class AgeRequestError(email: String) : AnalyticsEvent("age_request_error", "email" to email)
-class AgeRequestServiceUnavailable(email: String) : AnalyticsEvent("age_request_service_unavailable", "email" to email)
 
 object OpenHelp : AnalyticsEvent("open_help")

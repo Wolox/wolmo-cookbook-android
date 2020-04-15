@@ -45,6 +45,15 @@
 		android:text="@string/analytics_help"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/age_request_button"
-		app:layout_constraintStart_toStartOf="parent" />
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/age_request_button" />
+
+	<Button
+		android:id="@+id/crash_button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/analytics_crash"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/help_button"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

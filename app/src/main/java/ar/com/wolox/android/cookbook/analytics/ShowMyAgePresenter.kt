@@ -46,7 +46,7 @@ class ShowMyAgePresenter @Inject constructor(
                     view?.showInvalidUserError()
                 }
             } catch (error: ServiceUnavailableException) {
-                analyticsManager.logEvent(AgeRequestServiceUnavailable(email))
+                analyticsManager.logCrash(error)
                 view?.showServeUnavailableError()
             }
         }
@@ -55,5 +55,9 @@ class ShowMyAgePresenter @Inject constructor(
     fun onHelpButtonClicked() {
         analyticsManager.logEvent(OpenHelp)
         view?.openHelp()
+    }
+
+    fun onCrashButtonClicked() {
+        view?.forceCrashApp()
     }
 }

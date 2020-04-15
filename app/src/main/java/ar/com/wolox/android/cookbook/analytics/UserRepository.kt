@@ -8,4 +8,4 @@ interface UserRepository {
     suspend fun getUser(email: String, password: String): User?
 }
 
-object ServiceUnavailableException : Exception()
+class ServiceUnavailableException(throwable: Throwable) : Exception(throwable)

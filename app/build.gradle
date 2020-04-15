@@ -6,6 +6,7 @@ apply plugin: 'idea'
 apply plugin: 'jacoco-android'
 apply plugin: 'com.apollographql.android'
 apply plugin: 'com.google.gms.google-services' // It's important for analytics
+apply plugin: 'io.fabric'
 apply from: 'keystore.gradle'
 apply from: '../jacoco.gradle'
 apply from: '../quality.gradle'
@@ -131,6 +132,7 @@ buildscript {
     ext.legacy_version = '1.0.0'
     ext.mp_chart = '3.1.0'
     ext.firebase_version = '17.2.3'
+    ext.crashlytics_version = '2.10.1'
 }
 
 dependencies {
@@ -215,6 +217,10 @@ dependencies {
     // Analytics
     implementation "com.google.firebase:firebase-core:$firebase_version"
     implementation "com.google.firebase:firebase-analytics:$firebase_version"
+
+    //Crashlytics
+    implementation "com.crashlytics.sdk.android:crashlytics:$crashlytics_version"
+
 }
 
 dependencies {

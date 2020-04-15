@@ -34,6 +34,9 @@ class ShowMyAgeFragment @Inject constructor() : WolmoFragment<ShowMyAgePresenter
         binding.helpButton.setOnClickListener {
             presenter.onHelpButtonClicked()
         }
+        binding.crashButton.setOnClickListener {
+            presenter.onCrashButtonClicked()
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -63,8 +66,12 @@ class ShowMyAgeFragment @Inject constructor() : WolmoFragment<ShowMyAgePresenter
 
     override fun showServeUnavailableError() = toastFactory.show(R.string.analytics_service_unavailable_error)
 
-    companion object {
+    override fun forceCrashApp() {
+        throw RuntimeException(TEST_CRASH)
+    }
 
+    companion object {
+        const val TEST_CRASH = "Test Crash for Crashlytics"
         const val HELP_URL = "https://www.google.com"
     }
 }

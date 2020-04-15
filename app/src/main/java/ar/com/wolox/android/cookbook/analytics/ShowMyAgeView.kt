@@ -17,4 +17,6 @@ interface ShowMyAgeView {
     fun showInvalidUserError()
 
     fun showServeUnavailableError()
+
+    fun forceCrashApp()
 }

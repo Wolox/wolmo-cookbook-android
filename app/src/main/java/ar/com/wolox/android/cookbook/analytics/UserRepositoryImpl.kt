@@ -3,6 +3,7 @@ package ar.com.wolox.android.cookbook.analytics
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.io.IOException
 import javax.inject.Inject
 
 // This is a mocked repository used just to test analytics
@@ -21,7 +22,7 @@ class UserRepositoryImpl @Inject constructor() : UserRepository {
     // It's using the IO dispatcher to simulate the real task.
     override suspend fun getUser(email: String, password: String) = withContext(Dispatchers.IO) {
         if (!isServiceAvailable) {
-            throw ServiceUnavailableException
+            throw ServiceUnavailableException(IOException())
         }
 
         mockedUserList.firstOrNull {
