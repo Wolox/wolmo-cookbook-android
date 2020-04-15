@@ -2,6 +2,9 @@ package ar.com.wolox.android.cookbook.common.di
 
 import android.app.Application
 import ar.com.wolox.android.cookbook.CookbookApplication
+import ar.com.wolox.android.cookbook.analytics.AnalyticsRecipeModule
+import ar.com.wolox.android.cookbook.analytics.AnalyticsRepositoryModule
+import ar.com.wolox.android.cookbook.analytics.core.AnalyticsModule
 import ar.com.wolox.android.cookbook.coroutines.CoroutinesExampleModule
 import ar.com.wolox.android.cookbook.coroutines.football.modules.FootballModule
 import ar.com.wolox.android.cookbook.common.di.modules.ChartModule
@@ -26,14 +29,30 @@ import javax.inject.Named
 
 @ApplicationScope
 @Component(
-        dependencies = [CookbookNetworkingComponent::class],
-        modules = [
-            AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class,
-            TwitterModule::class, InstagramModule::class, RoomModule::class, ChartModule::class,
-            AppModule::class, NavigationRecipeModule::class, DataSyncRecipeModule::class,
-            RxJava2Module::class, TestLoginRecipeModule::class, NotificationRecipeModule::class,
-            CoroutinesExampleModule::class, FootballModule::class, PersistenceModule::class, ServiceModule::class
-        ]
+    dependencies = [CookbookNetworkingComponent::class],
+    modules = [
+        AndroidSupportInjectionModule::class,
+        DefaultModule::class,
+        ContextModule::class,
+        CoroutineDispatchersModule::class,
+        TwitterModule::class,
+        InstagramModule::class,
+        RoomModule::class,
+        ChartModule::class,
+        AppModule::class,
+        NavigationRecipeModule::class,
+        DataSyncRecipeModule::class,
+        RxJava2Module::class,
+        TestLoginRecipeModule::class,
+        NotificationRecipeModule::class,
+        CoroutinesExampleModule::class,
+        FootballModule::class,
+        PersistenceModule::class,
+        ServiceModule::class,
+        AnalyticsModule::class,
+        AnalyticsRecipeModule::class,
+        AnalyticsRepositoryModule::class
+    ]
 )
 interface AppComponent : AndroidInjector<CookbookApplication> {
 
