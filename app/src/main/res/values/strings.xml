@@ -19,6 +19,7 @@
     <string name="recipe_picker_graph_ql">Graph QL</string>
     <string name="recipe_picker_coroutines">Coroutines</string>
     <string name="recipe_picker_firebase">Firebase Analytics</string>
+    <string name="recipe_picker_mercadopago">MercadoPago</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
@@ -245,5 +246,9 @@
     <string name="analytics_view_age">Show my age!</string>
 	<string name="analytics_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla justo risus, imperdiet id eros sit amet, tincidunt varius libero. Aliquam id nisi ligula. Pellentesque sit amet odio eget leo rutrum congue. In viverra erat eget tincidunt rhoncus. Phasellus placerat dolor tellus, eu posuere mauris fermentum ac. Cras aliquet quam nibh, et placerat magna cursus sed. Nulla facilisis venenatis feugiat. Suspendisse eu augue at metus tincidunt volutpat efficitur non quam. Donec dignissim dui at imperdiet rutrum. Nulla iaculis laoreet metus dignissim fringilla. Morbi venenatis nibh urna, nec sollicitudin elit euismod in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus volutpat magna in maximus fringilla. Nunc faucibus est sed lacus sodales, et interdum ante laoreet. Curabitur viverra est eget orci iaculis, vitae tincidunt eros iaculis. Sed venenatis, dolor ac tincidunt auctor, augue lectus gravida ipsum, a porta libero urna vel lectus. Donec mollis odio lacinia, porttitor nisl et, tristique leo. Aenean id fermentum felis. Fusce a turpis sit amet nulla molestie facilisis et sit amet mi. Curabitur eget risus ut quam bibendum condimentum sed cursus dui. Aenean convallis egestas consequat.</string>
 	<string name="analytics_crash">Crash it!</string>
+
+    <!-- MercadoPago -->
+    <string name="mercadopago_pay_button">PAY ME!</string>
+    <string name="mercadopago_pay_label">Click button to pay</string>
 
 </resources>
