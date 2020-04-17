@@ -87,7 +87,7 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         // GIVEN
         val email = "email@gmail.com"
         val password = "1234"
-        whenever(userRepository.getUser(anyString(), anyString())).thenThrow(ServiceUnavailableException)
+        whenever(userRepository.getUser(anyString(), anyString())).thenThrow(ServiceUnavailableException(Exception()))
 
         // WHEN
         testDispatcher.pauseDispatcher()
@@ -95,9 +95,9 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         testDispatcher.resumeDispatcher()
 
         // THEN
-        with(argumentCaptor<AnalyticsEvent>()) {
-            verify(analyticsManager).logEvent(capture())
-            assertThat(firstValue, instanceOf(AgeRequestServiceUnavailable::class.java))
+        with(argumentCaptor<Exception>()) {
+            verify(analyticsManager).logCrash(capture())
+            assertThat(firstValue, instanceOf(ServiceUnavailableException::class.java))
         }
     }
 
