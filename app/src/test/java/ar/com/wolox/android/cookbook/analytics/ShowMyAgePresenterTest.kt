@@ -21,6 +21,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
+import java.lang.Exception
 
 @ExperimentalCoroutinesApi
 class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresenter>() {
@@ -82,12 +83,12 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
     }
 
     @Test
-    fun `given a service unavailable when age is requested then age request service unavailable event is logged`() = testDispatcher.runBlockingTest {
+    fun `given a service unavailable when age is requested then log crash`() = testDispatcher.runBlockingTest {
 
         // GIVEN
         val email = "email@gmail.com"
         val password = "1234"
-        whenever(userRepository.getUser(anyString(), anyString())).thenThrow(ServiceUnavailableException)
+        whenever(userRepository.getUser(anyString(), anyString())).thenThrow(mock<ServiceUnavailableException>())
 
         // WHEN
         testDispatcher.pauseDispatcher()
@@ -95,9 +96,9 @@ class ShowMyAgePresenterTest : WolmoPresenterTest<ShowMyAgeView, ShowMyAgePresen
         testDispatcher.resumeDispatcher()
 
         // THEN
-        with(argumentCaptor<AnalyticsEvent>()) {
-            verify(analyticsManager).logEvent(capture())
-            assertThat(firstValue, instanceOf(AgeRequestServiceUnavailable::class.java))
+        with(argumentCaptor<Exception>()) {
+            verify(analyticsManager).logCrash(capture())
+            assertThat(firstValue, instanceOf(ServiceUnavailableException::class.java))
         }
     }
 

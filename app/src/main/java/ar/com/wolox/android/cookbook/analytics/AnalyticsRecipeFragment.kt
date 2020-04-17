@@ -46,6 +46,5 @@ class AnalyticsRecipeFragment : WolmoFragment<BasePresenter<Any>>() {
     companion object {
 
         fun newInstance() = AnalyticsRecipeFragment()
-
     }
 }
