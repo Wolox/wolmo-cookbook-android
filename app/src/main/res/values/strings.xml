@@ -9,6 +9,7 @@
     <string name="recipe_picker_facebook_login">Facebook login</string>
     <string name="recipe_picker_twitter_login">Twitter login</string>
     <string name="recipe_picker_instagram_login">Instagram login</string>
+    <string name="recipe_picker_sign_up">Sign Up Form</string>
     <string name="recipe_picker_room">Room Database</string>
     <string name="recipe_picker_mp_chart">MP Chart</string>
     <string name="recipe_picker_navigation">Navigation Arch. Component</string>

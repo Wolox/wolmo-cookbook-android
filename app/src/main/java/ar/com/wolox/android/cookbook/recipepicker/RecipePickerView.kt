@@ -12,6 +12,8 @@ interface RecipePickerView {
 
     fun goToInstagramLogin()
 
+    fun goToSignUpForm()
+
     fun goToRoom()
 
     fun goToMpChart()

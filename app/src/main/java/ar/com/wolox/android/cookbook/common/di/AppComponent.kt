@@ -5,12 +5,13 @@ import ar.com.wolox.android.cookbook.CookbookApplication
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRecipeModule
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRepositoryModule
 import ar.com.wolox.android.cookbook.analytics.core.AnalyticsModule
-import ar.com.wolox.android.cookbook.coroutines.CoroutinesExampleModule
-import ar.com.wolox.android.cookbook.coroutines.football.modules.FootballModule
+import ar.com.wolox.android.cookbook.common.di.modules.RoomModule
+import ar.com.wolox.android.cookbook.common.di.modules.SignUpModule
+import ar.com.wolox.android.cookbook.common.di.modules.TwitterModule
 import ar.com.wolox.android.cookbook.common.di.modules.ChartModule
 import ar.com.wolox.android.cookbook.common.di.modules.InstagramModule
-import ar.com.wolox.android.cookbook.common.di.modules.RoomModule
-import ar.com.wolox.android.cookbook.common.di.modules.TwitterModule
+import ar.com.wolox.android.cookbook.coroutines.CoroutinesExampleModule
+import ar.com.wolox.android.cookbook.coroutines.football.modules.FootballModule
 import ar.com.wolox.android.cookbook.common.di.room.PersistenceModule
 import ar.com.wolox.android.cookbook.common.di.room.ServiceModule
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeModule
@@ -38,6 +39,7 @@ import javax.inject.Named
         TwitterModule::class,
         InstagramModule::class,
         RoomModule::class,
+        SignUpModule::class,
         ChartModule::class,
         AppModule::class,
         NavigationRecipeModule::class,

@@ -11,6 +11,7 @@ enum class Recipe {
     FACEBOOK_LOGIN,
     TWITTER_LOGIN,
     INSTAGRAM_LOGIN,
+    SIGN_UP_FORM,
     ROOM,
     MP_CHART,
     NAVIGATION,
