@@ -25,7 +25,7 @@ The Cookbook will also be used as a playground to test new stuff out. That does 
 
 
 ## Initial Setup
-Setup the production keystore credentials: run scripts/keystore.sh from the project root directory or create app/keystore.gradle file manually:
+1. Setup the production keystore credentials: run `scripts/keystore.sh` from the project root directory or create app/keystore.gradle file manually:
 ```
 ext.release_keystore=file('...')
 ext.key_alias='...'
@@ -33,7 +33,7 @@ ext.key_password='...'
 ext.store_password='...'
 ```
 
-Since this project contains a Firebase Analytics recipe it's mandatory to configure it.
+2. Since this project contains a Firebase Analytics recipe it's mandatory to configure it.
 You can do it following [these instructions](https://firebase.google.com/docs/android/setup).
 
 On the other hand, assets for project will be located in raw folder and warp.py script will create all drawable needed for all resolutions. For more information, you can check it's repository: https://github.com/Wolox/warp
