@@ -1,17 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <TextView
+        android:id="@+id/vTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up Form"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        android:text="@string/sign_up_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/vSignUpBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sign_up_default_space"
+        android:layout_marginEnd="@dimen/sign_up_default_space"
+        android:layout_marginBottom="@dimen/sign_up_default_space"
+        android:enabled="false"
+        android:text="@string/sign_up_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/sign_up_min_margin"
+        android:layout_marginEnd="@dimen/sign_up_min_margin"
+        android:layout_marginBottom="@dimen/sign_up_default_space"
+        app:layout_constraintBottom_toTopOf="@+id/vSignUpBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/vWrapFirstName"
+                style="@style/SignUpInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/vDataFirstName"
+                    style="@style/SignUpInputText"
+                    android:hint="@string/sign_up_first_name"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/vWrapLastName"
+                style="@style/SignUpInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/vDataLastName"
+                    style="@style/SignUpInputText"
+                    android:hint="@string/sign_up_last_name"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/vWrapEmail"
+                style="@style/SignUpInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/vDataEmail"
+                    style="@style/SignUpInputText"
+                    android:hint="@string/sign_up_email"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/vWrapPass"
+                style="@style/SignUpInputLayout"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/vDataPass"
+                    style="@style/SignUpInputText"
+                    android:hint="@string/sign_up_password"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/vWrapPassConfirm"
+                style="@style/SignUpInputLayout"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/vDataPassConfirm"
+                    style="@style/SignUpInputText"
+                    android:hint="@string/sign_up_confirm_password"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/vWrapBornDate"
+                style="@style/SignUpInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/vDataBornDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/sign_up_born_date_label"
+                    android:inputType="date"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/sign_up_default_space"
+                android:layout_marginTop="@dimen/sign_up_default_space"
+                android:layout_marginEnd="@dimen/sign_up_default_space"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/sign_up_default_space"
+                android:paddingBottom="@dimen/sign_up_default_space">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/sign_up_min_margin"
+                    android:paddingEnd="@dimen/sign_up_min_margin"
+                    android:text="@string/sign_up_genre" />
+
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:entries="@array/genre" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="64dp" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

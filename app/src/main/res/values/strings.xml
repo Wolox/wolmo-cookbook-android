@@ -247,4 +247,25 @@
 	<string name="analytics_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla justo risus, imperdiet id eros sit amet, tincidunt varius libero. Aliquam id nisi ligula. Pellentesque sit amet odio eget leo rutrum congue. In viverra erat eget tincidunt rhoncus. Phasellus placerat dolor tellus, eu posuere mauris fermentum ac. Cras aliquet quam nibh, et placerat magna cursus sed. Nulla facilisis venenatis feugiat. Suspendisse eu augue at metus tincidunt volutpat efficitur non quam. Donec dignissim dui at imperdiet rutrum. Nulla iaculis laoreet metus dignissim fringilla. Morbi venenatis nibh urna, nec sollicitudin elit euismod in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus volutpat magna in maximus fringilla. Nunc faucibus est sed lacus sodales, et interdum ante laoreet. Curabitur viverra est eget orci iaculis, vitae tincidunt eros iaculis. Sed venenatis, dolor ac tincidunt auctor, augue lectus gravida ipsum, a porta libero urna vel lectus. Donec mollis odio lacinia, porttitor nisl et, tristique leo. Aenean id fermentum felis. Fusce a turpis sit amet nulla molestie facilisis et sit amet mi. Curabitur eget risus ut quam bibendum condimentum sed cursus dui. Aenean convallis egestas consequat.</string>
 	<string name="analytics_crash">Crash it!</string>
 
+    <!-- SignUp Form -->
+    <string name="sign_up_title">Sign Up Form</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="sign_up_first_name">First Name</string>
+    <string name="sign_up_last_name">Last Name</string>
+    <string name="sign_up_email">Email</string>
+    <string name="sign_up_password">Password</string>
+    <string name="sign_up_confirm_password">Confirm Password</string>
+    <string name="sign_up_born_date_label">Born Date</string>
+    <string name="sign_up_born_date_data">%1$d/%2$d/%3$d</string>
+    <string name="sign_up_genre">Sex:</string>
+    <string name="sign_up_error">The field %1$s is required</string>
+    <string name="sign_up_result_success">Sign Up Success</string>
+    <string name="sign_up_result_error">Sign Up Form Contains Errors</string>
+    <string-array name="genre">
+        <item>--Select Genre--</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Giraffe</item>
+        <item>Other</item>
+    </string-array>
 </resources>

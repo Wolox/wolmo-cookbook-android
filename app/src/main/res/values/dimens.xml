@@ -98,6 +98,10 @@
     <!-- Coroutines examples (context) -->
     <dimen name="coroutines_examples_context_cat_size">100dp</dimen>
 
+    <!-- SignUp -->
+    <dimen name="sign_up_default_space">16dp</dimen>
+    <dimen name="sign_up_min_margin">8dp</dimen>
+
     <!-- GraphQL -->
     <dimen name="orders_margin">10dp</dimen>
     <dimen name="progress_bar_size">50dp</dimen>

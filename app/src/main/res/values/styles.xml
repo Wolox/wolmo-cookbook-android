@@ -13,4 +13,18 @@
         <item name="android:textSize">@dimen/font_medium_extra</item>
     </style>
 
+    <style name="SignUpInputLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/sign_up_default_space</item>
+        <item name="android:layout_marginStart">@dimen/sign_up_default_space</item>
+        <item name="android:layout_marginEnd">@dimen/sign_up_default_space</item>
+    </style>
+
+    <style name="SignUpInputText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLength">35</item>
+        <item name="android:maxLines">1</item>
+    </style>
 </resources>
