@@ -72,10 +72,12 @@ android {
             applicationId defaultConfig.applicationId + ".stage"
             versionName defaultConfig.versionName + "-stage"
             resValue "string", "app_name", "[Stage] Wolmo Android Cookbook"
+            resValue "string", "mercado_pago_public_key", "YOUR_PUBLIC_KEY_HERE"
         }
 
         production {
             resValue "string", "app_name", "Wolmo Android Cookbook"
+            resValue "string", "mercado_pago_public_key", "YOUR_PUBLIC_KEY_HERE"
         }
     }
 
@@ -92,6 +94,7 @@ android {
         enabled = true
     }
 }
+
 
 jacocoAndroidUnitTestReport {
     excludes = defaultExcludes + ['**/*_Factory.class']
