@@ -1,18 +1,26 @@
 package ar.com.wolox.android.cookbook.mercadopago
 
 import android.content.Context
+import android.content.Intent
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import com.mercadopago.android.px.core.MercadoPagoCheckout
 import javax.inject.Inject
 
-class MercadoPagoPresenter @Inject constructor(val context: Context) : BasePresenter<MercadoPagoView>() {
+class MercadoPagoPresenter @Inject constructor(
+    private val context: Context,
+    private val handler: MercadoPagoResultHandler
+) : BasePresenter<MercadoPagoView>() {
 
     fun onPayButtonClicked() {
         view?.payProduct(MercadoPagoCheckout.Builder(
                 context.getString(PUBLIC_KEY),
                 DUMMY_PREFERENCE_ID)
                 .build())
+    }
+
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        view?.proceedResult(handler.onActivityResult(requestCode, resultCode, data))
     }
 
     companion object {

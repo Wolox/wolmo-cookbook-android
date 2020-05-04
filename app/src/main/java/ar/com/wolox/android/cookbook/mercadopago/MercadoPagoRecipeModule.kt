@@ -11,4 +11,7 @@ abstract class MercadoPagoRecipeModule {
 
     @ContributesAndroidInjector
     abstract fun mercadoPagoFragment(): MercadoPagoRecipeFragment
+
+    @ContributesAndroidInjector
+    abstract fun mercadoPagoResultHandler(): MercadoPagoResultHandler
 }
