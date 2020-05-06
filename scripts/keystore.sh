@@ -8,4 +8,6 @@ ext.release_keystore=file('keystore/debug.keystore')
 ext.key_alias='androiddebugkey'
 ext.key_password='android'
 ext.store_password='android'
+ext.mercadopago_public_key='YOUR_PUBLIC_KEY'
+ext.mercadopago_public_key_sandbox='YOUR_SANDBOX_PUBLIC_KEY'
 EOF
