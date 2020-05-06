@@ -81,8 +81,12 @@ android {
 
     applicationVariants.all { variant ->
         def isDebugging = variant.flavorName == "debug"
-        def publicMercadoPagoKey = isDebugging ? "true" : "false"
-        variant.buildConfigField "String", "MERCADO_PAGO_PUBLIC_KEY", "YOUR_PUBLIC_KEY_HERE"
+        def mercadopagoSandboxKey = project.hasProperty("mercadopago_public_key_sandbox") ?
+                mercadopago_public_key_sandbox : ""
+        def mercadopagoProductionKey = project.hasProperty("mercadopago_public_key") ?
+                mercadopago_public_key_sandbox : ""
+        def mercadopagoPublicKey = isDebugging ? mercadopagoSandboxKey : mercadopagoProductionKey
+        variant.buildConfigField "String", "MERCADO_PAGO_PUBLIC_KEY", mercadopagoPublicKey
     }
 
     lintOptions {

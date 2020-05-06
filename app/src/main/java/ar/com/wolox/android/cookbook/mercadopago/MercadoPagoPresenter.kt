@@ -1,5 +1,7 @@
 package ar.com.wolox.android.cookbook.mercadopago
 
+import android.util.Log
+import ar.com.wolox.android.cookbook.BuildConfig
 import ar.com.wolox.android.cookbook.common.di.CoroutineDispatchersModule
 import ar.com.wolox.android.cookbook.common.utils.isValidEmail
 import ar.com.wolox.android.cookbook.mercadopago.model.Cart
@@ -66,7 +68,7 @@ class MercadoPagoPresenter @Inject constructor(
 
         launch {
             mercadoPagoAdapter.checkout(cart)?.let {
-                view?.payProduct(MercadoPagoCheckout.Builder("PUBLIC_KEY", it.id).build())
+                view?.payProduct(MercadoPagoCheckout.Builder(BuildConfig.MERCADO_PAGO_PUBLIC_KEY, it.id).build())
             } ?: run {
                 view?.showUnexpectedError()
             }
