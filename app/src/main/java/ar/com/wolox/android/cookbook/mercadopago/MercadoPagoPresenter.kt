@@ -1,15 +1,15 @@
 package ar.com.wolox.android.cookbook.mercadopago
 
 import android.content.Context
-import android.content.Intent
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import com.mercadopago.android.px.core.MercadoPagoCheckout
+import com.mercadopago.android.px.model.Payment
+import com.mercadopago.android.px.model.exceptions.MercadoPagoError
 import javax.inject.Inject
 
 class MercadoPagoPresenter @Inject constructor(
-    private val context: Context,
-    private val handler: MercadoPagoResultHandler
+    private val context: Context
 ) : BasePresenter<MercadoPagoView>() {
 
     fun onPayButtonClicked() {
@@ -19,8 +19,20 @@ class MercadoPagoPresenter @Inject constructor(
                 .build())
     }
 
-    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        view?.proceedResult(handler.onActivityResult(requestCode, resultCode, data))
+    fun onPaymentSuccess(paymentMessage: Payment) {
+        view?.proceedResult(paymentMessage.toString())
+    }
+
+    fun onMercadoPagoError(mercadoPagoError: MercadoPagoError) {
+        view?.showErrorMessage(mercadoPagoError.errorDetail)
+    }
+
+    fun onError(errorMessage: String) {
+        view?.showErrorMessage(errorMessage)
+    }
+
+    fun onCanceled() {
+        view?.showCanceledMessage()
     }
 
     companion object {

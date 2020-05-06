@@ -1,5 +1,6 @@
 package ar.com.wolox.android.cookbook.mercadopago
 
+import ar.com.wolox.android.cookbook.mercadopago.handler.MercadoPagoResultHandler
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

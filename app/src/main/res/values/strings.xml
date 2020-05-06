@@ -250,5 +250,8 @@
     <!-- MercadoPago -->
     <string name="mercadopago_pay_button">PAY ME!</string>
     <string name="mercadopago_pay_label">Click button to pay</string>
+    <string name="mercadopago_cancel_message">Process have been canceled</string>
+    <string name="mercadopago_error_message">Error: %s</string>
+    <string name="mercadopago_payment_message">Payment info: %s</string>
 
 </resources>

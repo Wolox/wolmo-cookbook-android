@@ -7,4 +7,8 @@ interface MercadoPagoView {
     fun payProduct(checkout: MercadoPagoCheckout)
 
     fun proceedResult(message: String)
+
+    fun showErrorMessage(errorMessage: String)
+
+    fun showCanceledMessage()
 }
