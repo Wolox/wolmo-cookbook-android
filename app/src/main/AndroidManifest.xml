@@ -90,6 +90,8 @@
 
         <activity android:name=".analytics.AnalyticsRecipeActivity" />
 
+        <activity android:name=".mercadopago.MercadoPagoRecipeActivity" />
+
         <!-- Activity and intent filter for Chrome Custom Tabs for Facebook Login -->
         <activity
             android:name="com.facebook.CustomTabActivity"

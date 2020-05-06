@@ -72,10 +72,12 @@ android {
             applicationId defaultConfig.applicationId + ".stage"
             versionName defaultConfig.versionName + "-stage"
             resValue "string", "app_name", "[Stage] Wolmo Android Cookbook"
+            resValue "string", "mercado_pago_public_key", "YOUR_PUBLIC_KEY_HERE"
         }
 
         production {
             resValue "string", "app_name", "Wolmo Android Cookbook"
+            resValue "string", "mercado_pago_public_key", "YOUR_PUBLIC_KEY_HERE"
         }
     }
 
@@ -92,6 +94,7 @@ android {
         enabled = true
     }
 }
+
 
 jacocoAndroidUnitTestReport {
     excludes = defaultExcludes + ['**/*_Factory.class']
@@ -133,6 +136,7 @@ buildscript {
     ext.mp_chart = '3.1.0'
     ext.firebase_version = '17.2.3'
     ext.crashlytics_version = '2.10.1'
+    ext.mercadopago_version = '4.40.1'
 }
 
 dependencies {
@@ -220,6 +224,9 @@ dependencies {
 
     //Crashlytics
     implementation "com.crashlytics.sdk.android:crashlytics:$crashlytics_version"
+
+    //Mercadopago
+    implementation "com.mercadopago.android.px:checkout:$mercadopago_version"
 
 }
 
