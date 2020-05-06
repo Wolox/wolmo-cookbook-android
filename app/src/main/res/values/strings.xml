@@ -3,6 +3,7 @@
     <!-- General -->
     <string name="app_title">Wolmo Android\nCookbook</string>
     <string name="app_example_recipe_description">The Bad Boy of the Block. You can\'t resist him, huh?</string>
+    <string name="unexpected_error">Unexpected error</string>
 
     <!-- Recipe Picker -->
     <string name="recipe_picker_google_login">Google login</string>
@@ -248,10 +249,19 @@
 	<string name="analytics_crash">Crash it!</string>
 
     <!-- MercadoPago -->
-    <string name="mercadopago_pay_button">PAY ME!</string>
-    <string name="mercadopago_pay_label">Click button to pay</string>
     <string name="mercadopago_cancel_message">Process have been canceled</string>
     <string name="mercadopago_error_message">Error: %s</string>
     <string name="mercadopago_payment_message">Payment info: %s</string>
+    <string name="mercadopago_pay_label">You\'re buying all these items:</string>
+    <string name="mercadopago_pay_button">Let\'s pay!</string>
+    <string name="mercadopago_name_hint">Name</string>
+    <string name="mercadopago_item_total">\$%.2f x %d</string>
+    <string name="mercadopago_total_text">Total</string>
+    <string name="mercadopago_total_number">\$%.2f</string>
+    <string name="mercadopago_email_hint">Email</string>
+    <string name="mercadopago_empty_name_error">Please complete your name</string>
+    <string name="mercadopago_empty_email_error">Please complete your email</string>
+    <string name="mercadopago_invalid_email_error">Please complete a valid email</string>
+>>>>>>> Stashed changes
 
 </resources>
