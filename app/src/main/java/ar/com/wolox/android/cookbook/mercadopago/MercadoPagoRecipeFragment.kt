@@ -115,8 +115,8 @@ class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoPresenter>(), Mercado
         })
     }
 
-    override fun proceedResult(message: String) {
-        toastFactory.show(getString(R.string.mercadopago_payment_message, message))
+    override fun showPaymentSuccessResult(payment: Payment) {
+        toastFactory.show(getString(R.string.mercadopago_payment_message, payment.paymentStatus, payment.id.toString()))
     }
 
     override fun showErrorMessage(errorMessage: String) {

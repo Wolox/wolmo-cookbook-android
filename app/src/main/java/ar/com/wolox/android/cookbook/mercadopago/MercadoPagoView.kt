@@ -2,6 +2,7 @@ package ar.com.wolox.android.cookbook.mercadopago
 
 import ar.com.wolox.android.cookbook.mercadopago.model.Product
 import com.mercadopago.android.px.core.MercadoPagoCheckout
+import com.mercadopago.android.px.model.Payment
 
 interface MercadoPagoView {
 
@@ -11,7 +12,7 @@ interface MercadoPagoView {
 
     fun payProduct(checkout: MercadoPagoCheckout)
 
-    fun proceedResult(message: String)
+    fun showPaymentSuccessResult(payment: Payment)
 
     fun showErrorMessage(errorMessage: String)
 

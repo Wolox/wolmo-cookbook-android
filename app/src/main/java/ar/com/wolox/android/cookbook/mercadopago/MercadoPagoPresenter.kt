@@ -39,7 +39,7 @@ class MercadoPagoPresenter @Inject constructor(
     }
 
     fun onPaymentSuccess(paymentMessage: Payment) {
-        view?.proceedResult(paymentMessage.toString())
+        view?.showPaymentSuccessResult(paymentMessage)
     }
 
     fun onMercadoPagoError(mercadoPagoError: MercadoPagoError) {

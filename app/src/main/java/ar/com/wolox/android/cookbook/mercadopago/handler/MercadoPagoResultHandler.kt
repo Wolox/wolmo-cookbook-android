@@ -21,11 +21,11 @@ class MercadoPagoResultHandler @Inject constructor() {
         callback: MercadoPagoResultListener
     ) {
         if (requestCode == REQUEST_CODE) {
-            if (resultCode == MercadoPagoCheckout.PAYMENT_RESULT_CODE) {
-                val payment = data!!.getSerializableExtra(MercadoPagoCheckout.EXTRA_PAYMENT_RESULT) as Payment
+            if (resultCode == MercadoPagoCheckout.PAYMENT_RESULT_CODE && data != null) {
+                val payment = data.getSerializableExtra(MercadoPagoCheckout.EXTRA_PAYMENT_RESULT) as Payment
                 callback.onSuccess(payment)
             } else if (resultCode == Activity.RESULT_CANCELED) {
-                if (data != null && data.extras != null && data.extras!!.containsKey(MercadoPagoCheckout.EXTRA_ERROR)) {
+                if (data?.extras?.containsKey(MercadoPagoCheckout.EXTRA_ERROR) == true) {
                     val mercadoPagoError = data.getSerializableExtra(MercadoPagoCheckout.EXTRA_ERROR) as MercadoPagoError
                     callback.onMercadoPagoError(mercadoPagoError)
                 } else {
