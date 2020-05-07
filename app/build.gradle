@@ -84,7 +84,7 @@ android {
         def mercadopagoSandboxKey = project.hasProperty("mercadopago_public_key_sandbox") ?
                 mercadopago_public_key_sandbox : ""
         def mercadopagoProductionKey = project.hasProperty("mercadopago_public_key") ?
-                mercadopago_public_key_sandbox : ""
+                mercadopago_public_key : ""
         def mercadopagoPublicKey = isDebugging ? mercadopagoSandboxKey : mercadopagoProductionKey
         variant.buildConfigField "String", "MERCADO_PAGO_PUBLIC_KEY", mercadopagoPublicKey
     }
