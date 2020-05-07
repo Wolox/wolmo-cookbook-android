@@ -7,8 +7,13 @@ import com.mercadopago.android.px.model.Payment
 import com.mercadopago.android.px.model.exceptions.MercadoPagoError
 import javax.inject.Inject
 
+/**
+ * It's responsible of handling the result of the activity,
+ * check if it's a mercadopago result and call the corresponded method of the [MercadoPagoResultListener].
+ */
 class MercadoPagoResultHandler @Inject constructor() {
 
+    /** Method that should be invoked on activity result. */
     fun onActivityResult(
         requestCode: Int,
         resultCode: Int,
@@ -33,6 +38,6 @@ class MercadoPagoResultHandler @Inject constructor() {
     }
 
     companion object {
-        private const val REQUEST_CODE = 1
+        const val REQUEST_CODE = 1
     }
 }

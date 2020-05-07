@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.databinding.FragmentMercadopagoBinding
@@ -24,6 +23,7 @@ class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoPresenter>(), Mercado
     @Inject
     lateinit var handler: MercadoPagoResultHandler
 
+    @Inject
     lateinit var toastFactory: ToastFactory
 
     private var _binding: FragmentMercadopagoBinding? = null
@@ -92,7 +92,7 @@ class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoPresenter>(), Mercado
     }
 
     override fun payProduct(checkout: MercadoPagoCheckout) {
-        checkout.startPayment(requireContext(), REQUEST_CODE)
+        checkout.startPayment(requireContext(), MercadoPagoResultHandler.REQUEST_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -116,29 +116,18 @@ class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoPresenter>(), Mercado
     }
 
     override fun proceedResult(message: String) {
-        Toast.makeText(context,
-                getString(R.string.mercadopago_payment_message, message),
-                Toast.LENGTH_LONG
-        ).show()
+        toastFactory.show(getString(R.string.mercadopago_payment_message, message))
     }
 
     override fun showErrorMessage(errorMessage: String) {
-        Toast.makeText(context,
-                getString(R.string.mercadopago_error_message, errorMessage),
-                Toast.LENGTH_LONG
-        ).show()
+        toastFactory.show(getString(R.string.mercadopago_error_message, errorMessage))
     }
 
     override fun showCanceledMessage() {
-        Toast.makeText(context, R.string.mercadopago_cancel_message, Toast.LENGTH_LONG).show()
+        toastFactory.show(R.string.mercadopago_cancel_message)
     }
 
     companion object {
-
-        private const val REQUEST_CODE = 1001
-        private const val PAYMENT_WITH_STATUS_MESSAGE = "Payment with status: "
-        private const val REQUESTED_CODE_MESSAGE = "Requested code: "
-        private const val RESULT_CODE_MESSAGE = " Result code: "
 
         fun newInstance() = MercadoPagoRecipeFragment()
     }

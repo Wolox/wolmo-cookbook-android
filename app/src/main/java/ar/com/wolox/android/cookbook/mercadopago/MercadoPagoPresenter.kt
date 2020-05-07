@@ -1,6 +1,5 @@
 package ar.com.wolox.android.cookbook.mercadopago
 
-import android.util.Log
 import ar.com.wolox.android.cookbook.BuildConfig
 import ar.com.wolox.android.cookbook.common.di.CoroutineDispatchersModule
 import ar.com.wolox.android.cookbook.common.utils.isValidEmail
