@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
 
-class MercadoPagoPresenter @Inject constructor(
+class MercadoPagoRecipePresenter @Inject constructor(
     @Named(CoroutineDispatchersModule.MAIN) mainDispatcher: CoroutineDispatcher,
     private val mercadoPagoProductsRepository: MercadoPagoProductsRepository,
     private val mercadoPagoAdapter: MercadoPagoAdapter

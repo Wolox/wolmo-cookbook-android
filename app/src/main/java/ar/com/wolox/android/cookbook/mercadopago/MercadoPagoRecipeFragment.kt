@@ -35,7 +35,7 @@ import javax.inject.Inject
  *
  * Important note: you can't make a payment to yourself. If you get an error when finishing payment, it may be the cause.
  */
-class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoPresenter>(), MercadoPagoView {
+class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoRecipePresenter>(), MercadoPagoView {
 
     @Inject
     lateinit var handler: MercadoPagoResultHandler
