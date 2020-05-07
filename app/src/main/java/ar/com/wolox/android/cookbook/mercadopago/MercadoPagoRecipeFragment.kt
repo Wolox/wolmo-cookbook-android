@@ -18,6 +18,23 @@ import com.mercadopago.android.px.model.Payment
 import com.mercadopago.android.px.model.exceptions.MercadoPagoError
 import javax.inject.Inject
 
+/**
+ * To connect to Mercado Pago there're a few steps we need to do:
+ * 1. Call to backend asking for a checkout preference id
+ *    (backend would ask we to send the products to buy and the buyer info, probably).
+ * 2. With that id and with our Public Key of Mercado Pago credentials, we will generate a [MercadoPagoCheckout].
+ * 3. Invoke [MercadoPagoCheckout.startPayment] method.
+ * 4. Mercado Pago will handle the payment and then send the response on [MercadoPagoRecipeActivity.onActivityResult].
+ *
+ *
+ * To learn more about Mercado Pago development you chan check the documentation:
+ * https://www.mercadopago.com.ar/developers/en/guides/payments/mobile-checkout/introduction/
+ *
+ * If you want to test it on SandBox you can use test cards:
+ * https://www.mercadopago.com.ar/developers/en/guides/payments/web-payment-checkout/v1/testing/
+ *
+ * Important note: you can't make a payment to yourself. If you get an error when finishing payment, it may be the cause.
+ */
 class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoPresenter>(), MercadoPagoView {
 
     @Inject
