@@ -72,13 +72,21 @@ android {
             applicationId defaultConfig.applicationId + ".stage"
             versionName defaultConfig.versionName + "-stage"
             resValue "string", "app_name", "[Stage] Wolmo Android Cookbook"
-            resValue "string", "mercado_pago_public_key", "YOUR_PUBLIC_KEY_HERE"
         }
 
         production {
             resValue "string", "app_name", "Wolmo Android Cookbook"
-            resValue "string", "mercado_pago_public_key", "YOUR_PUBLIC_KEY_HERE"
         }
+    }
+
+    applicationVariants.all { variant ->
+        def isDebugging = variant.flavorName == "debug"
+        def mercadopagoSandboxKey = project.hasProperty("mercadopago_public_key_sandbox") ?
+                mercadopago_public_key_sandbox : ""
+        def mercadopagoProductionKey = project.hasProperty("mercadopago_public_key") ?
+                mercadopago_public_key : ""
+        def mercadopagoPublicKey = isDebugging ? mercadopagoSandboxKey : mercadopagoProductionKey
+        variant.buildConfigField "String", "MERCADO_PAGO_PUBLIC_KEY", mercadopagoPublicKey
     }
 
     lintOptions {
