@@ -20,11 +20,14 @@ import javax.inject.Inject
 
 /**
  * To connect to Mercado Pago there're a few steps we need to do:
- * 1. Call to backend asking for a checkout preference id
+ * 1. Define the credentials on the keystore.gradle.
+ *    To obtain the credentials login on Mercado Pago and open this link:
+ *    https://www.mercadopago.com/mla/account/credentials
+ * 2. Call to backend asking for a checkout preference id
  *    (backend would ask we to send the products to buy and the buyer info, probably).
- * 2. With that id and with our Public Key of Mercado Pago credentials, we will generate a [MercadoPagoCheckout].
- * 3. Invoke [MercadoPagoCheckout.startPayment] method.
- * 4. Mercado Pago will handle the payment and then send the response on [MercadoPagoRecipeActivity.onActivityResult].
+ * 3. With that id and with our Public Key of Mercado Pago credentials, we will generate a [MercadoPagoCheckout].
+ * 4. Invoke [MercadoPagoCheckout.startPayment] method.
+ * 5. Mercado Pago will handle the payment and then send the response on [MercadoPagoRecipeActivity.onActivityResult].
  *
  *
  * To learn more about Mercado Pago development you chan check the documentation:
