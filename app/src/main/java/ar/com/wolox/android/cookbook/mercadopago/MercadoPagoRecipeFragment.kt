@@ -65,13 +65,13 @@ class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoRecipePresenter>(), M
         _binding = null
     }
 
-    override fun init() {
-        binding.payButton.setOnClickListener {
+    override fun init() = with(binding) {
+        payButton.setOnClickListener {
             presenter.onPayButtonClicked(
-                binding.clientNameInput.text.toString(),
-                binding.clientEmailInput.text.toString())
+                clientNameInput.text.toString(),
+                clientEmailInput.text.toString())
         }
-        binding.itemList.adapter = adapter
+        itemList.adapter = adapter
     }
 
     override fun showProducts(items: List<Pair<Product, Int>>) = adapter.submitList(items)
@@ -96,14 +96,14 @@ class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoRecipePresenter>(), M
         toastFactory.show(R.string.unexpected_error)
     }
 
-    override fun startLoading() {
-        binding.loading.isVisible = true
-        binding.payButton.isEnabled = false
+    override fun startLoading() = with(binding) {
+        loading.isVisible = true
+        payButton.isEnabled = false
     }
 
-    override fun finishLoading() {
-        binding.loading.isVisible = false
-        binding.payButton.isEnabled = true
+    override fun finishLoading() = with(binding) {
+        loading.isVisible = false
+        payButton.isEnabled = true
     }
 
     override fun payProduct(checkout: MercadoPagoCheckout) {
