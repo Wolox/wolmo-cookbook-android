@@ -20,7 +20,7 @@ class MercadoPagoItemsAdapter : ListAdapter<Pair<Product, Int>, MercadoPagoItems
 
     class ViewHolder(private val binding: ViewMercadopagoItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Pair<Product, Int>) = with(binding){
+        fun bind(item: Pair<Product, Int>) = with(binding) {
             itemTitle.text = item.first.name
             itemTotal.text = itemTotal.resources.getString(
                 R.string.mercadopago_item_total, item.first.price, item.second)
