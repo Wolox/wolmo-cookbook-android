@@ -262,6 +262,5 @@
     <string name="mercadopago_empty_name_error">Please complete your name</string>
     <string name="mercadopago_empty_email_error">Please complete your email</string>
     <string name="mercadopago_invalid_email_error">Please complete a valid email</string>
->>>>>>> Stashed changes
 
 </resources>
