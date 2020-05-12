@@ -49,8 +49,7 @@ class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoRecipePresenter>(), M
     private var _binding: FragmentMercadopagoBinding? = null
     private val binding get() = _binding!! // This property is only valid between onCreateView and onDestroyView.
 
-    private val itemList = mutableListOf<Pair<Product, Int>>()
-    private val adapter = MercadoPagoItemsAdapter(itemList)
+    private val adapter = MercadoPagoItemsAdapter()
 
     // This is no longer necessary since we're using view binding, but if I remove it then super.onCreateView crash.
     override fun layout() = R.layout.fragment_mercadopago
@@ -75,11 +74,7 @@ class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoRecipePresenter>(), M
         binding.itemList.adapter = adapter
     }
 
-    override fun showProducts(items: List<Pair<Product, Int>>) {
-        itemList.clear()
-        itemList.addAll(items)
-        adapter.notifyDataSetChanged()
-    }
+    override fun showProducts(items: List<Pair<Product, Int>>) = adapter.submitList(items)
 
     override fun showTotal(total: Float) {
         binding.itemsTotalText.text = getString(R.string.mercadopago_total_number, total)
