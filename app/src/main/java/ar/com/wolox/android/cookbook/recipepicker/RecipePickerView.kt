@@ -31,4 +31,6 @@ interface RecipePickerView {
     fun goToGraphQlRecipe()
 
     fun goToAnalyticsRecipe()
+
+    fun goToMercadoPagoRecipe()
 }

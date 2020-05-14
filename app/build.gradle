@@ -79,6 +79,16 @@ android {
         }
     }
 
+    applicationVariants.all { variant ->
+        def isDebugging = variant.flavorName == "debug"
+        def mercadopagoSandboxKey = project.hasProperty("mercadopago_public_key_sandbox") ?
+                mercadopago_public_key_sandbox : ""
+        def mercadopagoProductionKey = project.hasProperty("mercadopago_public_key") ?
+                mercadopago_public_key : ""
+        def mercadopagoPublicKey = isDebugging ? mercadopagoSandboxKey : mercadopagoProductionKey
+        variant.buildConfigField "String", "MERCADO_PAGO_PUBLIC_KEY", mercadopagoPublicKey
+    }
+
     lintOptions {
         abortOnError false
     }
@@ -92,6 +102,7 @@ android {
         enabled = true
     }
 }
+
 
 jacocoAndroidUnitTestReport {
     excludes = defaultExcludes + ['**/*_Factory.class']
@@ -133,6 +144,7 @@ buildscript {
     ext.mp_chart = '3.1.0'
     ext.firebase_version = '17.2.3'
     ext.crashlytics_version = '2.10.1'
+    ext.mercadopago_version = '4.40.1'
 }
 
 dependencies {
@@ -220,6 +232,9 @@ dependencies {
 
     //Crashlytics
     implementation "com.crashlytics.sdk.android:crashlytics:$crashlytics_version"
+
+    //Mercadopago
+    implementation "com.mercadopago.android.px:checkout:$mercadopago_version"
 
 }
 

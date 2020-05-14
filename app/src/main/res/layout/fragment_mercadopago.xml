@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="@dimen/spacing_large">
+
+	<TextView
+		android:id="@+id/pay_label"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/static_spacing_big"
+		android:text="@string/mercadopago_pay_label"
+		app:layout_constraintBottom_toTopOf="@id/item_list"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_chainStyle="packed" />
+
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/item_list"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		app:layout_constrainedWidth="true"
+		app:layout_constraintBottom_toTopOf="@id/items_total_text"
+		app:layout_constraintTop_toBottomOf="@id/pay_label"
+		tools:listitem="@layout/view_mercadopago_item" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/mercadopago_total_text"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toBottomOf="@id/items_total_text"
+		app:layout_constraintEnd_toStartOf="@id/items_total_text"
+		app:layout_constraintHorizontal_bias="0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@id/items_total_text" />
+
+	<TextView
+		android:id="@+id/items_total_text"
+		android:layout_width="@dimen/mercado_item_total_width"
+		android:layout_height="wrap_content"
+		android:paddingTop="@dimen/spacing_medium_extra"
+		android:paddingBottom="@dimen/spacing_medium_extra"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@id/client_name_input"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/item_list" />
+
+	<androidx.constraintlayout.widget.Group
+		android:id="@+id/loading"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:constraint_referenced_ids="loading_bg,loading_progress_bar" />
+
+	<View
+		android:id="@+id/loading_bg"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:background="@android:color/white"
+		app:layout_constraintBottom_toBottomOf="@id/items_total_text"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@id/item_list" />
+
+	<ProgressBar
+		android:id="@+id/loading_progress_bar"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toBottomOf="@id/loading_bg"
+		app:layout_constraintEnd_toEndOf="@id/loading_bg"
+		app:layout_constraintStart_toStartOf="@id/loading_bg"
+		app:layout_constraintTop_toTopOf="@id/loading_bg" />
+
+	<EditText
+		android:id="@+id/client_name_input"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_medium_more"
+		android:hint="@string/mercadopago_name_hint"
+		app:layout_constraintBottom_toTopOf="@id/client_email_input"
+		app:layout_constraintTop_toBottomOf="@id/items_total_text" />
+
+	<EditText
+		android:id="@+id/client_email_input"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_medium_more"
+		android:hint="@string/mercadopago_email_hint"
+		app:layout_constraintBottom_toTopOf="@id/pay_button"
+		app:layout_constraintTop_toBottomOf="@id/client_name_input" />
+
+	<Button
+		android:id="@+id/pay_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/static_spacing_big"
+		android:text="@string/mercadopago_pay_button"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/client_email_input" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
