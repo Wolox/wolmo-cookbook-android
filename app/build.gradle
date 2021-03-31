@@ -72,10 +72,12 @@ android {
             applicationId defaultConfig.applicationId + ".stage"
             versionName defaultConfig.versionName + "-stage"
             resValue "string", "app_name", "[Stage] Wolmo Android Cookbook"
+            buildConfigField "String", "IOS_BUNDLE_ID", "\"com.test.stage\""
         }
 
         production {
             resValue "string", "app_name", "Wolmo Android Cookbook"
+            buildConfigField "String", "IOS_BUNDLE_ID", "\"com.test.production\""
         }
     }
 
@@ -145,6 +147,7 @@ buildscript {
     ext.firebase_version = '17.2.3'
     ext.crashlytics_version = '2.10.1'
     ext.mercadopago_version = '4.40.1'
+    ext.firebase_dynamic_links = '19.1.1'
 }
 
 dependencies {
@@ -235,6 +238,9 @@ dependencies {
 
     //Mercadopago
     implementation "com.mercadopago.android.px:checkout:$mercadopago_version"
+
+    //Dynamic Link
+    implementation "com.google.firebase:firebase-dynamic-links-ktx:$firebase_dynamic_links"
 
 }
 
