@@ -145,6 +145,7 @@ buildscript {
     ext.firebase_version = '17.2.3'
     ext.crashlytics_version = '2.10.1'
     ext.mercadopago_version = '4.40.1'
+    ext.lottie_version = '3.4.0'
 }
 
 dependencies {
@@ -235,6 +236,9 @@ dependencies {
 
     //Mercadopago
     implementation "com.mercadopago.android.px:checkout:$mercadopago_version"
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:$lottie_version"
 
 }
 
