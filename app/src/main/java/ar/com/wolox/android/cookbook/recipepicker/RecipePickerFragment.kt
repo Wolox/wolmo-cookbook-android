@@ -10,6 +10,7 @@ import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.graphQl.OrdersActivity
 import ar.com.wolox.android.cookbook.instagramlogin.InstagramLoginRecipeActivity
 import ar.com.wolox.android.cookbook.koin.KoinLoginRecipeActivity
+import ar.com.wolox.android.cookbook.lottie.LottieRecipeActivity
 import ar.com.wolox.android.cookbook.mercadopago.MercadoPagoRecipeActivity
 import ar.com.wolox.android.cookbook.mpchart.MpChartRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
@@ -41,6 +42,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
         // Create a RecipeItem with the desired image & text for it inside the 'when' statement
         return recipes.map {
             when (it) {
+                Recipe.LOTTIE -> RecipeItem(it, R.drawable.bg_lottie, R.string.recipe_picker_lottie)
                 Recipe.MERCADOPAGO -> RecipeItem(it, R.drawable.bg_mercadopago, R.string.recipe_picker_mercadopago)
                 Recipe.ANALYTICS -> RecipeItem(it, R.drawable.bg_firebase, R.string.recipe_picker_firebase)
                 Recipe.COROUTINES -> RecipeItem(it, R.drawable.bg_coroutines, R.string.recipe_picker_coroutines)
@@ -91,6 +93,8 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     override fun goToAnalyticsRecipe() = goTo(AnalyticsRecipeActivity::class.java)
 
     override fun goToMercadoPagoRecipe() = goTo(MercadoPagoRecipeActivity::class.java)
+
+    override fun goToLottieRecipe() = goTo(LottieRecipeActivity::class.java)
 
     companion object {
         fun newInstance() = RecipePickerFragment()
