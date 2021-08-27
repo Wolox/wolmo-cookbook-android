@@ -10,7 +10,7 @@ import ar.com.wolox.android.cookbook.coroutines.football.modules.FootballModule
 import ar.com.wolox.android.cookbook.common.di.modules.ChartModule
 import ar.com.wolox.android.cookbook.common.di.modules.InstagramModule
 import ar.com.wolox.android.cookbook.common.di.modules.RoomModule
-import ar.com.wolox.android.cookbook.lottie.di.LottieModule
+import ar.com.wolox.android.cookbook.common.di.modules.LottieModule
 import ar.com.wolox.android.cookbook.common.di.modules.TwitterModule
 import ar.com.wolox.android.cookbook.common.di.room.PersistenceModule
 import ar.com.wolox.android.cookbook.common.di.room.ServiceModule

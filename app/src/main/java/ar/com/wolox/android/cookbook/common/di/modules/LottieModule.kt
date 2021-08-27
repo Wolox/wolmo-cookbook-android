@@ -1,4 +1,4 @@
-package ar.com.wolox.android.cookbook.lottie.di
+package ar.com.wolox.android.cookbook.common.di.modules
 
 import ar.com.wolox.android.cookbook.lottie.LottieRecipeActivity
 import ar.com.wolox.android.cookbook.lottie.LottieRecipeFragment
