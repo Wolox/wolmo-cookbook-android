@@ -59,5 +59,7 @@ class LottieRecipeFragment : WolmoFragment<BasePresenter<Any>>(), LottieRecipeVi
     companion object {
         const val POSITION_ZERO = 0
         const val ONE = 1
+
+        fun newInstance(): LottieRecipeFragment = LottieRecipeFragment()
     }
 }

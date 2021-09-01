@@ -7,5 +7,5 @@ class LottieRecipeActivity : WolmoActivity() {
 
     override fun layout(): Int = R.layout.activity_base
 
-    override fun init() = replaceFragment(R.id.vActivityBaseContent, LottieRecipeFragment())
+    override fun init() = replaceFragment(R.id.vActivityBaseContent, LottieRecipeFragment.newInstance())
 }
