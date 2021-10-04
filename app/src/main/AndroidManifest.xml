@@ -105,6 +105,8 @@
                 <data android:scheme="@string/facebook_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".fingerprint.FingerprintRecipeActivity" />
     </application>
 
 </manifest>

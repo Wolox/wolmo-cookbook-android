@@ -3,6 +3,8 @@ package ar.com.wolox.android.cookbook.common.di
 import ar.com.wolox.android.cookbook.WolmoTestActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeFragment
+import ar.com.wolox.android.cookbook.fingerprint.FingerprintRecipeActivity
+import ar.com.wolox.android.cookbook.fingerprint.FingerprintRecipeFragment
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeFragment
 import ar.com.wolox.android.cookbook.graphQl.OrdersActivity
@@ -41,4 +43,10 @@ abstract class AppModule {
 
     @ContributesAndroidInjector
     abstract fun graphQlFragment(): OrdersFragment
+
+    @ContributesAndroidInjector
+    abstract fun fingerprintRecipeActivity(): FingerprintRecipeActivity
+
+    @ContributesAndroidInjector
+    abstract fun fingerprintRecipeFragment(): FingerprintRecipeFragment
 }

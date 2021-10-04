@@ -21,6 +21,7 @@
     <string name="recipe_picker_coroutines">Coroutines</string>
     <string name="recipe_picker_firebase">Firebase Analytics</string>
     <string name="recipe_picker_mercadopago">MercadoPago</string>
+    <string name="recipe_picker_fingerprint">Login con huella dactilar</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
@@ -263,4 +264,13 @@
     <string name="mercadopago_empty_email_error">Please complete your email</string>
     <string name="mercadopago_invalid_email_error">Please complete a valid email</string>
 
+    <!-- Login with fingerprint -->
+    <string name="fingerprint_login_title">Login con huella dactilar</string>
+    <string name="fingerprint_login_username">Username</string>
+    <string name="fingerprint_login_password">Password</string>
+    <string name="fingerprint_login_button">Login</string>
+    <string name="fingerprint_prompt_title">Huella dactilar</string>
+    <string name="fingerprint_prompt_subtitle">Login</string>
+    <string name="fingerprint_prompt_description">Ingresá con tu huella dactilar</string>
+    <string name="fingerprint_prompt_dismiss">Ingresar con usuario y contraseña</string>
 </resources>

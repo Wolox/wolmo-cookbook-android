@@ -6,6 +6,7 @@ import ar.com.wolox.android.cookbook.analytics.AnalyticsRecipeActivity
 import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeActivity
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
+import ar.com.wolox.android.cookbook.fingerprint.FingerprintRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.graphQl.OrdersActivity
 import ar.com.wolox.android.cookbook.instagramlogin.InstagramLoginRecipeActivity
@@ -56,6 +57,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
                 Recipe.KOIN -> RecipeItem(it, R.drawable.bg_koin, R.string.recipe_picker_koin)
                 Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.bg_notification_recipe, R.string.recipe_picker_notifications)
                 Recipe.GRAPH_QL -> RecipeItem(it, R.drawable.bg_graph_ql, R.string.recipe_picker_graph_ql)
+                Recipe.BIOMETRIC_LOGIN -> RecipeItem(it, R.drawable.bg_fingerprint, R.string.recipe_picker_fingerprint)
             }
         }
     }
@@ -91,6 +93,8 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     override fun goToAnalyticsRecipe() = goTo(AnalyticsRecipeActivity::class.java)
 
     override fun goToMercadoPagoRecipe() = goTo(MercadoPagoRecipeActivity::class.java)
+
+    override fun goToFingerprintRecipe() = goTo(FingerprintRecipeActivity::class.java)
 
     companion object {
         fun newInstance() = RecipePickerFragment()

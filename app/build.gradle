@@ -236,6 +236,8 @@ dependencies {
     //Mercadopago
     implementation "com.mercadopago.android.px:checkout:$mercadopago_version"
 
+    // Biometrics
+    implementation "androidx.biometric:biometric:1.1.0"
 }
 
 dependencies {
