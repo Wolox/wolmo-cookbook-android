@@ -1,17 +1,25 @@
-package ar.com.wolox.android.cookbook.fingerprint
+package ar.com.wolox.android.cookbook.fingerprint.activation
 
 import android.content.Context
 import android.util.Base64
 import androidx.biometric.BiometricManager
 import ar.com.wolox.android.cookbook.R
-import ar.com.wolox.android.cookbook.fingerprint.interfaces.BiometryInfo
+import ar.com.wolox.android.cookbook.fingerprint.interfaces.BiometricEncryptInfo
+import ar.com.wolox.android.cookbook.fingerprint.success.FingerprintLoginSuccessActivity
 import ar.com.wolox.android.cookbook.fingerprint.utils.BiometricPromptUtils
 import ar.com.wolox.android.cookbook.fingerprint.utils.BiometricPromptUtils.authenticateToEncrypt
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
+import ar.com.wolox.wolmo.core.util.ToastFactory
+import ar.com.wolox.wolmo.core.util.jumpTo
 import com.facebook.AccessTokenManager.SHARED_PREFERENCES_NAME
-import kotlinx.android.synthetic.main.fragment_fingerprint_login.*
+import kotlinx.android.synthetic.main.fragment_fingerprint_activation.*
+import javax.inject.Inject
 
-class FingerprintRecipeFragment : WolmoFragment<FingerprintRecipePresenter>(), FingerprintRecipeView {
+class FingerprintActivationRecipeFragment : WolmoFragment<FingerprintActivationRecipePresenter>(),
+    FingerprintActivationRecipeView {
+
+    @Inject
+    internal lateinit var toastFactory: ToastFactory
 
     override fun init() {
         presenter.onInitFinished(
@@ -19,20 +27,23 @@ class FingerprintRecipeFragment : WolmoFragment<FingerprintRecipePresenter>(), F
         )
     }
 
-    override fun layout() = R.layout.fragment_fingerprint_login
+    override fun layout() = R.layout.fragment_fingerprint_activation
 
     override fun setListeners() {
-        vFingerprintLoginButton.setOnClickListener {
+        vFingerprintActivationLoginButton.setOnClickListener {
             presenter.onLoginButtonClicked(
-                vFingerprintUsername.text.toString(),
-                vFingerprintPassword.text.toString()
+                vFingerprintActivationUsername.text.toString(),
+                vFingerprintActivationPassword.text.toString()
             )
         }
     }
 
-    override fun showActivateFingerprintDialog() {
-        val biometricInfo = object : BiometryInfo {
+    override fun showEmptyFieldsError() {
+        toastFactory.show("Empty fields")
+    }
 
+    override fun showActivateFingerprintDialog() {
+        val biometricInfo = object : BiometricEncryptInfo {
             override fun getUserName(): String {
                 return presenter.loginRequest.username
             }
@@ -48,29 +59,25 @@ class FingerprintRecipeFragment : WolmoFragment<FingerprintRecipePresenter>(), F
                 ).apply()
             }
 
-            override fun getInitializationVector(): ByteArray {
-                return ByteArray(0)
-            }
-
             override fun setCipherText(cipherText: ByteArray) {
                 requireContext().getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).edit().putString(
                     KEY_BIOMETRIC_CIPHER_TEXT,
                     Base64.encodeToString(cipherText, Base64.DEFAULT)
                 ).apply()
             }
-
-            override fun getCipherText(): ByteArray {
-                return ByteArray(0)
-            }
         }
-        val biometricPrompt = BiometricPromptUtils.createBiometricPrompt(this, biometricInfo)
-        val promptInfo = BiometricPromptUtils.createPromptInfo(requireActivity() as FingerprintRecipeActivity)
+        val biometricPrompt = BiometricPromptUtils.createBiometricPrompt(this, biometricInfo, presenter)
+        val promptInfo = BiometricPromptUtils.createPromptInfo(requireActivity() as FingerprintActivationRecipeActivity)
         biometricPrompt.let { it.authenticateToEncrypt(it, promptInfo) }
+    }
+
+    override fun goToSuccessScreen() {
+        requireContext().jumpTo(FingerprintLoginSuccessActivity::class.java)
     }
 
     companion object {
         private const val KEY_BIOMETRIC_INITIALIZATION_VECTOR = "BIOMETRIC_INITIALIZATION_VECTOR"
         private const val KEY_BIOMETRIC_CIPHER_TEXT = "BIOMETRIC_CIPHER_TEXT"
-        fun newInstance() = FingerprintRecipeFragment()
+        fun newInstance() = FingerprintActivationRecipeFragment()
     }
 }

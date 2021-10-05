@@ -3,8 +3,12 @@ package ar.com.wolox.android.cookbook.common.di
 import ar.com.wolox.android.cookbook.WolmoTestActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeFragment
-import ar.com.wolox.android.cookbook.fingerprint.FingerprintRecipeActivity
-import ar.com.wolox.android.cookbook.fingerprint.FingerprintRecipeFragment
+import ar.com.wolox.android.cookbook.fingerprint.activation.FingerprintActivationRecipeActivity
+import ar.com.wolox.android.cookbook.fingerprint.activation.FingerprintActivationRecipeFragment
+import ar.com.wolox.android.cookbook.fingerprint.login.FingerprintLoginRecipeActivity
+import ar.com.wolox.android.cookbook.fingerprint.login.FingerprintLoginRecipeFragment
+import ar.com.wolox.android.cookbook.fingerprint.success.FingerprintLoginSuccessActivity
+import ar.com.wolox.android.cookbook.fingerprint.success.FingerprintLoginSuccessFragment
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeFragment
 import ar.com.wolox.android.cookbook.graphQl.OrdersActivity
@@ -45,8 +49,20 @@ abstract class AppModule {
     abstract fun graphQlFragment(): OrdersFragment
 
     @ContributesAndroidInjector
-    abstract fun fingerprintRecipeActivity(): FingerprintRecipeActivity
+    abstract fun fingerprintActivationRecipeActivity(): FingerprintActivationRecipeActivity
 
     @ContributesAndroidInjector
-    abstract fun fingerprintRecipeFragment(): FingerprintRecipeFragment
+    abstract fun fingerprintActivationRecipeFragment(): FingerprintActivationRecipeFragment
+
+    @ContributesAndroidInjector
+    abstract fun fingerprintLoginRecipeActivity(): FingerprintLoginRecipeActivity
+
+    @ContributesAndroidInjector
+    abstract fun fingerprintLoginRecipeFragment(): FingerprintLoginRecipeFragment
+
+    @ContributesAndroidInjector
+    abstract fun fingerprintLoginSuccessActivity(): FingerprintLoginSuccessActivity
+
+    @ContributesAndroidInjector
+    abstract fun fingerprintLoginSuccessFragment(): FingerprintLoginSuccessFragment
 }

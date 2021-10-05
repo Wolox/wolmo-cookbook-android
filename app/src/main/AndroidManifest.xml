@@ -106,7 +106,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".fingerprint.FingerprintRecipeActivity" />
+        <activity android:name=".fingerprint.activation.FingerprintActivationRecipeActivity" />
+
+        <activity android:name=".fingerprint.login.FingerprintLoginRecipeActivity" />
+
+        <activity android:name=".fingerprint.success.FingerprintLoginSuccessActivity" />
     </application>
 
 </manifest>
