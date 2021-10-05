@@ -45,7 +45,12 @@ class FingerprintActivationRecipeFragment : WolmoFragment<FingerprintActivationR
     override fun showActivateFingerprintDialog() {
         val biometricInfo = object : BiometricEncryptInfo {
             override fun getUserName(): String {
-                return presenter.loginRequest.username
+                val username = presenter.loginRequest.username
+                requireContext().getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).edit().putString(
+                    KEY_USERNAME,
+                    username
+                ).apply()
+                return username
             }
 
             override fun getTextToEncrypt(): String {
@@ -72,12 +77,18 @@ class FingerprintActivationRecipeFragment : WolmoFragment<FingerprintActivationR
     }
 
     override fun goToSuccessScreen() {
+        requireContext().getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).edit().putBoolean(
+            KEY_BIOMETRIC_ACTIVE,
+            true
+        ).apply()
         requireContext().jumpTo(FingerprintLoginSuccessActivity::class.java)
     }
 
     companion object {
-        private const val KEY_BIOMETRIC_INITIALIZATION_VECTOR = "BIOMETRIC_INITIALIZATION_VECTOR"
-        private const val KEY_BIOMETRIC_CIPHER_TEXT = "BIOMETRIC_CIPHER_TEXT"
+        const val KEY_USERNAME = "USERNAME"
+        const val KEY_BIOMETRIC_ACTIVE = "BIOMETRIC_ACTIVE"
+        const val KEY_BIOMETRIC_INITIALIZATION_VECTOR = "BIOMETRIC_INITIALIZATION_VECTOR"
+        const val KEY_BIOMETRIC_CIPHER_TEXT = "BIOMETRIC_CIPHER_TEXT"
         fun newInstance() = FingerprintActivationRecipeFragment()
     }
 }

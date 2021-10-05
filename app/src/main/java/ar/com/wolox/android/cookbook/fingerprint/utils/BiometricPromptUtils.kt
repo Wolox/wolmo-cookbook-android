@@ -13,7 +13,7 @@ import ar.com.wolox.android.cookbook.fingerprint.listener.FingerprintLoginListen
 
 object BiometricPromptUtils {
     private const val TAG: String = "BiometricPromptUtils"
-    private var secretKeyName: String = "secretKeyName123"
+    private var secretKeyName: String = "key"
     private var readyToEncrypt: Boolean = false
 
     fun createBiometricPrompt(
@@ -80,7 +80,6 @@ object BiometricPromptUtils {
         listener: FingerprintLoginListener
     ) {
         var pass: String
-        listener.onFingerprintLoginSuccess(biometricInfo)
         result.cryptoObject?.let {
             if (readyToEncrypt) {
                 val encryptInfo = biometricInfo as BiometricEncryptInfo
@@ -96,6 +95,9 @@ object BiometricPromptUtils {
                 pass = CryptographyManager().decryptData(decryptInfo.getCipherText(), it.cipher!!)
                 decryptInfo.setDecryptedText(pass)
             }
+            Log.e("asd", biometricInfo.getTextToEncrypt())
+            Log.e("asd", biometricInfo.getUserName())
+            listener.onFingerprintLoginSuccess(biometricInfo)
         }
     }
 }

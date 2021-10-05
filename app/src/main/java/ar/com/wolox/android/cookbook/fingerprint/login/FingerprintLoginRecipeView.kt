@@ -4,4 +4,5 @@ interface FingerprintLoginRecipeView {
     fun showEmptyFieldsError()
     fun goToFingerprintActivationScreen()
     fun goToSuccessScreen()
+    fun showFingerprintLoginDialog()
 }
