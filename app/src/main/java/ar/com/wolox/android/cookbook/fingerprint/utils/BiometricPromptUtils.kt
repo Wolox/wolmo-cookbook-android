@@ -27,19 +27,18 @@ object BiometricPromptUtils {
         val callback = object : BiometricPrompt.AuthenticationCallback() {
 
             override fun onAuthenticationError(errCode: Int, errString: CharSequence) {
-                super.onAuthenticationError(errCode, errString)
-                Log.d(TAG, "errCode is $errCode and errString is: $errString")
+                if (errCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+                    listener.onFingerprintLoginCancellation()
+                }
             }
 
             override fun onAuthenticationFailed() {
                 super.onAuthenticationFailed()
-                Log.d(TAG, "User biometric rejected")
             }
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)
-                Log.d(TAG, "Authentication was successful")
-                processSuccess(result, biometricInfo, listener)
+                onBiometricLoginSuccess(result, biometricInfo, listener)
             }
         }
         return BiometricPrompt(fragment, executor, callback)
@@ -49,7 +48,6 @@ object BiometricPromptUtils {
         BiometricPrompt.PromptInfo.Builder().apply {
             setTitle(activity.getString(R.string.fingerprint_prompt_title))
             setSubtitle(activity.getString(R.string.fingerprint_prompt_subtitle))
-            setDescription(activity.getString(R.string.fingerprint_prompt_description))
             setConfirmationRequired(false)
             setNegativeButtonText(activity.getString(R.string.fingerprint_prompt_dismiss))
         }.build()
@@ -74,30 +72,31 @@ object BiometricPromptUtils {
         biometricPrompt.authenticate(promptInfo, BiometricPrompt.CryptoObject(cipher))
     }
 
-    private fun processSuccess(
+    private fun onBiometricLoginSuccess(
         result: BiometricPrompt.AuthenticationResult,
         biometricInfo: BiometryInfo,
         listener: FingerprintLoginListener
     ) {
         var pass: String
         result.cryptoObject?.let {
+            val biometryInfo: BiometryInfo
             if (readyToEncrypt) {
-                val encryptInfo = biometricInfo as BiometricEncryptInfo
+                biometryInfo = biometricInfo as BiometricEncryptInfo
                 val text = biometricInfo.getTextToEncrypt()
                 val encryptedData = CryptographyManager().encryptData(text, it.cipher!!)
                 val cipherText = encryptedData.ciphertext
                 val initializationVector = encryptedData.initializationVector
-                encryptInfo.setCipherText(cipherText)
-                encryptInfo.setInitializationVector(initializationVector)
+                biometryInfo.setCipherText(cipherText)
+                biometryInfo.setInitializationVector(initializationVector)
                 pass = String(cipherText, Charsets.UTF_8)
             } else {
-                val decryptInfo = biometricInfo as BiometricDecryptInfo
-                pass = CryptographyManager().decryptData(decryptInfo.getCipherText(), it.cipher!!)
-                decryptInfo.setDecryptedText(pass)
+                biometryInfo = biometricInfo as BiometricDecryptInfo
+                pass = CryptographyManager().decryptData(biometryInfo.getCipherText(), it.cipher!!)
+                biometryInfo.setDecryptedText(pass)
             }
-            Log.e("asd", biometricInfo.getTextToEncrypt())
-            Log.e("asd", biometricInfo.getUserName())
-            listener.onFingerprintLoginSuccess(biometricInfo)
+            Log.e("asd", biometryInfo.getUserName())
+            Log.e("pasd", biometryInfo.getTextToEncrypt())
+            listener.onFingerprintLoginSuccess(biometryInfo)
         }
     }
 }

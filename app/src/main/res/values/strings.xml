@@ -265,14 +265,18 @@
     <string name="mercadopago_invalid_email_error">Please complete a valid email</string>
 
     <!-- Login with fingerprint -->
-    <string name="fingerprint_login_title">Login</string>
+    <string name="fingerprint_login_title">Wolmo Login</string>
     <string name="fingerprint_login_username">Username</string>
     <string name="fingerprint_login_password">Password</string>
     <string name="fingerprint_login_button">Login</string>
-    <string name="fingerprint_prompt_title">Fingerprint</string>
-    <string name="fingerprint_prompt_subtitle">Login</string>
-    <string name="fingerprint_prompt_description">Ingresá con tu huella dactilar</string>
-    <string name="fingerprint_prompt_dismiss">Ingresar con usuario y contraseña</string>
+    <string name="fingerprint_prompt_title">Wolmo</string>
+    <string name="fingerprint_prompt_subtitle">Login with fingerprint</string>
+    <string name="fingerprint_prompt_dismiss">Cancel</string>
     <string name="activate_fingerprint">Activate fingerprint</string>
     <string name="fingerprint_activation_title">Fingerprint activation</string>
+    <string name="fingerprint_go_back">Take me back!</string>
+    <string name="fingerprint_login_empty_fields">Empty fields</string>
+    <string name="fingerprint_login_lockout">Fingerprint lockout</string>
+    <string name="fingerprint_login_cancellation">Fingerprint login cancelled</string>
+    <string name="fingerprint_activated_successfully">Your fingerprint was activated successfully!</string>
 </resources>

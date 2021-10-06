@@ -15,6 +15,7 @@ class FingerprintLoginRecipePresenter @Inject constructor() : BasePresenter<Fing
         if (isBiometricActive) {
             view?.showFingerprintLoginDialog()
         }
+        view?.toggleFingerprintLogin(isBiometricActive)
     }
 
     fun onLoginButtonClicked(username: String, password: String) {
@@ -34,10 +35,10 @@ class FingerprintLoginRecipePresenter @Inject constructor() : BasePresenter<Fing
     }
 
     override fun onFingerprintLoginCancellation() {
-        //
+        view?.showFingerprintCancellationMessage()
     }
 
     override fun onFingerprintLoginFailure() {
-        //
+        view?.showFingerprintLockoutError()
     }
 }

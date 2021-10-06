@@ -4,19 +4,22 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/vSuccessText"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/vSuccessImage"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Success!"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:src="@drawable/ic_android_cook"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/vBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go back!"
-        app:layout_constraintTop_toBottomOf="@id/vSuccessText"
+        android:text="@string/fingerprint_go_back"
+        android:layout_marginTop="@dimen/spacing_huge"
+        app:layout_constraintTop_toBottomOf="@id/vSuccessImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 

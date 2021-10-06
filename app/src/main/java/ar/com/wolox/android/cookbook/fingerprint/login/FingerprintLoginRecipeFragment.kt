@@ -2,11 +2,14 @@ package ar.com.wolox.android.cookbook.fingerprint.login
 
 import android.content.Context
 import android.util.Base64
+import android.util.Log
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.common.utils.togglePresence
 import ar.com.wolox.android.cookbook.fingerprint.activation.FingerprintActivationRecipeActivity
 import ar.com.wolox.android.cookbook.fingerprint.activation.FingerprintActivationRecipeFragment
 import ar.com.wolox.android.cookbook.fingerprint.activation.FingerprintActivationRecipeFragment.Companion.KEY_BIOMETRIC_CIPHER_TEXT
 import ar.com.wolox.android.cookbook.fingerprint.activation.FingerprintActivationRecipeFragment.Companion.KEY_BIOMETRIC_INITIALIZATION_VECTOR
+import ar.com.wolox.android.cookbook.fingerprint.activation.FingerprintActivationRecipeFragment.Companion.KEY_USERNAME
 import ar.com.wolox.android.cookbook.fingerprint.interfaces.BiometricDecryptInfo
 import ar.com.wolox.android.cookbook.fingerprint.success.FingerprintLoginSuccessActivity
 import ar.com.wolox.android.cookbook.fingerprint.utils.BiometricPromptUtils
@@ -44,7 +47,11 @@ class FingerprintLoginRecipeFragment : WolmoFragment<FingerprintLoginRecipePrese
     }
 
     override fun showEmptyFieldsError() {
-        toastFactory.show("Empty fields")
+        toastFactory.show(getString(R.string.fingerprint_login_empty_fields))
+    }
+
+    override fun toggleFingerprintLogin(isActive: Boolean) {
+        vFingerprintActivateButton.togglePresence(!isActive)
     }
 
     override fun goToFingerprintActivationScreen() {
@@ -65,26 +72,38 @@ class FingerprintLoginRecipeFragment : WolmoFragment<FingerprintLoginRecipePrese
 
             override fun getInitializationVector(): ByteArray {
                 return Base64.decode(
-                    requireContext().getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).getString(KEY_BIOMETRIC_INITIALIZATION_VECTOR, String())!!.toByteArray(),
-                    Base64.DEFAULT)
+                    requireContext().getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).getString(
+                        KEY_BIOMETRIC_INITIALIZATION_VECTOR, String())!!.toByteArray(),
+                        Base64.DEFAULT)
             }
 
             override fun getCipherText(): ByteArray {
                 return Base64.decode(
-                    requireContext().getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).getString(KEY_BIOMETRIC_CIPHER_TEXT, String())!!.toByteArray(),
-                    Base64.DEFAULT)
+                    requireContext().getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).getString(
+                        KEY_BIOMETRIC_CIPHER_TEXT, String())!!.toByteArray(),
+                        Base64.DEFAULT)
             }
 
             override fun getUserName(): String {
                 return requireContext().getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).getString(
-                    FingerprintActivationRecipeFragment.KEY_USERNAME, String())!!
+                    KEY_USERNAME, String())!!
             }
 
             override fun getTextToEncrypt() = pass
         }
+        Log.e("pass", biometricInfo.getTextToEncrypt())
+        Log.e("user", biometricInfo.getUserName())
         val biometricPrompt = BiometricPromptUtils.createBiometricPrompt(this, biometricInfo, presenter)
         val promptInfo = BiometricPromptUtils.createPromptInfo(requireActivity() as FingerprintLoginRecipeActivity)
         biometricPrompt.let { it.authenticateToDecrypt(it, promptInfo, biometricInfo.getInitializationVector()) }
+    }
+
+    override fun showFingerprintCancellationMessage() {
+        toastFactory.show(getString(R.string.fingerprint_login_cancellation))
+    }
+
+    override fun showFingerprintLockoutError() {
+        toastFactory.show(getString(R.string.fingerprint_login_lockout))
     }
 
     companion object {
