@@ -105,4 +105,8 @@
 
     <!-- Mercado Pago -->
 	<dimen name="mercado_item_total_width">100dp</dimen>
+
+    <!-- Lottie -->
+    <dimen name="margin_horizontal_animation">32dp</dimen>
+    <dimen name="margin_arrows">20dp</dimen>
 </resources>
