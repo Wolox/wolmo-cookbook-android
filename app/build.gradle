@@ -145,6 +145,7 @@ buildscript {
     ext.firebase_version = '17.2.3'
     ext.crashlytics_version = '2.10.1'
     ext.mercadopago_version = '4.40.1'
+    ext.biometrics_version = '1.1.0'
 }
 
 dependencies {
@@ -237,7 +238,7 @@ dependencies {
     implementation "com.mercadopago.android.px:checkout:$mercadopago_version"
 
     // Biometrics
-    implementation "androidx.biometric:biometric:1.1.0"
+    implementation "androidx.biometric:biometric:$biometrics_version"
 }
 
 dependencies {

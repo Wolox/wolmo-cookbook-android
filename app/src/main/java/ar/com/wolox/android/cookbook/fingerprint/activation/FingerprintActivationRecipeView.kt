@@ -4,4 +4,7 @@ interface FingerprintActivationRecipeView {
     fun showEmptyFieldsError()
     fun showActivateFingerprintDialog()
     fun goToSuccessScreen()
+    fun showFingerprintCancellationMessage()
+    fun showFingerprintLockoutError()
+    fun showNoBiometricActiveToast()
 }

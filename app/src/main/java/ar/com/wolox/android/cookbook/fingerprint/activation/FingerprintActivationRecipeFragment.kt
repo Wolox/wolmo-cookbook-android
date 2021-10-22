@@ -39,7 +39,7 @@ class FingerprintActivationRecipeFragment : WolmoFragment<FingerprintActivationR
     }
 
     override fun showEmptyFieldsError() {
-        toastFactory.show("Empty fields")
+        toastFactory.show(getString(R.string.fingerprint_login_empty_fields))
     }
 
     override fun showActivateFingerprintDialog() {
@@ -82,6 +82,18 @@ class FingerprintActivationRecipeFragment : WolmoFragment<FingerprintActivationR
             true
         ).apply()
         requireContext().jumpTo(FingerprintLoginSuccessActivity::class.java)
+    }
+
+    override fun showFingerprintCancellationMessage() {
+        toastFactory.show(getString(R.string.fingerprint_login_cancellation))
+    }
+
+    override fun showFingerprintLockoutError() {
+        toastFactory.show(getString(R.string.fingerprint_login_lockout))
+    }
+
+    override fun showNoBiometricActiveToast() {
+        toastFactory.show(getString(R.string.no_biometrics_active))
     }
 
     companion object {

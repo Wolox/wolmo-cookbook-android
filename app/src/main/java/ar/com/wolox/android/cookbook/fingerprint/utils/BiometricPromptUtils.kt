@@ -1,6 +1,5 @@
 package ar.com.wolox.android.cookbook.fingerprint.utils
 
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
@@ -94,8 +93,6 @@ object BiometricPromptUtils {
                 pass = CryptographyManager().decryptData(biometryInfo.getCipherText(), it.cipher!!)
                 biometryInfo.setDecryptedText(pass)
             }
-            Log.e("asd", biometryInfo.getUserName())
-            Log.e("pasd", biometryInfo.getTextToEncrypt())
             listener.onFingerprintLoginSuccess(biometryInfo)
         }
     }

@@ -2,7 +2,6 @@ package ar.com.wolox.android.cookbook.fingerprint.login
 
 import android.content.Context
 import android.util.Base64
-import android.util.Log
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.common.utils.togglePresence
 import ar.com.wolox.android.cookbook.fingerprint.activation.FingerprintActivationRecipeActivity
@@ -19,7 +18,6 @@ import ar.com.wolox.wolmo.core.util.ToastFactory
 import ar.com.wolox.wolmo.core.util.jumpTo
 import com.facebook.AccessTokenManager.SHARED_PREFERENCES_NAME
 import kotlinx.android.synthetic.main.fragment_fingerprint_login.*
-import kotlinx.android.synthetic.main.fragment_google_login.*
 import javax.inject.Inject
 
 class FingerprintLoginRecipeFragment : WolmoFragment<FingerprintLoginRecipePresenter>(), FingerprintLoginRecipeView {
@@ -85,14 +83,14 @@ class FingerprintLoginRecipeFragment : WolmoFragment<FingerprintLoginRecipePrese
             }
 
             override fun getUserName(): String {
-                return requireContext().getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).getString(
+                val user = requireContext().getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE).getString(
                     KEY_USERNAME, String())!!
+                presenter.loginRequest?.username = user
+                return user
             }
 
             override fun getTextToEncrypt() = pass
         }
-        Log.e("pass", biometricInfo.getTextToEncrypt())
-        Log.e("user", biometricInfo.getUserName())
         val biometricPrompt = BiometricPromptUtils.createBiometricPrompt(this, biometricInfo, presenter)
         val promptInfo = BiometricPromptUtils.createPromptInfo(requireActivity() as FingerprintLoginRecipeActivity)
         biometricPrompt.let { it.authenticateToDecrypt(it, promptInfo, biometricInfo.getInitializationVector()) }

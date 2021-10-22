@@ -22,6 +22,8 @@ class FingerprintActivationRecipePresenter @Inject constructor() : BasePresenter
             biometricManager?.let {
                 if (it.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK) == BiometricManager.BIOMETRIC_SUCCESS) {
                     view?.showActivateFingerprintDialog()
+                } else {
+                    view?.showNoBiometricActiveToast()
                 }
             }
         } else {
@@ -30,14 +32,16 @@ class FingerprintActivationRecipePresenter @Inject constructor() : BasePresenter
     }
 
     override fun onFingerprintLoginSuccess(biometryInfo: BiometryInfo) {
+        loginRequest.username = biometryInfo.getUserName()
+        loginRequest.password = biometryInfo.getTextToEncrypt()
         view?.goToSuccessScreen()
     }
 
     override fun onFingerprintLoginCancellation() {
-        //
+        view?.showFingerprintCancellationMessage()
     }
 
     override fun onFingerprintLoginFailure() {
-        //
+        view?.showFingerprintLockoutError()
     }
 }
