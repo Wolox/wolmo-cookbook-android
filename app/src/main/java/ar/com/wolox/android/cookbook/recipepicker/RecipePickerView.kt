@@ -35,6 +35,6 @@ interface RecipePickerView {
     fun goToMercadoPagoRecipe()
 
     fun goToFingerprintRecipe()
-    
+
     fun goToLottieRecipe()
 }

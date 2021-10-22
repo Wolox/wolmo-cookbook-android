@@ -32,8 +32,10 @@ class FingerprintActivationRecipePresenter @Inject constructor() : BasePresenter
     }
 
     override fun onFingerprintLoginSuccess(biometryInfo: BiometryInfo) {
-        loginRequest.username = biometryInfo.getUserName()
-        loginRequest.password = biometryInfo.getTextToEncrypt()
+        loginRequest.apply {
+            username = biometryInfo.getUserName()
+            password = biometryInfo.getTextToEncrypt()
+        }
         view?.goToSuccessScreen()
     }
 

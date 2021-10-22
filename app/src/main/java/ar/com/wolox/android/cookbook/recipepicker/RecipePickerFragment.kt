@@ -97,7 +97,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     override fun goToMercadoPagoRecipe() = goTo(MercadoPagoRecipeActivity::class.java)
 
     override fun goToFingerprintRecipe() = goTo(FingerprintLoginRecipeActivity::class.java)
-    
+
     override fun goToLottieRecipe() = goTo(LottieRecipeActivity::class.java)
 
     companion object {
