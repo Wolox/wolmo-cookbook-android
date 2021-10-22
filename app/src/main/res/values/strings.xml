@@ -22,6 +22,7 @@
     <string name="recipe_picker_firebase">Firebase Analytics</string>
     <string name="recipe_picker_mercadopago">MercadoPago</string>
     <string name="recipe_picker_fingerprint">Login con huella dactilar</string>
+    <string name="recipe_picker_lottie">Lottie</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>
@@ -240,7 +241,7 @@
     <string name="analytics_show_my_age_title">Show my age</string>
     <string name="analytics_lorem_ipsum_title">Lorem Ipsum</string>
     <string name="analytics_help">I need help!</string>
-    <string name="analytics_age">The age of %s is %d</string>
+    <string name="analytics_age">The age of %1$s is %2$d</string>
     <string name="analytics_empty_email_error">The email input is empty</string>
     <string name="analytics_empty_password_error">The password input is empty</string>
     <string name="analytics_invalid_user_error">The user is invalid. Check the email or the password.</string>
@@ -252,13 +253,13 @@
     <!-- MercadoPago -->
     <string name="mercadopago_cancel_message">Process have been canceled</string>
     <string name="mercadopago_error_message">Error: %s</string>
-    <string name="mercadopago_payment_message">Payment success!\nStatus: %s\nCode: %s</string>
+    <string name="mercadopago_payment_message">Payment success!\nStatus: %1$s\nCode: %2$s</string>
     <string name="mercadopago_pay_label">You\'re buying all these items:</string>
     <string name="mercadopago_pay_button">Let\'s pay!</string>
     <string name="mercadopago_name_hint">Name</string>
-    <string name="mercadopago_item_total">\$%.2f x %d</string>
+    <string name="mercadopago_item_total">\$%1$.2f x %2$d</string>
     <string name="mercadopago_total_text">Total</string>
-    <string name="mercadopago_total_number">\$%.2f</string>
+    <string name="mercadopago_total_number">\$%1$.2f</string>
     <string name="mercadopago_email_hint">Email</string>
     <string name="mercadopago_empty_name_error">Please complete your name</string>
     <string name="mercadopago_empty_email_error">Please complete your email</string>

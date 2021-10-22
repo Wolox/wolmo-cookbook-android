@@ -111,6 +111,8 @@
         <activity android:name=".fingerprint.login.FingerprintLoginRecipeActivity" />
 
         <activity android:name=".fingerprint.success.FingerprintLoginSuccessActivity" />
+        
+        <activity android:name=".lottie.LottieRecipeActivity" />
     </application>
 
 </manifest>

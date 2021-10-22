@@ -13,6 +13,7 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
 
     fun onRecipeClicked(clickedRecipe: Recipe) {
         when (clickedRecipe) {
+            Recipe.LOTTIE -> view?.goToLottieRecipe()
             Recipe.MERCADOPAGO -> view?.goToMercadoPagoRecipe()
             Recipe.ANALYTICS -> view?.goToAnalyticsRecipe()
             Recipe.GOOGLE_LOGIN -> view?.goToGoogleLogin()
