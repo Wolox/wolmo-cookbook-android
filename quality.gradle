@@ -1,5 +1,4 @@
 apply plugin: 'checkstyle'
-apply plugin: 'com.chaitanyapramod.findbugs-android'
 
 configurations {
     ktlint
@@ -11,14 +10,6 @@ buildscript {
 
 dependencies {
     ktlint "com.github.shyiko:ktlint:$ktlint_version"
-}
-
-findbugs {
-    toolVersion '3.0.1'
-    ignoreFailures false
-    effort 'max'
-    reportLevel 'high'
-    reportsDir = file("$project.buildDir/reports")
 }
 
 task checkstyle(type: Checkstyle) {
@@ -65,4 +56,4 @@ task ktlintFormat(type: JavaExec) {
 
 preBuild.dependsOn 'checkstyle', 'ktlintFormat'
 
-check.dependsOn 'checkstyle', 'findbugsProductionRelease', 'ktlintFormat', 'ktlint'
+check.dependsOn 'checkstyle', 'ktlintFormat', 'ktlint'

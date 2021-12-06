@@ -9,6 +9,7 @@ import android.os.Looper
 import androidx.core.content.ContextCompat
 import android.view.View
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.FragmentPokemonDetailBinding
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import com.facebook.common.references.CloseableReference
 import com.facebook.datasource.RetainingDataSourceSupplier
@@ -25,7 +26,8 @@ import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonDetailType
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.vPokemonDetailTypeContainer
 import java.util.LinkedList
 
-class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDetailView {
+class PokemonDetailFragment : WolmoFragment<FragmentPokemonDetailBinding, PokemonDetailPresenter>(),
+    PokemonDetailView {
 
     private lateinit var retainingSupplier: RetainingDataSourceSupplier<CloseableReference<CloseableImage>>
     private val spriteRouletteHandler = Handler(Looper.getMainLooper())
@@ -46,22 +48,26 @@ class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDe
     override fun setListeners() {
         vPokemonDetailSearchButton.setOnClickListener {
             requireFragmentManager().beginTransaction()
-                    .addToBackStack(null)
-                    .setCustomAnimations(
-                            R.anim.slide_in_right, R.anim.slide_out_left,
-                            R.anim.slide_in_left, R.anim.slide_out_right)
-                    .add(R.id.vActivityBaseContent, PokemonSearchFragment.newInstance())
-                    .hide(this)
-                    .commit()
+                .addToBackStack(null)
+                .setCustomAnimations(
+                    R.anim.slide_in_right, R.anim.slide_out_left,
+                    R.anim.slide_in_left, R.anim.slide_out_right
+                )
+                .add(R.id.vActivityBaseContent, PokemonSearchFragment.newInstance())
+                .hide(this)
+                .commit()
         }
     }
 
     override fun showNoPokemon() {
         vPokemonDetailImageView.controller = Fresco.newDraweeControllerBuilder()
-                .setLowResImageRequest(ImageRequestBuilder.newBuilderWithResourceId(R.drawable.bg_pokemon_roulette).build())
-                .setAutoPlayAnimations(true)
-                .build()
-        vPokemonDetailImageView.hierarchy.roundingParams = RoundingParams.fromCornersRadius(resources.getDimension(R.dimen.spacing_large))
+            .setLowResImageRequest(
+                ImageRequestBuilder.newBuilderWithResourceId(R.drawable.bg_pokemon_roulette).build()
+            )
+            .setAutoPlayAnimations(true)
+            .build()
+        vPokemonDetailImageView.hierarchy.roundingParams =
+            RoundingParams.fromCornersRadius(resources.getDimension(R.dimen.spacing_large))
                 .setRoundingMethod(RoundingParams.RoundingMethod.OVERLAY_COLOR)
                 .setOverlayColor(ContextCompat.getColor(requireContext(), android.R.color.white))
 
@@ -73,8 +79,8 @@ class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDe
 
     override fun showPokemonDetail(pokemon: Pokemon) {
         vPokemonDetailImageView.controller = Fresco.newDraweeControllerBuilder()
-                .setDataSourceSupplier(retainingSupplier)
-                .build()
+            .setDataSourceSupplier(retainingSupplier)
+            .build()
         vPokemonDetailImageView.hierarchy.roundingParams = null
         vPokemonDetailName.text = pokemon.name.capitalize()
         vPokemonDetailType1.text = pokemon.firstType.name.capitalize()
@@ -96,18 +102,21 @@ class PokemonDetailFragment : WolmoFragment<PokemonDetailPresenter>(), PokemonDe
     }
 
     private fun generateSpriteRouletteTask(pokemon: Pokemon): Runnable =
-            object : Runnable {
-                var spritesUrls = LinkedList<String>()
-                override fun run() {
-                    if (spritesUrls.isEmpty()) spritesUrls.addAll(pokemon.spriteUrls.shuffled())
+        object : Runnable {
+            var spritesUrls = LinkedList<String>()
+            override fun run() {
+                if (spritesUrls.isEmpty()) spritesUrls.addAll(pokemon.spriteUrls.shuffled())
 
-                    retainingSupplier.replaceSupplier(Fresco.getImagePipeline().getDataSourceSupplier(
-                            ImageRequest.fromUri(spritesUrls.pop()),
-                            null,
-                            ImageRequest.RequestLevel.FULL_FETCH))
-                    spriteRouletteHandler.postDelayed(this, 1000L)
-                }
+                retainingSupplier.replaceSupplier(
+                    Fresco.getImagePipeline().getDataSourceSupplier(
+                        ImageRequest.fromUri(spritesUrls.pop()),
+                        null,
+                        ImageRequest.RequestLevel.FULL_FETCH
+                    )
+                )
+                spriteRouletteHandler.postDelayed(this, 1000L)
             }
+        }
 
     companion object {
         fun newInstance() = PokemonDetailFragment()

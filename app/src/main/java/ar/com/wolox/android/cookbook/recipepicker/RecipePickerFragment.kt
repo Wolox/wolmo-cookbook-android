@@ -4,6 +4,7 @@ import android.content.Intent
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRecipeActivity
 import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeActivity
+import ar.com.wolox.android.cookbook.databinding.FragmentRecipePickerBinding
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.fingerprint.login.FingerprintLoginRecipeActivity
@@ -22,15 +23,14 @@ import ar.com.wolox.android.cookbook.twitterlogin.TwitterLoginRecipeActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_recipe_picker.*
 
-class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePickerView {
+class RecipePickerFragment : WolmoFragment<FragmentRecipePickerBinding, RecipePickerPresenter>(), RecipePickerView {
 
     override fun layout() = R.layout.fragment_recipe_picker
 
     override fun init() {}
 
     override fun showRecipes(recipes: List<Recipe>) {
-
-        vRecipePickerSelectionViewPager.apply {
+        binding!!.vRecipePickerSelectionViewPager.apply {
             adapter = RecipeViewPager(mapRecipesToItems(recipes)) {
                 presenter.onRecipeClicked(it)
             }

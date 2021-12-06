@@ -8,6 +8,7 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.FragmentNotificationBinding
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.notifications.helper.NotificationFactory
@@ -19,10 +20,9 @@ import ar.com.wolox.android.cookbook.notifications.model.PictureExpandableNotifi
 import ar.com.wolox.android.cookbook.notifications.model.TextExpandableNotification
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
-import kotlinx.android.synthetic.main.fragment_notification.*
 import javax.inject.Inject
 
-class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
+class NotificationFragment : WolmoFragment<FragmentNotificationBinding, BasePresenter<Any>>() {
 
     private lateinit var generalChannelId: String
 
@@ -34,18 +34,20 @@ class NotificationFragment : WolmoFragment<BasePresenter<Any>>() {
     override fun init() {
         generalChannelId = getString(R.string.notifications_general_channel_id)
 
-        vSettingsChannel.visibility = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) View.VISIBLE else View.GONE
+        binding!!.vSettingsChannel.visibility = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) View.VISIBLE else View.GONE
     }
 
     override fun setListeners() {
-        vSimpleNotificationBtn.setOnClickListener { showBasicNotification() }
-        vExpandableTextNotificationBtn.setOnClickListener { showTextExpandableNotification() }
-        vBigPictureNotificationBtn.setOnClickListener { showPictureNotification() }
-        vActionsNotificationBtn.setOnClickListener { showBasicNotificationWithActions() }
-        vInboxNotificationBtn.setOnClickListener { showInboxNotification() }
+        with(binding!!) {
+            vSimpleNotificationBtn.setOnClickListener { showBasicNotification() }
+            vExpandableTextNotificationBtn.setOnClickListener { showTextExpandableNotification() }
+            vBigPictureNotificationBtn.setOnClickListener { showPictureNotification() }
+            vActionsNotificationBtn.setOnClickListener { showBasicNotificationWithActions() }
+            vInboxNotificationBtn.setOnClickListener { showInboxNotification() }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vSettingsChannel.setOnClickListener { openChannelSettings() }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vSettingsChannel.setOnClickListener { openChannelSettings() }
+            }
         }
     }
 

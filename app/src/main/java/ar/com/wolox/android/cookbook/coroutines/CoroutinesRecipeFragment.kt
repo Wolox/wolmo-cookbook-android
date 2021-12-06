@@ -7,13 +7,15 @@ import ar.com.wolox.android.cookbook.coroutines.examples.context.CoroutinesExamp
 import ar.com.wolox.android.cookbook.coroutines.examples.cooperativecancellation.CoroutinesExampleCooperativeCancellationFragment
 import ar.com.wolox.android.cookbook.coroutines.examples.scope.CoroutinesExampleScopeFragment
 import ar.com.wolox.android.cookbook.coroutines.football.FootballFragment
+import ar.com.wolox.android.cookbook.databinding.FragmentCoroutinesExampleBinding
 import ar.com.wolox.wolmo.core.adapter.viewpager.SimpleFragmentPagerAdapter
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import kotlinx.android.synthetic.main.fragment_coroutines_example.*
 import javax.inject.Inject
 
-class CoroutinesRecipeFragment : WolmoFragment<BasePresenter<Any>>() {
+class CoroutinesRecipeFragment :
+    WolmoFragment<FragmentCoroutinesExampleBinding, BasePresenter<Any>>() {
 
     @Inject
     internal lateinit var builders: CoroutinesExampleBuildersFragment
@@ -43,7 +45,8 @@ class CoroutinesRecipeFragment : WolmoFragment<BasePresenter<Any>>() {
                 scope to "",
                 cascadeCancellation to "",
                 cooperativeCancellation to "",
-                football to "")
+                football to ""
+            )
         }
     }
 

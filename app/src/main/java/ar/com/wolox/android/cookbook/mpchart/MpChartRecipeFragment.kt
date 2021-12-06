@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.view.View
 import android.widget.AdapterView
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.FragmentMpChartBinding
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import com.github.mikephil.charting.components.XAxis
@@ -21,7 +22,6 @@ import com.github.mikephil.charting.data.RadarData
 import com.github.mikephil.charting.data.ScatterData
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
-import kotlinx.android.synthetic.main.fragment_mp_chart.*
 import javax.inject.Inject
 
 /**
@@ -49,7 +49,7 @@ import javax.inject.Inject
  */
 class MpChartRecipeFragment @Inject constructor(
     val toastFactory: ToastFactory
-) : WolmoFragment<MpChartRecipePresenter>(), MpChartRecipeView {
+) : WolmoFragment<FragmentMpChartBinding, MpChartRecipePresenter>(), MpChartRecipeView {
 
     private lateinit var progressDialog: ProgressDialog
 
@@ -61,7 +61,7 @@ class MpChartRecipeFragment @Inject constructor(
     override fun setListeners() {
         super.setListeners()
 
-        vChartList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding!!.vChartList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 adapterView: AdapterView<*>?,
                 view: View?,
@@ -77,20 +77,21 @@ class MpChartRecipeFragment @Inject constructor(
     }
 
     override fun hideGraphs() {
-        vBarChart.visibility = View.GONE
-        vBubbleChart.visibility = View.GONE
-        vCombinedChart.visibility = View.GONE
-        vHorizontalBarChart.visibility = View.GONE
-        vLineChart.visibility = View.GONE
-        vPieChart.visibility = View.GONE
-        vRadarChart.visibility = View.GONE
-        vCandleStickChart.visibility = View.GONE
-        vScatterChart.visibility = View.GONE
+        with(binding!!) {
+            vBarChart.visibility = View.GONE
+            vBubbleChart.visibility = View.GONE
+            vCombinedChart.visibility = View.GONE
+            vHorizontalBarChart.visibility = View.GONE
+            vLineChart.visibility = View.GONE
+            vPieChart.visibility = View.GONE
+            vRadarChart.visibility = View.GONE
+            vCandleStickChart.visibility = View.GONE
+            vScatterChart.visibility = View.GONE
+        }
     }
 
     override fun showBarChart(barData: BarData) {
-
-        vBarChart.run {
+        binding!!.vBarChart.run {
             visibility = View.VISIBLE
             data = barData
             animateY(ANIMATION_DELAY)
@@ -104,7 +105,13 @@ class MpChartRecipeFragment @Inject constructor(
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    toastFactory.show(getString(R.string.mp_chart_item_bar, barEntry.y, barEntry.data))
+                    toastFactory.show(
+                        getString(
+                            R.string.mp_chart_item_bar,
+                            barEntry.y,
+                            barEntry.data
+                        )
+                    )
                 }
 
                 override fun onNothingSelected() {
@@ -133,7 +140,8 @@ class MpChartRecipeFragment @Inject constructor(
              */
             xAxis.run {
                 axisMinimum = 0f
-                axisMaximum = barData.xMax + (((barData.barWidth + BAR_SPACE) * barData.dataSetCount) + groupSpace)
+                axisMaximum =
+                    barData.xMax + (((barData.barWidth + BAR_SPACE) * barData.dataSetCount) + groupSpace)
                 position = XAxis.XAxisPosition.BOTTOM
                 setCenterAxisLabels(true)
             }
@@ -144,8 +152,7 @@ class MpChartRecipeFragment @Inject constructor(
     }
 
     override fun showBubbleChart(bubbleData: BubbleData) {
-
-        vBubbleChart.run {
+        binding!!.vBubbleChart.run {
             visibility = View.VISIBLE
             data = bubbleData
             isDragEnabled = true
@@ -161,8 +168,12 @@ class MpChartRecipeFragment @Inject constructor(
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    toastFactory.show(getString(R.string.mp_chart_item_bubble, bubbleEntry.x,
-                            bubbleEntry.y, bubbleEntry.size, bubbleEntry.data))
+                    toastFactory.show(
+                        getString(
+                            R.string.mp_chart_item_bubble, bubbleEntry.x,
+                            bubbleEntry.y, bubbleEntry.size, bubbleEntry.data
+                        )
+                    )
                 }
 
                 override fun onNothingSelected() {
@@ -172,7 +183,7 @@ class MpChartRecipeFragment @Inject constructor(
     }
 
     override fun showCombinedChart(combinedData: CombinedData) {
-        vCombinedChart.run {
+        binding!!.vCombinedChart.run {
             visibility = View.VISIBLE
             data = combinedData
 
@@ -204,7 +215,7 @@ class MpChartRecipeFragment @Inject constructor(
     }
 
     override fun showHorizontalBarChart(hBarData: BarData) {
-        vHorizontalBarChart.run {
+        binding!!.vHorizontalBarChart.run {
             visibility = View.VISIBLE
             data = hBarData
             animateY(ANIMATION_DELAY)
@@ -220,7 +231,13 @@ class MpChartRecipeFragment @Inject constructor(
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    toastFactory.show(getString(R.string.mp_chart_item_bar, barEntry.y, barEntry.data))
+                    toastFactory.show(
+                        getString(
+                            R.string.mp_chart_item_bar,
+                            barEntry.y,
+                            barEntry.data
+                        )
+                    )
                 }
 
                 override fun onNothingSelected() {
@@ -239,7 +256,7 @@ class MpChartRecipeFragment @Inject constructor(
     }
 
     override fun showLineChart(lineData: LineData) {
-        vLineChart.run {
+        binding!!.vLineChart.run {
             visibility = View.VISIBLE
 
             data = lineData
@@ -261,9 +278,9 @@ class MpChartRecipeFragment @Inject constructor(
     }
 
     override fun showPieChart(pieData: PieData) {
-        vPieChart.visibility = View.VISIBLE
+        binding!!.vPieChart.visibility = View.VISIBLE
 
-        vPieChart.run {
+        binding!!.vPieChart.run {
             data = pieData
             centerTextRadiusPercent = RADIUS_PERCENT
             animateXY(ANIMATION_DELAY, ANIMATION_DELAY)
@@ -273,7 +290,13 @@ class MpChartRecipeFragment @Inject constructor(
             setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
                 override fun onValueSelected(entry: Entry?, highlight: Highlight?) {
                     val pieEntry = entry as PieEntry
-                    toastFactory.show(getString(R.string.mp_chart_item_pie, pieEntry.label, pieEntry.value))
+                    toastFactory.show(
+                        getString(
+                            R.string.mp_chart_item_pie,
+                            pieEntry.label,
+                            pieEntry.value
+                        )
+                    )
                 }
 
                 override fun onNothingSelected() {
@@ -283,7 +306,7 @@ class MpChartRecipeFragment @Inject constructor(
     }
 
     override fun showRadarChart(radarData: RadarData) {
-        vRadarChart.run {
+        binding!!.vRadarChart.run {
             visibility = View.VISIBLE
             data = radarData
             description.text = getString(R.string.mp_chart_radar)
@@ -292,7 +315,7 @@ class MpChartRecipeFragment @Inject constructor(
     }
 
     override fun showCandleStickChart(candleData: CandleData) {
-        vCandleStickChart.run {
+        binding!!.vCandleStickChart.run {
             visibility = View.VISIBLE
             data = candleData
             description.text = getString(R.string.mp_chart_candle)
@@ -302,7 +325,7 @@ class MpChartRecipeFragment @Inject constructor(
     }
 
     override fun showScatterChart(scatterData: ScatterData) {
-        vScatterChart.run {
+        binding!!.vScatterChart.run {
             visibility = View.VISIBLE
             data = scatterData
             description.text = getString(R.string.mp_chart_scatter)
@@ -315,7 +338,13 @@ class MpChartRecipeFragment @Inject constructor(
                      * Data is an additional information of Entry, represents an Object with
                      * any class or null if no data has been specified
                      */
-                    toastFactory.show(getString(R.string.mp_chart_item_bar, barEntry.y, barEntry.data))
+                    toastFactory.show(
+                        getString(
+                            R.string.mp_chart_item_bar,
+                            barEntry.y,
+                            barEntry.data
+                        )
+                    )
                 }
 
                 override fun onNothingSelected() {

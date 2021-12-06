@@ -1,95 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/pokemon_screen_background">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/vPokemonDetailImageCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:cardCornerRadius="@dimen/spacing_big"
-        app:cardElevation="@dimen/spacing_medium_extra"
-        app:contentPadding="@dimen/spacing_medium_extra"
-        app:layout_constraintBottom_toTopOf="@+id/vPokemonDetailName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pokemon_screen_background">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/vPokemonDetailImageView"
-            android:layout_width="@dimen/pokemon_image_size"
-            android:layout_height="@dimen/pokemon_image_size"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/vPokemonDetailName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_large"
-        app:layout_constraintBottom_toTopOf="@+id/vPokemonDetailTypeContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vPokemonDetailImageCard"
-        android:fontFamily="@font/pocket_monk"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/font_huge_extra"
-        tools:text="Charizard"/>
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/vPokemonDetailTypeContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_medium_more"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:chipSpacingHorizontal="@dimen/spacing_medium_extra"
-        app:layout_constraintBottom_toTopOf="@+id/vPokemonDetailSearchButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vPokemonDetailName">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/vPokemonDetailType1"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/vPokemonDetailImageCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Fire"
-            style="@style/PokemonTypeChip"/>
+            android:layout_gravity="center"
+            app:cardCornerRadius="@dimen/spacing_big"
+            app:cardElevation="@dimen/spacing_medium_extra"
+            app:contentPadding="@dimen/spacing_medium_extra"
+            app:layout_constraintBottom_toTopOf="@+id/vPokemonDetailName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/vPokemonDetailType2"
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/vPokemonDetailImageView"
+                android:layout_width="@dimen/pokemon_image_size"
+                android:layout_height="@dimen/pokemon_image_size" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/vPokemonDetailName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Dragon"
-            style="@style/PokemonTypeChip"/>
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:fontFamily="@font/pocket_monk"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_huge_extra"
+            app:layout_constraintBottom_toTopOf="@+id/vPokemonDetailTypeContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vPokemonDetailImageCard"
+            tools:text="Charizard" />
 
-    </com.google.android.material.chip.ChipGroup>
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/vPokemonDetailTypeContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium_more"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:chipSpacingHorizontal="@dimen/spacing_medium_extra"
+            app:layout_constraintBottom_toTopOf="@+id/vPokemonDetailSearchButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vPokemonDetailName">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/vPokemonDetailSearchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:backgroundTint="@android:color/holo_red_dark"
-        app:cornerRadius="@dimen/spacing_large"
-        app:icon="@drawable/ic_pokeball_small"
-        app:iconTint="@android:color/transparent"
-        app:iconTintMode="add"
-        android:text="@string/data_sync_search_pokemon"
-        style="@style/Widget.MaterialComponents.Button.Icon"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/vPokemonDetailType1"
+                style="@style/PokemonTypeChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Fire" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/vPokemonDetailType2"
+                style="@style/PokemonTypeChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Dragon" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/vPokemonDetailSearchButton"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:text="@string/data_sync_search_pokemon"
+            app:backgroundTint="@android:color/holo_red_dark"
+            app:cornerRadius="@dimen/spacing_large"
+            app:icon="@drawable/ic_pokeball_small"
+            app:iconTint="@android:color/transparent"
+            app:iconTintMode="add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

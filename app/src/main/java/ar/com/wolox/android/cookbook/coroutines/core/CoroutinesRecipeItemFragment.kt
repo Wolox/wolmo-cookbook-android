@@ -11,6 +11,7 @@ import androidx.annotation.StringRes
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.coroutines.examples.CoroutinesExampleView
 import ar.com.wolox.android.cookbook.coroutines.examples.LogType
+import ar.com.wolox.android.cookbook.databinding.FragmentCoroutinesBaseExampleBinding
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import ar.com.wolox.wolmo.core.util.ToastFactory
@@ -20,7 +21,8 @@ import java.util.Calendar
 import java.util.Locale
 import javax.inject.Inject
 
-abstract class CoroutinesRecipeItemFragment<T : BasePresenter<*>> : WolmoFragment<T>(), CoroutinesExampleView {
+abstract class CoroutinesRecipeItemFragment<T : BasePresenter<*>> :
+    WolmoFragment<FragmentCoroutinesBaseExampleBinding, T>(), CoroutinesExampleView {
 
     @Inject
     internal lateinit var toastFactory: ToastFactory
@@ -47,12 +49,16 @@ abstract class CoroutinesRecipeItemFragment<T : BasePresenter<*>> : WolmoFragmen
     }
 
     override fun log(type: LogType, message: String) {
-        progressText.addView(TextView(context).apply {
-            text = "%s %s/...: %s".format(
+        progressText.addView(
+            TextView(context).apply {
+                text = "%s %s/...: %s".format(
                     SimpleDateFormat(DATE_FORMAT, Locale.US).format(Calendar.getInstance().time),
                     type.text,
-                    message)
-        }, LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply { topMargin = separationBetweenLogs })
+                    message
+                )
+            },
+            LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+                .apply { topMargin = separationBetweenLogs })
 
         progressText.post {
             scrollView.fullScroll(View.FOCUS_DOWN)

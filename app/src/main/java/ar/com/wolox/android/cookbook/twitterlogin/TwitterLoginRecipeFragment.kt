@@ -5,6 +5,7 @@ import android.net.Uri
 import android.view.View
 import android.widget.Toast
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.FragmentTwitterLoginBinding
 import ar.com.wolox.android.cookbook.twitterlogin.model.TypeErrorMessage
 import ar.com.wolox.android.cookbook.twitterlogin.model.YoutubeEmailResponse
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
@@ -13,7 +14,7 @@ import com.twitter.sdk.android.core.TwitterSession
 import com.twitter.sdk.android.core.models.User
 import kotlinx.android.synthetic.main.fragment_twitter_login.*
 
-class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(), TwitterLoginRecipeView {
+class TwitterLoginRecipeFragment : WolmoFragment<FragmentTwitterLoginBinding, TwitterLoginRecipePresenter>(), TwitterLoginRecipeView {
 
     override fun layout(): Int = R.layout.fragment_twitter_login
 
@@ -21,20 +22,22 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
     }
 
     override fun setListeners() {
-        vTwitterLoginBtn.setOnClickListener {
-            presenter.doTwitterLogin()
-        }
+        with(binding!!) {
+            vTwitterLoginBtn.setOnClickListener {
+                presenter.doTwitterLogin()
+            }
 
-        vApiTwitterLoginBtn.setOnClickListener {
-            presenter.doTwitterLoginWithApi()
-        }
+            vApiTwitterLoginBtn.setOnClickListener {
+                presenter.doTwitterLoginWithApi()
+            }
 
-        vGetProfileBtn.setOnClickListener {
-            presenter.doFetchData()
-        }
+            vGetProfileBtn.setOnClickListener {
+                presenter.doFetchData()
+            }
 
-        vLogoutBtn.setOnClickListener {
-            presenter.doLogoutOnTwitter()
+            vLogoutBtn.setOnClickListener {
+                presenter.doLogoutOnTwitter()
+            }
         }
     }
 
@@ -43,17 +46,17 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
     }
 
     override fun setLoginCallback(callback: Callback<TwitterSession>) {
-        vTwitterLoginBtn.callback = callback
+        binding!!.vTwitterLoginBtn.callback = callback
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        vTwitterLoginBtn.onActivityResult(requestCode, resultCode, data)
+        binding!!.vTwitterLoginBtn.onActivityResult(requestCode, resultCode, data)
         presenter.onActivityResultFinished(requestCode, requestCode, data)
     }
 
     override fun showError(message: String) {
-        vDetails.text = message
+        binding!!.vDetails.text = message
     }
 
     override fun showApiError(type: TypeErrorMessage) {
@@ -68,7 +71,7 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
     }
 
     override fun toggleLoginButtonState(status: Boolean) {
-        vTwitterLoginBtn.isClickable = status
+        binding!!.vTwitterLoginBtn.isClickable = status
     }
 
     override fun showLoginData(response: YoutubeEmailResponse) {
@@ -76,24 +79,30 @@ class TwitterLoginRecipeFragment : WolmoFragment<TwitterLoginRecipePresenter>(),
                 response.userId,
                 response.username,
                 response.email)
-        vDetails.text = message
+        binding!!.vDetails.text = message
     }
 
     override fun showPictureData(user: User) {
-        val message = getString(R.string.twitter_picture_data,
+        with(binding!!) {
+            val message = getString(
+                R.string.twitter_picture_data,
                 user.id,
                 user.screenName,
                 user.email,
-                user.description)
-        vDetails.text = message
+                user.description
+            )
+            vDetails.text = message
 
-        val uri = Uri.parse(user.profileImageUrl)
-        vProfileImg.visibility = View.VISIBLE
-        vProfileImg.setImageURI(uri)
+            val uri = Uri.parse(user.profileImageUrl)
+            vProfileImg.visibility = View.VISIBLE
+            vProfileImg.setImageURI(uri)
+        }
     }
 
     override fun showCredentialsCleared() {
-        vDetails.text = getString(R.string.twitter_logout)
-        vProfileImg.visibility = View.INVISIBLE
+        with(binding!!) {
+            vDetails.text = getString(R.string.twitter_logout)
+            vProfileImg.visibility = View.INVISIBLE
+        }
     }
 }

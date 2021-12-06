@@ -9,7 +9,7 @@ buildscript {
         maven { url "https://maven.fabric.io/public" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.android.tools.build:gradle:4.0.2'
         classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
         classpath 'org.codehaus.groovy:groovy-all:2.5.8'
         classpath 'com.chaitanyapramod.gradle:findbugs-android:1.1'

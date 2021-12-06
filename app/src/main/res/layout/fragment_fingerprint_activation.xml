@@ -1,48 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/spacing_huge">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/vFingerprintActivationTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fingerprint_activation_title"
-        android:textSize="@dimen/font_huge"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/vFingerprintActivationUsername"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/fingerprint_login_username"
-        android:gravity="center"
-        android:inputType="text"
-        android:layout_marginTop="@dimen/static_spacing_largest"
-        app:layout_constraintTop_toBottomOf="@+id/vFingerprintActivationTitle" />
+        android:layout_height="match_parent"
+        android:padding="@dimen/spacing_huge">
 
-    <EditText
-        android:id="@+id/vFingerprintActivationPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/fingerprint_login_password"
-        android:gravity="center"
-        android:inputType="textPassword"
-        android:layout_marginTop="@dimen/spacing_large"
-        app:layout_constraintTop_toBottomOf="@id/vFingerprintActivationUsername" />
+        <TextView
+            android:id="@+id/vFingerprintActivationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fingerprint_activation_title"
+            android:textSize="@dimen/font_huge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/vFingerprintActivationLoginButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/activate_fingerprint"
-        android:layout_marginTop="@dimen/spacing_huge"
-        app:layout_constraintTop_toBottomOf="@id/vFingerprintActivationPassword" />
+        <EditText
+            android:id="@+id/vFingerprintActivationUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/static_spacing_largest"
+            android:gravity="center"
+            android:hint="@string/fingerprint_login_username"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@+id/vFingerprintActivationTitle" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/vFingerprintActivationPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:gravity="center"
+            android:hint="@string/fingerprint_login_password"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/vFingerprintActivationUsername" />
+
+        <Button
+            android:id="@+id/vFingerprintActivationLoginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_huge"
+            android:text="@string/activate_fingerprint"
+            app:layout_constraintTop_toBottomOf="@id/vFingerprintActivationPassword" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
