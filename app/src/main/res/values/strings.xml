@@ -21,6 +21,7 @@
     <string name="recipe_picker_coroutines">Coroutines</string>
     <string name="recipe_picker_firebase">Firebase Analytics</string>
     <string name="recipe_picker_mercadopago">MercadoPago</string>
+    <string name="recipe_picker_google_maps">Google Maps</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>

@@ -10,6 +10,7 @@ import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.graphQl.OrdersActivity
 import ar.com.wolox.android.cookbook.instagramlogin.InstagramLoginRecipeActivity
 import ar.com.wolox.android.cookbook.koin.KoinLoginRecipeActivity
+import ar.com.wolox.android.cookbook.maps.MapActivity
 import ar.com.wolox.android.cookbook.mercadopago.MercadoPagoRecipeActivity
 import ar.com.wolox.android.cookbook.mpchart.MpChartRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
@@ -56,6 +57,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
                 Recipe.KOIN -> RecipeItem(it, R.drawable.bg_koin, R.string.recipe_picker_koin)
                 Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.bg_notification_recipe, R.string.recipe_picker_notifications)
                 Recipe.GRAPH_QL -> RecipeItem(it, R.drawable.bg_graph_ql, R.string.recipe_picker_graph_ql)
+                Recipe.MAP -> RecipeItem(it, R.drawable.bg_google_maps, R.string.recipe_picker_google_maps)
             }
         }
     }
@@ -91,6 +93,8 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     override fun goToAnalyticsRecipe() = goTo(AnalyticsRecipeActivity::class.java)
 
     override fun goToMercadoPagoRecipe() = goTo(MercadoPagoRecipeActivity::class.java)
+
+    override fun goToMaps() = goTo(MapActivity::class.java)
 
     companion object {
         fun newInstance() = RecipePickerFragment()

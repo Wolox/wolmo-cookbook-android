@@ -105,6 +105,14 @@
                 <data android:scheme="@string/facebook_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".maps.MapActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDyyua4O8hgDmSZdNmeTaTTMCCbfRuWbkw" />
     </application>
 
 </manifest>

@@ -19,5 +19,6 @@ enum class Recipe {
     TESTS,
     KOIN,
     NOTIFICATIONS,
-    GRAPH_QL
+    GRAPH_QL,
+    MAP
 }

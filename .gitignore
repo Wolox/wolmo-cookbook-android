@@ -1,5 +1,5 @@
 ### Keystore ###
-keystore.gradle
+app/keystore.gradle
 
 ### Android ###
 # Built application files
