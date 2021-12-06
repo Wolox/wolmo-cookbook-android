@@ -1,10 +1,11 @@
 package ar.com.wolox.android.cookbook.recipepicker
 
 import android.content.Intent
+import androidx.recyclerview.widget.GridLayoutManager
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRecipeActivity
 import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeActivity
-import ar.com.wolox.android.cookbook.databinding.FragmentRecipePickerBinding
+import ar.com.wolox.android.cookbook.databinding.FragmentRecipeListBinding
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.fingerprint.login.FingerprintLoginRecipeActivity
@@ -23,19 +24,20 @@ import ar.com.wolox.android.cookbook.twitterlogin.TwitterLoginRecipeActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_recipe_picker.*
 
-class RecipePickerFragment : WolmoFragment<FragmentRecipePickerBinding, RecipePickerPresenter>(), RecipePickerView {
+class RecipePickerFragment : WolmoFragment<FragmentRecipeListBinding, RecipePickerPresenter>(), RecipePickerView {
 
-    override fun layout() = R.layout.fragment_recipe_picker
+    override fun layout() = R.layout.fragment_recipe_list
 
     override fun init() {}
 
     override fun showRecipes(recipes: List<Recipe>) {
-        binding!!.vRecipePickerSelectionViewPager.apply {
-            adapter = RecipeViewPager(mapRecipesToItems(recipes)) {
-                presenter.onRecipeClicked(it)
+        binding!!.vRecipeList.apply {
+            adapter = RecipePickerAdapter().apply {
+                submitList(mapRecipesToItems(recipes))
             }
-            setPageTransformer(false, CarouselEffectTransformer())
-            pageMargin = resources.getDimensionPixelSize(R.dimen.spacing_medium_more)
+            layoutManager = GridLayoutManager(context, 4)
+            isNestedScrollingEnabled = false
+            isFocusable = false
         }
     }
 
@@ -59,7 +61,7 @@ class RecipePickerFragment : WolmoFragment<FragmentRecipePickerBinding, RecipePi
                 Recipe.KOIN -> RecipeItem(it, R.drawable.bg_koin, R.string.recipe_picker_koin)
                 Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.bg_notification_recipe, R.string.recipe_picker_notifications)
                 Recipe.GRAPH_QL -> RecipeItem(it, R.drawable.bg_graph_ql, R.string.recipe_picker_graph_ql)
-                Recipe.BIOMETRIC_LOGIN -> RecipeItem(it, R.drawable.bg_fingerprint, R.string.recipe_picker_fingerprint)
+                Recipe.BIOMETRIC_LOGIN -> RecipeItem(it, R.drawable.bg_fingerprint, R.string.recipe_picker_fingerprint, R.color.cardview_dark_background)
             }
         }
     }

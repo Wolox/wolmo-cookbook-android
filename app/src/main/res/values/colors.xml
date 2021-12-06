@@ -5,7 +5,7 @@
     <color name="colorAccent">#8DC63F</color>
 
     <!-- Recipe Picker -->
-    <color name="recipe_picker_background_tint">#D1CCC0</color>
+    <color name="recipe_picker_background_tint">#d6d1c5</color>
 
     <!-- Data Sync -->
     <color name="pokemon_screen_background">#54BAD2</color>
