@@ -19,8 +19,8 @@
 
             <ImageView
                 android:id="@+id/vRecipeIcon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/item_recipe_icon_size"
+                android:layout_height="@dimen/item_recipe_icon_size"
                 android:layout_gravity="center" />
 
         </com.google.android.material.card.MaterialCardView>
