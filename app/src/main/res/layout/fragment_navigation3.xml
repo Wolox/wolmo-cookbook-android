@@ -1,42 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@android:color/white">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/navigation_navigation3"
-        android:textColor="@android:color/black"
-        android:gravity="center"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <EditText
-        android:id="@+id/fragment3_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginLeft="@dimen/spacing_large_extra"
-        android:layout_marginRight="@dimen/spacing_large_extra"
-        android:textColor="@android:color/black"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/navigation_navigation3"
+            android:textColor="@android:color/black" />
 
-    <Button
-        android:id="@+id/fragment_navigation3_to4_button"
-        android:layout_width="@dimen/navigation_button_width"
-        android:layout_height="@dimen/navigation_button_height"
-        android:layout_gravity="center"
-        android:text="@string/navigation_go_to_4"/>
+        <EditText
+            android:id="@+id/fragment3_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/spacing_large_extra"
+            android:layout_marginRight="@dimen/spacing_large_extra"
+            android:layout_weight="1"
+            android:textColor="@android:color/black" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"/>
+        <Button
+            android:id="@+id/fragment_navigation3_to4_button"
+            android:layout_width="@dimen/navigation_button_width"
+            android:layout_height="@dimen/navigation_button_height"
+            android:layout_gravity="center"
+            android:text="@string/navigation_go_to_4" />
 
-</LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
+
+    </LinearLayout>
+</layout>

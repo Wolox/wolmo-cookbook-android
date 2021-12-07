@@ -1,6 +1,7 @@
 package ar.com.wolox.android.cookbook.analytics
 
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.ActivityBaseBinding
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
 
 /**
@@ -8,7 +9,7 @@ import ar.com.wolox.wolmo.core.activity.WolmoActivity
  *
  * You can follow the project setup on this link: https://firebase.google.com/docs/android/setup
  */
-class AnalyticsRecipeActivity : WolmoActivity() {
+class AnalyticsRecipeActivity : WolmoActivity<ActivityBaseBinding>() {
 
     override fun layout(): Int = R.layout.activity_base
 

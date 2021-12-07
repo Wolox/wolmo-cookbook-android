@@ -4,18 +4,18 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.FragmentRoomBinding
 import ar.com.wolox.android.cookbook.room.database.models.NoteEntity
 import ar.com.wolox.android.cookbook.room.dialog.RoomInputDialog
 import ar.com.wolox.android.cookbook.room.dialog.RoomInputDialogListener
 import ar.com.wolox.android.cookbook.room.list.RoomListAdapter
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
-import kotlinx.android.synthetic.main.fragment_room.*
 import javax.inject.Inject
 
 class RoomRecipeFragment @Inject constructor(
     val toastFactory: ToastFactory
-) : WolmoFragment<CoroutinesRoomRecipePresenter>(), RoomRecipeView {
+) : WolmoFragment<FragmentRoomBinding, CoroutinesRoomRecipePresenter>(), RoomRecipeView {
 
     private lateinit var viewAdapter: RoomListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -24,32 +24,35 @@ class RoomRecipeFragment @Inject constructor(
     override fun layout(): Int = R.layout.fragment_room
 
     override fun init() {
-        vSessionBtn.run {
-            visibility = View.VISIBLE
-            text = getString(R.string.room_login)
+        with(binding!!) {
+            vSessionBtn.run {
+                visibility = View.VISIBLE
+                text = getString(R.string.room_login)
+            }
+
+            vRecyclerView.visibility = View.INVISIBLE
+
+            vAddBtn.visibility = View.INVISIBLE
+            vClearBtn.visibility = View.INVISIBLE
+
+            viewManager = LinearLayoutManager(context)
         }
-
-        vRecyclerView.visibility = View.INVISIBLE
-
-        vAddBtn.visibility = View.INVISIBLE
-        vClearBtn.visibility = View.INVISIBLE
-
-        viewManager = LinearLayoutManager(context)
     }
 
     override fun setListeners() {
         super.setListeners()
+        with(binding!!) {
+            vSessionBtn.setOnClickListener {
+                presenter.onSessionButtonClicked(vUser.text.toString())
+            }
 
-        vSessionBtn.setOnClickListener {
-            presenter.onSessionButtonClicked(vUser.text.toString())
-        }
+            vAddBtn.setOnClickListener {
+                presenter.onAddButtonClicked()
+            }
 
-        vAddBtn.setOnClickListener {
-            presenter.onAddButtonClicked()
-        }
-
-        vClearBtn.setOnClickListener {
-            presenter.onClearButtonClicked()
+            vClearBtn.setOnClickListener {
+                presenter.onClearButtonClicked()
+            }
         }
     }
 
@@ -74,7 +77,7 @@ class RoomRecipeFragment @Inject constructor(
         }, { item ->
             presenter.onDeleteButtonClicked(item)
         })
-        vRecyclerView.run {
+        binding!!.vRecyclerView.run {
             visibility = View.VISIBLE
             setHasFixedSize(true)
             layoutManager = viewManager
@@ -95,11 +98,13 @@ class RoomRecipeFragment @Inject constructor(
     }
 
     override fun showLoginSuccess() {
-        vSessionBtn.text = getString(R.string.room_logout)
-        vUser.isEnabled = false
-        vRecyclerView.visibility = View.VISIBLE
-        vAddBtn.visibility = View.VISIBLE
-        vClearBtn.visibility = View.VISIBLE
+        with(binding!!) {
+            vSessionBtn.text = getString(R.string.room_logout)
+            vUser.isEnabled = false
+            vRecyclerView.visibility = View.VISIBLE
+            vAddBtn.visibility = View.VISIBLE
+            vClearBtn.visibility = View.VISIBLE
+        }
     }
 
     override fun showLoginError() {
@@ -107,15 +112,17 @@ class RoomRecipeFragment @Inject constructor(
     }
 
     override fun doSessionLogout() {
-        vSessionBtn.text = getString(R.string.room_login)
-        vUser.run {
-            isEnabled = true
-            setText("")
+        with(binding!!) {
+            vSessionBtn.text = getString(R.string.room_login)
+            vUser.run {
+                isEnabled = true
+                setText("")
+            }
+            vRecyclerView.visibility = View.INVISIBLE
+            vAddBtn.visibility = View.INVISIBLE
+            vClearBtn.visibility = View.INVISIBLE
+            toastFactory.show(R.string.room_logout)
         }
-        vRecyclerView.visibility = View.INVISIBLE
-        vAddBtn.visibility = View.INVISIBLE
-        vClearBtn.visibility = View.INVISIBLE
-        toastFactory.show(R.string.room_logout)
     }
 
     override fun insertEntity(entity: NoteEntity) {

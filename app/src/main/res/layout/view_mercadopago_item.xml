@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-	<TextView
-		android:id="@+id/item_title"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:paddingTop="@dimen/spacing_medium_extra"
-		android:paddingBottom="@dimen/spacing_medium_extra"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toStartOf="@id/item_total"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		tools:text="Termo Lumilagro" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-	<TextView
-		android:id="@+id/item_total"
-		android:layout_width="@dimen/mercado_item_total_width"
-		android:layout_height="0dp"
-		android:gravity="center_vertical|start"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toEndOf="@id/item_title"
-		app:layout_constraintTop_toTopOf="parent"
-		tools:text="2 x $1.250,00" />
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/spacing_medium_extra"
+            android:paddingBottom="@dimen/spacing_medium_extra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item_total"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Termo Lumilagro" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/item_total"
+            android:layout_width="@dimen/mercado_item_total_width"
+            android:layout_height="0dp"
+            android:gravity="center_vertical|start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_title"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2 x $1.250,00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

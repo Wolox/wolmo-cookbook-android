@@ -1,10 +1,6 @@
 package ar.com.wolox.android.cookbook.mercadopago
 
 import android.content.Intent
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.databinding.FragmentMercadopagoBinding
@@ -38,7 +34,7 @@ import javax.inject.Inject
  *
  * Important note: you can't make a payment to yourself. If you get an error when finishing payment, it may be the cause.
  */
-class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoRecipePresenter>(), MercadoPagoView {
+class MercadoPagoRecipeFragment : WolmoFragment<FragmentMercadopagoBinding, MercadoPagoRecipePresenter>(), MercadoPagoView {
 
     @Inject
     lateinit var handler: MercadoPagoResultHandler
@@ -46,64 +42,57 @@ class MercadoPagoRecipeFragment : WolmoFragment<MercadoPagoRecipePresenter>(), M
     @Inject
     lateinit var toastFactory: ToastFactory
 
-    private var _binding: FragmentMercadopagoBinding? = null
-    private val binding get() = _binding!! // This property is only valid between onCreateView and onDestroyView.
-
     private val adapter = MercadoPagoItemsAdapter()
 
     // This is no longer necessary since we're using view binding, but if I remove it then super.onCreateView crash.
     override fun layout() = R.layout.fragment_mercadopago
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentMercadopagoBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    override fun init() = with(binding) {
-        payButton.setOnClickListener {
-            presenter.onPayButtonClicked(
-                clientNameInput.text.toString(),
-                clientEmailInput.text.toString())
+    override fun init() {
+        with(binding!!) {
+            payButton.setOnClickListener {
+                presenter.onPayButtonClicked(
+                    clientNameInput.text.toString(),
+                    clientEmailInput.text.toString()
+                )
+            }
+            itemList.adapter = adapter
         }
-        itemList.adapter = adapter
     }
 
     override fun showProducts(items: List<Pair<Product, Int>>) = adapter.submitList(items)
 
     override fun showTotal(total: Float) {
-        binding.itemsTotalText.text = getString(R.string.mercadopago_total_number, total)
+        binding!!.itemsTotalText.text = getString(R.string.mercadopago_total_number, total)
     }
 
     override fun showEmptyNameError() {
-        binding.clientNameInput.error = getString(R.string.mercadopago_empty_name_error)
+        binding!!.clientNameInput.error = getString(R.string.mercadopago_empty_name_error)
     }
 
     override fun showEmptyEmailError() {
-        binding.clientNameInput.error = getString(R.string.mercadopago_empty_email_error)
+        binding!!.clientNameInput.error = getString(R.string.mercadopago_empty_email_error)
     }
 
     override fun showInvalidEmailError() {
-        binding.clientNameInput.error = getString(R.string.mercadopago_invalid_email_error)
+        binding!!.clientNameInput.error = getString(R.string.mercadopago_invalid_email_error)
     }
 
     override fun showUnexpectedError() {
         toastFactory.show(R.string.unexpected_error)
     }
 
-    override fun startLoading() = with(binding) {
-        loading.isVisible = true
-        payButton.isEnabled = false
+    override fun startLoading() {
+        with(binding!!) {
+            loading.isVisible = true
+            payButton.isEnabled = false
+        }
     }
 
-    override fun finishLoading() = with(binding) {
-        loading.isVisible = false
-        payButton.isEnabled = true
+    override fun finishLoading() {
+        with(binding!!) {
+            loading.isVisible = false
+            payButton.isEnabled = true
+        }
     }
 
     override fun payProduct(checkout: MercadoPagoCheckout) {

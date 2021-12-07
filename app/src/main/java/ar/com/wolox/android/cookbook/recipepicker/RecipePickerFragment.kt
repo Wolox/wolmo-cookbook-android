@@ -4,13 +4,16 @@ import android.content.Intent
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRecipeActivity
 import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeActivity
+import ar.com.wolox.android.cookbook.databinding.FragmentRecipePickerBinding
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
+import ar.com.wolox.android.cookbook.fingerprint.login.FingerprintLoginRecipeActivity
 import ar.com.wolox.android.cookbook.googlelogin.GoogleLoginRecipeActivity
 import ar.com.wolox.android.cookbook.graphQl.OrdersActivity
 import ar.com.wolox.android.cookbook.instagramlogin.InstagramLoginRecipeActivity
 import ar.com.wolox.android.cookbook.koin.KoinLoginRecipeActivity
 import ar.com.wolox.android.cookbook.maps.MapActivity
+import ar.com.wolox.android.cookbook.lottie.LottieRecipeActivity
 import ar.com.wolox.android.cookbook.mercadopago.MercadoPagoRecipeActivity
 import ar.com.wolox.android.cookbook.mpchart.MpChartRecipeActivity
 import ar.com.wolox.android.cookbook.navigation.NavigationActivity
@@ -21,15 +24,14 @@ import ar.com.wolox.android.cookbook.twitterlogin.TwitterLoginRecipeActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_recipe_picker.*
 
-class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePickerView {
+class RecipePickerFragment : WolmoFragment<FragmentRecipePickerBinding, RecipePickerPresenter>(), RecipePickerView {
 
     override fun layout() = R.layout.fragment_recipe_picker
 
     override fun init() {}
 
     override fun showRecipes(recipes: List<Recipe>) {
-
-        vRecipePickerSelectionViewPager.apply {
+        binding!!.vRecipePickerSelectionViewPager.apply {
             adapter = RecipeViewPager(mapRecipesToItems(recipes)) {
                 presenter.onRecipeClicked(it)
             }
@@ -42,6 +44,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
         // Create a RecipeItem with the desired image & text for it inside the 'when' statement
         return recipes.map {
             when (it) {
+                Recipe.LOTTIE -> RecipeItem(it, R.drawable.bg_lottie, R.string.recipe_picker_lottie)
                 Recipe.MERCADOPAGO -> RecipeItem(it, R.drawable.bg_mercadopago, R.string.recipe_picker_mercadopago)
                 Recipe.ANALYTICS -> RecipeItem(it, R.drawable.bg_firebase, R.string.recipe_picker_firebase)
                 Recipe.COROUTINES -> RecipeItem(it, R.drawable.bg_coroutines, R.string.recipe_picker_coroutines)
@@ -58,6 +61,7 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
                 Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.bg_notification_recipe, R.string.recipe_picker_notifications)
                 Recipe.GRAPH_QL -> RecipeItem(it, R.drawable.bg_graph_ql, R.string.recipe_picker_graph_ql)
                 Recipe.MAP -> RecipeItem(it, R.drawable.bg_google_maps, R.string.recipe_picker_google_maps)
+                Recipe.BIOMETRIC_LOGIN -> RecipeItem(it, R.drawable.bg_fingerprint, R.string.recipe_picker_fingerprint)
             }
         }
     }
@@ -95,6 +99,10 @@ class RecipePickerFragment : WolmoFragment<RecipePickerPresenter>(), RecipePicke
     override fun goToMercadoPagoRecipe() = goTo(MercadoPagoRecipeActivity::class.java)
 
     override fun goToMaps() = goTo(MapActivity::class.java)
+    
+    override fun goToFingerprintRecipe() = goTo(FingerprintLoginRecipeActivity::class.java)
+
+    override fun goToLottieRecipe() = goTo(LottieRecipeActivity::class.java)
 
     companion object {
         fun newInstance() = RecipePickerFragment()

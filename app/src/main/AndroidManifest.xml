@@ -113,6 +113,14 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDyyua4O8hgDmSZdNmeTaTTMCCbfRuWbkw" />
+            
+        <activity android:name=".fingerprint.activation.FingerprintActivationRecipeActivity" />
+
+        <activity android:name=".fingerprint.login.FingerprintLoginRecipeActivity" />
+
+        <activity android:name=".fingerprint.success.FingerprintLoginSuccessActivity" />
+        
+        <activity android:name=".lottie.LottieRecipeActivity" />
     </application>
 
 </manifest>

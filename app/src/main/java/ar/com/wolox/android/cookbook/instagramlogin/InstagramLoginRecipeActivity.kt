@@ -1,6 +1,7 @@
 package ar.com.wolox.android.cookbook.instagramlogin
 
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.ActivityBaseBinding
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
 
 /**
@@ -16,7 +17,7 @@ import ar.com.wolox.wolmo.core.activity.WolmoActivity
  *      Go to "app > assets > InstagramResponseExample.json" for a full response
  *      json contains: own images, tags, positions, descriptions, likes, comments, etc...
  */
-class InstagramLoginRecipeActivity : WolmoActivity() {
+class InstagramLoginRecipeActivity : WolmoActivity<ActivityBaseBinding>() {
 
     override fun layout(): Int = R.layout.activity_base
 
