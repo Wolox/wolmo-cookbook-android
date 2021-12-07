@@ -2,13 +2,13 @@ package ar.com.wolox.android.cookbook.googlelogin
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.FragmentGoogleLoginBinding
 import ar.com.wolox.android.cookbook.googlelogin.helper.GoogleAccountHelper
 import ar.com.wolox.android.cookbook.googlelogin.helper.GoogleHelper
 import ar.com.wolox.android.cookbook.googlelogin.model.GoogleAccount
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import com.facebook.imagepipeline.request.ImageRequestBuilder
-import kotlinx.android.synthetic.main.fragment_google_login.*
 import javax.inject.Inject
 
 /**
@@ -23,18 +23,25 @@ import javax.inject.Inject
  *  Advice to generate SHA1:
  *  Open Gradle projects with the gradle button on the right of the username: Tasks -> android -> signingReport
  */
-class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), GoogleLoginRecipeView {
+class GoogleLoginRecipeFragment :
+    WolmoFragment<FragmentGoogleLoginBinding, GoogleLoginRecipePresenter>(), GoogleLoginRecipeView {
 
     @Inject
     internal lateinit var toastFactory: ToastFactory
+
     @Inject
     internal lateinit var googleHelper: GoogleHelper
 
     override fun layout() = R.layout.fragment_google_login
 
     override fun init() {
-        googleHelper.setGoogleLoginAction(vLoginGoogleBtn, this, GOOGLE_SIGN_IN)
-        googleHelper.setGoogleLogoutAction(vLogoutGoogleBtn, this) { presenter.onGoogleLogout() }
+        with(binding!!) {
+            googleHelper.setGoogleLoginAction(vLoginGoogleBtn, this@GoogleLoginRecipeFragment, GOOGLE_SIGN_IN)
+            googleHelper.setGoogleLogoutAction(
+                vLogoutGoogleBtn,
+                this@GoogleLoginRecipeFragment
+            ) { presenter.onGoogleLogout() }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -44,37 +51,43 @@ class GoogleLoginRecipeFragment : WolmoFragment<GoogleLoginRecipePresenter>(), G
     }
 
     override fun showUser(user: GoogleAccount) {
-        vLoginUserName.text = user.displayName
-        vLoginUserEmail.text = user.email
+        with(binding!!) {
+            vLoginUserName.text = user.displayName
+            vLoginUserEmail.text = user.email
 
-        if (user.picture != null) {
-            vLoginUserPhoto.setImageRequest(ImageRequestBuilder.newBuilderWithSource(user.picture).build())
+            if (user.picture != null) {
+                vLoginUserPhoto.setImageRequest(
+                    ImageRequestBuilder.newBuilderWithSource(user.picture).build()
+                )
+            }
+
+            vLogoutGoogleBtn.isEnabled = true
+            vLoginGoogleBtn.isEnabled = false
         }
-
-        vLogoutGoogleBtn.isEnabled = true
-        vLoginGoogleBtn.isEnabled = false
     }
 
     override fun showNoUser() {
-        vLoginUserName.text = ""
-        vLoginUserEmail.text = ""
-        vLoginUserPhoto.setImageRequest(null)
+        with(binding!!) {
+            vLoginUserName.text = ""
+            vLoginUserEmail.text = ""
+            vLoginUserPhoto.setImageRequest(null)
 
-        vLogoutGoogleBtn.isEnabled = false
-        vLoginGoogleBtn.isEnabled = true
+            vLogoutGoogleBtn.isEnabled = false
+            vLoginGoogleBtn.isEnabled = true
+        }
     }
 
     override fun showGoogleLoginErrorCancelled() =
-            toastFactory.show(requireContext().getString(R.string.google_login_error_cancelled))
+        toastFactory.show(requireContext().getString(R.string.google_login_error_cancelled))
 
     override fun showGoogleLoginErrorFailed() =
-            toastFactory.show(requireContext().getString(R.string.google_login_error_failed))
+        toastFactory.show(requireContext().getString(R.string.google_login_error_failed))
 
     override fun showGoogleLoginErrorInProgress() =
-            toastFactory.show(requireContext().getString(R.string.google_login_error_in_progress))
+        toastFactory.show(requireContext().getString(R.string.google_login_error_in_progress))
 
     override fun showGoogleLoginErrorUnexpected() =
-            toastFactory.show(requireContext().getString(R.string.google_login_error_unexpected))
+        toastFactory.show(requireContext().getString(R.string.google_login_error_unexpected))
 
     companion object {
         // Hard coded code to receive on activity result

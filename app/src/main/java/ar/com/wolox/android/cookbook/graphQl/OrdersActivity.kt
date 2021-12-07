@@ -1,10 +1,11 @@
 package ar.com.wolox.android.cookbook.graphQl
 
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.ActivityBaseBinding
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
 import kotlinx.android.synthetic.main.activity_graph_ql.*
 
-class OrdersActivity : WolmoActivity() {
+class OrdersActivity : WolmoActivity<ActivityBaseBinding>() {
 
     override fun init() = replaceFragment(R.id.vActivityFrameLayout, OrdersFragment())
 

@@ -4,6 +4,7 @@ import android.os.Build
 import android.view.View
 import androidx.annotation.RequiresApi
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.FragmentLottieBinding
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import kotlinx.android.synthetic.main.fragment_lottie.*
@@ -23,24 +24,29 @@ import kotlinx.android.synthetic.main.fragment_lottie.*
  * - Save them to the assets folder of the project
  **/
 
-class LottieRecipeFragment : WolmoFragment<BasePresenter<Any>>(), LottieRecipeView {
+class LottieRecipeFragment : WolmoFragment<FragmentLottieBinding, BasePresenter<Any>>(),
+    LottieRecipeView {
     lateinit var lottieRecipeAdapter: LottieRecipeAdapter
 
+    override fun layout(): Int = R.layout.fragment_lottie
+
     override fun init() {
-        lottieRecipeAdapter = LottieRecipeAdapter(listOf(
+        lottieRecipeAdapter = LottieRecipeAdapter(
+            listOf(
                 R.raw.lottie_robot,
                 R.raw.lottie_notekook,
                 R.raw.lottie_developer,
                 R.raw.lottie_excercise,
                 R.raw.lottie_metiorite
 
-        ))
-        viewPagerLottie.adapter = lottieRecipeAdapter
+            )
+        )
+        binding!!.viewPagerLottie.adapter = lottieRecipeAdapter
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun setListeners() {
-        viewPagerLottie.setOnScrollChangeListener { _, _, _, _, _ ->
+        binding!!.viewPagerLottie.setOnScrollChangeListener { _, _, _, _, _ ->
             onPagerScroll(viewPagerLottie.currentItem)
         }
     }
@@ -53,8 +59,6 @@ class LottieRecipeFragment : WolmoFragment<BasePresenter<Any>>(), LottieRecipeVi
     private fun View.togglePresence(present: Boolean) {
         visibility = if (present) View.VISIBLE else View.GONE
     }
-
-    override fun layout(): Int = R.layout.fragment_lottie
 
     companion object {
         const val POSITION_ZERO = 0

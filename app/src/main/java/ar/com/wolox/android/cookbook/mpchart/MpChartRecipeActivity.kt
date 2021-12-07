@@ -1,10 +1,11 @@
 package ar.com.wolox.android.cookbook.mpchart
 
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.ActivityBaseBinding
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
 import ar.com.wolox.wolmo.core.util.ToastFactory
 
-class MpChartRecipeActivity : WolmoActivity() {
+class MpChartRecipeActivity : WolmoActivity<ActivityBaseBinding>() {
 
     override fun layout(): Int = R.layout.activity_base
 

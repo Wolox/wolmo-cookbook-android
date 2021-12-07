@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.FragmentInstagramLoginBinding
 import ar.com.wolox.android.cookbook.instagramlogin.adapter.InstagramLoginAuthListener
 import ar.com.wolox.android.cookbook.instagramlogin.adapter.InstagramLoginView
 import ar.com.wolox.android.cookbook.instagramlogin.model.InstagramDataItem
@@ -13,7 +14,9 @@ import ar.com.wolox.android.cookbook.instagramlogin.model.TypeErrorMessage
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_instagram_login.*
 
-class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter>(), InstagramLoginRecipeView {
+class InstagramLoginRecipeFragment :
+    WolmoFragment<FragmentInstagramLoginBinding, InstagramLoginRecipePresenter>(),
+    InstagramLoginRecipeView {
 
     private lateinit var viewAdapter: InstagramLoginRecipeAdapter
     private var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
@@ -26,22 +29,23 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
 
     override fun setListeners() {
         super.setListeners()
+        with(binding!!) {
+            vSessionBtn.setOnClickListener {
+                presenter.onSessionButtonClicked()
+            }
 
-        vSessionBtn.setOnClickListener {
-            presenter.onSessionButtonClicked()
-        }
-
-        vDataBtn.setOnClickListener {
-            presenter.onFetchDataButtonClicked()
+            vDataBtn.setOnClickListener {
+                presenter.onFetchDataButtonClicked()
+            }
         }
     }
 
     override fun enableLoginBtn() {
-        vSessionBtn.text = getString(R.string.instagram_login_btn)
+        binding!!.vSessionBtn.text = getString(R.string.instagram_login_btn)
     }
 
     override fun enableLogoutBtn() {
-        vSessionBtn.text = getString(R.string.instagram_logout_btn)
+        binding!!.vSessionBtn.text = getString(R.string.instagram_logout_btn)
     }
 
     override fun igLogout() {
@@ -51,16 +55,18 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
     }
 
     override fun showLoginSuccessMsg() {
-        Toast.makeText(context, getString(R.string.instagram_login_success), Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, getString(R.string.instagram_login_success), Toast.LENGTH_SHORT)
+            .show()
     }
 
     override fun showLogoutSuccessMsg() {
-        Toast.makeText(context, getString(R.string.instagram_logout_success), Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, getString(R.string.instagram_logout_success), Toast.LENGTH_SHORT)
+            .show()
     }
 
     override fun deleteListData() {
         pictureList = mutableListOf()
-        vRecyclerView.visibility = View.INVISIBLE
+        binding!!.vRecyclerView.visibility = View.INVISIBLE
     }
 
     override fun showWebView(url: String) {
@@ -80,12 +86,12 @@ class InstagramLoginRecipeFragment : WolmoFragment<InstagramLoginRecipePresenter
     }
 
     override fun showIGData(data: List<InstagramDataItem>) {
-        vRecyclerView.visibility = View.VISIBLE
+        binding!!.vRecyclerView.visibility = View.VISIBLE
         pictureList = mutableListOf()
         pictureList.addAll(data)
 
         viewAdapter = InstagramLoginRecipeAdapter(pictureList)
-        vRecyclerView.apply {
+        binding!!.vRecyclerView.apply {
             setHasFixedSize(true)
             layoutManager = viewManager
             adapter = viewAdapter

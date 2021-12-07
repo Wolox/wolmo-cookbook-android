@@ -2,9 +2,10 @@ package ar.com.wolox.android.cookbook.mercadopago
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.ActivityBaseBinding
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
 
-class MercadoPagoRecipeActivity : WolmoActivity() {
+class MercadoPagoRecipeActivity : WolmoActivity<ActivityBaseBinding>() {
 
     override fun layout(): Int = R.layout.activity_base
 

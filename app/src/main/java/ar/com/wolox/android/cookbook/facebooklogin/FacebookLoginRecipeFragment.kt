@@ -2,6 +2,7 @@ package ar.com.wolox.android.cookbook.facebooklogin
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.FragmentFacebookLoginBinding
 import ar.com.wolox.android.cookbook.facebooklogin.proxy.FacebookProxy
 import ar.com.wolox.android.cookbook.facebooklogin.model.FacebookAccount
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
@@ -18,17 +19,25 @@ import javax.inject.Inject
 /**
  * Follow the step by step from Facebook Developers docs: https://developers.facebook.com/docs/facebook-login/android
  */
-class FacebookLoginRecipeFragment : WolmoFragment<FacebookLoginRecipePresenter>(), FacebookLoginRecipeView {
+class FacebookLoginRecipeFragment :
+    WolmoFragment<FragmentFacebookLoginBinding, FacebookLoginRecipePresenter>(),
+    FacebookLoginRecipeView {
 
     @Inject
     internal lateinit var toastFactory: ToastFactory
+
     @Inject
     internal lateinit var facebookProxy: FacebookProxy
 
     override fun layout(): Int = R.layout.fragment_facebook_login
 
     override fun init() {
-        facebookProxy.setFacebookOriginalButtonAction(vLoginFacebookOriginalLoginBtn, this, presenter, presenter)
+        facebookProxy.setFacebookOriginalButtonAction(
+            vLoginFacebookOriginalLoginBtn,
+            this,
+            presenter,
+            presenter
+        )
         facebookProxy.setFacebookLoginAction(vLoginFacebookLoginBtn, this, presenter)
         facebookProxy.setFacebookLogoutAction(vLoginFacebookLogoutBtn, presenter)
     }
@@ -42,7 +51,9 @@ class FacebookLoginRecipeFragment : WolmoFragment<FacebookLoginRecipePresenter>(
         vLoginFacebookUserName.text = user.name
         vLoginFacebookUserEmail.text = user.email
         user.picture?.let {
-            vLoginFacebookUserPhoto.setImageRequest(ImageRequestBuilder.newBuilderWithSource(it).build())
+            vLoginFacebookUserPhoto.setImageRequest(
+                ImageRequestBuilder.newBuilderWithSource(it).build()
+            )
         }
 
         vLoginFacebookLogoutBtn.isEnabled = true

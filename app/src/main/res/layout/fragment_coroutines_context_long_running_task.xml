@@ -1,38 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-	<Button
-		android:id="@+id/mainButton"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:text="@string/coroutines_examples_context_long_task_main"
-		app:layout_constraintEnd_toStartOf="@id/defaultButton"
-		app:layout_constraintHorizontal_chainStyle="spread"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintWidth_percent="0.45" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-	<Button
-		android:id="@+id/defaultButton"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:text="@string/coroutines_examples_context_long_task_default"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_chainStyle="spread"
-		app:layout_constraintStart_toEndOf="@id/mainButton"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintWidth_percent="0.45" />
+        <Button
+            android:id="@+id/mainButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/coroutines_examples_context_long_task_main"
+            app:layout_constraintEnd_toStartOf="@id/defaultButton"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.45" />
 
-	<ImageView
-		android:id="@+id/coolCat"
-		android:layout_width="@dimen/coroutines_examples_context_cat_size"
-		android:layout_height="@dimen/coroutines_examples_context_cat_size"
-		android:src="@drawable/bg_cool_cat"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/mainButton" />
+        <Button
+            android:id="@+id/defaultButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/coroutines_examples_context_long_task_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@id/mainButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.45" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/coolCat"
+            android:layout_width="@dimen/coroutines_examples_context_cat_size"
+            android:layout_height="@dimen/coroutines_examples_context_cat_size"
+            android:src="@drawable/bg_cool_cat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mainButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

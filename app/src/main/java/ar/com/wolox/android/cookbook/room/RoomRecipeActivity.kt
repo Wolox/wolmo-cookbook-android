@@ -1,10 +1,11 @@
 package ar.com.wolox.android.cookbook.room
 
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.ActivityBaseBinding
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
 import ar.com.wolox.wolmo.core.util.ToastFactory
 
-class RoomRecipeActivity : WolmoActivity() {
+class RoomRecipeActivity : WolmoActivity<ActivityBaseBinding>() {
 
     override fun layout(): Int = R.layout.activity_base
 

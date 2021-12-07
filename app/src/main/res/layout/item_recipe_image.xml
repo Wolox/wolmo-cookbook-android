@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/vItemRecipeImage"
-        android:layout_width="@dimen/recipe_image"
-        android:layout_height="@dimen/recipe_image"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:elevation="@dimen/spacing_large"
-        android:outlineProvider="bounds"
-        android:scaleType="centerCrop"
-        tools:src="@drawable/bg_cool_cat"
-        tools:ignore="ContentDescription" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/vItemRecipeDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_big_extra"
-        app:layout_constraintTop_toBottomOf="@id/vItemRecipeImage"
-        app:layout_constraintLeft_toLeftOf="@id/vItemRecipeImage"
-        app:layout_constraintRight_toRightOf="@id/vItemRecipeImage"
-        android:gravity="center"
-        android:fontFamily="@font/indie_flower"
-        android:maxLines="3"
-        android:textStyle="bold"
-        android:textSize="@dimen/font_large"
-        tools:text="@string/app_example_recipe_description"/>
+        <ImageView
+            android:id="@+id/vItemRecipeImage"
+            android:layout_width="@dimen/recipe_image"
+            android:layout_height="@dimen/recipe_image"
+            android:background="@android:color/white"
+            android:elevation="@dimen/spacing_large"
+            android:outlineProvider="bounds"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/bg_cool_cat" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/vItemRecipeDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_big_extra"
+            android:fontFamily="@font/indie_flower"
+            android:gravity="center"
+            android:maxLines="3"
+            android:textSize="@dimen/font_large"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/vItemRecipeImage"
+            app:layout_constraintRight_toRightOf="@id/vItemRecipeImage"
+            app:layout_constraintTop_toBottomOf="@id/vItemRecipeImage"
+            tools:text="@string/app_example_recipe_description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

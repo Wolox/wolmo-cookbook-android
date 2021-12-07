@@ -1,54 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/static_spacing_medium_extra"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".notifications.NotificationFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <Button
-        android:id="@+id/vSimpleNotificationBtn"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/notifications_basic_type_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/static_spacing_medium_extra"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".notifications.NotificationFragment">
 
-    <Button
-        android:id="@+id/vExpandableTextNotificationBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/notifications_text_expandable_type_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vSimpleNotificationBtn" />
+        <Button
+            android:id="@+id/vSimpleNotificationBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notifications_basic_type_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/vBigPictureNotificationBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/notifications_big_picture_title" />
+        <Button
+            android:id="@+id/vExpandableTextNotificationBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notifications_text_expandable_type_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vSimpleNotificationBtn" />
 
-    <Button
-        android:id="@+id/vActionsNotificationBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/notifications_actions_title" />
+        <Button
+            android:id="@+id/vBigPictureNotificationBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notifications_big_picture_title" />
 
-    <Button
-        android:id="@+id/vInboxNotificationBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/notifications_inbox_title" />
+        <Button
+            android:id="@+id/vActionsNotificationBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notifications_actions_title" />
 
-    <Button
-        android:id="@+id/vSettingsChannel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/notifications_settings_title" />
+        <Button
+            android:id="@+id/vInboxNotificationBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notifications_inbox_title" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/vSettingsChannel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notifications_settings_title" />
+
+    </LinearLayout>
+</layout>

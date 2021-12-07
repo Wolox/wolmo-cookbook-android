@@ -2,6 +2,7 @@ package ar.com.wolox.android.cookbook.twitterlogin
 
 import android.content.Intent
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.ActivityBaseBinding
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
 
 /**
@@ -14,7 +15,7 @@ import ar.com.wolox.wolmo.core.activity.WolmoActivity
  * 5. Add dependencies
  * 6. Initialize TwitterApp in application
  */
-class TwitterLoginRecipeActivity : WolmoActivity() {
+class TwitterLoginRecipeActivity : WolmoActivity<ActivityBaseBinding>() {
 
     override fun layout(): Int = R.layout.activity_base
 

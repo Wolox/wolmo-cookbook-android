@@ -3,13 +3,15 @@ package ar.com.wolox.android.cookbook.datasync
 import android.text.Editable
 import android.text.TextWatcher
 import ar.com.wolox.android.cookbook.R
+import ar.com.wolox.android.cookbook.databinding.FragmentPokemonSearchBinding
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import kotlinx.android.synthetic.main.fragment_pokemon_search.vPokemonSearchBack
 import kotlinx.android.synthetic.main.fragment_pokemon_search.vPokemonSearchField
 import kotlinx.android.synthetic.main.fragment_pokemon_search.vPokemonSearchImageView
 import java.util.Random
 
-class PokemonSearchFragment : WolmoFragment<PokemonSearchPresenter>(), PokemonSearchView {
+class PokemonSearchFragment : WolmoFragment<FragmentPokemonSearchBinding, PokemonSearchPresenter>(),
+    PokemonSearchView {
 
     override fun layout() = R.layout.fragment_pokemon_search
 
