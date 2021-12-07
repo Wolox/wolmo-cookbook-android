@@ -4,26 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="70dp"
-        android:paddingVertical="@dimen/spacing_large"
-        android:layout_height="wrap_content">
+        android:layout_width="@dimen/recipe_item_width"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/spacing_large">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/recipeIconContainer"
             android:layout_width="@dimen/static_spacing_huge_extra"
             android:layout_height="@dimen/static_spacing_huge_extra"
-            app:cardCornerRadius="10dp"
+            app:cardCornerRadius="@dimen/item_recipe_border_radius"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/vRecipeIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_button"
-                tools:src="@drawable/bg_fingerprint" />
+                android:background="@drawable/rounded_button" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -32,14 +30,14 @@
             android:id="@+id/vRecipeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/static_spacing_medium"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="2"
             android:textSize="@dimen/font_medium"
-            app:layout_constraintStart_toStartOf="@id/recipeIconContainer"
             app:layout_constraintEnd_toEndOf="@id/recipeIconContainer"
-            app:layout_constraintTop_toBottomOf="@id/recipeIconContainer"
-            tools:text="Login with fingerprint" />
+            app:layout_constraintStart_toStartOf="@id/recipeIconContainer"
+            app:layout_constraintTop_toBottomOf="@id/recipeIconContainer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

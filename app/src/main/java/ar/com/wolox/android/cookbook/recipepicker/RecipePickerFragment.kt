@@ -1,6 +1,7 @@
 package ar.com.wolox.android.cookbook.recipepicker
 
 import android.content.Intent
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.GridLayoutManager
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRecipeActivity
@@ -32,12 +33,18 @@ class RecipePickerFragment : WolmoFragment<FragmentRecipeListBinding, RecipePick
 
     override fun showRecipes(recipes: List<Recipe>) {
         binding!!.vRecipeList.apply {
-            adapter = RecipePickerAdapter().apply {
+            adapter = RecipePickerAdapter(presenter).apply {
                 submitList(mapRecipesToItems(recipes))
             }
             layoutManager = GridLayoutManager(context, 4)
-            isNestedScrollingEnabled = false
-            isFocusable = false
+        }
+    }
+
+    override fun setListeners() {
+        with(binding!!) {
+            searchInput.doOnTextChanged { text, _, _, _ ->
+                presenter.onSearchPerformed(text.toString())
+            }
         }
     }
 

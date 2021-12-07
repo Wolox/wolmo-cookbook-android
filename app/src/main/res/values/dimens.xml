@@ -109,4 +109,11 @@
     <!-- Lottie -->
     <dimen name="margin_horizontal_animation">32dp</dimen>
     <dimen name="margin_arrows">20dp</dimen>
+
+    <!-- Recipe picker -->
+    <dimen name="ic_search_height">20dp</dimen>
+    <dimen name="ic_search_width">18dp</dimen>
+    <dimen name="search_field_height">25dp</dimen>
+    <dimen name="recipe_item_width">70dp</dimen>
+    <dimen name="item_recipe_border_radius">10dp</dimen>
 </resources>

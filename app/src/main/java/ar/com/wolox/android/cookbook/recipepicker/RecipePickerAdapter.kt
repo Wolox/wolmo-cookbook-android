@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import ar.com.wolox.android.cookbook.common.utils.BindingViewHolder
 import ar.com.wolox.android.cookbook.databinding.ItemRecipeBinding
 
-class RecipePickerAdapter :
+class RecipePickerAdapter(private val listener: RecipeClickListener) :
     ListAdapter<RecipeItem, BindingViewHolder<RecipeItem, ItemRecipeBinding>>(diffCallback) {
 
     override fun onCreateViewHolder(
@@ -18,7 +18,7 @@ class RecipePickerAdapter :
     ): BindingViewHolder<RecipeItem, ItemRecipeBinding> {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemRecipeBinding.inflate(layoutInflater)
-        return RecipeViewHolder(binding, parent.context)
+        return RecipeViewHolder(binding, parent.context, listener)
     }
 
     override fun onBindViewHolder(
@@ -30,7 +30,8 @@ class RecipePickerAdapter :
 
     inner class RecipeViewHolder(
         binding: ItemRecipeBinding,
-        private val context: Context
+        private val context: Context,
+        private val listener: RecipeClickListener
     ) : BindingViewHolder<RecipeItem, ItemRecipeBinding>(binding) {
 
         override fun bind(item: RecipeItem) {
@@ -40,6 +41,7 @@ class RecipePickerAdapter :
                 vRecipeIcon.clipToOutline = true
                 vRecipeTitle.text = context.getString(item.stringResId)
             }
+            binding.root.setOnClickListener { listener.onRecipeClick(item.recipe) }
         }
     }
 
@@ -52,4 +54,8 @@ class RecipePickerAdapter :
                 oldItem == newItem
         }
     }
+}
+
+interface RecipeClickListener {
+    fun onRecipeClick(clickedRecipe: Recipe)
 }

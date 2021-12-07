@@ -3,7 +3,7 @@ package ar.com.wolox.android.cookbook.recipepicker
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import javax.inject.Inject
 
-class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerView>() {
+class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerView>(), RecipeClickListener {
 
     override fun onViewAttached() {
         super.onViewAttached()
@@ -11,7 +11,12 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
         view?.showRecipes(Recipe.values().toList())
     }
 
-    fun onRecipeClicked(clickedRecipe: Recipe) {
+    fun onSearchPerformed(search: String) {
+        val recipes = Recipe.values()
+        view?.showRecipes(recipes.filter { it.fullName.contains(search, true) })
+    }
+
+    override fun onRecipeClick(clickedRecipe: Recipe) {
         when (clickedRecipe) {
             Recipe.LOTTIE -> view?.goToLottieRecipe()
             Recipe.MERCADOPAGO -> view?.goToMercadoPagoRecipe()
