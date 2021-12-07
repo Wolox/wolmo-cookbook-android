@@ -23,7 +23,6 @@ import ar.com.wolox.android.cookbook.room.RoomRecipeActivity
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeActivity
 import ar.com.wolox.android.cookbook.twitterlogin.TwitterLoginRecipeActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
-import kotlinx.android.synthetic.main.fragment_recipe_picker.*
 
 class RecipePickerFragment : WolmoFragment<FragmentRecipeListBinding, RecipePickerPresenter>(), RecipePickerView {
 
