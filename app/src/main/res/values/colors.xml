@@ -15,4 +15,8 @@
 
     <color name="color_black">#000000</color>
     <color name="color_lottie">#0fccce</color>
+    <color name="yellow_coroutines">#b0ae79</color>
+    <color name="twitter_color">#1DA1F2</color>
+    <color name="koin_color">#292827</color>
+    <color name="firebase_color">#1C3144</color>
 </resources>

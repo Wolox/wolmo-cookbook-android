@@ -65,18 +65,6 @@ android {
     // Change the "default" to whatever fits. At least one 'dimension' is required by gradle.
     flavorDimensions "default"
 
-    productFlavors {
-        stage {
-            applicationId defaultConfig.applicationId + ".stage"
-            versionName defaultConfig.versionName + "-stage"
-            resValue "string", "app_name", "[Stage] Wolmo Android Cookbook"
-        }
-
-        production {
-            resValue "string", "app_name", "Wolmo Android Cookbook"
-        }
-    }
-
     applicationVariants.all { variant ->
         def isDebugging = variant.flavorName == "debug"
         def mercadopagoSandboxKey = project.hasProperty("mercadopago_public_key_sandbox") ?

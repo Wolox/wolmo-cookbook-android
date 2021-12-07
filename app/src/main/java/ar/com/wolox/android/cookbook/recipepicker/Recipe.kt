@@ -14,7 +14,7 @@ enum class Recipe(val fullName: String) {
     TWITTER_LOGIN("Twitter login"),
     INSTAGRAM_LOGIN("Instagram login"),
     ROOM("RoomDB"),
-    MP_CHART("Mercado Pago charts"),
+    MP_CHART("MP Charts"),
     NAVIGATION("Navigation architecture component"),
     DATA_SYNC("Data Sync Recipe with a Pokemon flavor"),
     TESTS("Tests"),
