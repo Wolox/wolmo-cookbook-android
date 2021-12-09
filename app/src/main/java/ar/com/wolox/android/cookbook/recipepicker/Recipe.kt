@@ -21,6 +21,6 @@ enum class Recipe {
     KOIN,
     NOTIFICATIONS,
     GRAPH_QL,
-    MAP,
-    BIOMETRIC_LOGIN
+    BIOMETRIC_LOGIN,
+    MAP
 }

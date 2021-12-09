@@ -60,8 +60,8 @@ class RecipePickerFragment : WolmoFragment<FragmentRecipePickerBinding, RecipePi
                 Recipe.KOIN -> RecipeItem(it, R.drawable.bg_koin, R.string.recipe_picker_koin)
                 Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.bg_notification_recipe, R.string.recipe_picker_notifications)
                 Recipe.GRAPH_QL -> RecipeItem(it, R.drawable.bg_graph_ql, R.string.recipe_picker_graph_ql)
-                Recipe.MAP -> RecipeItem(it, R.drawable.bg_google_maps, R.string.recipe_picker_google_maps)
                 Recipe.BIOMETRIC_LOGIN -> RecipeItem(it, R.drawable.bg_fingerprint, R.string.recipe_picker_fingerprint)
+                Recipe.MAP -> RecipeItem(it, R.drawable.bg_google_maps, R.string.recipe_picker_google_maps)
             }
         }
     }
@@ -99,7 +99,7 @@ class RecipePickerFragment : WolmoFragment<FragmentRecipePickerBinding, RecipePi
     override fun goToMercadoPagoRecipe() = goTo(MercadoPagoRecipeActivity::class.java)
 
     override fun goToMaps() = goTo(MapActivity::class.java)
-    
+
     override fun goToFingerprintRecipe() = goTo(FingerprintLoginRecipeActivity::class.java)
 
     override fun goToLottieRecipe() = goTo(LottieRecipeActivity::class.java)
