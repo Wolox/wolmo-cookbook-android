@@ -24,7 +24,7 @@ The Cookbook will also be used as a playground to test new stuff out. That does 
 14. <b>[Notifications](https://github.com/Wolox/wolmo-cookbook-android/tree/master/app/src/main/java/ar/com/wolox/android/cookbook/notifications):</b> Implementation of local notifications with different designs (expandable text, picture, actions, etc).
 15. <b>[Graph QL](https://github.com/Wolox/wolmo-cookbook-android/tree/master/app/src/main/java/ar/com/wolox/android/cookbook/graphQl): </b>A GET example using this network component.
 16. <b>[Login with fingerprint](https://github.com/Wolox/wolmo-cookbook-android/tree/master/app/src/main/java/ar/com/wolox/android/cookbook/fingerprint):</b> A simple implementation of Android Biometrics.
-16. <b>[Google Maps](https://github.com/Wolox/wolmo-cookbook-android/tree/master/app/src/main/java/ar/com/wolox/android/cookbook/maps):</b> Implementation of Google Maps with clustering and current location.
+18. <b>[Google Maps](https://github.com/Wolox/wolmo-cookbook-android/tree/master/app/src/main/java/ar/com/wolox/android/cookbook/maps):</b> Implementation of Google Maps with clustering and current location.
 
 
 ## Initial Setup

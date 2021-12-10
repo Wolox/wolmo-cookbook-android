@@ -112,6 +112,7 @@
             android:name=".maps.MapActivity"
             android:screenOrientation="portrait" />
 
+        <!-- Check https://developers.google.com/maps/documentation/android-sdk/get-api-key for information about how to obtain your API_KEY -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="" />

@@ -282,4 +282,8 @@
     <string name="fingerprint_login_cancellation">Fingerprint login cancelled</string>
     <string name="fingerprint_activated_successfully">Your fingerprint was activated successfully!</string>
     <string name="no_biometrics_active">Your phone does not support biometrics</string>
+
+    <!-- Maps -->
+    <string name="map_marker_title">Title %1$d</string>
+    <string name="map_marker_snippet">Title %1$d</string>
 </resources>

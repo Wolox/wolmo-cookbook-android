@@ -7,6 +7,7 @@ import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.databinding.FragmentMapBinding
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.permission.PermissionListener
+import ar.com.wolox.wolmo.core.presenter.BasePresenter
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -15,7 +16,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.clustering.ClusterItem
 import com.google.maps.android.clustering.ClusterManager
 
-class MapFragment : WolmoFragment<FragmentMapBinding, MapPresenter>(), MapView,
+class MapFragment : WolmoFragment<FragmentMapBinding, BasePresenter<Any>>(), MapView,
     GoogleMap.OnMyLocationButtonClickListener, OnMapReadyCallback,
     ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -43,20 +44,27 @@ class MapFragment : WolmoFragment<FragmentMapBinding, MapPresenter>(), MapView,
     @SuppressLint("PotentialBehaviorOverride")
     private fun setClusterConfiguration() {
         clusterManager = ClusterManager(context, map)
-        map.setOnCameraIdleListener(clusterManager)
-        map.setOnMarkerClickListener(clusterManager)
+        with(map) {
+            setOnCameraIdleListener(clusterManager)
+            setOnMarkerClickListener(clusterManager)
+        }
         addClusterItems()
     }
 
     private fun addClusterItems() {
-        var lat = -34.784393
-        var lng = -58.838345
+        var lat = defaultBuenosAiresLocationLatitude
+        var lng = defaultBuenosAiresLocationLongitude
         for (i in 0..9) {
             val offset = i / 120.0
             lat += offset
             lng += offset
             val offsetItem =
-                MyItem(lat, lng, "Title $i", "Snippet $i")
+                MyItem(
+                    lat,
+                    lng,
+                    getString(R.string.map_marker_title, i),
+                    getString(R.string.map_marker_snippet, i)
+                )
             clusterManager.addItem(offsetItem)
         }
     }
@@ -70,29 +78,22 @@ class MapFragment : WolmoFragment<FragmentMapBinding, MapPresenter>(), MapView,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
         )
-
         googleMap.setOnMyLocationButtonClickListener(this)
-
-        map.moveCamera(
-            CameraUpdateFactory.newLatLngZoom(
-                LatLng(defaultLatitude, defaultLongitude),
-                defaultZoom
+        with(map) {
+            moveCamera(
+                CameraUpdateFactory.newLatLngZoom(
+                    LatLng(defaultArgentinaLatitude, defaultArgentinaLongitude),
+                    defaultZoom
+                )
             )
-        )
-
-        map.uiSettings.isMyLocationButtonEnabled = true
+            uiSettings.isMyLocationButtonEnabled = true
+        }
 
         setClusterConfiguration()
     }
 
     override fun onMyLocationButtonClick(): Boolean {
         return false
-    }
-
-    companion object {
-        private const val defaultZoom = 4f
-        private const val defaultLatitude = -40.9718805
-        private const val defaultLongitude = -61.9478275
     }
 
     inner class MyItem(
@@ -115,5 +116,13 @@ class MapFragment : WolmoFragment<FragmentMapBinding, MapPresenter>(), MapView,
         override fun getSnippet(): String? {
             return snippet
         }
+    }
+
+    companion object {
+        private const val defaultZoom = 4f
+        private const val defaultBuenosAiresLocationLatitude = -34.784393
+        private const val defaultBuenosAiresLocationLongitude = -58.838345
+        private const val defaultArgentinaLatitude = -40.9718805
+        private const val defaultArgentinaLongitude = -61.9478275
     }
 }
