@@ -1,6 +1,7 @@
 <resources>
 
     <!-- General -->
+    <string name="app_name">Wolmo Android Cookbook</string>
     <string name="app_title">Wolmo Android\nCookbook</string>
     <string name="app_example_recipe_description">The Bad Boy of the Block. You can\'t resist him, huh?</string>
     <string name="unexpected_error">Unexpected error</string>
@@ -21,8 +22,9 @@
     <string name="recipe_picker_coroutines">Coroutines</string>
     <string name="recipe_picker_firebase">Firebase Analytics</string>
     <string name="recipe_picker_mercadopago">MercadoPago</string>
-    <string name="recipe_picker_fingerprint">Login con huella dactilar</string>
+    <string name="recipe_picker_fingerprint">Login with fingerprint</string>
     <string name="recipe_picker_lottie">Lottie</string>
+    <string name="recipe_picker_search">Search for a recipe…</string>
 
     <!-- Google login -->
     <string name="google_login_logout">Logout</string>

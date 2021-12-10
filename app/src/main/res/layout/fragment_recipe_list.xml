@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recipesContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_recipe_picker_grey">
+
+        <LinearLayout
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:elevation="@dimen/static_spacing_tiny"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/static_spacing_large"
+            android:paddingVertical="@dimen/static_spacing_medium"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/static_spacing_huge_extra"
+                android:layout_height="@dimen/static_spacing_huge_extra"
+                android:layout_marginEnd="@dimen/static_spacing_large"
+                android:src="@drawable/ic_cookbook_pet" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/searchContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/px_white"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/static_spacing_medium">
+
+                <EditText
+                    android:id="@+id/searchInput"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/search_field_height"
+                    android:layout_marginEnd="@dimen/static_spacing_medium"
+                    android:background="@color/px_white"
+                    android:hint="@string/recipe_picker_search"
+                    android:textSize="@dimen/font_medium"
+                    app:layout_constraintEnd_toStartOf="@id/searchIcon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/searchIcon"
+                    android:layout_width="@dimen/ic_search_width"
+                    android:layout_height="@dimen/ic_search_height"
+                    android:src="@drawable/ic_search"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/searchInput"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/px_gray" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/vRecipeList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/spacing_medium_extra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search"
+            tools:listitem="@layout/item_recipe" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
