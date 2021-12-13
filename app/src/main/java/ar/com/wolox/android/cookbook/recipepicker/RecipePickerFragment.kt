@@ -1,10 +1,12 @@
 package ar.com.wolox.android.cookbook.recipepicker
 
 import android.content.Intent
+import androidx.core.widget.doOnTextChanged
+import androidx.recyclerview.widget.GridLayoutManager
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRecipeActivity
 import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeActivity
-import ar.com.wolox.android.cookbook.databinding.FragmentRecipePickerBinding
+import ar.com.wolox.android.cookbook.databinding.FragmentRecipeListBinding
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
 import ar.com.wolox.android.cookbook.facebooklogin.FacebookLoginRecipeActivity
 import ar.com.wolox.android.cookbook.fingerprint.login.FingerprintLoginRecipeActivity
@@ -22,44 +24,50 @@ import ar.com.wolox.android.cookbook.room.RoomRecipeActivity
 import ar.com.wolox.android.cookbook.tests.TestLoginRecipeActivity
 import ar.com.wolox.android.cookbook.twitterlogin.TwitterLoginRecipeActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
-import kotlinx.android.synthetic.main.fragment_recipe_picker.*
 
-class RecipePickerFragment : WolmoFragment<FragmentRecipePickerBinding, RecipePickerPresenter>(), RecipePickerView {
+class RecipePickerFragment : WolmoFragment<FragmentRecipeListBinding, RecipePickerPresenter>(), RecipePickerView {
 
-    override fun layout() = R.layout.fragment_recipe_picker
+    override fun layout() = R.layout.fragment_recipe_list
 
     override fun init() {}
 
     override fun showRecipes(recipes: List<Recipe>) {
-        binding!!.vRecipePickerSelectionViewPager.apply {
-            adapter = RecipeViewPager(mapRecipesToItems(recipes)) {
-                presenter.onRecipeClicked(it)
+        binding!!.vRecipeList.apply {
+            adapter = RecipePickerAdapter(presenter).apply {
+                submitList(mapRecipesToItems(recipes))
             }
-            setPageTransformer(false, CarouselEffectTransformer())
-            pageMargin = resources.getDimensionPixelSize(R.dimen.spacing_medium_more)
+            layoutManager = GridLayoutManager(context, 4)
+        }
+    }
+
+    override fun setListeners() {
+        with(binding!!) {
+            searchInput.doOnTextChanged { text, _, _, _ ->
+                presenter.onSearchPerformed(text.toString())
+            }
         }
     }
 
     private fun mapRecipesToItems(recipes: List<Recipe>): List<RecipeItem> {
-        // Create a RecipeItem with the desired image & text for it inside the 'when' statement
+        // Create a RecipeItem with the desired image, text and background color for it inside the 'when' statement
         return recipes.map {
             when (it) {
-                Recipe.LOTTIE -> RecipeItem(it, R.drawable.bg_lottie, R.string.recipe_picker_lottie)
-                Recipe.MERCADOPAGO -> RecipeItem(it, R.drawable.bg_mercadopago, R.string.recipe_picker_mercadopago)
-                Recipe.ANALYTICS -> RecipeItem(it, R.drawable.bg_firebase, R.string.recipe_picker_firebase)
-                Recipe.COROUTINES -> RecipeItem(it, R.drawable.bg_coroutines, R.string.recipe_picker_coroutines)
-                Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.bg_google_login, R.string.recipe_picker_google_login)
-                Recipe.FACEBOOK_LOGIN -> RecipeItem(it, R.drawable.bg_facebook_login, R.string.recipe_picker_facebook_login)
-                Recipe.TWITTER_LOGIN -> RecipeItem(it, R.drawable.bg_twitter_login, R.string.recipe_picker_twitter_login)
-                Recipe.INSTAGRAM_LOGIN -> RecipeItem(it, R.drawable.bg_instagram_login, R.string.recipe_picker_instagram_login)
-                Recipe.ROOM -> RecipeItem(it, R.drawable.bg_room, R.string.recipe_picker_room)
-                Recipe.MP_CHART -> RecipeItem(it, R.drawable.bg_mp_chart, R.string.recipe_picker_mp_chart)
-                Recipe.NAVIGATION -> RecipeItem(it, R.drawable.bg_navigation, R.string.recipe_picker_navigation)
+                Recipe.LOTTIE -> RecipeItem(it, R.drawable.ic_lottie, R.string.recipe_picker_lottie)
+                Recipe.MERCADOPAGO -> RecipeItem(it, R.drawable.ic_mercadopago, R.string.recipe_picker_mercadopago)
+                Recipe.ANALYTICS -> RecipeItem(it, R.drawable.bg_firebase, R.string.recipe_picker_firebase, R.color.firebase_color)
+                Recipe.COROUTINES -> RecipeItem(it, R.drawable.ic_coroutines, R.string.recipe_picker_coroutines, R.color.yellow_coroutines)
+                Recipe.GOOGLE_LOGIN -> RecipeItem(it, R.drawable.ic_google, R.string.recipe_picker_google_login)
+                Recipe.FACEBOOK_LOGIN -> RecipeItem(it, R.drawable.ic_facebook, R.string.recipe_picker_facebook_login)
+                Recipe.TWITTER_LOGIN -> RecipeItem(it, R.drawable.ic_twitter, R.string.recipe_picker_twitter_login, R.color.twitter_color)
+                Recipe.INSTAGRAM_LOGIN -> RecipeItem(it, R.drawable.ic_instagram, R.string.recipe_picker_instagram_login)
+                Recipe.ROOM -> RecipeItem(it, R.drawable.ic_room, R.string.recipe_picker_room, R.color.px_orange_status_bar)
+                Recipe.MP_CHART -> RecipeItem(it, R.drawable.ic_chart, R.string.recipe_picker_mp_chart)
+                Recipe.NAVIGATION -> RecipeItem(it, R.drawable.ic_navigation, R.string.recipe_picker_navigation)
                 Recipe.DATA_SYNC -> RecipeItem(it, R.drawable.bg_data_sync_pokemon, R.string.recipe_picker_data_sync)
                 Recipe.TESTS -> RecipeItem(it, R.drawable.bg_tests, R.string.recipe_picker_tests)
-                Recipe.KOIN -> RecipeItem(it, R.drawable.bg_koin, R.string.recipe_picker_koin)
-                Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.bg_notification_recipe, R.string.recipe_picker_notifications)
-                Recipe.GRAPH_QL -> RecipeItem(it, R.drawable.bg_graph_ql, R.string.recipe_picker_graph_ql)
+                Recipe.KOIN -> RecipeItem(it, R.drawable.ic_koin, R.string.recipe_picker_koin, R.color.koin_color)
+                Recipe.NOTIFICATIONS -> RecipeItem(it, R.drawable.ic_notifications, R.string.recipe_picker_notifications)
+                Recipe.GRAPH_QL -> RecipeItem(it, R.drawable.ic_graphql, R.string.recipe_picker_graph_ql)
                 Recipe.BIOMETRIC_LOGIN -> RecipeItem(it, R.drawable.bg_fingerprint, R.string.recipe_picker_fingerprint)
                 Recipe.MAP -> RecipeItem(it, R.drawable.bg_google_maps, R.string.recipe_picker_google_maps)
             }
