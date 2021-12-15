@@ -51,6 +51,7 @@ class MapFragment : WolmoFragment<FragmentMapBinding, BasePresenter<Any>>(), Map
         addClusterItems()
     }
 
+    // This generates multiple mock locations to test the cluster function in the map
     private fun addClusterItems() {
         var lat = defaultBuenosAiresLocationLatitude
         var lng = defaultBuenosAiresLocationLongitude
