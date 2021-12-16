@@ -21,5 +21,6 @@ enum class Recipe(val fullName: String) {
     KOIN("Koin"),
     NOTIFICATIONS("Push Notifications"),
     GRAPH_QL("GraphQL"),
-    BIOMETRIC_LOGIN("Login with fingerprint")
+    BIOMETRIC_LOGIN("Login with fingerprint"),
+    MAP("Google Maps")
 }

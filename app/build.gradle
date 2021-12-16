@@ -132,6 +132,8 @@ buildscript {
     ext.mercadopago_version = '4.40.1'
     ext.lottie_version = '3.4.0'
     ext.biometrics_version = '1.1.0'
+    ext.maps_version = '18.0.0'
+    ext.maps_utils_version = '2.3.0'
 }
 
 dependencies {
@@ -228,6 +230,11 @@ dependencies {
 
     // Biometrics
     implementation "androidx.biometric:biometric:$biometrics_version"
+
+    // Maps
+    implementation "com.google.android.gms:play-services-maps:$maps_version"
+    implementation "com.google.maps.android:android-maps-utils:$maps_utils_version"
+
 }
 
 dependencies {

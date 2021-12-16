@@ -22,6 +22,7 @@
     <string name="recipe_picker_coroutines">Coroutines</string>
     <string name="recipe_picker_firebase">Firebase Analytics</string>
     <string name="recipe_picker_mercadopago">MercadoPago</string>
+    <string name="recipe_picker_google_maps">Google Maps</string>
     <string name="recipe_picker_fingerprint">Login with fingerprint</string>
     <string name="recipe_picker_lottie">Lottie</string>
     <string name="recipe_picker_search">Search for a recipe…</string>
@@ -283,4 +284,8 @@
     <string name="fingerprint_login_cancellation">Fingerprint login cancelled</string>
     <string name="fingerprint_activated_successfully">Your fingerprint was activated successfully!</string>
     <string name="no_biometrics_active">Your phone does not support biometrics</string>
+
+    <!-- Maps -->
+    <string name="map_marker_title">Title %1$d</string>
+    <string name="map_marker_snippet">Snippet %1$d</string>
 </resources>
