@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CurrencyInputDouble">
+        <attr name="onChangeAnimation" format="reference"/>
+        <attr name="defaultText" format="string"/>
+        <attr name="dotSeparator" format="enum">
+            <enum name="DOT" value="0"/>
+            <enum name="COMMA" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>
