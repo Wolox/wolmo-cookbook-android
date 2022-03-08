@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/primaryValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/currency_input_margin_top"
+            android:fontFamily="@font/poppins_lightitalic"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textColor="@color/px_transparent"
+            android:textSize="@dimen/font_huge"
+            app:layout_constraintEnd_toEndOf="@id/textContainer"
+            app:layout_constraintStart_toStartOf="@id/textContainer"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="0,00" />
+
+        <TextView
+            android:id="@+id/textContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/currency_input_margin_end"
+            android:layout_marginBottom="@dimen/currency_input_margin_bottom"
+            android:fontFamily="@font/poppins_lightitalic"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/font_huge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="0,00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

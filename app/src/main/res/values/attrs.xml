@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CurrencyInputDouble">
+    <declare-styleable name="AnimatedEditText">
         <attr name="onChangeAnimation" format="reference"/>
         <attr name="defaultText" format="string"/>
         <attr name="dotSeparator" format="enum">
