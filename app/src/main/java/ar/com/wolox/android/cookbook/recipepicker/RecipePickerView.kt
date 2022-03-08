@@ -39,4 +39,6 @@ interface RecipePickerView {
     fun goToFingerprintRecipe()
 
     fun goToLottieRecipe()
+
+    fun goToAnimatedInput()
 }

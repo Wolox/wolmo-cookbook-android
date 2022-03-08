@@ -36,6 +36,7 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
             Recipe.GRAPH_QL -> view?.goToGraphQlRecipe()
             Recipe.BIOMETRIC_LOGIN -> view?.goToFingerprintRecipe()
             Recipe.MAP -> view?.goToMaps()
+            Recipe.ANIMATED_INPUT -> view?.goToAnimatedInput()
         }
     }
 }
