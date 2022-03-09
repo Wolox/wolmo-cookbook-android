@@ -288,4 +288,7 @@
     <!-- Maps -->
     <string name="map_marker_title">Title %1$d</string>
     <string name="map_marker_snippet">Snippet %1$d</string>
+
+    <!-- Animated EditText -->
+    <string name="animated_input">Animated Input</string>
 </resources>

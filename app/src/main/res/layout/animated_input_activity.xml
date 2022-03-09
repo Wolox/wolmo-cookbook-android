@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ar.com.wolox.android.cookbook.animatedinput.AnimatedEditText
+            android:id="@+id/currencyEdit"
+            android:background="@color/px_white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:onChangeAnimation="@anim/falling_text"
+            app:defaultText="0.00"
+            app:dotSeparator="DOT"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

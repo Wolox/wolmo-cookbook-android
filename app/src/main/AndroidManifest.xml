@@ -126,6 +126,8 @@
         <activity android:name=".fingerprint.success.FingerprintLoginSuccessActivity" />
         
         <activity android:name=".lottie.LottieRecipeActivity" />
+
+        <activity android:name=".animatedinput.AnimatedInputActivity"/>
     </application>
 
 </manifest>

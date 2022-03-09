@@ -5,6 +5,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.GridLayoutManager
 import ar.com.wolox.android.cookbook.R
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRecipeActivity
+import ar.com.wolox.android.cookbook.animatedinput.AnimatedInputActivity
 import ar.com.wolox.android.cookbook.coroutines.CoroutinesRecipeActivity
 import ar.com.wolox.android.cookbook.databinding.FragmentRecipeListBinding
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeActivity
@@ -70,6 +71,7 @@ class RecipePickerFragment : WolmoFragment<FragmentRecipeListBinding, RecipePick
                 Recipe.GRAPH_QL -> RecipeItem(it, R.drawable.ic_graphql, R.string.recipe_picker_graph_ql)
                 Recipe.BIOMETRIC_LOGIN -> RecipeItem(it, R.drawable.bg_fingerprint, R.string.recipe_picker_fingerprint)
                 Recipe.MAP -> RecipeItem(it, R.drawable.bg_google_maps, R.string.recipe_picker_google_maps)
+                Recipe.ANIMATED_INPUT -> RecipeItem(it, R.drawable.ic_baseline_text_fields_24, R.string.animated_input)
             }
         }
     }
@@ -111,6 +113,8 @@ class RecipePickerFragment : WolmoFragment<FragmentRecipeListBinding, RecipePick
     override fun goToFingerprintRecipe() = goTo(FingerprintLoginRecipeActivity::class.java)
 
     override fun goToLottieRecipe() = goTo(LottieRecipeActivity::class.java)
+
+    override fun goToAnimatedInput() = goTo(AnimatedInputActivity::class.java)
 
     companion object {
         fun newInstance() = RecipePickerFragment()
