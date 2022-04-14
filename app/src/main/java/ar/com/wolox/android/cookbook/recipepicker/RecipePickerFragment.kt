@@ -118,7 +118,7 @@ class RecipePickerFragment : WolmoFragment<FragmentRecipeListBinding, RecipePick
 
     override fun goToAnimatedInput() = goTo(AnimatedInputActivity::class.java)
 
-    override fun goToBounceEffect()  = goTo(BounceEffectActivity::class.java)
+    override fun goToBounceEffect() = goTo(BounceEffectActivity::class.java)
 
     companion object {
         fun newInstance() = RecipePickerFragment()
