@@ -23,5 +23,6 @@ enum class Recipe(val fullName: String) {
     GRAPH_QL("GraphQL"),
     BIOMETRIC_LOGIN("Login with fingerprint"),
     MAP("Google Maps"),
-    ANIMATED_INPUT("Animated Input")
+    ANIMATED_INPUT("Animated Input"),
+    BOUNCE_EFFECT("Bounce Effect")
 }

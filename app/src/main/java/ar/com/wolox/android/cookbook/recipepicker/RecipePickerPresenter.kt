@@ -37,6 +37,7 @@ class RecipePickerPresenter @Inject constructor() : BasePresenter<RecipePickerVi
             Recipe.BIOMETRIC_LOGIN -> view?.goToFingerprintRecipe()
             Recipe.MAP -> view?.goToMaps()
             Recipe.ANIMATED_INPUT -> view?.goToAnimatedInput()
+            Recipe.BOUNCE_EFFECT -> view?.goToBounceEffect()
         }
     }
 }
