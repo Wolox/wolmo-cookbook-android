@@ -105,10 +105,9 @@ class BounceEffect(
             }
 
             private fun getSpringAnimation(): ViewProperty {
-                return if (orientation == VERTICAL) {
-                    TRANSLATION_Y
-                } else {
-                    TRANSLATION_X
+                return when (orientation) {
+                    VERTICAL -> TRANSLATION_Y
+                    HORIZONTAL -> TRANSLATION_X
                 }
             }
         }
