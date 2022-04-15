@@ -128,6 +128,8 @@
         <activity android:name=".lottie.LottieRecipeActivity" />
 
         <activity android:name=".animatedinput.AnimatedInputActivity"/>
+
+        <activity android:name=".bounce.BounceEffectActivity" />
     </application>
 
 </manifest>

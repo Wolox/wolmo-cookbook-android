@@ -4,17 +4,22 @@ import android.graphics.Canvas
 import android.widget.EdgeEffect
 import androidx.dynamicanimation.animation.DynamicAnimation.ViewProperty
 import androidx.dynamicanimation.animation.SpringAnimation
+import androidx.dynamicanimation.animation.SpringAnimation.TRANSLATION_X
+import androidx.dynamicanimation.animation.SpringAnimation.TRANSLATION_Y
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.EdgeEffectFactory
+import ar.com.wolox.android.cookbook.bounce.BounceOrientation.HORIZONTAL
 import ar.com.wolox.android.cookbook.bounce.BounceOrientation.VERTICAL
 
-/** overscrollTranslation: The magnitude of translation distance while the list is over-scrolled. */
-/** flingTranslation: The magnitude of translation distance when the list reaches the edge on fling. */
+/** In the RecyclerView.edgeEffectFactory, you only have to add BounceEffect class **/
+/** overscrollTranslation: The magnitude of the translation distance while the list scrolls excessively. */
+/** flingTranslation: The magnitude of translation distance when the list bounces. */
+
 class BounceEffect(
     var orientation: BounceOrientation,
     var flingTranslation: Float = 0.5f,
-    var overscrollTranslation: Float = 0.2f
+    var overscrollTranslation: Float = 0.1f
 ) : EdgeEffectFactory() {
 
     override fun createEdgeEffect(recyclerView: RecyclerView, directionEffect: Int): EdgeEffect {
@@ -33,11 +38,18 @@ class BounceEffect(
             }
 
             private fun handlePull(deltaDistance: Float) {
-
-                val sign = if (directionEffect == DIRECTION_BOTTOM) -1 else 1
-                val translationYDelta =
-                    sign * recyclerView.width * deltaDistance * overscrollTranslation
-                recyclerView.translationY += translationYDelta
+                when (orientation) {
+                    VERTICAL -> {
+                        val translationYDelta =
+                            getSign() * recyclerView.width * deltaDistance * overscrollTranslation
+                        recyclerView.translationY += translationYDelta
+                    }
+                    HORIZONTAL -> {
+                        val translationXDelta =
+                            getSign() * recyclerView.height * deltaDistance * overscrollTranslation
+                        recyclerView.translationX += translationXDelta
+                    }
+                }
 
                 translationAnim?.cancel()
             }
@@ -45,8 +57,17 @@ class BounceEffect(
             override fun onRelease() {
                 super.onRelease()
 
-                if (recyclerView.translationY != 0f) {
-                    translationAnim = createAnim()?.also { it.start() }
+                when (orientation) {
+                    VERTICAL -> {
+                        if (recyclerView.translationY != 0f) {
+                            translationAnim = createAnim()?.also { it.start() }
+                        }
+                    }
+                    HORIZONTAL -> {
+                        if (recyclerView.translationX != 0f) {
+                            translationAnim = createAnim()?.also { it.start() }
+                        }
+                    }
                 }
             }
 
@@ -77,18 +98,17 @@ class BounceEffect(
                     )
 
             private fun getSign(): Int {
-                return if (orientation == VERTICAL) {
-                    if (directionEffect == DIRECTION_BOTTOM) -1 else 1
-                } else {
-                    if (directionEffect == DIRECTION_LEFT) 1 else -1
+                return when (orientation) {
+                    VERTICAL -> if (directionEffect == DIRECTION_BOTTOM) -1 else 1
+                    HORIZONTAL -> if (directionEffect == DIRECTION_LEFT) 1 else -1
                 }
             }
 
             private fun getSpringAnimation(): ViewProperty {
                 return if (orientation == VERTICAL) {
-                    SpringAnimation.TRANSLATION_Y
+                    TRANSLATION_Y
                 } else {
-                    SpringAnimation.TRANSLATION_X
+                    TRANSLATION_X
                 }
             }
         }

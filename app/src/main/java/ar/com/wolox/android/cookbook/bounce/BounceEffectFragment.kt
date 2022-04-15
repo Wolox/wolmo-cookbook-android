@@ -8,29 +8,30 @@ import ar.com.wolox.wolmo.core.presenter.BasePresenter
 
 class BounceEffectFragment : WolmoFragment<FragmentBounceBinding, BasePresenter<Any>>() {
 
+    override fun layout(): Int = R.layout.fragment_bounce
+
     override fun init() {
         with(binding!!) {
-            horizontalCarousel.apply {
-                adapter = BouncingAdapter(requireContext())
-                edgeEffectFactory = BounceEffect(BounceOrientation.HORIZONTAL)
-                val cardsManager = LinearLayoutManager(requireContext())
-                cardsManager.orientation = LinearLayoutManager.HORIZONTAL
-                layoutManager = cardsManager
-                isNestedScrollingEnabled = false
-            }
 
             verticalCarousel.apply {
-                adapter = BouncingAdapter(requireContext())
+                adapter = BounceAdapter(requireContext())
                 edgeEffectFactory = BounceEffect(BounceOrientation.VERTICAL)
                 val cardsManager = LinearLayoutManager(requireContext())
                 cardsManager.orientation = LinearLayoutManager.VERTICAL
                 layoutManager = cardsManager
                 isNestedScrollingEnabled = false
             }
+
+            horizontalCarousel.apply {
+                adapter = BounceAdapter(requireContext())
+                edgeEffectFactory = BounceEffect(BounceOrientation.HORIZONTAL, overscrollTranslation = 1f)
+                val cardsManager = LinearLayoutManager(requireContext())
+                cardsManager.orientation = LinearLayoutManager.HORIZONTAL
+                layoutManager = cardsManager
+                isNestedScrollingEnabled = false
+            }
         }
     }
-
-    override fun layout(): Int = R.layout.fragment_bounce
 
     companion object {
         fun newInstance(): BounceEffectFragment = BounceEffectFragment()
