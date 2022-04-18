@@ -59,12 +59,12 @@ class BounceEffect(
 
                 when (orientation) {
                     VERTICAL -> {
-                        if (recyclerView.translationY != 0f) {
+                        if (recyclerView.translationY != ZERO_F) {
                             translationAnim = createAnim()?.also { it.start() }
                         }
                     }
                     HORIZONTAL -> {
-                        if (recyclerView.translationX != 0f) {
+                        if (recyclerView.translationX != ZERO_F) {
                             translationAnim = createAnim()?.also { it.start() }
                         }
                     }
@@ -92,15 +92,15 @@ class BounceEffect(
                 SpringAnimation(recyclerView, getSpringAnimation())
                     .setSpring(
                         SpringForce()
-                            .setFinalPosition(0f)
+                            .setFinalPosition(ZERO_F)
                             .setDampingRatio(SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY)
                             .setStiffness(SpringForce.STIFFNESS_LOW)
                     )
 
             private fun getSign(): Int {
                 return when (orientation) {
-                    VERTICAL -> if (directionEffect == DIRECTION_BOTTOM) -1 else 1
-                    HORIZONTAL -> if (directionEffect == DIRECTION_LEFT) 1 else -1
+                    VERTICAL -> if (directionEffect == DIRECTION_BOTTOM) NEGATIVE_SIGN else POSITIVE_SIGN
+                    HORIZONTAL -> if (directionEffect == DIRECTION_LEFT) POSITIVE_SIGN else NEGATIVE_SIGN
                 }
             }
 
@@ -111,6 +111,12 @@ class BounceEffect(
                 }
             }
         }
+    }
+
+    companion object {
+        var POSITIVE_SIGN = 1
+        var NEGATIVE_SIGN = -1
+        var ZERO_F = 0F
     }
 }
 
