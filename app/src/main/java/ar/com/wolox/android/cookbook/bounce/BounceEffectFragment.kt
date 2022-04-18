@@ -11,7 +11,7 @@ class BounceEffectFragment : WolmoFragment<FragmentBounceBinding, BasePresenter<
     override fun layout(): Int = R.layout.fragment_bounce
 
     override fun init() {
-        with(binding) {
+        with(binding!!) {
 
             verticalCarousel.apply {
                 adapter = BounceAdapter(requireContext())
