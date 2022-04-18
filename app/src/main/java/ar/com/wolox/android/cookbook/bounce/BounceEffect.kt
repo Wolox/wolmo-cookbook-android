@@ -7,22 +7,22 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringAnimation.TRANSLATION_X
 import androidx.dynamicanimation.animation.SpringAnimation.TRANSLATION_Y
 import androidx.dynamicanimation.animation.SpringForce
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.EdgeEffectFactory
-import ar.com.wolox.android.cookbook.bounce.BounceOrientation.HORIZONTAL
-import ar.com.wolox.android.cookbook.bounce.BounceOrientation.VERTICAL
 
 /** In the RecyclerView.edgeEffectFactory, you only have to add BounceEffect class **/
 /** overscrollTranslation: The magnitude of the translation distance while the list scrolls excessively. */
 /** flingTranslation: The magnitude of translation distance when the list bounces. */
 
 class BounceEffect(
-    var orientation: BounceOrientation,
     var flingTranslation: Float = 0.5f,
     var overscrollTranslation: Float = 0.1f
 ) : EdgeEffectFactory() {
 
     override fun createEdgeEffect(recyclerView: RecyclerView, directionEffect: Int): EdgeEffect {
+
+        val orientation = (recyclerView.layoutManager as LinearLayoutManager).orientation
 
         return object : EdgeEffect(recyclerView.context) {
             var translationAnim: SpringAnimation? = null
@@ -38,13 +38,14 @@ class BounceEffect(
             }
 
             private fun handlePull(deltaDistance: Float) {
+
                 when (orientation) {
-                    VERTICAL -> {
+                    RecyclerView.VERTICAL -> {
                         val translationYDelta =
                             getSign() * recyclerView.width * deltaDistance * overscrollTranslation
                         recyclerView.translationY += translationYDelta
                     }
-                    HORIZONTAL -> {
+                    RecyclerView.HORIZONTAL -> {
                         val translationXDelta =
                             getSign() * recyclerView.height * deltaDistance * overscrollTranslation
                         recyclerView.translationX += translationXDelta
@@ -58,12 +59,12 @@ class BounceEffect(
                 super.onRelease()
 
                 when (orientation) {
-                    VERTICAL -> {
+                    RecyclerView.VERTICAL -> {
                         if (recyclerView.translationY != ZERO_F) {
                             translationAnim = createAnim()?.also { it.start() }
                         }
                     }
-                    HORIZONTAL -> {
+                    RecyclerView.HORIZONTAL -> {
                         if (recyclerView.translationX != ZERO_F) {
                             translationAnim = createAnim()?.also { it.start() }
                         }
@@ -99,15 +100,17 @@ class BounceEffect(
 
             private fun getSign(): Int {
                 return when (orientation) {
-                    VERTICAL -> if (directionEffect == DIRECTION_BOTTOM) NEGATIVE_SIGN else POSITIVE_SIGN
-                    HORIZONTAL -> if (directionEffect == DIRECTION_LEFT) POSITIVE_SIGN else NEGATIVE_SIGN
+                    RecyclerView.VERTICAL -> if (directionEffect == DIRECTION_BOTTOM) NEGATIVE_SIGN else POSITIVE_SIGN
+                    RecyclerView.HORIZONTAL -> if (directionEffect == DIRECTION_LEFT) POSITIVE_SIGN else NEGATIVE_SIGN
+                    else -> POSITIVE_SIGN
                 }
             }
 
             private fun getSpringAnimation(): ViewProperty {
                 return when (orientation) {
-                    VERTICAL -> TRANSLATION_Y
-                    HORIZONTAL -> TRANSLATION_X
+                    RecyclerView.VERTICAL -> TRANSLATION_Y
+                    RecyclerView.HORIZONTAL -> TRANSLATION_X
+                    else -> TRANSLATION_Y
                 }
             }
         }
@@ -118,9 +121,4 @@ class BounceEffect(
         var NEGATIVE_SIGN = -1
         var ZERO_F = 0F
     }
-}
-
-enum class BounceOrientation {
-    VERTICAL,
-    HORIZONTAL
 }

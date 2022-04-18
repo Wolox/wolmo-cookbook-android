@@ -15,7 +15,7 @@ class BounceEffectFragment : WolmoFragment<FragmentBounceBinding, BasePresenter<
 
             verticalCarousel.apply {
                 adapter = BounceAdapter(requireContext())
-                edgeEffectFactory = BounceEffect(BounceOrientation.VERTICAL)
+                edgeEffectFactory = BounceEffect()
                 val cardsManager = LinearLayoutManager(requireContext())
                 cardsManager.orientation = LinearLayoutManager.VERTICAL
                 layoutManager = cardsManager
@@ -24,7 +24,7 @@ class BounceEffectFragment : WolmoFragment<FragmentBounceBinding, BasePresenter<
 
             horizontalCarousel.apply {
                 adapter = BounceAdapter(requireContext())
-                edgeEffectFactory = BounceEffect(BounceOrientation.HORIZONTAL, overscrollTranslation = ONE_F)
+                edgeEffectFactory = BounceEffect(overscrollTranslation = ONE_F)
                 val cardsManager = LinearLayoutManager(requireContext())
                 cardsManager.orientation = LinearLayoutManager.HORIZONTAL
                 layoutManager = cardsManager
