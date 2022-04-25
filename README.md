@@ -27,6 +27,7 @@ The Cookbook will also be used as a playground to test new stuff out. That does 
 17. <b>[Lottie](https://github.com/Wolox/wolmo-cookbook-android/tree/master/app/src/main/java/ar/com/wolox/android/cookbook/lottie):</b> Implementation of Lottie library to import animations.
 18. <b>[Google Maps](https://github.com/Wolox/wolmo-cookbook-android/tree/master/app/src/main/java/ar/com/wolox/android/cookbook/maps):</b> Implementation of Google Maps with clustering and current location.
 19. <b>[Animated EditText](https://github.com/Wolox/wolmo-cookbook-android/tree/master/app/src/main/java/ar/com/wolox/android/cookbook/animatedinput):</b> Implementation and example of how to do an animated EditText.
+20. <b>[Bounce Effect](https://github.com/Wolox/wolmo-cookbook-android/tree/master/app/src/main/java/ar/com/wolox/android/cookbook/bounce):</b> Implementation and example of how to make bounce effect animations in adapters.
 
 ## Initial Setup
 1. Setup the production keystore credentials: run `scripts/keystore.sh` from the project root directory or create app/keystore.gradle file manually:

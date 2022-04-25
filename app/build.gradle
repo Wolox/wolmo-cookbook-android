@@ -134,6 +134,7 @@ buildscript {
     ext.biometrics_version = '1.1.0'
     ext.maps_version = '18.0.0'
     ext.maps_utils_version = '2.3.0'
+    ext.dynamic_animation_version = '1.0.0-alpha03'
 }
 
 dependencies {
@@ -234,6 +235,9 @@ dependencies {
     // Maps
     implementation "com.google.android.gms:play-services-maps:$maps_version"
     implementation "com.google.maps.android:android-maps-utils:$maps_utils_version"
+
+    // Bounce Effect
+    implementation "androidx.dynamicanimation:dynamicanimation-ktx:$dynamic_animation_version"
 
 }
 

@@ -5,14 +5,15 @@ import ar.com.wolox.android.cookbook.CookbookApplication
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRecipeModule
 import ar.com.wolox.android.cookbook.analytics.AnalyticsRepositoryModule
 import ar.com.wolox.android.cookbook.analytics.core.AnalyticsModule
-import ar.com.wolox.android.cookbook.coroutines.CoroutinesExampleModule
-import ar.com.wolox.android.cookbook.coroutines.football.modules.FootballModule
 import ar.com.wolox.android.cookbook.common.di.modules.ChartModule
 import ar.com.wolox.android.cookbook.common.di.modules.InstagramModule
 import ar.com.wolox.android.cookbook.common.di.modules.RoomModule
 import ar.com.wolox.android.cookbook.common.di.modules.LottieModule
-import ar.com.wolox.android.cookbook.common.di.modules.TwitterModule
 import ar.com.wolox.android.cookbook.common.di.modules.AnimatedInputModule
+import ar.com.wolox.android.cookbook.common.di.modules.BounceEffectModule
+import ar.com.wolox.android.cookbook.common.di.modules.TwitterModule
+import ar.com.wolox.android.cookbook.coroutines.CoroutinesExampleModule
+import ar.com.wolox.android.cookbook.coroutines.football.modules.FootballModule
 import ar.com.wolox.android.cookbook.common.di.room.PersistenceModule
 import ar.com.wolox.android.cookbook.common.di.room.ServiceModule
 import ar.com.wolox.android.cookbook.datasync.DataSyncRecipeModule
@@ -57,7 +58,8 @@ import javax.inject.Named
         AnalyticsRepositoryModule::class,
         MercadoPagoModule::class,
         LottieModule::class,
-        AnimatedInputModule::class
+        AnimatedInputModule::class,
+        BounceEffectModule::class
     ]
 )
 interface AppComponent : AndroidInjector<CookbookApplication> {

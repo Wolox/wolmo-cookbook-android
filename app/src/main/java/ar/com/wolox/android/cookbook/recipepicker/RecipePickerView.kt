@@ -41,4 +41,6 @@ interface RecipePickerView {
     fun goToLottieRecipe()
 
     fun goToAnimatedInput()
+
+    fun goToBounceEffect()
 }

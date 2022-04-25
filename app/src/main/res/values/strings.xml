@@ -291,4 +291,9 @@
 
     <!-- Animated EditText -->
     <string name="animated_input">Animated Input</string>
+
+    <!-- Bounce Effect -->
+    <string name="bounce_effect">Bounce Effect</string>
+    <string name="vertical_bounce">Vertical Bounce</string>
+    <string name="horizontal_bounce">Horizontal Bounce</string>
 </resources>
